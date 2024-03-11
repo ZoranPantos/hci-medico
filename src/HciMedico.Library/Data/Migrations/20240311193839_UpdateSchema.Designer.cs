@@ -4,6 +4,7 @@ using HciMedico.Library.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HciMedico.Library.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240311193839_UpdateSchema")]
+    partial class UpdateSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +37,7 @@ namespace HciMedico.Library.Migrations
 
                     b.HasIndex("SpecializationsId");
 
-                    b.ToTable("doctor_medicalspecialization", (string)null);
+                    b.ToTable("DoctorMedicalSpecialization");
                 });
 
             modelBuilder.Entity("HciMedico.Library.Models.Appointment", b =>
@@ -80,7 +83,7 @@ namespace HciMedico.Library.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("VisitOrders");
                 });
 
             modelBuilder.Entity("HciMedico.Library.Models.Employee", b =>
@@ -214,24 +217,6 @@ namespace HciMedico.Library.Migrations
                     b.ToTable("Patients");
                 });
 
-            modelBuilder.Entity("HciMedico.Library.Models.Relationships.HealthRecordMedicalCondition", b =>
-                {
-                    b.Property<int>("HealthRecordId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MedicalConditionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("HealthRecordId", "MedicalConditionId");
-
-                    b.HasIndex("MedicalConditionId");
-
-                    b.ToTable("healthrecord_medicalcondition", (string)null);
-                });
-
             modelBuilder.Entity("HciMedico.Library.Models.UserAccount", b =>
                 {
                     b.Property<int>("Id")
@@ -257,6 +242,21 @@ namespace HciMedico.Library.Migrations
                         .IsUnique();
 
                     b.ToTable("UserAccounts");
+                });
+
+            modelBuilder.Entity("HealthRecordMedicalCondition", b =>
+                {
+                    b.Property<int>("HealthRecordsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MedicalConditionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("HealthRecordsId", "MedicalConditionsId");
+
+                    b.HasIndex("MedicalConditionsId");
+
+                    b.ToTable("HealthRecordMedicalCondition");
                 });
 
             modelBuilder.Entity("HciMedico.Library.Models.CounterWorker", b =>
@@ -303,7 +303,7 @@ namespace HciMedico.Library.Migrations
                         .IsRequired();
 
                     b.HasOne("HciMedico.Library.Models.HealthRecord", "HealthRecord")
-                        .WithMany("Appointments")
+                        .WithMany("VisitOrders")
                         .HasForeignKey("HealthRecordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -450,25 +450,6 @@ namespace HciMedico.Library.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HciMedico.Library.Models.Relationships.HealthRecordMedicalCondition", b =>
-                {
-                    b.HasOne("HciMedico.Library.Models.HealthRecord", "HealthRecord")
-                        .WithMany("HealthRecordMedicalConditions")
-                        .HasForeignKey("HealthRecordId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("HciMedico.Library.Models.MedicalCondition", "MedicalCondition")
-                        .WithMany("HealthRecordMedicalConditions")
-                        .HasForeignKey("MedicalConditionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HealthRecord");
-
-                    b.Navigation("MedicalCondition");
-                });
-
             modelBuilder.Entity("HciMedico.Library.Models.UserAccount", b =>
                 {
                     b.HasOne("HciMedico.Library.Models.Employee", "Employee")
@@ -480,6 +461,21 @@ namespace HciMedico.Library.Migrations
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("HealthRecordMedicalCondition", b =>
+                {
+                    b.HasOne("HciMedico.Library.Models.HealthRecord", null)
+                        .WithMany()
+                        .HasForeignKey("HealthRecordsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HciMedico.Library.Models.MedicalCondition", null)
+                        .WithMany()
+                        .HasForeignKey("MedicalConditionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("HciMedico.Library.Models.Employee", b =>
                 {
                     b.Navigation("UserAccount")
@@ -488,14 +484,7 @@ namespace HciMedico.Library.Migrations
 
             modelBuilder.Entity("HciMedico.Library.Models.HealthRecord", b =>
                 {
-                    b.Navigation("Appointments");
-
-                    b.Navigation("HealthRecordMedicalConditions");
-                });
-
-            modelBuilder.Entity("HciMedico.Library.Models.MedicalCondition", b =>
-                {
-                    b.Navigation("HealthRecordMedicalConditions");
+                    b.Navigation("VisitOrders");
                 });
 
             modelBuilder.Entity("HciMedico.Library.Models.Patient", b =>

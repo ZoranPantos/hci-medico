@@ -1,4 +1,6 @@
-﻿using HciMedico.Library.Models;
+﻿using HciMedico.Library.Data.Configurations;
+using HciMedico.Library.Models;
+using HciMedico.Library.Models.Relationships;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -6,16 +8,28 @@ namespace HciMedico.Library.Data;
 
 public class AppDbContext : DbContext
 {
-    //private string connectionString = "Server=localhost;Port=3306;Database=medico;Uid=root;Pwd=root";
     private readonly string connectionString = ConfigurationManager.ConnectionStrings["MedicoConnection"].ConnectionString;
 
-    public DbSet<Test> Tests { get; set; }
+    public DbSet<UserAccount> UserAccounts { get; set; }
+    public DbSet<Employee> Employees { get; set; }
+    public DbSet<CounterWorker> CounterWorkers { get; set; }
+    public DbSet<Doctor> Doctors { get; set; }
+    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<MedicalSpecialization> MedicalSpecializations { get; set; }
+    public DbSet<Patient> Patients { get; set; }
+    public DbSet<HealthRecord> HealthRecords { get; set; }
+    public DbSet<MedicalCondition> MedicalConditions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Test>().HasData(new Test { Id = 1, TestName = "Test 1", TestNumber = 123456 });
-        modelBuilder.Entity<Test>().HasData(new Test { Id = 2, TestName = "Test 2", TestNumber = 789876 });
-        modelBuilder.Entity<Test>().HasData(new Test { Id = 3, TestName = "Test 3", TestNumber = 543212 });
+        new EmployeeEntityTypeConfiguration().Configure(modelBuilder.Entity<Employee>());
+        new PatientEntityTypeConfiguration().Configure(modelBuilder.Entity<Patient>());
+        new DoctorEntityTypeConfiguration().Configure(modelBuilder.Entity<Doctor>());
+
+        new HealthRecordMedicalConditionEntityTypeConfiguration()
+            .Configure(modelBuilder.Entity<HealthRecordMedicalCondition>());
+
+        base.OnModelCreating(modelBuilder);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
