@@ -11,17 +11,17 @@ public class Appointment
     public DateOnly Date => DateOnly.FromDateTime(DateAndTime);
     public TimeOnly Time => TimeOnly.FromDateTime(DateAndTime);
 
-    public AppointmentStatus Status { get; set; } = new();
-    public AppointmentType Type { get; set; } = new();
+    public AppointmentStatus Status { get; set; }
+    public AppointmentType Type { get; set; }
 
     public int HealthRecordId { get; set; }
-    public HealthRecord HealthRecord { get; set; } = new();
+    public HealthRecord HealthRecord { get; set; }
 
     public int DoctorId { get; set; }
-    public Doctor AssignedTo { get; set; } = new();
+    public Doctor AssignedTo { get; set; }
 
     public int CounterWorkerId { get; set; }
-    public CounterWorker CreatedBy { get; set; } = new();
+    public CounterWorker CreatedBy { get; set; }
 
     // Person calls and schedules an appointment
     // They may be existing or new patient

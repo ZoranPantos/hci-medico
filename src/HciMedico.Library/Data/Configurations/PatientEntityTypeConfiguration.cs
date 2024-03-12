@@ -9,6 +9,6 @@ public class PatientEntityTypeConfiguration : IEntityTypeConfiguration<Patient>
     public void Configure(EntityTypeBuilder<Patient> builder)
     {
         builder.OwnsOne(p => p.Address);
-        builder.OwnsOne(p => p.Contact);
+        builder.OwnsOne(p => p.ContactInfo);
     }
 }

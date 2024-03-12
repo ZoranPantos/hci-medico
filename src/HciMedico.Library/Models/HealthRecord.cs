@@ -8,7 +8,7 @@ public class HealthRecord
     public int Id { get; set; }
 
     public int PatientId { get; set; }
-    public Patient Patient { get; set; } = new();
+    public Patient Patient { get; set; }
 
     public DateTime DateOfBirth { get; set; }
     public Gender Gender { get; set; }

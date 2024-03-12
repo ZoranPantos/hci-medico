@@ -2,5 +2,5 @@
 
 public class CounterWorker : Employee
 {
-    public ICollection<Appointment> CreatedOrders { get; set; }
+    public ICollection<Appointment> CreatedAppointments { get; set; }
 }

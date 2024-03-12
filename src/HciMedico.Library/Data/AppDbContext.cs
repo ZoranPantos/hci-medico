@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace HciMedico.Library.Data;
 
-public class AppDbContext : DbContext
+public sealed class AppDbContext : DbContext
 {
     private readonly string connectionString = ConfigurationManager.ConnectionStrings["MedicoConnection"].ConnectionString;
 
@@ -23,8 +23,12 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         new EmployeeEntityTypeConfiguration().Configure(modelBuilder.Entity<Employee>());
-        new PatientEntityTypeConfiguration().Configure(modelBuilder.Entity<Patient>());
         new DoctorEntityTypeConfiguration().Configure(modelBuilder.Entity<Doctor>());
+        new CounterWorkerEntityTypeConfiguration().Configure(modelBuilder.Entity<CounterWorker>());
+        new PatientEntityTypeConfiguration().Configure(modelBuilder.Entity<Patient>());
+        new MedicalConditionEntityTypeConfiguration().Configure(modelBuilder.Entity<MedicalCondition>());
+        new MedicalSpecializationEntityTypeConfiguration().Configure(modelBuilder.Entity<MedicalSpecialization>());
+        new UserAccountEntityTypeConfiguration().Configure(modelBuilder.Entity<UserAccount>());
 
         new HealthRecordMedicalConditionEntityTypeConfiguration()
             .Configure(modelBuilder.Entity<HealthRecordMedicalCondition>());
