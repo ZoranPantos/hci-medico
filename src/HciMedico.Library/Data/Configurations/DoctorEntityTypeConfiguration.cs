@@ -15,7 +15,48 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
         builder
             .HasMany(d => d.Specializations)
             .WithMany(ms => ms.Doctors)
-            .UsingEntity(j => j.ToTable("doctor_medicalspecialization"));
+            .UsingEntity(j =>
+                {
+                    j.ToTable("doctor_medicalspecialization");
+
+                    j.HasData(
+                        new { DoctorsId = 1, SpecializationsId = 1 },
+                        new { DoctorsId = 1, SpecializationsId = 33 },
+                        new { DoctorsId = 2, SpecializationsId = 1 },
+                        new { DoctorsId = 3, SpecializationsId = 2 },
+                        new { DoctorsId = 3, SpecializationsId = 29 },
+                        new { DoctorsId = 4, SpecializationsId = 2 },
+                        new { DoctorsId = 5, SpecializationsId = 3 },
+                        new { DoctorsId = 6, SpecializationsId = 5 },
+                        new { DoctorsId = 7, SpecializationsId = 6 },
+                        new { DoctorsId = 8, SpecializationsId = 7 },
+                        new { DoctorsId = 9, SpecializationsId = 8 },
+                        new { DoctorsId = 10, SpecializationsId = 9 },
+                        new { DoctorsId = 11, SpecializationsId = 10 },
+                        new { DoctorsId = 12, SpecializationsId = 13 },
+                        new { DoctorsId = 13, SpecializationsId = 13 },
+                        new { DoctorsId = 13, SpecializationsId = 24 },
+                        new { DoctorsId = 14, SpecializationsId = 15 },
+                        new { DoctorsId = 15, SpecializationsId = 19 },
+                        new { DoctorsId = 16, SpecializationsId = 19 },
+                        new { DoctorsId = 17, SpecializationsId = 41 },
+                        new { DoctorsId = 18, SpecializationsId = 44 },
+                        new { DoctorsId = 19, SpecializationsId = 44 },
+                        new { DoctorsId = 20, SpecializationsId = 44 },
+                        new { DoctorsId = 21, SpecializationsId = 31 },
+                        new { DoctorsId = 22, SpecializationsId = 32 },
+                        new { DoctorsId = 23, SpecializationsId = 34 },
+                        new { DoctorsId = 24, SpecializationsId = 35 },
+                        new { DoctorsId = 25, SpecializationsId = 37 },
+                        new { DoctorsId = 26, SpecializationsId = 38 },
+                        new { DoctorsId = 26, SpecializationsId = 25 },
+                        new { DoctorsId = 27, SpecializationsId = 39 },
+                        new { DoctorsId = 28, SpecializationsId = 40 },
+                        new { DoctorsId = 29, SpecializationsId = 42 },
+                        new { DoctorsId = 30, SpecializationsId = 43 }
+                    );
+                }
+            );
 
         builder.HasData(
             new Doctor
