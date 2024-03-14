@@ -29,6 +29,7 @@ public sealed class AppDbContext : DbContext
         new MedicalConditionEntityTypeConfiguration().Configure(modelBuilder.Entity<MedicalCondition>());
         new MedicalSpecializationEntityTypeConfiguration().Configure(modelBuilder.Entity<MedicalSpecialization>());
         new UserAccountEntityTypeConfiguration().Configure(modelBuilder.Entity<UserAccount>());
+        new HealthRecordEntityTypeConfiguration().Configure(modelBuilder.Entity<HealthRecord>());
 
         new HealthRecordMedicalConditionEntityTypeConfiguration()
             .Configure(modelBuilder.Entity<HealthRecordMedicalCondition>());

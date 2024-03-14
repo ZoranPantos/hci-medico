@@ -88,6 +88,5 @@ public class EmployeeEntityTypeConfiguration : IEntityTypeConfiguration<Employee
                 new { EmployeeId = 33, Email = "petar.tomic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
                 new { EmployeeId = 34, Email = "ana.jovanovic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" }
             );
-
     }
 }

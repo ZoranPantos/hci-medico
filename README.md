@@ -15,3 +15,8 @@ To apply pending migration(s), repeat the previous step but with the command
 ```sh
 dotnet ef database update --startup-project ../HciMedico.App/HciMedico.App.csproj
 ```
+
+### Managing users
+
+Password for each user is their username from the database. Depending on the role of the user (Doctor or CounterWorker),
+different functionalities and views will be presented.
