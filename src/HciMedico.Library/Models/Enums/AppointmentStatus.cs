@@ -2,9 +2,7 @@
 
 public enum AppointmentStatus
 {
-    InFuture,
-    InWaitingRoom,
-    Attending,
-    PastResolved,
-    PastUnresolved
+    Scheduled,
+    Resolved,
+    Cancelled
 }

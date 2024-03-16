@@ -30,6 +30,7 @@ public sealed class AppDbContext : DbContext
         new MedicalSpecializationEntityTypeConfiguration().Configure(modelBuilder.Entity<MedicalSpecialization>());
         new UserAccountEntityTypeConfiguration().Configure(modelBuilder.Entity<UserAccount>());
         new HealthRecordEntityTypeConfiguration().Configure(modelBuilder.Entity<HealthRecord>());
+        new AppointmentEntityTypeConfiguration().Configure(modelBuilder.Entity<Appointment>());
 
         new HealthRecordMedicalConditionEntityTypeConfiguration()
             .Configure(modelBuilder.Entity<HealthRecordMedicalCondition>());
@@ -43,6 +44,6 @@ public sealed class AppDbContext : DbContext
             connectionString,
             ServerVersion.AutoDetect(connectionString),
             optionsBuilder => optionsBuilder.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)
-            );
+        );
     }
 }
