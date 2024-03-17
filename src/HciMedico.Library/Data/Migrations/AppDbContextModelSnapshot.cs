@@ -2099,70 +2099,70 @@ namespace HciMedico.Library.Migrations
                             Id = 1,
                             FirstName = "Boris",
                             LastName = "Borisavljević",
-                            Uid = "44011243331"
+                            Uid = "49801543363"
                         },
                         new
                         {
                             Id = 2,
                             FirstName = "Saška",
                             LastName = "Mačetić",
-                            Uid = "74378259704"
+                            Uid = "99132400627"
                         },
                         new
                         {
                             Id = 3,
                             FirstName = "Miloš",
                             LastName = "Milosavljević",
-                            Uid = "40862017839"
+                            Uid = "18493346026"
                         },
                         new
                         {
                             Id = 4,
                             FirstName = "Ana",
                             LastName = "Stanojević",
-                            Uid = "75208982851"
+                            Uid = "55776312544"
                         },
                         new
                         {
                             Id = 5,
                             FirstName = "Darko",
                             LastName = "Darković",
-                            Uid = "27435282769"
+                            Uid = "20877895497"
                         },
                         new
                         {
                             Id = 6,
                             FirstName = "Jovana",
                             LastName = "Jovanović",
-                            Uid = "27148463265"
+                            Uid = "50190925538"
                         },
                         new
                         {
                             Id = 7,
                             FirstName = "Nikola",
                             LastName = "Nikolić",
-                            Uid = "75707252530"
+                            Uid = "21684265337"
                         },
                         new
                         {
                             Id = 8,
                             FirstName = "David",
                             LastName = "Davidović",
-                            Uid = "60222569919"
+                            Uid = "77759490391"
                         },
                         new
                         {
                             Id = 9,
                             FirstName = "Stana",
                             LastName = "Stanojević",
-                            Uid = "70357632833"
+                            Uid = "91884772011"
                         },
                         new
                         {
                             Id = 10,
                             FirstName = "Goran",
                             LastName = "Predojević",
-                            Uid = "80924008849"
+                            Uid = "96768897860"
                         });
                 });
 
@@ -2583,7 +2583,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Ksenija",
                             Gender = 1,
                             LastName = "Marković",
-                            Uid = "4692609407333"
+                            Uid = "9739463427016"
                         },
                         new
                         {
@@ -2593,7 +2593,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Milica",
                             Gender = 1,
                             LastName = "Simeunović",
-                            Uid = "7638318639758"
+                            Uid = "8724253100001"
                         },
                         new
                         {
@@ -2603,7 +2603,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Petar",
                             Gender = 0,
                             LastName = "Tomić",
-                            Uid = "8993082457199"
+                            Uid = "1126878033949"
                         },
                         new
                         {
@@ -2613,7 +2613,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Jovanović",
-                            Uid = "5208737580493"
+                            Uid = "2135718916140"
                         });
                 });
 
@@ -2632,7 +2632,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Marko",
                             Gender = 0,
                             LastName = "Petrović",
-                            Uid = "8551055957630"
+                            Uid = "5758292473537"
                         },
                         new
                         {
@@ -2642,7 +2642,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Jovanović",
-                            Uid = "6014538299707"
+                            Uid = "2264055964011"
                         },
                         new
                         {
@@ -2652,7 +2652,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Nikola",
                             Gender = 0,
                             LastName = "Stojanović",
-                            Uid = "9418079613360"
+                            Uid = "1829990141680"
                         },
                         new
                         {
@@ -2662,7 +2662,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Milan",
                             Gender = 0,
                             LastName = "Popović",
-                            Uid = "6665751157858"
+                            Uid = "2900186252664"
                         },
                         new
                         {
@@ -2672,7 +2672,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Jovana",
                             Gender = 1,
                             LastName = "Nikolić",
-                            Uid = "8160938424745"
+                            Uid = "2323440250403"
                         },
                         new
                         {
@@ -2682,7 +2682,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Stefan",
                             Gender = 0,
                             LastName = "Ilić",
-                            Uid = "1154613610156"
+                            Uid = "1669116900818"
                         },
                         new
                         {
@@ -2692,7 +2692,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Marija",
                             Gender = 1,
                             LastName = "Pavlović",
-                            Uid = "7208743508121"
+                            Uid = "1104100255859"
                         },
                         new
                         {
@@ -2702,7 +2702,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Aleksandar",
                             Gender = 0,
                             LastName = "Đorđević",
-                            Uid = "8102242473707"
+                            Uid = "4413422914957"
                         },
                         new
                         {
@@ -2712,7 +2712,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Janković",
-                            Uid = "1911010212606"
+                            Uid = "1132924863776"
                         },
                         new
                         {
@@ -2722,7 +2722,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Petar",
                             Gender = 0,
                             LastName = "Stanković",
-                            Uid = "9166398493608"
+                            Uid = "7919231186054"
                         },
                         new
                         {
@@ -2732,7 +2732,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Jelena",
                             Gender = 1,
                             LastName = "Petrović",
-                            Uid = "6740887325446"
+                            Uid = "9059348587172"
                         },
                         new
                         {
@@ -2742,7 +2742,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Dragan",
                             Gender = 0,
                             LastName = "Kovačević",
-                            Uid = "2739059593670"
+                            Uid = "5851760122159"
                         },
                         new
                         {
@@ -2752,7 +2752,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Milica",
                             Gender = 1,
                             LastName = "Ivanović",
-                            Uid = "7747480278143"
+                            Uid = "8224241829603"
                         },
                         new
                         {
@@ -2762,7 +2762,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Nemanja",
                             Gender = 0,
                             LastName = "Jović",
-                            Uid = "9867778910698"
+                            Uid = "3585222528465"
                         },
                         new
                         {
@@ -2772,7 +2772,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Mina",
                             Gender = 1,
                             LastName = "Pavlović",
-                            Uid = "4230894739161"
+                            Uid = "4898333385514"
                         },
                         new
                         {
@@ -2782,7 +2782,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Vladimir",
                             Gender = 0,
                             LastName = "Stanišić",
-                            Uid = "8969010138333"
+                            Uid = "4682545979979"
                         },
                         new
                         {
@@ -2792,7 +2792,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Jovanka",
                             Gender = 1,
                             LastName = "Đorđević",
-                            Uid = "1331375279721"
+                            Uid = "8771638183872"
                         },
                         new
                         {
@@ -2802,7 +2802,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Branimir",
                             Gender = 0,
                             LastName = "Nikolić",
-                            Uid = "9097040448923"
+                            Uid = "7725469775569"
                         },
                         new
                         {
@@ -2812,7 +2812,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Janković",
-                            Uid = "3506373940616"
+                            Uid = "1174855542699"
                         },
                         new
                         {
@@ -2822,7 +2822,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Nikola",
                             Gender = 0,
                             LastName = "Stanković",
-                            Uid = "9343186040370"
+                            Uid = "9711740448955"
                         },
                         new
                         {
@@ -2832,7 +2832,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Sanja",
                             Gender = 1,
                             LastName = "Petrović",
-                            Uid = "2975409078391"
+                            Uid = "5117060230315"
                         },
                         new
                         {
@@ -2842,7 +2842,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Miloš",
                             Gender = 0,
                             LastName = "Jovanović",
-                            Uid = "7919710257204"
+                            Uid = "5436263254601"
                         },
                         new
                         {
@@ -2852,7 +2852,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Tatjana",
                             Gender = 1,
                             LastName = "Stojanović",
-                            Uid = "2113078209488"
+                            Uid = "6112719155153"
                         },
                         new
                         {
@@ -2862,7 +2862,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Vladimir",
                             Gender = 0,
                             LastName = "Stanković",
-                            Uid = "6475570550393"
+                            Uid = "8746142958928"
                         },
                         new
                         {
@@ -2872,7 +2872,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Ivana",
                             Gender = 1,
                             LastName = "Janković",
-                            Uid = "3038247033817"
+                            Uid = "3651848060671"
                         },
                         new
                         {
@@ -2882,7 +2882,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Nenad",
                             Gender = 0,
                             LastName = "Petrović",
-                            Uid = "5045273185843"
+                            Uid = "6195510767788"
                         },
                         new
                         {
@@ -2892,7 +2892,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Milica",
                             Gender = 1,
                             LastName = "Ilić",
-                            Uid = "9768452791568"
+                            Uid = "9871079318289"
                         },
                         new
                         {
@@ -2902,7 +2902,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Vladan",
                             Gender = 0,
                             LastName = "Đorđević",
-                            Uid = "4362053292902"
+                            Uid = "1900546831350"
                         },
                         new
                         {
@@ -2912,7 +2912,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Sara",
                             Gender = 1,
                             LastName = "Pavlović",
-                            Uid = "1163210607112"
+                            Uid = "8148677947310"
                         },
                         new
                         {
@@ -2922,7 +2922,7 @@ namespace HciMedico.Library.Migrations
                             FirstName = "Nemanja",
                             Gender = 0,
                             LastName = "Stanišić",
-                            Uid = "8290927252977"
+                            Uid = "8903664014666"
                         });
                 });
 
@@ -3301,205 +3301,205 @@ namespace HciMedico.Library.Migrations
                                 {
                                     EmployeeId = 1,
                                     Email = "marko.petrovic@test.com",
-                                    TelephoneNumber = "+66401918664"
+                                    TelephoneNumber = "+18709678895"
                                 },
                                 new
                                 {
                                     EmployeeId = 2,
                                     Email = "ana.jovanovic@test.com",
-                                    TelephoneNumber = "+89602569729"
+                                    TelephoneNumber = "+92878946016"
                                 },
                                 new
                                 {
                                     EmployeeId = 3,
                                     Email = "nikola.stojanovic@test.com",
-                                    TelephoneNumber = "+74236938178"
+                                    TelephoneNumber = "+16718121181"
                                 },
                                 new
                                 {
                                     EmployeeId = 4,
                                     Email = "milan.popovic@test.com",
-                                    TelephoneNumber = "+42222158529"
+                                    TelephoneNumber = "+78287378238"
                                 },
                                 new
                                 {
                                     EmployeeId = 5,
                                     Email = "jovana.nikolic@test.com",
-                                    TelephoneNumber = "+72704618540"
+                                    TelephoneNumber = "+85149575781"
                                 },
                                 new
                                 {
                                     EmployeeId = 6,
                                     Email = "stefan.ilic@test.com",
-                                    TelephoneNumber = "+36352153701"
+                                    TelephoneNumber = "+61760380733"
                                 },
                                 new
                                 {
                                     EmployeeId = 7,
                                     Email = "marija.pavlovic@test.com",
-                                    TelephoneNumber = "+51080484862"
+                                    TelephoneNumber = "+78899129572"
                                 },
                                 new
                                 {
                                     EmployeeId = 8,
                                     Email = "aleksandar.djordjevic@test.com",
-                                    TelephoneNumber = "+12833313678"
+                                    TelephoneNumber = "+33861275952"
                                 },
                                 new
                                 {
                                     EmployeeId = 9,
                                     Email = "ana.jankovic@test.com",
-                                    TelephoneNumber = "+16171831317"
+                                    TelephoneNumber = "+76220005251"
                                 },
                                 new
                                 {
                                     EmployeeId = 10,
                                     Email = "petar.stankovic@test.com",
-                                    TelephoneNumber = "+19957337806"
+                                    TelephoneNumber = "+16181655695"
                                 },
                                 new
                                 {
                                     EmployeeId = 11,
                                     Email = "jelena.petrovic@test.com",
-                                    TelephoneNumber = "+19613421968"
+                                    TelephoneNumber = "+25846591454"
                                 },
                                 new
                                 {
                                     EmployeeId = 12,
                                     Email = "dragan.kovacevic@test.com",
-                                    TelephoneNumber = "+74907148620"
+                                    TelephoneNumber = "+57317518334"
                                 },
                                 new
                                 {
                                     EmployeeId = 13,
                                     Email = "milica.ivanovic@test.com",
-                                    TelephoneNumber = "+11579272093"
+                                    TelephoneNumber = "+17658553337"
                                 },
                                 new
                                 {
                                     EmployeeId = 14,
                                     Email = "nemanja.jovic@test.com",
-                                    TelephoneNumber = "+65195371843"
+                                    TelephoneNumber = "+40203307714"
                                 },
                                 new
                                 {
                                     EmployeeId = 15,
                                     Email = "mina.pavlovic@test.com",
-                                    TelephoneNumber = "+92890489605"
+                                    TelephoneNumber = "+35525347752"
                                 },
                                 new
                                 {
                                     EmployeeId = 16,
                                     Email = "vladimir.stanisic@test.com",
-                                    TelephoneNumber = "+69322480868"
+                                    TelephoneNumber = "+95856396523"
                                 },
                                 new
                                 {
                                     EmployeeId = 17,
                                     Email = "jovanka.djordjevic@test.com",
-                                    TelephoneNumber = "+10182243768"
+                                    TelephoneNumber = "+48946149315"
                                 },
                                 new
                                 {
                                     EmployeeId = 18,
                                     Email = "branimir.nikolic@test.com",
-                                    TelephoneNumber = "+48402599942"
+                                    TelephoneNumber = "+61686964999"
                                 },
                                 new
                                 {
                                     EmployeeId = 19,
                                     Email = "ana.jankovic@test.com",
-                                    TelephoneNumber = "+47532925133"
+                                    TelephoneNumber = "+70029505653"
                                 },
                                 new
                                 {
                                     EmployeeId = 20,
                                     Email = "nikola.stankovic@test.com",
-                                    TelephoneNumber = "+37472090347"
+                                    TelephoneNumber = "+41642598177"
                                 },
                                 new
                                 {
                                     EmployeeId = 21,
                                     Email = "sanja.petrovic@test.com",
-                                    TelephoneNumber = "+29951363645"
+                                    TelephoneNumber = "+57346813137"
                                 },
                                 new
                                 {
                                     EmployeeId = 22,
                                     Email = "milos.jovanovic@test.com",
-                                    TelephoneNumber = "+14940514643"
+                                    TelephoneNumber = "+73157250365"
                                 },
                                 new
                                 {
                                     EmployeeId = 23,
                                     Email = "tatjana.stojanovic@test.com",
-                                    TelephoneNumber = "+30671925765"
+                                    TelephoneNumber = "+59034428472"
                                 },
                                 new
                                 {
                                     EmployeeId = 24,
                                     Email = "vladimir.stankovic@test.com",
-                                    TelephoneNumber = "+21915995833"
+                                    TelephoneNumber = "+24516646483"
                                 },
                                 new
                                 {
                                     EmployeeId = 25,
                                     Email = "ivana.jankovic@test.com",
-                                    TelephoneNumber = "+16522731984"
+                                    TelephoneNumber = "+70607178279"
                                 },
                                 new
                                 {
                                     EmployeeId = 26,
                                     Email = "nenad.petrovic@test.com",
-                                    TelephoneNumber = "+48689310517"
+                                    TelephoneNumber = "+59971704825"
                                 },
                                 new
                                 {
                                     EmployeeId = 27,
                                     Email = "milica.ilic@test.com",
-                                    TelephoneNumber = "+43667701756"
+                                    TelephoneNumber = "+32994868200"
                                 },
                                 new
                                 {
                                     EmployeeId = 28,
                                     Email = "vladan.djordjevic@test.com",
-                                    TelephoneNumber = "+47497102328"
+                                    TelephoneNumber = "+31481486234"
                                 },
                                 new
                                 {
                                     EmployeeId = 29,
                                     Email = "sara.pavlovic@test.com",
-                                    TelephoneNumber = "+67804205844"
+                                    TelephoneNumber = "+73716837809"
                                 },
                                 new
                                 {
                                     EmployeeId = 30,
                                     Email = "nemanja.stanisic@test.com",
-                                    TelephoneNumber = "+45090444483"
+                                    TelephoneNumber = "+84232702585"
                                 },
                                 new
                                 {
                                     EmployeeId = 31,
                                     Email = "ksenija.markovic@test.com",
-                                    TelephoneNumber = "+50317650159"
+                                    TelephoneNumber = "+76976204371"
                                 },
                                 new
                                 {
                                     EmployeeId = 32,
                                     Email = "milica.simeunovic@test.com",
-                                    TelephoneNumber = "+53070677794"
+                                    TelephoneNumber = "+70152052827"
                                 },
                                 new
                                 {
                                     EmployeeId = 33,
                                     Email = "petar.tomic@test.com",
-                                    TelephoneNumber = "+88368170434"
+                                    TelephoneNumber = "+18953987301"
                                 },
                                 new
                                 {
                                     EmployeeId = 34,
                                     Email = "ana.jovanovic@test.com",
-                                    TelephoneNumber = "+99598044082"
+                                    TelephoneNumber = "+58891159989"
                                 });
                         });
 
@@ -3658,61 +3658,61 @@ namespace HciMedico.Library.Migrations
                                 {
                                     PatientId = 1,
                                     Email = "boris.borisavljevic@test.com",
-                                    TelephoneNumber = "+76834629435"
+                                    TelephoneNumber = "+49033706182"
                                 },
                                 new
                                 {
                                     PatientId = 2,
                                     Email = "saska.macetic@test.com",
-                                    TelephoneNumber = "+15119487370"
+                                    TelephoneNumber = "+84177211636"
                                 },
                                 new
                                 {
                                     PatientId = 3,
                                     Email = "milos.milosevic@test.com",
-                                    TelephoneNumber = "+93102569680"
+                                    TelephoneNumber = "+86933047458"
                                 },
                                 new
                                 {
                                     PatientId = 4,
                                     Email = "ana.stanojevic@test.com",
-                                    TelephoneNumber = "+54688848511"
+                                    TelephoneNumber = "+79379988711"
                                 },
                                 new
                                 {
                                     PatientId = 5,
                                     Email = "darko.darkovic@test.com",
-                                    TelephoneNumber = "+58136489301"
+                                    TelephoneNumber = "+35959590848"
                                 },
                                 new
                                 {
                                     PatientId = 6,
                                     Email = "jovana.jovanovic@test.com",
-                                    TelephoneNumber = "+97041235136"
+                                    TelephoneNumber = "+23461837511"
                                 },
                                 new
                                 {
                                     PatientId = 7,
                                     Email = "nikola.nikolic@test.com",
-                                    TelephoneNumber = "+26936981210"
+                                    TelephoneNumber = "+95037616276"
                                 },
                                 new
                                 {
                                     PatientId = 8,
                                     Email = "david.davidovic@test.com",
-                                    TelephoneNumber = "+17633198757"
+                                    TelephoneNumber = "+69704192389"
                                 },
                                 new
                                 {
                                     PatientId = 9,
                                     Email = "stana.stanojevic@test.com",
-                                    TelephoneNumber = "+79190359682"
+                                    TelephoneNumber = "+31868460524"
                                 },
                                 new
                                 {
                                     PatientId = 10,
                                     Email = "goran.predojevic@test.com",
-                                    TelephoneNumber = "+80435080122"
+                                    TelephoneNumber = "+68236527222"
                                 });
                         });
 
