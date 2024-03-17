@@ -4,4 +4,7 @@ namespace HciMedico.App.ViewModels;
 
 public class ShellViewModel : Conductor<object>
 {
+    public void TestButton()
+    {
+    }
 }

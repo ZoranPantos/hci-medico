@@ -1,0 +1,24 @@
+﻿<Window x:Class="HciMedico.App.Views.Exceptions.GlobalExceptionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HciMedico.App.Views.Exceptions"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        Title="Exception display" Height="300" Width="400">
+    
+    <Grid>
+        <DockPanel Margin="10">
+            <ui:Button x:Name="CloseWindow" Content="Close" DockPanel.Dock="Bottom"
+                Margin="0,10,0,0" HorizontalAlignment="Right" />
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <ui:TextBlock Text="Oops! Unhandled exception occurred!" FontWeight="Bold" Margin="0,0,0,10" Foreground="Red" />
+                    <ui:TextBlock x:Name="Message" TextWrapping="Wrap" Margin="0,0,0,0" />
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</Window>
