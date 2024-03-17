@@ -14,8 +14,8 @@ public class Appointment
     public AppointmentStatus Status { get; set; }
     public AppointmentType Type { get; set; }
 
-    public int HealthRecordId { get; set; }
-    public HealthRecord HealthRecord { get; set; }
+    public int? HealthRecordId { get; set; }
+    public HealthRecord? HealthRecord { get; set; }
 
     public int DoctorId { get; set; }
     public Doctor AssignedTo { get; set; }
@@ -28,7 +28,7 @@ public class Appointment
     // They will provide their identifier name, and afterwards they will be processed fully
     // when they come into the waiting room
 
-    public int PatientId { get; set; }
+    public int? PatientId { get; set; }
     public Patient? Patient { get; set; }
     public string IdentifierName { get; set; } = string.Empty;
 }

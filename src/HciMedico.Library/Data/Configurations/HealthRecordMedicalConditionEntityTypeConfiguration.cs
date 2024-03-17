@@ -27,65 +27,84 @@ public class HealthRecordMedicalConditionEntityTypeConfiguration : IEntityTypeCo
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 1,
-                MedicalConditionId = 4, ///////////
+                MedicalConditionId = 4,
                 Status = MedicalConditionStatus.Past
             },
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 2,
-                MedicalConditionId = 4,///////////
+                MedicalConditionId = 4,
                 Status = MedicalConditionStatus.Past
             },
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 3,
-                MedicalConditionId = 4,////////////
+                MedicalConditionId = 4,
                 Status = MedicalConditionStatus.Past
             },
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 4,
-                MedicalConditionId = 90,//////////////////////////////
+                MedicalConditionId = 90,
                 Status = MedicalConditionStatus.Past
             },
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 5,
-                MedicalConditionId = 90,//////////////////////////////////
+                MedicalConditionId = 90,
                 Status = MedicalConditionStatus.Past
             },
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 6,
-                MedicalConditionId = 90,/////////////////////////////////////
+                MedicalConditionId = 90,
                 Status = MedicalConditionStatus.Past
             },
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 7,
-                MedicalConditionId = 90,/////////////////////////////////
+                MedicalConditionId = 90,
                 Status = MedicalConditionStatus.Past
             },
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 8,
-                MedicalConditionId = 97,//////////////////////////////////////////
+                MedicalConditionId = 97,
                 Status = MedicalConditionStatus.Past
             },
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 9,
-                MedicalConditionId = 97,/////////////////////////////////////////////
+                MedicalConditionId = 97,
                 Status = MedicalConditionStatus.Past
             },
             new HealthRecordMedicalCondition
             {
                 HealthRecordId = 10,
-                MedicalConditionId = 97,////////////////////////////////////////////////
+                MedicalConditionId = 97,
                 Status = MedicalConditionStatus.Past
             }
+        );
 
-            //TODO: add more but with the status current - they will be scheduled for more follow-ups in the future
+        builder.HasData(
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 1,
+                MedicalConditionId = 24,
+                Status = MedicalConditionStatus.Present
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 2,
+                MedicalConditionId = 24,
+                Status = MedicalConditionStatus.Present
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 3,
+                MedicalConditionId = 24,
+                Status = MedicalConditionStatus.Present
+            }
         );
     }
 }
