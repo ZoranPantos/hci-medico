@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using HciMedico.App.ViewModels;
+using System.Windows;
 
 namespace HciMedico.App.Views;
 

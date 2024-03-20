@@ -1,13 +1,67 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Helpers;
 using HciMedico.App.ViewModels;
+using HciMedico.Library.Data;
+using HciMedico.Library.Data.Repositories;
+using HciMedico.Library.Models;
 using System.Windows;
+using Wpf.Ui.Controls;
 
 namespace HciMedico.App;
 
 public class Bootstrapper : BootstrapperBase
 {
-    public Bootstrapper() => Initialize();
+    private readonly SimpleContainer _container = new();
 
-    protected override async void OnStartup(object sender, StartupEventArgs e) =>
-        await DisplayRootViewForAsync(typeof(ShellViewModel));
+    public Bootstrapper()
+    {
+        Initialize();
+
+        ConventionManager.AddElementConvention<PasswordBox>(
+            PasswordBoxHelper.BoundPasswordProperty,
+            "Password",
+            "PasswordChanged"
+        );
+    }
+
+    protected override void Configure()
+    {
+        base.Configure();
+
+        _container.Instance(_container);
+
+        // TODO: Review if these are needed, check for injecting window manager where views as windows are opened/closed
+        // especially for event agregator if it is used
+        // remove if not
+        _container
+            .Singleton<IWindowManager, WindowManager>()
+            .Singleton<IEventAggregator, EventAggregator>();
+
+        _container
+            .Singleton<AppDbContext>();
+
+        _container
+            .Singleton<IRepository<UserAccount>, UserAccountRepository>();
+
+        // TODO: Review if this is really needed; remove if not
+        // Registering view-models for DI
+        GetType().Assembly.GetTypes()
+            .Where(type => type.IsClass)
+            .Where(type => type.Name.EndsWith("ViewModel"))
+            .ToList()
+            .ForEach(vmType => _container.RegisterPerRequest(vmType, vmType.ToString(), vmType));
+    }
+
+    protected override async void OnStartup(object sender, StartupEventArgs e)
+    {
+        Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+
+        await DisplayRootViewForAsync(typeof(LoginViewModel));
+    }
+
+    protected override object GetInstance(Type serviceType, string key) => _container.GetInstance(serviceType, key);
+
+    protected override IEnumerable<object> GetAllInstances(Type serviceType) => _container.GetAllInstances(serviceType);
+
+    protected override void BuildUp(object instance) => _container.BuildUp(instance);
 }
