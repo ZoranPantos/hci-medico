@@ -47,6 +47,10 @@ public class LoginViewModel : Conductor<object>
 
     public async Task Login(string username, string password)
     {
+        //TODO: Remove this after testing
+        username = "marko.petrovic1";
+        password = username;
+
         string passwordHash = HashingService.GetHashString(password);
 
         var existingUser = await _userAccountRepository.FindAsync(user => user.Username.Equals(username), true, "Employee");

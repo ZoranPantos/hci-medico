@@ -6,21 +6,121 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:local="clr-namespace:HciMedico.App.Views"
         mc:Ignorable="d"
-        Title="Medico" Height="450" Width="800"
-        Background="#E0F2F1">
-    
-    <Grid Margin="20">
+        Title="Medico" Height="800" Width="1200"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel Background="Azure">
+        <Grid DockPanel.Dock="Left" Background="#C5CAE9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ui:Button Content="Appointments"
+                       Background="#C5CAE9"
+                       Icon="{ui:SymbolIcon ShiftsCheckmark20}"
+                       Width="200" Height="40"
+                       BorderThickness="0"
+                       HorizontalContentAlignment="Left" />
+
+            <ui:Button Content="Patients"
+                       Grid.Row="1"
+                       Background="#C5CAE9"
+                       Icon="{ui:SymbolIcon PeopleCommunity28}"
+                       Width="200" Height="40"
+                       BorderThickness="0"
+                       HorizontalContentAlignment="Left" />
+
+            <ui:Button Content="Health Records"
+                       Grid.Row="2"
+                       Background="#C5CAE9"
+                       Icon="{ui:SymbolIcon DocumentHeart20}"
+                       Width="200" Height="40"
+                       BorderThickness="0"
+                       HorizontalContentAlignment="Left" />
+
+            <ui:Button Content="My Schedule"
+                       Grid.Row="3"
+                       Background="#C5CAE9"
+                       Icon="{ui:SymbolIcon CalendarRtl28}"
+                       Width="200" Height="40"
+                       BorderThickness="0"
+                       HorizontalContentAlignment="Left" />
+
+            <ui:Button Content="My Account"
+                       Grid.Row="4"
+                       Background="#C5CAE9"
+                       Icon="{ui:SymbolIcon PersonAccounts20}"
+                       Width="200" Height="40"
+                       BorderThickness="0"
+                       HorizontalContentAlignment="Left" />
+
+            <ui:Button Content="Settings"
+                       Grid.Row="5"
+                       Background="#C5CAE9"
+                       Icon="{ui:SymbolIcon Settings28}"
+                       Width="200" Height="40"
+                       BorderThickness="0"
+                       HorizontalContentAlignment="Left"
+                       VerticalAlignment="Bottom" />
+
+            <ui:Button Content="Logout"
+                       Grid.Row="6"
+                       Background="#C5CAE9"
+                       Icon="{ui:SymbolIcon ArrowReset24}"
+                       Width="200" Height="40"
+                       BorderThickness="0"
+                       HorizontalContentAlignment="Left" />
+        </Grid>
+
+        <Grid>
+            
+        </Grid>
+    </DockPanel>
+
+    <!--<Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
+        
         <ui:TextBox x:Name="TestTextBlock" Background="White" />
         
         <ui:Button x:Name="TestButton" Grid.Row="1" Content="Test button"
                    Appearance="Primary" Margin="0,20,0,0"/>
 
         <ContentControl x:Name="ActiveItem" Grid.Row="2" Margin="0,20,0,0"/>
-    </Grid>
+
+        <ui:NavigationView PaneDisplayMode="Left">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem Content="Appointments"
+                                        Icon="{ui:SymbolIcon ShiftsCheckmark20}" />
+
+                <ui:NavigationViewItem Content="Patients"
+                                        Icon="{ui:SymbolIcon PeopleCommunity28}"/>
+
+                <ui:NavigationViewItem Content="Health Records"
+                                        Icon="{ui:SymbolIcon DocumentHeart20}"/>
+
+                <ui:NavigationViewItem Content="My Account"
+                                        Icon="{ui:SymbolIcon PersonAccounts20}"/>
+            </ui:NavigationView.MenuItems>
+        </ui:NavigationView>
+
+        <ui:NavigationViewItem Width="100">
+            <ui:NavigationViewItem.Content>
+                <TextBlock Text="Appointments"
+                            TextAlignment="Left" Width="90" Margin="-25,0" />
+            </ui:NavigationViewItem.Content>
+            <ui:NavigationViewItem.Icon>
+                <ui:SymbolIcon Symbol="ShiftsCheckmark20"/>
+            </ui:NavigationViewItem.Icon>
+        </ui:NavigationViewItem>
+    </Grid>-->
 </Window>
