@@ -12,8 +12,8 @@ public class LoginViewModel : Conductor<object>
 {
     // If the user quits the login window in which scenario the app should shut down directly
     private bool _loginViewQuit = true;
-    private IWindowManager _windowManager;
-    private IRepository<UserAccount> _userAccountRepository;
+    private readonly IWindowManager _windowManager;
+    private readonly IRepository<UserAccount> _userAccountRepository;
 
     public LoginViewModel(IWindowManager windowManager, IRepository<UserAccount> userAccountRepository)
     {

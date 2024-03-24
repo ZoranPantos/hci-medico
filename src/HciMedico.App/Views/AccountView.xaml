@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="HciMedico.App.Views.AccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HciMedico.App.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel>
+            <TextBlock x:Name="Username" />
+            <TextBlock x:Name="FirstName" />
+            <TextBlock x:Name="LastName" />
+        </StackPanel>
+    </Grid>
+</UserControl>

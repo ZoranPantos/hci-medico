@@ -5,11 +5,21 @@ using System.Windows;
 
 namespace HciMedico.App.ViewModels;
 
-public class ShellViewModel : Conductor<object>
+public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
 {
-    public void TestButton()
+    private IScreen? _currentViewModel;
+    public IScreen? CurrentViewModel
     {
-        throw new Exception("Test exception message [temporary]");
+        get => _currentViewModel;
+        set
+        {
+            _currentViewModel = value;
+
+            if (_currentViewModel is not null)
+                ActivateItemAsync(_currentViewModel);
+            else
+                throw new ArgumentNullException("ViewModel was null");
+        }
     }
 
     // This method gets automatically called when the View is ready
@@ -29,4 +39,8 @@ public class ShellViewModel : Conductor<object>
         if (sender is ShellView)
             Application.Current.Shutdown();
     }
+
+    public void NavigateToMyAccount() => CurrentViewModel = IoC.Get<AccountViewModel>();
+
+    public void NavigateToSettings() => CurrentViewModel = IoC.Get<SettingsViewModel>();
 }
