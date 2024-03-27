@@ -67,7 +67,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Petrović",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1985, 10, 15)
+                DateOfBirth = new(1985, 10, 15),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -77,7 +79,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Jovanović",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1980, 5, 25)
+                DateOfBirth = new(1980, 5, 25),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -87,7 +91,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Stojanović",
                 Education = "University of Novi Sad, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1975, 8, 20)
+                DateOfBirth = new(1975, 8, 20),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -97,7 +103,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Popović",
                 Education = "University of Banja Luka, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1972, 6, 12)
+                DateOfBirth = new(1972, 6, 12),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -107,7 +115,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Nikolić",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1990, 3, 8)
+                DateOfBirth = new(1990, 3, 8),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -117,7 +127,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Ilić",
                 Education = "University of Novi Sad, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1983, 12, 5)
+                DateOfBirth = new(1983, 12, 5),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -127,7 +139,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Pavlović",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1978, 9, 18)
+                DateOfBirth = new(1978, 9, 18),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -137,7 +151,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Đorđević",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1968, 7, 30)
+                DateOfBirth = new(1968, 7, 30),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -147,7 +163,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Janković",
                 Education = "University of Banja Luka, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1986, 2, 22)
+                DateOfBirth = new(1986, 2, 22),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -157,7 +175,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Stanković",
                 Education = "University of Novi Sad, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1970, 11, 9)
+                DateOfBirth = new(1970, 11, 9),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -167,7 +187,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Petrović",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1982, 4, 3)
+                DateOfBirth = new(1982, 4, 3),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -177,7 +199,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Kovačević",
                 Education = "University of Banja Luka, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1974, 8, 14)
+                DateOfBirth = new(1974, 8, 14),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -187,7 +211,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Ivanović",
                 Education = "University of Novi Sad, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1993, 6, 27)
+                DateOfBirth = new(1993, 6, 27),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -197,7 +223,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Jović",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1965, 10, 8)
+                DateOfBirth = new(1965, 10, 8),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -207,7 +235,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Pavlović",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1988, 7, 19)
+                DateOfBirth = new(1988, 7, 19),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -217,7 +247,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Stanišić",
                 Education = "University of Novi Sad, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1971, 12, 11)
+                DateOfBirth = new(1971, 12, 11),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -227,7 +259,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Đorđević",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1984, 9, 30)
+                DateOfBirth = new(1984, 9, 30),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -237,7 +271,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Nikolić",
                 Education = "University of Banja Luka, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1976, 3, 24)
+                DateOfBirth = new(1976, 3, 24),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -247,7 +283,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Janković",
                 Education = "University of Novi Sad, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1980, 8, 7)
+                DateOfBirth = new(1980, 8, 7),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -257,7 +295,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Stanković",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1963, 11, 3)
+                DateOfBirth = new(1963, 11, 3),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -267,7 +307,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Petrović",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1981, 5, 15)
+                DateOfBirth = new(1981, 5, 15),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -277,7 +319,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Jovanović",
                 Education = "University of Banja Luka, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1979, 6, 20)
+                DateOfBirth = new(1979, 6, 20),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -287,7 +331,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Stojanović",
                 Education = "University of Novi Sad, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1962, 3, 8)
+                DateOfBirth = new(1962, 3, 8),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -297,7 +343,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Stanković",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1995, 8, 18)
+                DateOfBirth = new(1995, 8, 18),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -307,7 +355,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Janković",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1973, 7, 30)
+                DateOfBirth = new(1973, 7, 30),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -317,7 +367,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Petrović",
                 Education = "University of Novi Sad, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1984, 11, 9)
+                DateOfBirth = new(1984, 11, 9),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -327,7 +379,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Ilić",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1967, 6, 27)
+                DateOfBirth = new(1967, 6, 27),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -337,7 +391,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Đorđević",
                 Education = "University of Banja Luka, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1979, 10, 8)
+                DateOfBirth = new(1979, 10, 8),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -347,7 +403,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Pavlović",
                 Education = "University of Belgrade, Medical Faculty",
                 Gender = Gender.Female,
-                DateOfBirth = new(1982, 7, 19)
+                DateOfBirth = new(1982, 7, 19),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             },
             new Doctor
             {
@@ -357,7 +415,9 @@ public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
                 LastName = "Stanišić",
                 Education = "University of Novi Sad, Medical Faculty",
                 Gender = Gender.Male,
-                DateOfBirth = new(1986, 12, 11)
+                DateOfBirth = new(1986, 12, 11),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 2500.00
             }
         );
     }

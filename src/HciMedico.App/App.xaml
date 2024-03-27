@@ -10,10 +10,37 @@
             <ResourceDictionary.MergedDictionaries>
                 <ui:ThemesDictionary Theme="Light" />
                 <ui:ControlsDictionary />
+                
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="Bootstrapper" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="HeadingStyle" TargetType="ui:TextBlock">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Margin" Value="0,5,0,15" />
+            </Style>
+
+            <Style x:Key="SeparatorStyle" TargetType="Separator">
+                <Setter Property="BorderBrush" Value="#C5CAE9" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Margin" Value="0,10" />
+            </Style>
+
+            <Style x:Key="DataTextBlockStyle" TargetType="ui:TextBlock">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="MinHeight" Value="25" />
+            </Style>
+
+            <Style x:Key="LabelTextBlockStyle" TargetType="ui:TextBlock">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Foreground" Value="#455A64" />
+                <Setter Property="MinHeight" Value="25" />
+                <Setter Property="Margin" Value="0,0,20,0" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

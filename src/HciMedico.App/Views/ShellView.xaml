@@ -53,7 +53,7 @@
                        BorderThickness="0"
                        HorizontalContentAlignment="Left" />
 
-            <ui:Button Content="My Account"
+            <ui:Button Content="Account Info"
                        x:Name="NavigateToMyAccount"
                        Grid.Row="4"
                        Background="#C5CAE9"

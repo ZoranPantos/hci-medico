@@ -16,5 +16,8 @@ public class Employee
     public Address Address { get; set; }
     public ContactInfo ContactInfo { get; set; }
 
+    public DateTime EmployedSince { get; set; } = DateTime.MinValue;
+    public double CurrentSalary { get; set; }
+
     public UserAccount UserAccount { get; set; }
 }

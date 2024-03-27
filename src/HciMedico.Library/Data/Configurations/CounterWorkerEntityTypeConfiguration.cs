@@ -21,7 +21,9 @@ public class CounterWorkerEntityTypeConfiguration : IEntityTypeConfiguration<Cou
                 LastName = "Marković",
                 Education = "Medical High School, Banja Luka",
                 Gender = Gender.Female,
-                DateOfBirth = new(1998, 3, 21)
+                DateOfBirth = new(1998, 3, 21),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 1500.00
             }
             ,
             new CounterWorker
@@ -32,7 +34,9 @@ public class CounterWorkerEntityTypeConfiguration : IEntityTypeConfiguration<Cou
                 LastName = "Simeunović",
                 Education = "Medical High School, Banja Luka",
                 Gender = Gender.Female,
-                DateOfBirth = new(1995, 7, 14)
+                DateOfBirth = new(1995, 7, 14),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 1500.00
             },
             new CounterWorker
             {
@@ -42,7 +46,9 @@ public class CounterWorkerEntityTypeConfiguration : IEntityTypeConfiguration<Cou
                 LastName = "Tomić",
                 Education = "Medical High School, Banja Luka",
                 Gender = Gender.Male,
-                DateOfBirth = new(1992, 8, 8)
+                DateOfBirth = new(1992, 8, 8),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 1500.00
             },
             new CounterWorker
             {
@@ -52,7 +58,9 @@ public class CounterWorkerEntityTypeConfiguration : IEntityTypeConfiguration<Cou
                 LastName = "Jovanović",
                 Education = "Medical High School, Banja Luka",
                 Gender = Gender.Female,
-                DateOfBirth = new(1991, 4, 16)
+                DateOfBirth = new(1991, 4, 16),
+                EmployedSince = new(2022, 1, 1),
+                CurrentSalary = 1500.00
             }
         );
     }

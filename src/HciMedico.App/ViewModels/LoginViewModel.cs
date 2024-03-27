@@ -49,11 +49,12 @@ public class LoginViewModel : Conductor<object>
     {
         //TODO: Remove this after testing
         username = "marko.petrovic1";
+        //username = "ana.jovanovic34";
         password = username;
 
         string passwordHash = HashingService.GetHashString(password);
 
-        var existingUser = await _userAccountRepository.FindAsync(user => user.Username.Equals(username), true, "Employee");
+        var existingUser = await _userAccountRepository.FindAsync(user => user.Username.Equals(username), true, "Employee.Specializations");
 
         if (existingUser is null || !passwordHash.Equals(existingUser.Password))
             return;
