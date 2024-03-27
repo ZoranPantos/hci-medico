@@ -14,7 +14,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 1,
-                DateAndTime = new(2024, 1, 5),
+                DateAndTime = new(2024, 1, 5, 8, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 1,
@@ -26,7 +26,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 2,
-                DateAndTime = new(2024, 1, 19),
+                DateAndTime = new(2024, 1, 19, 8, 20, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 1,
@@ -38,7 +38,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 3,
-                DateAndTime = new(2024, 1, 5),
+                DateAndTime = new(2024, 1, 5, 8, 40, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 2,
@@ -50,7 +50,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 4,
-                DateAndTime = new(2024, 1, 19),
+                DateAndTime = new(2024, 1, 19, 9, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 2,
@@ -62,7 +62,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 5,
-                DateAndTime = new(2024, 1, 5),
+                DateAndTime = new(2024, 1, 5, 10, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 3,
@@ -74,7 +74,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 6,
-                DateAndTime = new(2024, 1, 19),
+                DateAndTime = new(2024, 1, 19, 10, 30, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 3,
@@ -86,7 +86,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 7,
-                DateAndTime = new(2024, 1, 5),
+                DateAndTime = new(2024, 1, 5, 11, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 4,
@@ -98,7 +98,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 8,
-                DateAndTime = new(2024, 1, 19),
+                DateAndTime = new(2024, 1, 19, 11, 30, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 4,
@@ -110,7 +110,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 9,
-                DateAndTime = new(2024, 1, 5),
+                DateAndTime = new(2024, 1, 5, 12, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 5,
@@ -122,7 +122,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 10,
-                DateAndTime = new(2024, 1, 19),
+                DateAndTime = new(2024, 1, 19, 12, 30, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 5,
@@ -134,7 +134,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 11,
-                DateAndTime = new(2024, 1, 5),
+                DateAndTime = new(2024, 1, 5, 13, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 6,
@@ -146,7 +146,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 12,
-                DateAndTime = new(2024, 1, 19),
+                DateAndTime = new(2024, 1, 19, 13, 30, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 6,
@@ -158,7 +158,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 13,
-                DateAndTime = new(2024, 1, 5),
+                DateAndTime = new(2024, 1, 5, 14, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 7,
@@ -170,7 +170,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 14,
-                DateAndTime = new(2024, 1, 19),
+                DateAndTime = new(2024, 1, 19, 14, 30, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 7,
@@ -182,7 +182,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 15,
-                DateAndTime = new(2024, 2, 5),
+                DateAndTime = new(2024, 2, 5, 15, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 8,
@@ -194,7 +194,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 16,
-                DateAndTime = new(2024, 2, 25),
+                DateAndTime = new(2024, 2, 25, 15, 20, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 8,
@@ -206,7 +206,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 17,
-                DateAndTime = new(2024, 2, 5),
+                DateAndTime = new(2024, 2, 5, 15, 40, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 9,
@@ -218,7 +218,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 18,
-                DateAndTime = new(2024, 2, 25),
+                DateAndTime = new(2024, 2, 25, 16, 0, 0),
                 Status = AppointmentStatus.Cancelled,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 9,
@@ -230,7 +230,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 19,
-                DateAndTime = new(2024, 2, 5),
+                DateAndTime = new(2024, 2, 5, 16, 20, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 10,
@@ -242,7 +242,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 20,
-                DateAndTime = new(2024, 2, 25),
+                DateAndTime = new(2024, 2, 25, 16, 40, 0),
                 Status = AppointmentStatus.Cancelled,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 10,
@@ -258,7 +258,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 21,
-                DateAndTime = new(2024, 2, 6),
+                DateAndTime = new(2024, 2, 6, 17, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 1,
@@ -270,7 +270,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 22,
-                DateAndTime = new(2024, 2, 20),
+                DateAndTime = new(2024, 2, 20, 17, 20, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 1,
@@ -282,7 +282,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 23,
-                DateAndTime = new(2024, 2, 7),
+                DateAndTime = new(2024, 2, 7, 17, 40, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 4,
@@ -294,7 +294,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 24,
-                DateAndTime = new(2024, 2, 22),
+                DateAndTime = new(2024, 2, 22, 18, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 4,
@@ -310,7 +310,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 25,
-                DateAndTime = new(2024, 3, 20),
+                DateAndTime = new(2024, 3, 20, 18, 20, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 1,
@@ -322,7 +322,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 26,
-                DateAndTime = new(2025, 1, 19),
+                DateAndTime = new(2025, 1, 19, 18, 40, 0),
                 Status = AppointmentStatus.Scheduled,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 1,
@@ -334,7 +334,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 27,
-                DateAndTime = new(2024, 3, 19),
+                DateAndTime = new(2024, 3, 19, 19, 0, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 2,
@@ -346,7 +346,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 28,
-                DateAndTime = new(2025, 1, 19),
+                DateAndTime = new(2025, 1, 19, 19, 20, 0),
                 Status = AppointmentStatus.Scheduled,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 2,
@@ -358,7 +358,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 29,
-                DateAndTime = new(2024, 3, 22),
+                DateAndTime = new(2024, 3, 22, 19, 40, 0),
                 Status = AppointmentStatus.Resolved,
                 Type = AppointmentType.Initial,
                 HealthRecordId = 3,
@@ -370,7 +370,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 30,
-                DateAndTime = new(2025, 1, 19),
+                DateAndTime = new(2025, 1, 19, 9, 20, 0),
                 Status = AppointmentStatus.Scheduled,
                 Type = AppointmentType.FollowUp,
                 HealthRecordId = 3,
@@ -386,7 +386,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 31,
-                DateAndTime = new(2025, 3, 20),
+                DateAndTime = new(2025, 3, 20, 9, 40, 0),
                 Status = AppointmentStatus.Scheduled,
                 Type = AppointmentType.Initial,
                 DoctorId = 11,
@@ -396,7 +396,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 32,
-                DateAndTime = new(2025, 3, 20),
+                DateAndTime = new(2025, 3, 20, 10, 20, 0),
                 Status = AppointmentStatus.Scheduled,
                 Type = AppointmentType.Initial,
                 DoctorId = 12,
@@ -406,7 +406,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 33,
-                DateAndTime = new(2025, 3, 20),
+                DateAndTime = new(2025, 3, 20, 10, 40, 0),
                 Status = AppointmentStatus.Scheduled,
                 Type = AppointmentType.Initial,
                 DoctorId = 14,
@@ -416,7 +416,7 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
             new Appointment
             {
                 Id = 34,
-                DateAndTime = new(2025, 3, 20),
+                DateAndTime = new(2025, 3, 20, 11, 20, 0),
                 Status = AppointmentStatus.Scheduled,
                 Type = AppointmentType.Initial,
                 DoctorId = 19,
