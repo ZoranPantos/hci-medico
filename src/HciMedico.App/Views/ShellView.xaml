@@ -73,6 +73,7 @@
                        VerticalAlignment="Bottom" />
 
             <ui:Button Content="Logout"
+                       x:Name="Logout"
                        Grid.Row="6"
                        Background="#C5CAE9"
                        Icon="{ui:SymbolIcon ArrowReset24}"

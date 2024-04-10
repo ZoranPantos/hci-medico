@@ -15,9 +15,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
     }
 
     public virtual async Task<IEnumerable<TEntity>> GetAllAsync(
-        Expression<Func<TEntity, bool>>? filter = null,
-        bool asReadOnly = false,
-        string? propertiesToInclude = null)
+        Expression<Func<TEntity, bool>>? filter = null, bool asReadOnly = false, string? propertiesToInclude = null)
     {
         var query = _dbSet.AsQueryable();
 
@@ -59,9 +57,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
     }
 
     public async Task<TEntity?> FindAsync(
-        Expression<Func<TEntity, bool>>? filter = null,
-        bool asReadOnly = false,
-        string? propertiesToInclude = null)
+        Expression<Func<TEntity, bool>>? filter = null, bool asReadOnly = false, string? propertiesToInclude = null)
     {
         var query = _dbSet.AsQueryable();
 
