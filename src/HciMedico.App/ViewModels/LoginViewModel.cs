@@ -43,6 +43,17 @@ public class LoginViewModel : Conductor<object>
         }
     }
 
+    private string _validationMessage = string.Empty;
+    public string ValidationMessage
+    {
+        get => _validationMessage;
+        set
+        {
+            _validationMessage = value;
+            NotifyOfPropertyChange(() => ValidationMessage);
+        }
+    }
+
     public bool CanLogin(string username, string password) => username.Length > 0 && password.Length > 0;
 
     public async Task Login(string username, string password)
@@ -50,14 +61,17 @@ public class LoginViewModel : Conductor<object>
         //TODO: Remove this after testing
         username = "marko.petrovic1";
         //username = "ana.jovanovic34";
-        password = username;
+        password = "marko.petrovic1";
 
         string passwordHash = HashingService.GetHashString(password);
 
         var existingUser = await _userAccountRepository.FindAsync(user => user.Username.Equals(username), true, "Employee.Specializations");
 
         if (existingUser is null || !passwordHash.Equals(existingUser.Password))
+        {
+            ValidationMessage = "User with specified credentials could not be found";
             return;
+        }
 
         UserContext.Initialize(existingUser);
 

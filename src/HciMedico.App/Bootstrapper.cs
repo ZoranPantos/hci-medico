@@ -17,11 +17,8 @@ public class Bootstrapper : BootstrapperBase
     {
         Initialize();
 
-        ConventionManager.AddElementConvention<PasswordBox>(
-            PasswordBoxHelper.BoundPasswordProperty,
-            "Password",
-            "PasswordChanged"
-        );
+        ConventionManager
+            .AddElementConvention<PasswordBox>(PasswordBoxHelper.BoundPasswordProperty, "Password", "PasswordChanged");
     }
 
     protected override void Configure()
@@ -37,11 +34,11 @@ public class Bootstrapper : BootstrapperBase
             .Singleton<IWindowManager, WindowManager>()
             .Singleton<IEventAggregator, EventAggregator>();
 
-        _container
-            .Singleton<AppDbContext>();
+        _container.Singleton<AppDbContext>();
 
-        _container
-            .Singleton<IRepository<UserAccount>, UserAccountRepository>();
+        // Consider changing this
+        // See if existing instance will be fetched or new singleton created
+        _container.Singleton<IRepository<UserAccount>, UserAccountRepository>();
 
         // TODO: Review if this is really needed; remove if not
         // Registering view-models for DI

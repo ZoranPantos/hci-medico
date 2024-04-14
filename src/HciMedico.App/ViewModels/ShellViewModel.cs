@@ -8,7 +8,7 @@ using System.Windows;
 namespace HciMedico.App.ViewModels;
 
 public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
-{
+{ 
     private bool _logoutTriggered;
 
     private IScreen? _currentViewModel;
