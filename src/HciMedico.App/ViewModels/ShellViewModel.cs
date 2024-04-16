@@ -4,6 +4,8 @@ using HciMedico.Library.Data.Repositories;
 using HciMedico.Library.Models;
 using System.ComponentModel;
 using System.Windows;
+using HciMedico.Library.Models.Enums;
+using HciMedico.App.ViewModels.DoctorRole;
 
 namespace HciMedico.App.ViewModels;
 
@@ -44,18 +46,35 @@ public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
 
     public void NavigateToSettings() => CurrentViewModel = IoC.Get<SettingsViewModel>();
 
+    public void NavigateToPatients()
+    {
+        if (UserContext.CurrentUser is null)
+            throw new Exception("Current user is null");
+
+        switch (UserContext.CurrentUser.UserRole)
+        {
+            case UserRole.Doctor:
+                CurrentViewModel = IoC.Get<TreatedPatientsViewModel>();
+                break;
+            case UserRole.CounterWorker:
+                break;
+
+                // Add more user roles
+            default:
+                throw new Exception("User role is not recognized");
+        }
+    }
+
     public async Task Logout()
     {
         _logoutTriggered = true;
         UserContext.Clean();
 
-        // Close current window
         await TryCloseAsync();
 
-        // Open Login window again
         var windowManager = IoC.Get<IWindowManager>();
-        var repository = IoC.Get<IRepository<UserAccount>>();
+        var userAccountRepository = IoC.Get<IRepository<UserAccount>>();
 
-        await windowManager.ShowWindowAsync(new LoginViewModel(windowManager, repository));
+        await windowManager.ShowWindowAsync(new LoginViewModel(windowManager, userAccountRepository));
     }
 }

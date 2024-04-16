@@ -30,6 +30,7 @@
                        HorizontalContentAlignment="Left" />
 
             <ui:Button Content="Patients"
+                       x:Name="NavigateToPatients"
                        Grid.Row="1"
                        Background="#C5CAE9"
                        Icon="{ui:SymbolIcon PeopleCommunity28}"
