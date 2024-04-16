@@ -14,7 +14,7 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         _dbSet = context.Set<TEntity>();
     }
 
-    public virtual async Task<IEnumerable<TEntity>> GetAllAsync(
+    public virtual async Task<List<TEntity>> GetAllAsync(
         Expression<Func<TEntity, bool>>? filter = null, bool asReadOnly = false, string? propertiesToInclude = null)
     {
         var query = _dbSet.AsQueryable();
@@ -22,8 +22,8 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         if (asReadOnly)
             query = query.AsNoTracking();
 
-        if (filter is not null)
-            query = query.Where(filter);
+        //if (filter is not null)
+        //    query = query.Where(filter);
 
         if (!string.IsNullOrEmpty(propertiesToInclude))
         {
@@ -32,6 +32,9 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
             foreach (string property in properties)
                 query = query.Include(property.Trim());
         }
+
+        if (filter is not null)
+            query = query.Where(filter);
 
         return await query.ToListAsync();
     }
@@ -64,8 +67,8 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         if (asReadOnly)
             query = query.AsNoTracking();
 
-        if (filter is not null)
-            query = query.Where(filter);
+        //if (filter is not null)
+        //    query = query.Where(filter);
 
         if (!string.IsNullOrEmpty(propertiesToInclude))
         {
@@ -74,6 +77,9 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
             foreach (string property in properties)
                 query = query.Include(property.Trim());
         }
+
+        if (filter is not null)
+            query = query.Where(filter);
 
         return await query.FirstOrDefaultAsync();
     }

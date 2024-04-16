@@ -6,7 +6,7 @@ public interface IRepository<TEntity> where TEntity : class
 {
     Task<TEntity?> GetByIdAsync(int id, bool asReadOnly = false, string? propertiesToInclude = null);
 
-    Task<IEnumerable<TEntity>> GetAllAsync(
+    Task<List<TEntity>> GetAllAsync(
         Expression<Func<TEntity, bool>>? filter = null, bool asReadOnly = false, string? propertiesToInclude = null);
 
     Task<TEntity?> FindAsync(
