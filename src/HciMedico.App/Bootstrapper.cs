@@ -1,9 +1,12 @@
-﻿using Caliburn.Micro;
+﻿using AutoMapper;
+using Caliburn.Micro;
 using HciMedico.App.Helpers;
+using HciMedico.App.Mappings;
 using HciMedico.App.ViewModels;
 using HciMedico.Library.Data;
 using HciMedico.Library.Data.Repositories;
 using HciMedico.Library.Models;
+using HciMedico.Library.Models.DTOs;
 using System.Windows;
 using Wpf.Ui.Controls;
 
@@ -38,7 +41,14 @@ public class Bootstrapper : BootstrapperBase
 
         // Consider changing this
         // See if existing instance will be fetched or new singleton created
-        _container.Singleton<IRepository<UserAccount>, UserAccountRepository>();
+        _container
+            .Singleton<IRepository<UserAccount>, UserAccountRepository>()
+            .Singleton<IRepository<Patient>, PatientsRepository>();
+
+        var mapperConfiguration = new MapperConfiguration(configuration => configuration.AddProfile<MappingProfile>());
+        var mapper = mapperConfiguration.CreateMapper();
+
+        _container.Instance(mapper);
 
         // TODO: Review if this is really needed; remove if not
         // Registering view-models for DI
