@@ -1,0 +1,47 @@
+TreatedPatientsView.xaml ################################################################################################################
+
+<!--doesn't work-->
+<!--<ListView ItemsSource="{Binding TreatedPatientsX}">
+    <ListView.View>
+        <GridView>
+            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Patient_FirstName}" />
+        </GridView>
+    </ListView.View>
+</ListView>-->
+
+<!--works-->
+<!--<ComboBox x:Name="TreatedPatientsX" DisplayMemberPath="FirstName" />-->
+
+<!--works-->
+<!--<ListView ItemsSource="{Binding TreatedPatientsX}">
+OR x:Name="TreatedPatientsX"
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <WrapPanel>
+                <TextBlock Text="Name: " />
+                <TextBlock Text="{Binding FirstName}" />
+            </WrapPanel>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>-->
+
+<!--<ListView ItemsSource="{Binding TreatedPatientsX}">
+    <ListView.View>
+        <GridView>
+            <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" Width="400"/>
+            <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="400"/>
+        </GridView>
+    </ListView.View>
+</ListView>-->
+
+TreatedPatientsViewModel.cs #############################################################################################################
+
+//AggregateException - query could not be translated - due to accessing AssignedAppointments from currentDoctor and not from patient
+//TODO: Research why is this the case
+//patient => currentDoctor.AssignedAppointments.Any(appointment => appointment.PatientId == patient.Id);
+
+//App gets stuck
+//patient => patient.Appointments.Any(appointment => appointment.DoctorId == currentDoctor.Id);
+
+// App works but result is incorrect
+//patient => patient.Appointments.Select(a => a.PatientId).Contains(patient.Id);

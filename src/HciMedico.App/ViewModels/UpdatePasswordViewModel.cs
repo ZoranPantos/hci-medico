@@ -60,6 +60,8 @@ public class UpdatePasswordViewModel : Conductor<object>
     {
         try
         {
+            //TODO: check oldPassword as well
+
             if (!confirmedNewPassword.Equals(newPassword))
             {
                 ValidationMessage = "Confirmed password does not match initial password";
@@ -82,6 +84,7 @@ public class UpdatePasswordViewModel : Conductor<object>
                 return;
             }
 
+            //TODO: Consider moving this to constructor injection
             var userAccountRepository = IoC.Get<IRepository<UserAccount>>();
 
             var currentUserAccount = await userAccountRepository.GetByIdAsync(UserContext.CurrentUser.Id) ??

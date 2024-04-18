@@ -7,13 +7,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
+		TemporaryNotes.txt = TemporaryNotes.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HciMedico.App", "src\HciMedico.App\HciMedico.App.csproj", "{F5F00D6B-6FD7-42AD-920F-A329C7505734}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HciMedico.App", "src\HciMedico.App\HciMedico.App.csproj", "{F5F00D6B-6FD7-42AD-920F-A329C7505734}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6A5922F3-F19F-423F-A931-B461AF2633B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HciMedico.Library", "src\HciMedico.Library\HciMedico.Library.csproj", "{518E8520-23C7-4526-8A2B-FBACC9E77750}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HciMedico.Library", "src\HciMedico.Library\HciMedico.Library.csproj", "{518E8520-23C7-4526-8A2B-FBACC9E77750}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
