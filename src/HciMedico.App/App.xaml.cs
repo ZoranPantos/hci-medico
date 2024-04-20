@@ -1,5 +1,5 @@
 ﻿using Caliburn.Micro;
-using HciMedico.App.ViewModels.Exceptions;
+using HciMedico.App.ViewModels.Shared;
 using System.Windows;
 using System.Windows.Threading;
 

@@ -3,7 +3,7 @@ using HciMedico.App.Services;
 using HciMedico.Library.Data.Repositories;
 using HciMedico.Library.Models;
 
-namespace HciMedico.App.ViewModels;
+namespace HciMedico.App.ViewModels.Shared;
 
 public class UpdatePasswordViewModel : Conductor<object>
 {

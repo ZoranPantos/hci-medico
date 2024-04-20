@@ -2,7 +2,7 @@
 using Caliburn.Micro;
 using HciMedico.App.Helpers;
 using HciMedico.App.Mappings;
-using HciMedico.App.ViewModels;
+using HciMedico.App.ViewModels.Shared;
 using HciMedico.Library.Data;
 using HciMedico.Library.Data.Repositories;
 using HciMedico.Library.Models;

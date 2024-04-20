@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro;
 
-namespace HciMedico.App.ViewModels;
+namespace HciMedico.App.ViewModels.Shared;
 
 public class SettingsViewModel : Conductor<object>
 {
@@ -8,8 +8,5 @@ public class SettingsViewModel : Conductor<object>
 
     public SettingsViewModel(IWindowManager windowManager) => _windowManager = windowManager;
 
-    public async Task UpdatePassword()
-    {
-        await _windowManager.ShowWindowAsync(new UpdatePasswordViewModel());
-    }
+    public async Task UpdatePassword() => await _windowManager.ShowWindowAsync(new UpdatePasswordViewModel());
 }

@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Views;
+using HciMedico.App.Views.Shared;
 using HciMedico.Library.Data.Repositories;
 using HciMedico.Library.Models;
 using System.ComponentModel;
@@ -7,10 +8,10 @@ using System.Windows;
 using HciMedico.Library.Models.Enums;
 using HciMedico.App.ViewModels.DoctorRole;
 
-namespace HciMedico.App.ViewModels;
+namespace HciMedico.App.ViewModels.Shared;
 
 public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
-{ 
+{
     private bool _logoutTriggered;
 
     private IScreen? _currentViewModel;
@@ -59,7 +60,7 @@ public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
             case UserRole.CounterWorker:
                 break;
 
-                // Add more user roles
+            // Add more user roles
             default:
                 throw new Exception("User role is not recognized");
         }

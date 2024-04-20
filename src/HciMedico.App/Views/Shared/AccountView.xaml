@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="HciMedico.App.Views.AccountView"
+﻿<UserControl x:Class="HciMedico.App.Views.Shared.AccountView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,8 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:local="clr-namespace:HciMedico.App.Views"
              xmlns:viewmodels="clr-namespace:HciMedico.App.ViewModels"
-             d:DataContext="{d:DesignInstance Type=viewmodels:AccountViewModel}"
+             xmlns:shared="clr-namespace:HciMedico.App.ViewModels.Shared"
+             d:DataContext="{d:DesignInstance Type=shared:AccountViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
 

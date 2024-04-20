@@ -1,7 +1,7 @@
 ﻿using Caliburn.Micro;
 using HciMedico.Library.Models;
 
-namespace HciMedico.App.ViewModels;
+namespace HciMedico.App.ViewModels.Shared;
 
 public class AccountViewModel : Conductor<object>
 {

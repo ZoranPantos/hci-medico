@@ -24,9 +24,7 @@
 
   <ItemGroup>
     <Folder Include="ViewModels\CounterWorker\" />
-    <Folder Include="ViewModels\Shared\" />
     <Folder Include="Views\CounterWorker\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
 
 </Project>

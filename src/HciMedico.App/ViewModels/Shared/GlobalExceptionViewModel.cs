@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro;
 
-namespace HciMedico.App.ViewModels.Exceptions;
+namespace HciMedico.App.ViewModels.Shared;
 
 public class GlobalExceptionViewModel : Conductor<object>
 {

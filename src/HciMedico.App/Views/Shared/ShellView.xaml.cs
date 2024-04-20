@@ -1,7 +1,7 @@
 ﻿using HciMedico.App.ViewModels;
 using System.Windows;
 
-namespace HciMedico.App.Views;
+namespace HciMedico.App.Views.Shared;
 
 public partial class ShellView : Window
 {

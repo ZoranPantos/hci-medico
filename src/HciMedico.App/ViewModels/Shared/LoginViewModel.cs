@@ -1,12 +1,13 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Services;
 using HciMedico.App.Views;
+using HciMedico.App.Views.Shared;
 using HciMedico.Library.Data.Repositories;
 using HciMedico.Library.Models;
 using System.ComponentModel;
 using System.Windows;
 
-namespace HciMedico.App.ViewModels;
+namespace HciMedico.App.ViewModels.Shared;
 
 public class LoginViewModel : Conductor<object>
 {
