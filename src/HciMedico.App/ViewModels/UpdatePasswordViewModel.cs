@@ -60,15 +60,20 @@ public class UpdatePasswordViewModel : Conductor<object>
     {
         try
         {
-            //TODO: check oldPassword as well
+            string currentPasswordHash = UserContext.CurrentUser!.Password;
+            string oldPasswordHash = HashingService.GetHashString(oldPassword);
+
+            if (!oldPasswordHash.Equals(currentPasswordHash))
+            {
+                ValidationMessage = "Incorrect old password";
+                return;
+            }
 
             if (!confirmedNewPassword.Equals(newPassword))
             {
                 ValidationMessage = "Confirmed password does not match initial password";
                 return;
             }
-
-            string currentPasswordHash = UserContext.CurrentUser!.Password;
 
             if (newPassword.Length < 6 || newPassword.Length > 20)
             {
