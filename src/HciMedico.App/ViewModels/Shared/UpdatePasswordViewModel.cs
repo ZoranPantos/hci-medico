@@ -1,7 +1,7 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Services;
-using HciMedico.Library.Data.Repositories;
-using HciMedico.Library.Models;
+using HciMedico.Domain.Models;
+using HciMedico.Integration.Data.Repositories;
 
 namespace HciMedico.App.ViewModels.Shared;
 

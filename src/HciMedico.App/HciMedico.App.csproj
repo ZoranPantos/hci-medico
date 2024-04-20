@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HciMedico.Library\HciMedico.Library.csproj" />
+    <ProjectReference Include="..\HciMedico.Integration\HciMedico.Integration.csproj" />
   </ItemGroup>
 
   <ItemGroup>

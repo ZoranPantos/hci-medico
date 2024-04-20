@@ -3,10 +3,9 @@ using Caliburn.Micro;
 using HciMedico.App.Helpers;
 using HciMedico.App.Mappings;
 using HciMedico.App.ViewModels.Shared;
-using HciMedico.Library.Data;
-using HciMedico.Library.Data.Repositories;
-using HciMedico.Library.Models;
-using HciMedico.Library.Models.DTOs;
+using HciMedico.Domain.Models;
+using HciMedico.Integration.Data;
+using HciMedico.Integration.Data.Repositories;
 using System.Windows;
 using Wpf.Ui.Controls;
 

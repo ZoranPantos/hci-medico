@@ -4,8 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        xmlns:local="clr-namespace:HciMedico.App.Views"
-        xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
         Title="Medico" Height="800" Width="1200"
         WindowStartupLocation="CenterScreen">

@@ -1,9 +1,8 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Services;
-using HciMedico.App.Views;
 using HciMedico.App.Views.Shared;
-using HciMedico.Library.Data.Repositories;
-using HciMedico.Library.Models;
+using HciMedico.Domain.Models;
+using HciMedico.Integration.Data.Repositories;
 using System.ComponentModel;
 using System.Windows;
 

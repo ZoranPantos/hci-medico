@@ -1,5 +1,5 @@
 ﻿using Caliburn.Micro;
-using HciMedico.Library.Models;
+using HciMedico.Domain.Models;
 
 namespace HciMedico.App.ViewModels.Shared;
 
@@ -245,7 +245,7 @@ public class AccountViewModel : Conductor<object>
 
     private void InitializeRoleFields()
     {
-        if (UserContext.CurrentUser?.UserRole == Library.Models.Enums.UserRole.Doctor)
+        if (UserContext.CurrentUser?.UserRole == Domain.Models.Enums.UserRole.Doctor)
         {
             var doctor = (Doctor?)UserContext.CurrentUser?.Employee ?? null;
             string specializationsStr = "";

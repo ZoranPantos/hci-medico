@@ -1,12 +1,11 @@
 ﻿using Caliburn.Micro;
-using HciMedico.App.Views;
 using HciMedico.App.Views.Shared;
-using HciMedico.Library.Data.Repositories;
-using HciMedico.Library.Models;
 using System.ComponentModel;
 using System.Windows;
-using HciMedico.Library.Models.Enums;
 using HciMedico.App.ViewModels.DoctorRole;
+using HciMedico.Domain.Models.Enums;
+using HciMedico.Integration.Data.Repositories;
+using HciMedico.Domain.Models;
 
 namespace HciMedico.App.ViewModels.Shared;
 

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
-using HciMedico.Library.Data.Repositories;
-using HciMedico.Library.Models;
-using HciMedico.Library.Models.DTOs;
+using HciMedico.Domain.Models;
+using HciMedico.Domain.Models.DisplayModels;
+using HciMedico.Integration.Data.Repositories;
 using System.Linq.Expressions;
 
 namespace HciMedico.App.ViewModels.DoctorRole;
