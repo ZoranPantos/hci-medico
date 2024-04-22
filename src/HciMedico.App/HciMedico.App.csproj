@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\CounterWorker\" />
-    <Folder Include="Views\CounterWorker\" />
+    <Folder Include="ViewModels\CounterWorkerRole\" />
+    <Folder Include="Views\CounterWorkerRole\" />
   </ItemGroup>
 
 </Project>
