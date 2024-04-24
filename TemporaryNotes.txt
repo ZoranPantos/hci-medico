@@ -45,3 +45,31 @@ TreatedPatientsViewModel.cs ####################################################
 
 // App works but result is incorrect
 //patient => patient.Appointments.Select(a => a.PatientId).Contains(patient.Id);
+
+TreatedPatientsView.xaml ################################################################################################################
+
+This code essentially creates and displays a grid-like view (table) and also styles it. It works fine.
+
+<!--<ui:DataGrid ItemsSource="{Binding TreatedPatients}" AutoGenerateColumns="False">
+<DataGrid.ColumnHeaderStyle>
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="#007ACC"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+</DataGrid.ColumnHeaderStyle>
+
+<ui:DataGrid.Columns>
+    <DataGridTextColumn Header="Full name" Binding="{Binding FullName}" />
+    <DataGridTextColumn Header="Date of birth" Binding="{Binding DateOfBirth}" />
+    <DataGridTextColumn Header="Number of visits" Binding="{Binding NumberOfVisits}" />
+</ui:DataGrid.Columns>
+</ui:DataGrid>-->
+
+This
+<!--xmlns:cal="http://www.caliburnproject.org"-->
+was used before
+xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+for interaction event triggers... and apparently they both work fine
