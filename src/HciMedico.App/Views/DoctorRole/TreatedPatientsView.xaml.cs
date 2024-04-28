@@ -4,5 +4,8 @@ namespace HciMedico.App.Views.DoctorRole;
 
 public partial class TreatedPatientsView : UserControl
 {
-    public TreatedPatientsView() => InitializeComponent();
+    public TreatedPatientsView()
+    {
+        InitializeComponent();
+    }
 }
