@@ -14,18 +14,26 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <ui:TextBlock Text="Treated Patients" Style="{StaticResource HeadingStyle}" />
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Background="#E0E0E0">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5,0,10">
+            <ui:TextBox x:Name="SearchBar" PlaceholderText="Search by name..."
+                        Background="White" Width="300" Margin="0,0,5,0" />
+
+            <ui:Button x:Name="Search" Icon="{ui:SymbolIcon Search32}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Background="#E0E0E0">
             <TextBlock Text="Full Name" Width="150" HorizontalAlignment="Center" FontWeight="Bold" />
             <TextBlock Text="Date of Birth" Width="150" HorizontalAlignment="Center" FontWeight="Bold" />
             <TextBlock Text="Number of Visits" Width="150" HorizontalAlignment="Center" FontWeight="Bold" />
         </StackPanel>
 
-        <ListView x:Name="TreatedPatients" SelectionMode="Single" Grid.Row="2">
+        <ListView x:Name="TreatedPatients" SelectionMode="Single" Grid.Row="3">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

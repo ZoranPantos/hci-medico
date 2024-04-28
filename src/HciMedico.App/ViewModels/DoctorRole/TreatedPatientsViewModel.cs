@@ -5,6 +5,8 @@ using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Integration.Data.Repositories;
 using System.Linq.Expressions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Text.RegularExpressions;
 
 namespace HciMedico.App.ViewModels.DoctorRole;
 
@@ -21,6 +23,17 @@ public class TreatedPatientsViewModel : Conductor<object>
         set => _treatedPatients = value;
     }
 
+    private string _searchBar = string.Empty;
+    public string SearchBar
+    {
+        get => _searchBar;
+        set
+        {
+            _searchBar = value;
+            NotifyOfPropertyChange(() => SearchBar);
+        }
+    }
+
     public TreatedPatientsViewModel(IRepository<Patient> patientRepository, IMapper mapper, ShellViewModel shellViewModel)
     {
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
@@ -33,13 +46,7 @@ public class TreatedPatientsViewModel : Conductor<object>
     {
         try
         {
-            var currentDoctor = (Doctor?)(UserContext.CurrentUser?.Employee)
-                ?? throw new Exception("Cannot load doctor entity");
-
-            Expression<Func<Patient, bool>>? filter =
-                patient => patient.Appointments.Select(appointment => appointment.DoctorId).Contains(currentDoctor.Id);
-
-            var treatedPatients = await _patientRepository.GetAllAsync(filter, true, "Appointments,HealthRecord");
+            var treatedPatients = await FetchTreatedPatients();
 
             var treatedPatientsDtos = _mapper.Map<List<TreatedPatientDisplayModel>>(treatedPatients);
 
@@ -54,5 +61,45 @@ public class TreatedPatientsViewModel : Conductor<object>
     public async Task OpenPatientDetails(TreatedPatientDisplayModel patient)
     {
         await _shellViewModel.ActivateItemAsync(new TreatedPatientDetailsViewModel(patient.Id, _patientRepository));
+    }
+
+    public async Task Search(string searchBar)
+    {
+        var treatedPatients = await FetchTreatedPatients();
+
+        searchBar = searchBar.Trim();
+
+        if (!string.IsNullOrEmpty(searchBar))
+        {
+            searchBar = Regex.Replace(searchBar, @"\s+", " ");
+
+            string[] queryPartitions = searchBar.Split(" ");
+
+            treatedPatients = treatedPatients
+                .Where(patient => queryPartitions
+                    .Any(partition =>
+                        patient.FirstName.StartsWith(partition, StringComparison.OrdinalIgnoreCase) ||
+                        patient.LastName.StartsWith(partition, StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+        }
+
+        var treatedPatientsDtos = _mapper.Map<List<TreatedPatientDisplayModel>>(treatedPatients);
+
+        TreatedPatients.Clear();
+
+        treatedPatientsDtos.ForEach(patient => TreatedPatients.Add(patient));
+    }
+
+    private async Task<List<Patient>> FetchTreatedPatients()
+    {
+        var currentDoctor = (Doctor?)(UserContext.CurrentUser?.Employee)
+                ?? throw new Exception("Cannot load doctor entity");
+
+        Expression<Func<Patient, bool>>? filter =
+            patient => patient.Appointments.Select(appointment => appointment.DoctorId).Contains(currentDoctor.Id);
+
+        var treatedPatients = await _patientRepository.GetAllAsync(filter, true, "Appointments,HealthRecord");
+
+        return treatedPatients;
     }
 }
