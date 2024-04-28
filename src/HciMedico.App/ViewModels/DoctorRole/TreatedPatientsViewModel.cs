@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
+using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Integration.Data.Repositories;
@@ -10,6 +11,7 @@ namespace HciMedico.App.ViewModels.DoctorRole;
 public class TreatedPatientsViewModel : Conductor<object>
 {
     private readonly IRepository<Patient> _patientRepository;
+    private readonly ShellViewModel _shellViewModel;
     private readonly IMapper _mapper;
 
     private BindableCollection<TreatedPatientDisplayModel> _treatedPatients { get; set; } = [];
@@ -19,9 +21,10 @@ public class TreatedPatientsViewModel : Conductor<object>
         set => _treatedPatients = value;
     }
 
-    public TreatedPatientsViewModel(IRepository<Patient> patientRepository, IMapper mapper)
+    public TreatedPatientsViewModel(IRepository<Patient> patientRepository, IMapper mapper, ShellViewModel shellViewModel)
     {
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
+        _shellViewModel = shellViewModel ?? throw new ArgumentNullException(nameof(shellViewModel));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
@@ -46,5 +49,10 @@ public class TreatedPatientsViewModel : Conductor<object>
         {
 
         }
+    }
+
+    public async Task OpenPatientDetails(TreatedPatientDisplayModel patient)
+    {
+        await _shellViewModel.ActivateItemAsync(new TreatedPatientDetailsViewModel(patient.Id, _patientRepository));
     }
 }

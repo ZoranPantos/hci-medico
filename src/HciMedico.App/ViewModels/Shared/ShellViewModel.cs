@@ -6,23 +6,25 @@ using HciMedico.App.ViewModels.DoctorRole;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
 using HciMedico.Domain.Models;
+using AutoMapper;
 
 namespace HciMedico.App.ViewModels.Shared;
 
-public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
+public class ShellViewModel : //Conductor<IScreen>.Collection.OneActive
+    Conductor<object>
 {
     private bool _logoutTriggered;
 
-    private IScreen? _currentViewModel;
-    public IScreen? CurrentViewModel
+    private IScreen? _currentViewModelInShell;
+    public IScreen? CurrentViewModelInShell
     {
-        get => _currentViewModel;
+        get => _currentViewModelInShell;
         set
         {
-            _currentViewModel = value;
+            _currentViewModelInShell = value;
 
-            if (_currentViewModel is not null)
-                ActivateItemAsync(_currentViewModel);
+            if (_currentViewModelInShell is not null)
+                ActivateItemAsync(_currentViewModelInShell);
             else
                 throw new ArgumentNullException("ViewModel was null");
         }
@@ -42,9 +44,9 @@ public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
             Application.Current.Shutdown();
     }
 
-    public void NavigateToMyAccount() => CurrentViewModel = IoC.Get<AccountViewModel>();
+    public void NavigateToMyAccount() => CurrentViewModelInShell = IoC.Get<AccountViewModel>();
 
-    public void NavigateToSettings() => CurrentViewModel = IoC.Get<SettingsViewModel>();
+    public void NavigateToSettings() => CurrentViewModelInShell = IoC.Get<SettingsViewModel>();
 
     public void NavigateToPatients()
     {
@@ -54,7 +56,10 @@ public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
         switch (UserContext.CurrentUser.UserRole)
         {
             case UserRole.Doctor:
-                CurrentViewModel = IoC.Get<TreatedPatientsViewModel>();
+                //CurrentViewModelInShell = IoC.Get<TreatedPatientsViewModel>();
+                //For enabling deeper levels of navigation, I need to send this (parent view model) to "sub-model" and navigate from there
+                //via the parent model
+                CurrentViewModelInShell = new TreatedPatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this);
                 break;
             case UserRole.CounterWorker:
                 break;
@@ -64,6 +69,8 @@ public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
                 throw new Exception("User role is not recognized");
         }
     }
+
+    public async Task NavigateToMySchedule() => await ActivateItemAsync(new ScheduleViewModel());
 
     public async Task Logout()
     {
