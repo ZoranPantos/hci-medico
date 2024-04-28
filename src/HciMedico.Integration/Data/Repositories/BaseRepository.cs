@@ -22,9 +22,6 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         if (asReadOnly)
             query = query.AsNoTracking();
 
-        //if (filter is not null)
-        //    query = query.Where(filter);
-
         if (!string.IsNullOrEmpty(propertiesToInclude))
         {
             string[] properties = propertiesToInclude.Split(",");
@@ -66,9 +63,6 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
 
         if (asReadOnly)
             query = query.AsNoTracking();
-
-        //if (filter is not null)
-        //    query = query.Where(filter);
 
         if (!string.IsNullOrEmpty(propertiesToInclude))
         {
