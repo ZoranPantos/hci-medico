@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Helpers;
 using HciMedico.Domain.Models;
 
 namespace HciMedico.App.ViewModels.Shared;
@@ -225,22 +226,22 @@ public class AccountViewModel : Conductor<object>
 
     private void InitializeCommonFields()
     {
-        Username = UserContext.CurrentUser?.Username ?? "No data available";
-        UserRole = UserContext.CurrentUser?.UserRole.ToString() ?? "No data available";
+        Username = UserContext.CurrentUser?.Username ?? DisplayMessages.NoData;
+        UserRole = UserContext.CurrentUser?.UserRole.ToString() ?? DisplayMessages.NoData;
         PasswordLastUpdated = UserContext.CurrentUser?.PasswordLastUpdated ?? default;
-        FirstName = UserContext.CurrentUser?.Employee?.FirstName ?? "No data available";
-        LastName = UserContext.CurrentUser?.Employee?.LastName ?? "No data available";
-        Gender = UserContext.CurrentUser?.Employee?.Gender.ToString() ?? "No data available";
+        FirstName = UserContext.CurrentUser?.Employee?.FirstName ?? DisplayMessages.NoData;
+        LastName = UserContext.CurrentUser?.Employee?.LastName ?? DisplayMessages.NoData;
+        Gender = UserContext.CurrentUser?.Employee?.Gender.ToString() ?? DisplayMessages.NoData;
         DateOfBirth = DateOnly.FromDateTime(UserContext.CurrentUser?.Employee?.DateOfBirth ?? default);
-        Education = UserContext.CurrentUser?.Employee?.Education ?? "No data available";
+        Education = UserContext.CurrentUser?.Employee?.Education ?? DisplayMessages.NoData;
         EmployedSince = DateOnly.FromDateTime(UserContext.CurrentUser?.Employee?.EmployedSince ?? default);
-        CurrentSalary = UserContext.CurrentUser?.Employee?.CurrentSalary.ToString() ?? "No data available";
-        Country = UserContext.CurrentUser?.Employee?.Address.Country ?? "No data available";
-        City = UserContext.CurrentUser?.Employee?.Address.City ?? "No data available";
-        Street = UserContext.CurrentUser?.Employee?.Address.Street ?? "No data available";
-        Number = UserContext.CurrentUser?.Employee?.Address.Number.ToString() ?? "No data available";
-        Email = UserContext.CurrentUser?.Employee?.ContactInfo.Email ?? "No data available";
-        TelephoneNumber = UserContext.CurrentUser?.Employee?.ContactInfo.TelephoneNumber ?? "No data available";
+        CurrentSalary = UserContext.CurrentUser?.Employee?.CurrentSalary.ToString() ?? DisplayMessages.NoData;
+        Country = UserContext.CurrentUser?.Employee?.Address.Country ?? DisplayMessages.NoData;
+        City = UserContext.CurrentUser?.Employee?.Address.City ?? DisplayMessages.NoData;
+        Street = UserContext.CurrentUser?.Employee?.Address.Street ?? DisplayMessages.NoData;
+        Number = UserContext.CurrentUser?.Employee?.Address.Number.ToString() ?? DisplayMessages.NoData;
+        Email = UserContext.CurrentUser?.Employee?.ContactInfo.Email ?? DisplayMessages.NoData;
+        TelephoneNumber = UserContext.CurrentUser?.Employee?.ContactInfo.TelephoneNumber ?? DisplayMessages.NoData;
     }
 
     private void InitializeRoleFields()
