@@ -5,7 +5,6 @@ using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Integration.Data.Repositories;
 using System.Linq.Expressions;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Text.RegularExpressions;
 
 namespace HciMedico.App.ViewModels.DoctorRole;
@@ -16,7 +15,7 @@ public class TreatedPatientsViewModel : Conductor<object>
     private readonly ShellViewModel _shellViewModel;
     private readonly IMapper _mapper;
 
-    private BindableCollection<TreatedPatientDisplayModel> _treatedPatients { get; set; } = [];
+    private BindableCollection<TreatedPatientDisplayModel> _treatedPatients = [];
     public BindableCollection<TreatedPatientDisplayModel> TreatedPatients
     {
         get => _treatedPatients;
@@ -60,7 +59,7 @@ public class TreatedPatientsViewModel : Conductor<object>
 
     public async Task OpenPatientDetails(TreatedPatientDisplayModel patient)
     {
-        await _shellViewModel.ActivateItemAsync(new TreatedPatientDetailsViewModel(patient.Id, _patientRepository));
+        await _shellViewModel.ActivateItemAsync(new TreatedPatientDetailsViewModel(patient.Id, _mapper, _patientRepository));
     }
 
     public async Task Search(string searchBar)
@@ -87,7 +86,7 @@ public class TreatedPatientsViewModel : Conductor<object>
 
         TreatedPatients.Clear();
 
-        treatedPatientsDtos.ForEach(patient => TreatedPatients.Add(patient));
+        treatedPatientsDtos.ForEach(TreatedPatients.Add);
     }
 
     private async Task<List<Patient>> FetchTreatedPatients()

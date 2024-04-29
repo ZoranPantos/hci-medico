@@ -6,6 +6,5 @@ public class ScheduleViewModel : Conductor<object>
 {
     public ScheduleViewModel()
     {
-
     }
 }

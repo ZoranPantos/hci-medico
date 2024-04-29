@@ -14,6 +14,11 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"))
             .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.HealthRecord.DateOfBirth))
             .ForMember(dest => dest.NumberOfVisits, opt => opt.MapFrom(src => GetResolvedAppointmentsCount(src)));
+
+        CreateMap<Appointment, TreatedPatientAppointmentDisplayModel>()
+            .ForMember(dest => dest.DateAndTime, opt => opt.MapFrom(src => src.DateAndTime))
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(AppointmentStatus), src.Status)))
+            .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.GetName(typeof(AppointmentType), src.Type)));
     }
 
     private static int GetResolvedAppointmentsCount(Patient patient) =>
