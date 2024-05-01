@@ -48,7 +48,7 @@
                         <TextBlock Text="{Binding NumberOfVisits}" Grid.Column="2" VerticalAlignment="Center" />
 
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:EventTrigger EventName="MouseDown">
                                 <cal:ActionMessage MethodName="OpenPatientDetails">
                                     <cal:Parameter Value="{Binding}" />
                                 </cal:ActionMessage>
