@@ -13,6 +13,7 @@ public class TreatedPatientDetailsViewModel : Conductor<object>
     private readonly int _id;
     private readonly IMapper _mapper;
     private readonly IRepository<Patient> _patientRepository;
+    private readonly TreatedPatientsViewModel _parentViewModel;
 
     private BindableCollection<TreatedPatientAppointmentDisplayModel> _appointments = [];
     public BindableCollection<TreatedPatientAppointmentDisplayModel> Appointments
@@ -80,12 +81,15 @@ public class TreatedPatientDetailsViewModel : Conductor<object>
         }
     }
 
-    public TreatedPatientDetailsViewModel(int id, IMapper mapper, IRepository<Patient> patientRepository)
+    public TreatedPatientDetailsViewModel(int id, IMapper mapper, IRepository<Patient> patientRepository, TreatedPatientsViewModel parentViewModel)
     {
         _id = id;
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
+        _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
     }
+
+    public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
     {

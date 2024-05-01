@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
-            <ui:Button Content="Back" />
+            <ui:Button x:Name="NavigateBack" Content="Back" />
             <ui:TextBlock Text="Patient Details" Style="{StaticResource HeadingStyle}" />
         </StackPanel>
 
