@@ -16,6 +16,9 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -70,5 +73,31 @@
                       x:Name="TelephoneNumber"
                       Style="{StaticResource DataTextBlockStyle}" />
 
+        <ui:TextBlock Grid.Row="6" Text="Appointments" />
+
+        <StackPanel Grid.Row="7" Grid.ColumnSpan="3" Orientation="Horizontal" Background="#E0E0E0">
+            <TextBlock Text="Date and Time" Width="150" HorizontalAlignment="Center" FontWeight="Bold" />
+            <TextBlock Text="Status" Width="150" HorizontalAlignment="Center" FontWeight="Bold" />
+            <TextBlock Text="Type" Width="150" HorizontalAlignment="Center" FontWeight="Bold" />
+        </StackPanel>
+
+        <ItemsControl x:Name="Appointments" Grid.Row="8" Grid.ColumnSpan="3">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding DateAndTime, StringFormat={}{0:dd/MM/yyyy}}" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding Status}" Grid.Column="1" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding Type}" Grid.Column="2" VerticalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
     </Grid>
 </UserControl>
