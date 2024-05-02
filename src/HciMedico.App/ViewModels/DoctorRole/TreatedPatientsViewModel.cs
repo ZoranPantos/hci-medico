@@ -71,6 +71,7 @@ public class TreatedPatientsViewModel : Conductor<object>
     public async Task Search(string searchBar)
     {
         var treatedPatients = await FetchTreatedPatients();
+        var filteredPatients = new List<Patient>();
 
         searchBar = searchBar.Trim();
 
@@ -80,15 +81,33 @@ public class TreatedPatientsViewModel : Conductor<object>
 
             string[] queryPartitions = searchBar.Split(" ");
 
-            treatedPatients = treatedPatients
-                .Where(patient => queryPartitions
-                    .Any(partition =>
-                        patient.FirstName.StartsWith(partition, StringComparison.OrdinalIgnoreCase) ||
-                        patient.LastName.StartsWith(partition, StringComparison.OrdinalIgnoreCase)))
-                .ToList();
-        }
+            if (queryPartitions.Length == 2)
+            {
+                filteredPatients = treatedPatients
+                    .Where(patient =>
+                        (patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
+                        patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase)) ||
+                        (patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
+                        patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase)))
+                    .ToList();
+            }
 
-        var treatedPatientsDtos = _mapper.Map<List<TreatedPatientDisplayModel>>(treatedPatients);
+            if (!filteredPatients.Any())
+            {
+                filteredPatients = treatedPatients
+                    .Where(patient => queryPartitions
+                        .Any(partition =>
+                            patient.FirstName.StartsWith(partition, StringComparison.OrdinalIgnoreCase) ||
+                            patient.LastName.StartsWith(partition, StringComparison.OrdinalIgnoreCase)))
+                    .ToList();
+            }
+        }
+        else
+            filteredPatients = treatedPatients;
+
+        var treatedPatientsDtos = _mapper.Map<List<TreatedPatientDisplayModel>>(filteredPatients)
+            .OrderBy(dto => dto.FullName)
+            .ToList();
 
         TreatedPatients.Clear();
 
