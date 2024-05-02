@@ -5,6 +5,7 @@ using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Integration.Data.Repositories;
+using System.Text.RegularExpressions;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
 
@@ -65,6 +66,28 @@ public class PatientsViewModel : Conductor<object>
 
     public async Task Search(string searchBar)
     {
+        var patients = await _patientRepository.GetAllAsync(null, true, "Appointments,HealthRecord");
 
+        searchBar.Trim();
+
+        if (!string.IsNullOrEmpty(searchBar))
+        {
+            searchBar = Regex.Replace(searchBar, @"\s+", " ");
+
+            string[] queryPartitions = searchBar.Split(" ");
+
+            patients = patients
+                .Where(patient => queryPartitions
+                    .Any(partition =>
+                        patient.FirstName.StartsWith(partition, StringComparison.OrdinalIgnoreCase) ||
+                        patient.LastName.StartsWith(partition, StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+        }
+
+        var patientDtos = _mapper.Map<List<PatientDisplayModel>>(patients);
+
+        Patients.Clear();
+
+        patientDtos.ForEach(Patients.Add);
     }
 }
