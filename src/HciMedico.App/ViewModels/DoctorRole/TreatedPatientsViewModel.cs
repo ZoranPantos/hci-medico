@@ -47,9 +47,11 @@ public class TreatedPatientsViewModel : Conductor<object>
         {
             var treatedPatients = await FetchTreatedPatients();
 
-            var treatedPatientsDtos = _mapper.Map<List<TreatedPatientDisplayModel>>(treatedPatients);
+            var treatedPatientsDtos = _mapper.Map<List<TreatedPatientDisplayModel>>(treatedPatients)
+                .OrderBy(dto => dto.FullName)
+                .ToList();
 
-            treatedPatientsDtos.ForEach(patient => TreatedPatients.Add(patient));
+            treatedPatientsDtos.ForEach(TreatedPatients.Add);
         }
         catch (Exception)
         {

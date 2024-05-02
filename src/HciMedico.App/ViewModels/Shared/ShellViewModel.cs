@@ -7,11 +7,11 @@ using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
 using HciMedico.Domain.Models;
 using AutoMapper;
+using HciMedico.App.ViewModels.CounterWorkerRole;
 
 namespace HciMedico.App.ViewModels.Shared;
 
-public class ShellViewModel : //Conductor<IScreen>.Collection.OneActive
-    Conductor<object>
+public class ShellViewModel : Conductor<object>
 {
     private bool _logoutTriggered;
 
@@ -62,6 +62,7 @@ public class ShellViewModel : //Conductor<IScreen>.Collection.OneActive
                 CurrentViewModelInShell = new TreatedPatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this);
                 break;
             case UserRole.CounterWorker:
+                CurrentViewModelInShell = new PatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this);
                 break;
 
             // Add more user roles

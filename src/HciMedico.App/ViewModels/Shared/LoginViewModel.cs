@@ -59,9 +59,11 @@ public class LoginViewModel : Conductor<object>
     public async Task Login(string username, string password)
     {
         //TODO: Remove this after testing
-        username = "marko.petrovic1";
+        //username = "marko.petrovic1";
         //username = "ana.jovanovic34";
-        password = "marko.petrovic1";
+        //password = "marko.petrovic1";
+        username = "ksenija.markovic31";
+        password = "ksenija.markovic31";
 
         string passwordHash = HashingService.GetHashString(password);
 

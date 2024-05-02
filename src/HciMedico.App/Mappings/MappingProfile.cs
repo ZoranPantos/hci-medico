@@ -19,8 +19,21 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.DateAndTime, opt => opt.MapFrom(src => src.DateAndTime))
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Enum.GetName(typeof(AppointmentStatus), src.Status)))
             .ForMember(dest => dest.Type, opt => opt.MapFrom(src => Enum.GetName(typeof(AppointmentType), src.Type)));
+
+        CreateMap<Patient, PatientDisplayModel>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"))
+            .ForMember(dest => dest.LastVisit, opt => opt.MapFrom(src => GetDateTimeForLastResolvedAppointmentOfPatient(src)));
     }
 
     private static int GetResolvedAppointmentsCount(Patient patient) =>
-        patient.Appointments.Count(a => a.Status == AppointmentStatus.Resolved);
+        patient.Appointments.Count(appointment => appointment.Status == AppointmentStatus.Resolved);
+
+    private static DateTime GetDateTimeForLastResolvedAppointmentOfPatient(Patient patient)
+    {
+        return patient.Appointments
+            .Where(appointment => appointment.Status == AppointmentStatus.Resolved)
+            .Select(appointment => appointment.DateAndTime)
+            .Max();
+    }
 }

@@ -22,9 +22,4 @@
     <ProjectReference Include="..\HciMedico.Integration\HciMedico.Integration.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\CounterWorkerRole\" />
-    <Folder Include="Views\CounterWorkerRole\" />
-  </ItemGroup>
-
 </Project>
