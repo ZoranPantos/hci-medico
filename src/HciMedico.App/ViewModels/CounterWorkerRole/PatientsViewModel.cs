@@ -58,11 +58,11 @@ public class PatientsViewModel : Conductor<object>
         }
     }
 
-    public async Task OpenPatientDetails(TreatedPatientDisplayModel patient)
-    {
-        //await _shellViewModel.ActivateItemAsync(new TreatedPatientDetailsViewModel(patient.Id, _mapper, _patientRepository, this));
-        // need new view and view model for this
-    }
+    public async Task OpenPatientDetails(PatientDisplayModel patient) =>
+        await _shellViewModel.ActivateItemAsync(new PatientDetailsViewModel(patient.Id, _mapper, _patientRepository, this));
+
+    public async Task SelfActivateAsync() =>
+        await _shellViewModel.ActivateItemAsync(new PatientsViewModel(_patientRepository, _mapper, _shellViewModel));
 
     public async Task Search(string searchBar)
     {

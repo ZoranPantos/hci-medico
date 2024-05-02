@@ -59,10 +59,8 @@ public class TreatedPatientsViewModel : Conductor<object>
         }
     }
 
-    public async Task OpenPatientDetails(TreatedPatientDisplayModel patient)
-    {
+    public async Task OpenPatientDetails(TreatedPatientDisplayModel patient) =>
         await _shellViewModel.ActivateItemAsync(new TreatedPatientDetailsViewModel(patient.Id, _mapper, _patientRepository, this));
-    }
 
     //Purpose: so that child view-model can navigate backwards to parent
     public async Task SelfActivateAsync() =>
