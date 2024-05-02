@@ -109,4 +109,9 @@ public class PatientsViewModel : Conductor<object>
 
         patientDtos.ForEach(Patients.Add);
     }
+
+    public void RegisterNewPatient()
+    {
+        throw new NotImplementedException();
+    }
 }

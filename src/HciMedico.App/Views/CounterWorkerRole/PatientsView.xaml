@@ -25,7 +25,8 @@
             <ui:TextBox x:Name="SearchBar" PlaceholderText="Search by name..."
                 Background="White" Width="300" Margin="0,0,5,0" />
 
-            <ui:Button x:Name="Search" Icon="{ui:SymbolIcon Search32}" />
+            <ui:Button x:Name="Search" Content="Search" Icon="{ui:SymbolIcon Search32}" />
+            <ui:Button x:Name="RegisterNewPatient" Content="Register new patient" Icon="{ui:SymbolIcon Add32}" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Background="#E0E0E0">

@@ -27,6 +27,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -39,128 +40,131 @@
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
             <ui:Button x:Name="NavigateBack"  Icon="{ui:SymbolIcon IosArrowLtr24}" />
             <ui:TextBlock Text="Patient Details" Style="{StaticResource HeadingStyle}" />
-            <ui:Button x:Name="Edit" Icon="{ui:SymbolIcon Edit32}" />
-            <ui:Button x:Name="NewAppointment" Icon="{ui:SymbolIcon ShiftsAdd24}" />
         </StackPanel>
 
-        <ui:TextBlock Grid.Row="1" Text="General Info" />
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <ui:Button x:Name="EditInfo" Content="Edit" Icon="{ui:SymbolIcon Edit32}" />
+            <ui:Button x:Name="ScheduleAppointment" Content="Schedule appointment" Icon="{ui:SymbolIcon ShiftsAdd24}" />
+        </StackPanel>
 
-        <ui:TextBlock Grid.Row="2" 
+        <ui:TextBlock Grid.Row="2" Text="General Info" />
+
+        <ui:TextBlock Grid.Row="3" 
                       Text="First name:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="2" Grid.Column="1"
+        <ui:TextBlock Grid.Row="3" Grid.Column="1"
                       x:Name="FirstName"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="3"
+        <ui:TextBlock Grid.Row="4"
                       Text="Last name:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="3" Grid.Column="1"
+        <ui:TextBlock Grid.Row="4" Grid.Column="1"
                       x:Name="LastName"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="4" 
+        <ui:TextBlock Grid.Row="5" 
                       Text="UID:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="4" Grid.Column="1"
-                      x:Name="Uid"
-                      Style="{StaticResource DataTextBlockStyle}" />
-
-        <ui:TextBlock Grid.Row="5"
-                      Text="Gender:"
-                      Style="{StaticResource LabelTextBlockStyle}" />
-
         <ui:TextBlock Grid.Row="5" Grid.Column="1"
-                      x:Name="Gender"
+                      x:Name="UID"
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="6"
-                      Text="Date of birth:"
+                      Text="Gender:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="6" Grid.Column="1"
+                      x:Name="Gender"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="7"
+                      Text="Date of birth:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="7" Grid.Column="1"
                       x:Name="DateOfBirth"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="7" Text="Address and Contact" />
+        <ui:TextBlock Grid.Row="8" Text="Address and Contact" />
 
-        <ui:TextBlock Grid.Row="8"
+        <ui:TextBlock Grid.Row="9"
                       Text="Country:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="8" Grid.Column="1"
+        <ui:TextBlock Grid.Row="9" Grid.Column="1"
                       x:Name="Country"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="9"
+        <ui:TextBlock Grid.Row="10"
                       Text="City:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="9" Grid.Column="1"
+        <ui:TextBlock Grid.Row="10" Grid.Column="1"
                       x:Name="City"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="10"
+        <ui:TextBlock Grid.Row="11"
                       Text="Street:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="10" Grid.Column="1"
+        <ui:TextBlock Grid.Row="11" Grid.Column="1"
                       x:Name="Street"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="11"
+        <ui:TextBlock Grid.Row="12"
                       Text="Number:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="11" Grid.Column="1"
+        <ui:TextBlock Grid.Row="12" Grid.Column="1"
                       x:Name="Number"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="12"
+        <ui:TextBlock Grid.Row="13"
                       Text="Email:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="12" Grid.Column="1"
+        <ui:TextBlock Grid.Row="13" Grid.Column="1"
                       x:Name="Email"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="13"
+        <ui:TextBlock Grid.Row="14"
                       Text="Telephone number:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="13" Grid.Column="1"
+        <ui:TextBlock Grid.Row="14" Grid.Column="1"
                       x:Name="TelephoneNumber"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="14" Text="Clinic Stats" />
+        <ui:TextBlock Grid.Row="15" Text="Clinic Stats" />
 
-        <ui:TextBlock Grid.Row="15"
+        <ui:TextBlock Grid.Row="16"
                       Text="Number of visits:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="15" Grid.Column="1"
+        <ui:TextBlock Grid.Row="16" Grid.Column="1"
                       x:Name="NumberOfVisits"
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <!--Date + doctor's name and specialization-->
-        <ui:TextBlock Grid.Row="16"
+        <ui:TextBlock Grid.Row="17"
                       Text="Last visit:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="16" Grid.Column="1"
-                      x:Name="LastVisit"
+        <ui:TextBlock Grid.Row="17" Grid.Column="1"
+                      x:Name="LastVisitDetails"
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <!--Date + doctor's name and specialization-->
-        <ui:TextBlock Grid.Row="17"
+        <ui:TextBlock Grid.Row="18"
                       Text="Next appointment:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="17" Grid.Column="1"
-                      x:Name="NextAppointment"
+        <ui:TextBlock Grid.Row="18" Grid.Column="1"
+                      x:Name="NextAppointmentDetails"
                       Style="{StaticResource DataTextBlockStyle}" />
 
     </Grid>
