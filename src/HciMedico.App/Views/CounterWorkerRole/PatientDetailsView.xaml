@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="HciMedico.App.Views.CounterWorkerRole.PatientDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HciMedico.App.Views.CounterWorkerRole"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
+            <ui:Button x:Name="NavigateBack"  Icon="{ui:SymbolIcon IosArrowLtr24}" />
+            <ui:TextBlock Text="Patient Details" Style="{StaticResource HeadingStyle}" />
+            <ui:Button x:Name="Edit" Icon="{ui:SymbolIcon Edit32}" />
+            <ui:Button x:Name="NewAppointment" Icon="{ui:SymbolIcon ShiftsAdd24}" />
+        </StackPanel>
+
+        <ui:TextBlock Grid.Row="1" Text="General Info" />
+
+        <ui:TextBlock Grid.Row="2" 
+                      Text="First name:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="2" Grid.Column="1"
+                      x:Name="FirstName"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="3"
+                      Text="Last name:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="3" Grid.Column="1"
+                      x:Name="LastName"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="4" 
+                      Text="UID:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="4" Grid.Column="1"
+                      x:Name="Uid"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="5"
+                      Text="Gender:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="5" Grid.Column="1"
+                      x:Name="Gender"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="6"
+                      Text="Date of birth:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="6" Grid.Column="1"
+                      x:Name="DateOfBirth"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="7" Text="Address and Contact" />
+
+        <ui:TextBlock Grid.Row="8"
+                      Text="Country:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="8" Grid.Column="1"
+                      x:Name="Country"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="9"
+                      Text="City:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="9" Grid.Column="1"
+                      x:Name="City"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="10"
+                      Text="Street:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="10" Grid.Column="1"
+                      x:Name="Street"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="11"
+                      Text="Number:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="11" Grid.Column="1"
+                      x:Name="Number"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="12"
+                      Text="Email:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="12" Grid.Column="1"
+                      x:Name="Email"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="13"
+                      Text="Telephone number:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="13" Grid.Column="1"
+                      x:Name="TelephoneNumber"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="14" Text="Clinic Stats" />
+
+        <ui:TextBlock Grid.Row="15"
+                      Text="Number of visits:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="15" Grid.Column="1"
+                      x:Name="NumberOfVisits"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <!--Date + doctor's name and specialization-->
+        <ui:TextBlock Grid.Row="16"
+                      Text="Last visit:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="16" Grid.Column="1"
+                      x:Name="LastVisit"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <!--Date + doctor's name and specialization-->
+        <ui:TextBlock Grid.Row="17"
+                      Text="Next appointment:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="17" Grid.Column="1"
+                      x:Name="NextAppointment"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+    </Grid>
+</UserControl>
