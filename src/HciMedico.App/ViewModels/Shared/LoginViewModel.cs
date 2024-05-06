@@ -58,30 +58,36 @@ public class LoginViewModel : Conductor<object>
 
     public async Task Login(string username, string password)
     {
-        //TODO: Remove this after testing
-        //username = "marko.petrovic1";
-        //password = "marko.petrovic1";
-        username = "ksenija.markovic31";
-        password = "ksenija.markovic31";
-
-        string passwordHash = HashingService.GetHashString(password);
-
-        var existingUser = await _userAccountRepository
-            .FindAsync(user => user.Username.Equals(username), true, "Employee.Specializations,Employee.AssignedAppointments");
-
-        if (existingUser is null || !passwordHash.Equals(existingUser.Password))
+        try
         {
-            ValidationMessage = "User with specified credentials could not be found";
-            return;
+            //TODO: Remove this after testing
+            //username = "marko.petrovic1";
+            //password = "marko.petrovic1";
+            username = "ksenija.markovic31";
+            password = "ksenija.markovic31";
+
+            string passwordHash = HashingService.GetHashString(password);
+
+            var existingUser = await _userAccountRepository
+                .FindAsync(user => user.Username.Equals(username), true, "Employee.Specializations,Employee.AssignedAppointments,Employee.Schedule.ScheduleCells");
+
+            if (existingUser is null || !passwordHash.Equals(existingUser.Password))
+            {
+                ValidationMessage = "User with specified credentials could not be found";
+                return;
+            }
+
+            UserContext.Initialize(existingUser);
+
+            _loginViewQuit = false;
+
+            await TryCloseAsync();
+
+            await _windowManager.ShowWindowAsync(new ShellViewModel());
         }
-
-        UserContext.Initialize(existingUser);
-
-        _loginViewQuit = false;
-
-        await TryCloseAsync();
-
-        await _windowManager.ShowWindowAsync(new ShellViewModel());
+        catch (Exception ex)
+        {
+        }
     }
 
     protected override Task OnActivateAsync(CancellationToken cancellationToken)
