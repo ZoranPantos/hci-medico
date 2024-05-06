@@ -73,3 +73,20 @@ This
 was used before
 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
 for interaction event triggers... and apparently they both work fine
+
+MappingProfile.cs #######################################################################################################################
+
+CreateMap<ScheduleCell, ScheduleCellDisplayModel>()
+    .ForMember(dest => dest.DateTime, opt => opt.MapFrom(src => src.DateTime))
+    .ForMember(dest => dest.ShiftStartTime, opt => opt.MapFrom(src => src.ShiftStartTime))
+    .ForMember(dest => dest.ShiftEndTime, opt => opt.MapFrom(src => src.ShiftEndTime))
+    .ForMember(dest => dest.IsCurrentMonth, opt => opt.MapFrom(src => IsCurrentMonth(src.DateTime)))
+    .ForMember(dest => dest.IsToday, opt => opt.MapFrom(src => IsToday(src.DateTime)));
+
+CreateMap<Schedule, ScheduleDisplayModel>()
+    .ForMember(dest => dest.ScheduleCellDisplayModels, opt => opt.MapFrom(src => src.ScheduleCells.ToArray()));
+
+private static bool IsCurrentMonth(DateTime dateTime) =>
+        dateTime.Month == DateTime.Now.Month && dateTime.Year == DateTime.Now.Year;
+
+private static bool IsToday(DateTime dateTime) => dateTime.Date == DateTime.Today;
