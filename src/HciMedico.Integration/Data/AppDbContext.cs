@@ -31,6 +31,8 @@ public sealed class AppDbContext : DbContext
         new UserAccountEntityTypeConfiguration().Configure(modelBuilder.Entity<UserAccount>());
         new HealthRecordEntityTypeConfiguration().Configure(modelBuilder.Entity<HealthRecord>());
         new AppointmentEntityTypeConfiguration().Configure(modelBuilder.Entity<Appointment>());
+        new ScheduleEntityTypeConfiguration().Configure(modelBuilder.Entity<Schedule>());
+        new ScheduleCellEntityTypeConfiguration().Configure(modelBuilder.Entity<ScheduleCell>());
 
         new HealthRecordMedicalConditionEntityTypeConfiguration()
             .Configure(modelBuilder.Entity<HealthRecordMedicalCondition>());
