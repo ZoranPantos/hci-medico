@@ -58,7 +58,7 @@ public class ScheduleViewModel : Conductor<object>
             int firstDayOfWeekIndex = (int)firstDayOfWeek - 1;
 
             //Initialize first day in current month
-            ScheduleDisplayModel.ScheduleCellDisplayModels[firstDayOfWeekIndex].IsCurrentMonth = true;
+            ScheduleDisplayModel.ScheduleCellDisplayModels[firstDayOfWeekIndex].IsSelectedMonth = true;
             ScheduleDisplayModel.ScheduleCellDisplayModels[firstDayOfWeekIndex].DateTime = firstDayOfMonth;
             //ScheduleDisplayModel.ScheduleCellDisplayModels[firstDayOfWeekIndex].ShiftStartTime = "[curr month]";
 
@@ -68,7 +68,7 @@ public class ScheduleViewModel : Conductor<object>
             {
                 firstDayOfMonthTmp = firstDayOfMonthTmp.AddDays(-1);
                 ScheduleDisplayModel.ScheduleCellDisplayModels[i].DateTime = firstDayOfMonthTmp;
-                ScheduleDisplayModel.ScheduleCellDisplayModels[i].IsCurrentMonth = false;
+                ScheduleDisplayModel.ScheduleCellDisplayModels[i].IsSelectedMonth = false;
             }
 
             //Initialize following days from current and next month
@@ -78,7 +78,7 @@ public class ScheduleViewModel : Conductor<object>
                 firstDayOfMonthTmp2 = firstDayOfMonthTmp2.AddDays(1);
                 ScheduleDisplayModel.ScheduleCellDisplayModels[i].DateTime = firstDayOfMonthTmp2;
                 //ScheduleDisplayModel.ScheduleCellDisplayModels[i].IsCurrentMonth = i <= daysInMonth - 1;
-                ScheduleDisplayModel.ScheduleCellDisplayModels[i].IsCurrentMonth = i <= daysInMonth + firstDayOfWeekIndex - 1;
+                ScheduleDisplayModel.ScheduleCellDisplayModels[i].IsSelectedMonth = i <= daysInMonth + firstDayOfWeekIndex - 1;
                 //ScheduleDisplayModel.ScheduleCellDisplayModels[i].ShiftStartTime = i <= daysInMonth + firstDayOfWeekIndex - 1 ? "[curr month]" : "";
 
                 //Check for today
@@ -167,7 +167,7 @@ public class ScheduleViewModel : Conductor<object>
     {
         for (int i = 0; i < ScheduleDisplayModel.ScheduleCellDisplayModels.Length; i++)
         {
-            if (ScheduleDisplayModel.ScheduleCellDisplayModels[i].IsCurrentMonth)
+            if (ScheduleDisplayModel.ScheduleCellDisplayModels[i].IsSelectedMonth)
             {
                 ScheduleDisplayModel.ScheduleCellDisplayModels[i].ShiftStartTime +=
                     ScheduleDisplayModel.ScheduleCellDisplayModels[i].IsToday ? "TODAY" : "***";

@@ -8,6 +8,6 @@ public sealed class ScheduleCellDisplayModel
     public string ShiftStartTime { get; set; } = string.Empty;
     public string ShiftEndTime { get; set; } = string.Empty;
 
-    public bool IsCurrentMonth { get; set; }
+    public bool IsSelectedMonth { get; set; }
     public bool IsToday { get; set; }
 }

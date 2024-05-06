@@ -14,7 +14,7 @@ public class CalendarCellBackgroundConverter : IValueConverter
             if (cell.IsToday)
                 return Brushes.LightGreen;
             
-            if (cell.IsCurrentMonth)
+            if (cell.IsSelectedMonth)
                 return Brushes.LightGray;
 
             return Brushes.White;
