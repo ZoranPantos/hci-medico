@@ -32,7 +32,7 @@
                 <ui:Button x:Name="NextMonth" Content="right" />
             </StackPanel>
         </Grid>
-        
+
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -58,7 +58,7 @@
             <TextBlock Grid.Column="6" Width="120" Text="Sunday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
             <ItemsControl Grid.Row="1" Grid.ColumnSpan="7"
-                  ItemsSource="{Binding ScheduleDisplayModel.ScheduleCellDisplayModels}">
+                  x:Name="ScheduleCellDisplayModels">
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -70,9 +70,27 @@
                     <DataTemplate>
                         <Border BorderBrush="LightBlue" BorderThickness="1">
                             <StackPanel Background="{Binding Converter={StaticResource CalendarCellBackgroundConverter}}">
-                                <TextBlock Text="{Binding FormattedDateString}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                <TextBlock Text="{Binding ShiftStartTime}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                <TextBlock Text="{Binding ShiftEndTime}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Day}" HorizontalAlignment="Left" Margin="5,2,0,0" />
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <ui:TextBlock Text="Shift start time: " />
+                                    <ui:TextBlock Grid.Column="1" Text="{Binding ShiftStartTime}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                                    <ui:TextBlock Grid.Row="1" Text="Shift end time: " />
+                                    <ui:TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ShiftEndTime}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Grid>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
