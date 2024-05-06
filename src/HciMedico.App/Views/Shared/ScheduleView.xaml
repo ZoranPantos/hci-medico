@@ -31,7 +31,7 @@
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,10">
                 <ui:Button x:Name="PreviousMonth" Icon="{ui:SymbolIcon ArrowLeft32}" />
                 
-                <ui:TextBlock x:Name="DisplayedMonthYearString" FontWeight="SemiBold" Width="100" FontSize="15"
+                <ui:TextBlock x:Name="DisplayedMonthYearString" FontWeight="SemiBold" Width="120" FontSize="15"
                               TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 
                 <ui:Button x:Name="NextMonth" Icon="{ui:SymbolIcon ArrowRight32}" />
