@@ -2,13 +2,82 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HciMedico.App.Views.Shared"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:local="clr-namespace:HciMedico.App.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
-    
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <ui:TextBlock Text="Shedule View - Not yet developed" />
+
+    <Grid>
+        <Grid.Resources>
+            <local:CalendarCellBackgroundConverter x:Key="CalendarCellBackgroundConverter" />
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ui:TextBlock Text="My Schedule" />
+            
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ui:Button x:Name="PreviousMonth" Content="left" />
+                <ui:TextBlock x:Name="DisplayedMonthYearString" />
+                <ui:Button x:Name="NextMonth" Content="right" />
+            </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Width="120" Text="Monday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Column="1" Width="120" Text="Tuesday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Column="2" Width="120" Text="Wednesday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Column="3" Width="120" Text="Thursday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Column="4" Width="120" Text="Friday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Column="5" Width="120" Text="Saturday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Column="6" Width="120" Text="Sunday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <ItemsControl Grid.Row="1" Grid.ColumnSpan="7"
+                  ItemsSource="{Binding ScheduleDisplayModel.ScheduleCellDisplayModels}">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="5" Columns="7" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="LightBlue" BorderThickness="1">
+                            <StackPanel Background="{Binding Converter={StaticResource CalendarCellBackgroundConverter}}">
+                                <TextBlock Text="{Binding FormattedDateString}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding ShiftStartTime}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding ShiftEndTime}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
     </Grid>
 </UserControl>
