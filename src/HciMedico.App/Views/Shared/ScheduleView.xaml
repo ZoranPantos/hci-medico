@@ -8,14 +8,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
 
-    <Grid>
+    <Grid Margin="10,5">
         <Grid.Resources>
             <local:CalendarCellBackgroundConverter x:Key="CalendarCellBackgroundConverter" />
+            <local:CalendarCellShiftLabelConverter x:Key="CalendarCellShiftLabelConverter" />
         </Grid.Resources>
         
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
         <Grid>
@@ -24,12 +26,15 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ui:TextBlock Text="My Schedule" />
+            <ui:TextBlock Text="Working Schedule" Style="{StaticResource HeadingStyle}" />
             
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <ui:Button x:Name="PreviousMonth" Content="left" />
-                <ui:TextBlock x:Name="DisplayedMonthYearString" />
-                <ui:Button x:Name="NextMonth" Content="right" />
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,10">
+                <ui:Button x:Name="PreviousMonth" Icon="{ui:SymbolIcon ArrowLeft32}" />
+                
+                <ui:TextBlock x:Name="DisplayedMonthYearString" FontWeight="SemiBold" Width="100" FontSize="15"
+                              TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                
+                <ui:Button x:Name="NextMonth" Icon="{ui:SymbolIcon ArrowRight32}" />
             </StackPanel>
         </Grid>
 
@@ -49,26 +54,37 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Width="120" Text="Monday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Grid.Column="1" Width="120" Text="Tuesday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Grid.Column="2" Width="120" Text="Wednesday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Grid.Column="3" Width="120" Text="Thursday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Grid.Column="4" Width="120" Text="Friday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Grid.Column="5" Width="120" Text="Saturday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Grid.Column="6" Width="120" Text="Sunday" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Column="0" Width="120" Text="Monday" Background="Beige"
+                       TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <ItemsControl Grid.Row="1" Grid.ColumnSpan="7"
-                  x:Name="ScheduleCellDisplayModels">
+            <TextBlock Grid.Column="1" Width="120" Text="Tuesday" Background="Beige"
+                       TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
+            <TextBlock Grid.Column="2" Width="120" Text="Wednesday" Background="Beige"
+                       TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Column="3" Width="120" Text="Thursday" Background="Beige"
+                       TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Column="4" Width="120" Text="Friday" Background="Beige"
+                       TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Column="5" Width="120" Text="Saturday" Background="Beige"
+                       TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Column="6" Width="120" Text="Sunday" Background="Beige"
+                       TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <ItemsControl x:Name="ScheduleCellDisplayModels" Grid.Row="1" Grid.ColumnSpan="7">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Rows="5" Columns="7" />
+                        <UniformGrid Rows="{Binding WeeksToShow}" Columns="{Binding WeekLength}" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="LightBlue" BorderThickness="1">
+                        <Border BorderBrush="Gray" BorderThickness="1">
                             <StackPanel Background="{Binding Converter={StaticResource CalendarCellBackgroundConverter}}">
                                 <TextBlock Text="{Binding Day}" HorizontalAlignment="Left" Margin="5,2,0,0" />
 
@@ -85,11 +101,19 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <ui:TextBlock Text="Shift start time: " />
-                                    <ui:TextBlock Grid.Column="1" Text="{Binding ShiftStartTime}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <ui:TextBlock Text="{Binding Converter={StaticResource CalendarCellShiftLabelConverter}, ConverterParameter='StartTime'}"
+                                                  Style="{StaticResource LabelCalendarCellBlockStyle}" />
+                                    
+                                    <ui:TextBlock Grid.Column="1" Text="{Binding ShiftStartTime}" 
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Style="{StaticResource DataCalendarCellBlockStyle}" />
 
-                                    <ui:TextBlock Grid.Row="1" Text="Shift end time: " />
-                                    <ui:TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ShiftEndTime}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <ui:TextBlock Grid.Row="1" Text="{Binding Converter={StaticResource CalendarCellShiftLabelConverter}, ConverterParameter='EndTime'}"
+                                                  Style="{StaticResource LabelCalendarCellBlockStyle}" />
+                                    
+                                    <ui:TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ShiftEndTime}"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Style="{StaticResource DataCalendarCellBlockStyle}" />
                                 </Grid>
                             </StackPanel>
                         </Border>
@@ -97,5 +121,13 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
+
+        <StackPanel Grid.Row="2" Margin="0,10" Orientation="Horizontal">
+            <ui:TextBlock Text="Completed shifts this month: " Style="{StaticResource LabelCalendarFooterTextBlockStyle}" />
+            <ui:TextBlock x:Name="CompletedShiftsMonth" Style="{StaticResource DataCalendarFooterTextBlockStyle}" />
+
+            <ui:TextBlock Text="Completed shifts this year: " Style="{StaticResource LabelCalendarFooterTextBlockStyle}" />
+            <ui:TextBlock x:Name="CompletedShiftsYear" Style="{StaticResource DataCalendarFooterTextBlockStyle}" />
+        </StackPanel>
     </Grid>
 </UserControl>

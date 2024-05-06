@@ -6,7 +6,11 @@ namespace HciMedico.App.ViewModels.Shared;
 public class ScheduleViewModel : Conductor<object>
 {
     private readonly int _weekLength = 7;
-    private readonly int _weeksToShow = 5;
+    public int WeekLength => _weekLength;
+
+    private readonly int _weeksToShow = 6;
+    public int WeeksToShow => _weeksToShow;
+
     private DateTime _displayedMonthYear = DateTime.Now;
 
     private BindableCollection<ScheduleCellDisplayModel> _scheduleCellDisplayModels = [];
@@ -31,8 +35,34 @@ public class ScheduleViewModel : Conductor<object>
         }
     }
 
+    private int _completedShiftsMonth;
+    public int CompletedShiftsMonth
+    {
+        get => _completedShiftsMonth;
+        set
+        {
+            _completedShiftsMonth = value;
+            NotifyOfPropertyChange(() => CompletedShiftsMonth);
+        }
+    }
+
+    private int _completedShiftsYear;
+    public int CompletedShiftsYear
+    {
+        get => _completedShiftsYear;
+        set
+        {
+            _completedShiftsYear = value;
+            NotifyOfPropertyChange(() => CompletedShiftsYear);
+        }
+    }
+
     public ScheduleViewModel()
     {
+        //Test
+        CompletedShiftsMonth = 6;
+        CompletedShiftsYear = 56;
+
         InitializeCalendar();
         InitializeShifts();
     }

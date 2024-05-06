@@ -41,6 +41,34 @@
                 <Setter Property="MinHeight" Value="25" />
                 <Setter Property="Margin" Value="0,0,20,0" />
             </Style>
+
+            <Style x:Key="LabelCalendarFooterTextBlockStyle" TargetType="ui:TextBlock">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Foreground" Value="#455A64" />
+                <Setter Property="MinHeight" Value="25" />
+                <Setter Property="Margin" Value="0,0,2,0" />
+            </Style>
+
+            <Style x:Key="DataCalendarFooterTextBlockStyle" TargetType="ui:TextBlock">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="MinHeight" Value="25" />
+                <Setter Property="Margin" Value="0,0,20,0" />
+            </Style>
+
+            <Style x:Key="LabelCalendarCellBlockStyle" TargetType="ui:TextBlock">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="#455A64" />
+                <Setter Property="MinHeight" Value="20" />
+                <Setter Property="Margin" Value="2,2,2,0" />
+            </Style>
+
+            <Style x:Key="DataCalendarCellBlockStyle" TargetType="ui:TextBlock">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="MinHeight" Value="20" />
+                <Setter Property="Margin" Value="0,2,0,0" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
