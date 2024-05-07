@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.Domain.Models.DisplayModels;
+using System.Globalization;
 
 namespace HciMedico.App.ViewModels.Shared;
 
@@ -11,7 +12,7 @@ public class ScheduleViewModel : Conductor<object>
     private readonly int _weeksToShow = 6;
     public int WeeksToShow => _weeksToShow;
 
-    private DateTime _displayedMonthYear = DateTime.Now;
+    private DateTime _displayedMonthYear = DateTime.Now.Date;
 
     private BindableCollection<ScheduleCellDisplayModel> _scheduleCellDisplayModels = [];
     public BindableCollection<ScheduleCellDisplayModel> ScheduleCellDisplayModels
@@ -82,8 +83,9 @@ public class ScheduleViewModel : Conductor<object>
             var firstDayOfMonth = new DateTime(_displayedMonthYear.Year, _displayedMonthYear.Month, 1);
             int daysInMonth = DateTime.DaysInMonth(_displayedMonthYear.Year, _displayedMonthYear.Month);
 
+            //Note: DayOfWeek.Sunday has index value of 0 in enum
             var firstDayOfWeek = firstDayOfMonth.DayOfWeek;
-            int firstDayOfWeekIndex = (int)firstDayOfWeek - 1;
+            int firstDayOfWeekIndex = firstDayOfWeek.Equals(DayOfWeek.Sunday) ? 6 : (int)firstDayOfWeek - 1;
 
             //Initialize first day in current month
             ScheduleCellDisplayModels[firstDayOfWeekIndex].IsSelectedMonth = true;
