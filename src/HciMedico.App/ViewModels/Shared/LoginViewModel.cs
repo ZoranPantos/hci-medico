@@ -69,7 +69,7 @@ public class LoginViewModel : Conductor<object>
             string passwordHash = HashingService.GetHashString(password);
 
             var existingUser = await _userAccountRepository
-                .FindAsync(user => user.Username.Equals(username), true, "Employee.Specializations,Employee.AssignedAppointments,Employee.Schedule.ScheduleCells");
+                .FindAsync(user => user.Username.Equals(username), true, "Employee.Specializations,Employee.AssignedAppointments,Employee.WorkSchedule.WorkShifts");
 
             if (existingUser is null || !passwordHash.Equals(existingUser.Password))
             {
