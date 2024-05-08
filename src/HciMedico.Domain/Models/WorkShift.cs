@@ -1,11 +1,11 @@
 ﻿namespace HciMedico.Domain.Models;
 
-public class ScheduleCell
+public class WorkShift
 {
     public int Id { get; set; }
 
-    public int ScheduleId { get; set; }
-    public Schedule Schedule { get; set; }
+    public int WorkScheduleId { get; set; }
+    public WorkSchedule WorkSchedule { get; set; }
 
     public DateTime DateTime { get; set; }
 

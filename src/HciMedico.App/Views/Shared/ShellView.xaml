@@ -44,8 +44,8 @@
                        BorderThickness="0"
                        HorizontalContentAlignment="Left" />
 
-            <ui:Button Content="My Schedule"
-                       x:Name="NavigateToMySchedule"
+            <ui:Button Content="Work Schedule"
+                       x:Name="NavigateToWorkSchedule"
                        Grid.Row="3"
                        Background="#C5CAE9"
                        Icon="{ui:SymbolIcon CalendarRtl28}"

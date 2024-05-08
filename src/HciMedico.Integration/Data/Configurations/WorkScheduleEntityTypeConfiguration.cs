@@ -4,17 +4,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HciMedico.Integration.Data.Configurations;
 
-public class ScheduleEntityTypeConfiguration : IEntityTypeConfiguration<Schedule>
+public class WorkScheduleEntityTypeConfiguration : IEntityTypeConfiguration<WorkSchedule>
 {
-    public void Configure(EntityTypeBuilder<Schedule> builder)
+    public void Configure(EntityTypeBuilder<WorkSchedule> builder)
     {
         builder.HasData(
-            new Schedule
+            new WorkSchedule
             {
                 Id = 1,
                 EmployeeId = 31
             },
-            new Schedule
+            new WorkSchedule
             {
                 Id = 2,
                 EmployeeId = 1

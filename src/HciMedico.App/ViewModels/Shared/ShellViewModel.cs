@@ -71,7 +71,7 @@ public class ShellViewModel : Conductor<object>
         }
     }
 
-    public async Task NavigateToMySchedule() => await ActivateItemAsync(new ScheduleViewModel());
+    public async Task NavigateToWorkSchedule() => await ActivateItemAsync(new WorkScheduleViewModel());
 
     public async Task Logout()
     {

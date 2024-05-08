@@ -20,5 +20,5 @@ public class Employee
     public double CurrentSalary { get; set; }
 
     public UserAccount UserAccount { get; set; }
-    public Schedule Schedule { get; set; }
+    public WorkSchedule WorkSchedule { get; set; }
 }

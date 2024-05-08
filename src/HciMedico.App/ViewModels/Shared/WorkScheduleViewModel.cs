@@ -1,10 +1,9 @@
 ﻿using Caliburn.Micro;
 using HciMedico.Domain.Models.DisplayModels;
-using System.Globalization;
 
 namespace HciMedico.App.ViewModels.Shared;
 
-public class ScheduleViewModel : Conductor<object>
+public class WorkScheduleViewModel : Conductor<object>
 {
     private readonly int _weekLength = 7;
     public int WeekLength => _weekLength;
@@ -58,7 +57,7 @@ public class ScheduleViewModel : Conductor<object>
         }
     }
 
-    public ScheduleViewModel()
+    public WorkScheduleViewModel()
     {
         InitializeCalendar();
         InitializeShifts();
@@ -119,7 +118,7 @@ public class ScheduleViewModel : Conductor<object>
 
     private void InitializeShifts()
     {
-        var scheduleCells = UserContext.CurrentUser?.Employee?.Schedule.ScheduleCells;
+        var scheduleCells = UserContext.CurrentUser?.Employee?.WorkSchedule.WorkShifts;
 
         if (scheduleCells is null) return;
 
@@ -141,7 +140,7 @@ public class ScheduleViewModel : Conductor<object>
 
     private void CalculateCompletedShifts()
     {
-        var scheduleCells = UserContext.CurrentUser?.Employee?.Schedule.ScheduleCells;
+        var scheduleCells = UserContext.CurrentUser?.Employee?.WorkSchedule.WorkShifts;
 
         if (scheduleCells is null) return;
 
