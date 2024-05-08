@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HciMedico.Integration.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class TestMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -116,6 +116,26 @@ namespace HciMedico.Integration.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Schedule",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Schedule", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Schedule_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "UserAccounts",
                 columns: table => new
                 {
@@ -184,6 +204,31 @@ namespace HciMedico.Integration.Migrations
                         name: "FK_HealthRecords_Patients_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ScheduleCell",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ScheduleId = table.Column<int>(type: "int", nullable: false),
+                    DateTime = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ShiftStartTime = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ShiftEndTime = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ScheduleCell", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ScheduleCell_Schedule_ScheduleId",
+                        column: x => x.ScheduleId,
+                        principalTable: "Schedule",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -264,40 +309,40 @@ namespace HciMedico.Integration.Migrations
                 columns: new[] { "Id", "CurrentSalary", "DateOfBirth", "Discriminator", "Education", "EmployedSince", "FirstName", "Gender", "LastName", "Uid", "Address_City", "Address_Country", "Address_Number", "Address_Street", "ContactInfo_Email", "ContactInfo_TelephoneNumber" },
                 values: new object[,]
                 {
-                    { 1, 2500.0, new DateTime(1985, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Marko", 0, "Petrović", "3921428382337", "Beograd", "Serbia", 10, "Kralja Milutina", "marko.petrovic@test.com", "+92526775846" },
-                    { 2, 2500.0, new DateTime(1980, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ana", 1, "Jovanović", "2852877060785", "Novi Sad", "Serbia", 15, "Bulevar Oslobođenja", "ana.jovanovic@test.com", "+64304424559" },
-                    { 3, 2500.0, new DateTime(1975, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nikola", 0, "Stojanović", "3409886966858", "Banja Luka", "Bosnia and Herzegovina", 8, "Kralja Petra I", "nikola.stojanovic@test.com", "+50868863770" },
-                    { 4, 2500.0, new DateTime(1972, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milan", 0, "Popović", "8641728475780", "Banja Luka", "Bosnia and Herzegovina", 22, "Vuka Karadžića", "milan.popovic@test.com", "+76848421666" },
-                    { 5, 2500.0, new DateTime(1990, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jovana", 1, "Nikolić", "4622395228536", "Beograd", "Serbia", 17, "Kneza Miloša", "jovana.nikolic@test.com", "+81858268785" },
-                    { 6, 2500.0, new DateTime(1983, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Stefan", 0, "Ilić", "9510184849426", "Prijedor", "Bosnia and Herzegovina", 9, "Nikole Tesle", "stefan.ilic@test.com", "+97592575982" },
-                    { 7, 2500.0, new DateTime(1978, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Marija", 1, "Pavlović", "3661447676463", "Novi Sad", "Serbia", 14, "Jovana Cvijića", "marija.pavlovic@test.com", "+53438070239" },
-                    { 8, 2500.0, new DateTime(1968, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Aleksandar", 0, "Đorđević", "3315848383688", "Bijeljina", "Bosnia and Herzegovina", 6, "Vojvode Živojina Mišića", "aleksandar.djordjevic@test.com", "+84041060422" },
-                    { 9, 2500.0, new DateTime(1986, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ana", 1, "Janković", "8438012359103", "Banja Luka", "Bosnia and Herzegovina", 11, "Branka Ćopića", "ana.jankovic@test.com", "+86853351441" },
-                    { 10, 2500.0, new DateTime(1970, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Petar", 0, "Stanković", "9852684965196", "Beograd", "Serbia", 20, "Vojislava Ilića", "petar.stankovic@test.com", "+63885097521" },
-                    { 11, 2500.0, new DateTime(1982, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jelena", 1, "Petrović", "3232083734562", "Novi Sad", "Serbia", 19, "Aleksandra Puškina", "jelena.petrovic@test.com", "+27550936404" },
-                    { 12, 2500.0, new DateTime(1974, 8, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dragan", 0, "Kovačević", "4227122087765", "Banja Luka", "Bosnia and Herzegovina", 7, "Đure Jakšića", "dragan.kovacevic@test.com", "+13512238640" },
-                    { 13, 2500.0, new DateTime(1993, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milica", 1, "Ivanović", "5355396389865", "Novi Sad", "Serbia", 16, "Kraljice Natalije", "milica.ivanovic@test.com", "+35084077938" },
-                    { 14, 2500.0, new DateTime(1965, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nemanja", 0, "Jović", "6218552195586", "Prijedor", "Bosnia and Herzegovina", 5, "Stevana Mokranjca", "nemanja.jovic@test.com", "+35892462964" },
-                    { 15, 2500.0, new DateTime(1988, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mina", 1, "Pavlović", "5280058356465", "Beograd", "Serbia", 18, "Jug Bogdanova", "mina.pavlovic@test.com", "+72278619229" },
-                    { 16, 2500.0, new DateTime(1971, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Vladimir", 0, "Stanišić", "7594452638593", "Bijeljina", "Bosnia and Herzegovina", 4, "Desanke Maksimović", "vladimir.stanisic@test.com", "+81955539719" },
-                    { 17, 2500.0, new DateTime(1984, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jovanka", 1, "Đorđević", "1995926219222", "Beograd", "Serbia", 11, "Kneza Miloša", "jovanka.djordjevic@test.com", "+28410047475" },
-                    { 18, 2500.0, new DateTime(1976, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Branimir", 0, "Nikolić", "4212121919541", "Banja Luka", "Bosnia and Herzegovina", 3, "Svetozara Markovića", "branimir.nikolic@test.com", "+93514487896" },
-                    { 19, 2500.0, new DateTime(1980, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ana", 1, "Janković", "8647014116720", "Beograd", "Serbia", 7, "Njegoševa", "ana.jankovic@test.com", "+52084554549" },
-                    { 20, 2500.0, new DateTime(1963, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nikola", 0, "Stanković", "2204306841193", "Banja Luka", "Bosnia and Herzegovina", 2, "Vojvode Stepe", "nikola.stankovic@test.com", "+22820890117" },
-                    { 21, 2500.0, new DateTime(1981, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sanja", 1, "Petrović", "4976151784742", "Novi Sad", "Serbia", 10, "Kralja Milutina", "sanja.petrovic@test.com", "+81603319421" },
-                    { 22, 2500.0, new DateTime(1979, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Miloš", 0, "Jovanović", "1431995226552", "Prijedor", "Bosnia and Herzegovina", 15, "Bulevar Oslobođenja", "milos.jovanovic@test.com", "+43436571237" },
-                    { 23, 2500.0, new DateTime(1962, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tatjana", 1, "Stojanović", "7327588438110", "Novi Sad", "Serbia", 8, "Kralja Petra I", "tatjana.stojanovic@test.com", "+86990888721" },
-                    { 24, 2500.0, new DateTime(1995, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Vladimir", 0, "Stanković", "5042481495581", "Bijeljina", "Bosnia and Herzegovina", 22, "Vuka Karadžića", "vladimir.stankovic@test.com", "+86456187249" },
-                    { 25, 2500.0, new DateTime(1973, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ivana", 1, "Janković", "2853535433103", "Beograd", "Serbia", 11, "Branka Ćopića", "ivana.jankovic@test.com", "+55222095055" },
-                    { 26, 2500.0, new DateTime(1984, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nenad", 0, "Petrović", "8905172867227", "Banja Luka", "Bosnia and Herzegovina", 7, "Đure Jakšića", "nenad.petrovic@test.com", "+21067830574" },
-                    { 27, 2500.0, new DateTime(1967, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milica", 1, "Ilić", "5971700382796", "Novi Sad", "Serbia", 16, "Kraljice Natalije", "milica.ilic@test.com", "+88903036820" },
-                    { 28, 2500.0, new DateTime(1979, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Vladan", 0, "Đorđević", "3167337212933", "Banja Luka", "Bosnia and Herzegovina", 5, "Stevana Mokranjca", "vladan.djordjevic@test.com", "+71364578886" },
-                    { 29, 2500.0, new DateTime(1982, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sara", 1, "Pavlović", "7337591336388", "Beograd", "Serbia", 18, "Jug Bogdanova", "sara.pavlovic@test.com", "+80745291072" },
-                    { 30, 2500.0, new DateTime(1986, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nemanja", 0, "Stanišić", "5679551069941", "Banja Luka", "Bosnia and Herzegovina", 4, "Desanke Maksimović", "nemanja.stanisic@test.com", "+94384643088" },
-                    { 31, 1500.0, new DateTime(1998, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "CounterWorker", "Medical High School, Banja Luka", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ksenija", 1, "Marković", "5869020032875", "Banja Luka", "Bosnia and Herzegovina", 10, "Svetog Save", "ksenija.markovic@test.com", "+81900398116" },
-                    { 32, 1500.0, new DateTime(1995, 7, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "CounterWorker", "Medical High School, Banja Luka", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milica", 1, "Simeunović", "5582070442249", "Banja Luka", "Bosnia and Herzegovina", 7, "Vojvode Putnika", "milica.simeunovic@test.com", "+66837161156" },
-                    { 33, 1500.0, new DateTime(1992, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "CounterWorker", "Medical High School, Banja Luka", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Petar", 0, "Tomić", "9768571063623", "Banja Luka", "Bosnia and Herzegovina", 22, "Kralja Petra I", "petar.tomic@test.com", "+96229466108" },
-                    { 34, 1500.0, new DateTime(1991, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "CounterWorker", "Medical High School, Banja Luka", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ana", 1, "Jovanović", "9137625729750", "Banja Luka", "Bosnia and Herzegovina", 33, "Desanke Maksimović", "ana.jovanovic@test.com", "+62182044765" }
+                    { 1, 2500.0, new DateTime(1985, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Marko", 0, "Petrović", "3358783480816", "Beograd", "Serbia", 10, "Kralja Milutina", "marko.petrovic@test.com", "+91473029636" },
+                    { 2, 2500.0, new DateTime(1980, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ana", 1, "Jovanović", "6388926109944", "Novi Sad", "Serbia", 15, "Bulevar Oslobođenja", "ana.jovanovic@test.com", "+42031326088" },
+                    { 3, 2500.0, new DateTime(1975, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nikola", 0, "Stojanović", "4860558536614", "Banja Luka", "Bosnia and Herzegovina", 8, "Kralja Petra I", "nikola.stojanovic@test.com", "+37319044559" },
+                    { 4, 2500.0, new DateTime(1972, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milan", 0, "Popović", "6610827389083", "Banja Luka", "Bosnia and Herzegovina", 22, "Vuka Karadžića", "milan.popovic@test.com", "+90933011604" },
+                    { 5, 2500.0, new DateTime(1990, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jovana", 1, "Nikolić", "2948285839354", "Beograd", "Serbia", 17, "Kneza Miloša", "jovana.nikolic@test.com", "+98819536867" },
+                    { 6, 2500.0, new DateTime(1983, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Stefan", 0, "Ilić", "1758251492269", "Prijedor", "Bosnia and Herzegovina", 9, "Nikole Tesle", "stefan.ilic@test.com", "+85308333842" },
+                    { 7, 2500.0, new DateTime(1978, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Marija", 1, "Pavlović", "8396530092816", "Novi Sad", "Serbia", 14, "Jovana Cvijića", "marija.pavlovic@test.com", "+81884523483" },
+                    { 8, 2500.0, new DateTime(1968, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Aleksandar", 0, "Đorđević", "3402398708660", "Bijeljina", "Bosnia and Herzegovina", 6, "Vojvode Živojina Mišića", "aleksandar.djordjevic@test.com", "+88437655339" },
+                    { 9, 2500.0, new DateTime(1986, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ana", 1, "Janković", "9795601335987", "Banja Luka", "Bosnia and Herzegovina", 11, "Branka Ćopića", "ana.jankovic@test.com", "+60504489517" },
+                    { 10, 2500.0, new DateTime(1970, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Petar", 0, "Stanković", "8218937405406", "Beograd", "Serbia", 20, "Vojislava Ilića", "petar.stankovic@test.com", "+10091954897" },
+                    { 11, 2500.0, new DateTime(1982, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jelena", 1, "Petrović", "1419469072479", "Novi Sad", "Serbia", 19, "Aleksandra Puškina", "jelena.petrovic@test.com", "+30371058074" },
+                    { 12, 2500.0, new DateTime(1974, 8, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dragan", 0, "Kovačević", "4440680291132", "Banja Luka", "Bosnia and Herzegovina", 7, "Đure Jakšića", "dragan.kovacevic@test.com", "+76672095265" },
+                    { 13, 2500.0, new DateTime(1993, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milica", 1, "Ivanović", "5082803473263", "Novi Sad", "Serbia", 16, "Kraljice Natalije", "milica.ivanovic@test.com", "+57125352935" },
+                    { 14, 2500.0, new DateTime(1965, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nemanja", 0, "Jović", "7463083875297", "Prijedor", "Bosnia and Herzegovina", 5, "Stevana Mokranjca", "nemanja.jovic@test.com", "+49096957895" },
+                    { 15, 2500.0, new DateTime(1988, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mina", 1, "Pavlović", "2428720240732", "Beograd", "Serbia", 18, "Jug Bogdanova", "mina.pavlovic@test.com", "+58234557421" },
+                    { 16, 2500.0, new DateTime(1971, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Vladimir", 0, "Stanišić", "7739502013422", "Bijeljina", "Bosnia and Herzegovina", 4, "Desanke Maksimović", "vladimir.stanisic@test.com", "+56960499193" },
+                    { 17, 2500.0, new DateTime(1984, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jovanka", 1, "Đorđević", "1749426919274", "Beograd", "Serbia", 11, "Kneza Miloša", "jovanka.djordjevic@test.com", "+78964892622" },
+                    { 18, 2500.0, new DateTime(1976, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Branimir", 0, "Nikolić", "7796226519643", "Banja Luka", "Bosnia and Herzegovina", 3, "Svetozara Markovića", "branimir.nikolic@test.com", "+78706917016" },
+                    { 19, 2500.0, new DateTime(1980, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ana", 1, "Janković", "9110328531262", "Beograd", "Serbia", 7, "Njegoševa", "ana.jankovic@test.com", "+94479527338" },
+                    { 20, 2500.0, new DateTime(1963, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nikola", 0, "Stanković", "9743661116532", "Banja Luka", "Bosnia and Herzegovina", 2, "Vojvode Stepe", "nikola.stankovic@test.com", "+27317322420" },
+                    { 21, 2500.0, new DateTime(1981, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sanja", 1, "Petrović", "1796386546741", "Novi Sad", "Serbia", 10, "Kralja Milutina", "sanja.petrovic@test.com", "+54537638362" },
+                    { 22, 2500.0, new DateTime(1979, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Miloš", 0, "Jovanović", "4322322289425", "Prijedor", "Bosnia and Herzegovina", 15, "Bulevar Oslobođenja", "milos.jovanovic@test.com", "+18049428535" },
+                    { 23, 2500.0, new DateTime(1962, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tatjana", 1, "Stojanović", "5434221299986", "Novi Sad", "Serbia", 8, "Kralja Petra I", "tatjana.stojanovic@test.com", "+17853097717" },
+                    { 24, 2500.0, new DateTime(1995, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Vladimir", 0, "Stanković", "8902590904739", "Bijeljina", "Bosnia and Herzegovina", 22, "Vuka Karadžića", "vladimir.stankovic@test.com", "+18627356711" },
+                    { 25, 2500.0, new DateTime(1973, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ivana", 1, "Janković", "3908609329389", "Beograd", "Serbia", 11, "Branka Ćopića", "ivana.jankovic@test.com", "+38649552698" },
+                    { 26, 2500.0, new DateTime(1984, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nenad", 0, "Petrović", "5703312309754", "Banja Luka", "Bosnia and Herzegovina", 7, "Đure Jakšića", "nenad.petrovic@test.com", "+54957831669" },
+                    { 27, 2500.0, new DateTime(1967, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milica", 1, "Ilić", "1002353055730", "Novi Sad", "Serbia", 16, "Kraljice Natalije", "milica.ilic@test.com", "+18460033952" },
+                    { 28, 2500.0, new DateTime(1979, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Banja Luka, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Vladan", 0, "Đorđević", "7319457254379", "Banja Luka", "Bosnia and Herzegovina", 5, "Stevana Mokranjca", "vladan.djordjevic@test.com", "+85651075574" },
+                    { 29, 2500.0, new DateTime(1982, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Belgrade, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sara", 1, "Pavlović", "7161548541624", "Beograd", "Serbia", 18, "Jug Bogdanova", "sara.pavlovic@test.com", "+77680777362" },
+                    { 30, 2500.0, new DateTime(1986, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Doctor", "University of Novi Sad, Medical Faculty", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nemanja", 0, "Stanišić", "7287163899560", "Banja Luka", "Bosnia and Herzegovina", 4, "Desanke Maksimović", "nemanja.stanisic@test.com", "+93248068728" },
+                    { 31, 1500.0, new DateTime(1998, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "CounterWorker", "Medical High School, Banja Luka", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ksenija", 1, "Marković", "7479399453236", "Banja Luka", "Bosnia and Herzegovina", 10, "Svetog Save", "ksenija.markovic@test.com", "+61413272866" },
+                    { 32, 1500.0, new DateTime(1995, 7, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "CounterWorker", "Medical High School, Banja Luka", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milica", 1, "Simeunović", "4029972143070", "Banja Luka", "Bosnia and Herzegovina", 7, "Vojvode Putnika", "milica.simeunovic@test.com", "+96171307016" },
+                    { 33, 1500.0, new DateTime(1992, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "CounterWorker", "Medical High School, Banja Luka", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Petar", 0, "Tomić", "4530743617802", "Banja Luka", "Bosnia and Herzegovina", 22, "Kralja Petra I", "petar.tomic@test.com", "+58245059005" },
+                    { 34, 1500.0, new DateTime(1991, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "CounterWorker", "Medical High School, Banja Luka", new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ana", 1, "Jovanović", "8905375478159", "Banja Luka", "Bosnia and Herzegovina", 33, "Desanke Maksimović", "ana.jovanovic@test.com", "+38818539169" }
                 });
 
             migrationBuilder.InsertData(
@@ -563,16 +608,16 @@ namespace HciMedico.Integration.Migrations
                 columns: new[] { "Id", "FirstName", "LastName", "Uid", "Address_City", "Address_Country", "Address_Number", "Address_Street", "ContactInfo_Email", "ContactInfo_TelephoneNumber" },
                 values: new object[,]
                 {
-                    { 1, "Boris", "Borisavljević", "89892056240", "Banja Luka", "Bosnia and Herzegovina", 1, "Kralja Milutina", "boris.borisavljevic@test.com", "+46582407105" },
-                    { 2, "Saška", "Mačetić", "92830893950", "Banja Luka", "Bosnia and Herzegovina", 2, "Novska", "saska.macetic@test.com", "+82883939570" },
-                    { 3, "Miloš", "Milosavljević", "28531119941", "Banja Luka", "Bosnia and Herzegovina", 3, "Milana Jazbeca", "milos.milosevic@test.com", "+83759636046" },
-                    { 4, "Ana", "Stanojević", "21600587674", "Banja Luka", "Bosnia and Herzegovina", 4, "Krfska", "ana.stanojevic@test.com", "+49557199941" },
-                    { 5, "Darko", "Darković", "63006499609", "Banja Luka", "Bosnia and Herzegovina", 5, "Miše Kovača", "darko.darkovic@test.com", "+37280224839" },
-                    { 6, "Jovana", "Jovanović", "81286725914", "Banja Luka", "Bosnia and Herzegovina", 6, "Davida Štrbca", "jovana.jovanovic@test.com", "+71697220704" },
-                    { 7, "Nikola", "Nikolić", "97157587487", "Banja Luka", "Bosnia and Herzegovina", 7, "Ranka Šipke", "nikola.nikolic@test.com", "+90949098614" },
-                    { 8, "David", "Davidović", "99431024589", "Banja Luka", "Bosnia and Herzegovina", 8, "Karađorđeva", "david.davidovic@test.com", "+88623198675" },
-                    { 9, "Stana", "Stanojević", "43087298404", "Banja Luka", "Bosnia and Herzegovina", 9, "Leskovačka", "stana.stanojevic@test.com", "+22589093350" },
-                    { 10, "Goran", "Predojević", "68802090298", "Banja Luka", "Bosnia and Herzegovina", 10, "Krajiška", "goran.predojevic@test.com", "+95564706835" }
+                    { 1, "Boris", "Borisavljević", "37395931262", "Banja Luka", "Bosnia and Herzegovina", 1, "Kralja Milutina", "boris.borisavljevic@test.com", "+51920034333" },
+                    { 2, "Saška", "Mačetić", "51462126089", "Banja Luka", "Bosnia and Herzegovina", 2, "Novska", "saska.macetic@test.com", "+23633833688" },
+                    { 3, "Miloš", "Milosavljević", "70066106032", "Banja Luka", "Bosnia and Herzegovina", 3, "Milana Jazbeca", "milos.milosevic@test.com", "+81273751275" },
+                    { 4, "Ana", "Stanojević", "30825583797", "Banja Luka", "Bosnia and Herzegovina", 4, "Krfska", "ana.stanojevic@test.com", "+62349544589" },
+                    { 5, "Darko", "Darković", "99180500966", "Banja Luka", "Bosnia and Herzegovina", 5, "Miše Kovača", "darko.darkovic@test.com", "+78505634430" },
+                    { 6, "Jovana", "Jovanović", "81448159619", "Banja Luka", "Bosnia and Herzegovina", 6, "Davida Štrbca", "jovana.jovanovic@test.com", "+39311672669" },
+                    { 7, "Nikola", "Nikolić", "37261125902", "Banja Luka", "Bosnia and Herzegovina", 7, "Ranka Šipke", "nikola.nikolic@test.com", "+23560907116" },
+                    { 8, "David", "Davidović", "26155079254", "Banja Luka", "Bosnia and Herzegovina", 8, "Karađorđeva", "david.davidovic@test.com", "+13046658898" },
+                    { 9, "Stana", "Stanojević", "51649396663", "Banja Luka", "Bosnia and Herzegovina", 9, "Leskovačka", "stana.stanojevic@test.com", "+96968043979" },
+                    { 10, "Goran", "Predojević", "51327312576", "Banja Luka", "Bosnia and Herzegovina", 10, "Krajiška", "goran.predojevic@test.com", "+31907360333" }
                 });
 
             migrationBuilder.InsertData(
@@ -601,6 +646,15 @@ namespace HciMedico.Integration.Migrations
                     { 8, 7, new DateTime(1968, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 8 },
                     { 9, 4, new DateTime(1969, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 9 },
                     { 10, 5, new DateTime(1970, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 10 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Schedule",
+                columns: new[] { "Id", "EmployeeId" },
+                values: new object[,]
+                {
+                    { 1, 31 },
+                    { 2, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -723,6 +777,37 @@ namespace HciMedico.Integration.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "ScheduleCell",
+                columns: new[] { "Id", "DateTime", "ScheduleId", "ShiftEndTime", "ShiftStartTime" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 2, new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 3, new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 4, new DateTime(2024, 5, 15, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 5, new DateTime(2024, 5, 16, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 6, new DateTime(2024, 5, 24, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 7, new DateTime(2024, 6, 15, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 8, new DateTime(2024, 6, 16, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 9, new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 10, new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 11, new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 12, new DateTime(2024, 4, 24, 0, 0, 0, 0, DateTimeKind.Local), 1, "4 PM", "8 AM" },
+                    { 13, new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 14, new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 15, new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 16, new DateTime(2024, 5, 15, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 17, new DateTime(2024, 5, 16, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 18, new DateTime(2024, 5, 24, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 19, new DateTime(2024, 6, 15, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 20, new DateTime(2024, 6, 16, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 21, new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 22, new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 23, new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" },
+                    { 24, new DateTime(2024, 4, 24, 0, 0, 0, 0, DateTimeKind.Local), 2, "4 PM", "8 AM" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "healthrecord_medicalcondition",
                 columns: new[] { "HealthRecordId", "MedicalConditionId", "Status" },
                 values: new object[,]
@@ -779,6 +864,17 @@ namespace HciMedico.Integration.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Schedule_EmployeeId",
+                table: "Schedule",
+                column: "EmployeeId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ScheduleCell_ScheduleId",
+                table: "ScheduleCell",
+                column: "ScheduleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserAccounts_EmployeeId",
                 table: "UserAccounts",
                 column: "EmployeeId",
@@ -798,6 +894,9 @@ namespace HciMedico.Integration.Migrations
                 name: "healthrecord_medicalcondition");
 
             migrationBuilder.DropTable(
+                name: "ScheduleCell");
+
+            migrationBuilder.DropTable(
                 name: "UserAccounts");
 
             migrationBuilder.DropTable(
@@ -810,10 +909,13 @@ namespace HciMedico.Integration.Migrations
                 name: "MedicalConditions");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "Schedule");
 
             migrationBuilder.DropTable(
                 name: "Patients");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
         }
     }
 }

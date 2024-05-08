@@ -60,12 +60,9 @@ public class ScheduleViewModel : Conductor<object>
 
     public ScheduleViewModel()
     {
-        //Test
-        CompletedShiftsMonth = 6;
-        CompletedShiftsYear = 56;
-
         InitializeCalendar();
         InitializeShifts();
+        CalculateCompletedShifts();
     }
 
     private void InitializeCalendar()
@@ -117,7 +114,6 @@ public class ScheduleViewModel : Conductor<object>
         }
         catch (Exception ex)
         {
-
         }
     }
 
@@ -143,6 +139,43 @@ public class ScheduleViewModel : Conductor<object>
         }
     }
 
+    private void CalculateCompletedShifts()
+    {
+        var scheduleCells = UserContext.CurrentUser?.Employee?.Schedule.ScheduleCells;
+
+        if (scheduleCells is null) return;
+
+        int completedShiftsYear = 0;
+        int completedShiftsMonth = 0;
+
+        var firstDayOfSelectedMonth = new DateTime(_displayedMonthYear.Year, _displayedMonthYear.Month, 1);
+        var firstDayOfFollowingMonth = new DateTime(_displayedMonthYear.Year, _displayedMonthYear.AddMonths(1).Month, 1);
+
+        var firstDayOfSelectedYear = new DateTime(_displayedMonthYear.Year, 1, 1);
+        var firstDayOfFollowingYear = new DateTime(_displayedMonthYear.AddYears(1).Year, 1, 1);
+
+        var today = DateTime.Today;
+
+        while (firstDayOfSelectedYear.CompareTo(firstDayOfFollowingYear) < 0 && firstDayOfSelectedYear.CompareTo(today) < 0)
+        {
+            if (scheduleCells.Any(cell => cell.DateTime == firstDayOfSelectedYear && !string.IsNullOrEmpty(cell.ShiftEndTime)))
+            {
+                completedShiftsYear++;
+            }
+
+            if (firstDayOfSelectedYear.CompareTo(firstDayOfSelectedMonth) >= 0 && firstDayOfSelectedYear.CompareTo(firstDayOfFollowingMonth) < 0)
+            {
+                if (scheduleCells.Any(cell => cell.DateTime == firstDayOfSelectedYear && !string.IsNullOrEmpty(cell.ShiftEndTime)))
+                    completedShiftsMonth++;
+            }
+
+            firstDayOfSelectedYear = firstDayOfSelectedYear.AddDays(1);
+        }
+
+        CompletedShiftsYear = completedShiftsYear;
+        CompletedShiftsMonth = completedShiftsMonth;
+    }
+
     public void NextMonth()
     {
         _displayedMonthYear = _displayedMonthYear.AddMonths(1);
@@ -150,6 +183,7 @@ public class ScheduleViewModel : Conductor<object>
 
         InitializeCalendar();
         InitializeShifts();
+        CalculateCompletedShifts();
     }
 
     public void PreviousMonth()
@@ -159,5 +193,6 @@ public class ScheduleViewModel : Conductor<object>
 
         InitializeCalendar();
         InitializeShifts();
+        CalculateCompletedShifts();
     }
 }

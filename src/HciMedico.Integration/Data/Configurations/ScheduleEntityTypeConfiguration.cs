@@ -13,6 +13,11 @@ public class ScheduleEntityTypeConfiguration : IEntityTypeConfiguration<Schedule
             {
                 Id = 1,
                 EmployeeId = 31
+            },
+            new Schedule
+            {
+                Id = 2,
+                EmployeeId = 1
             }
         );
     }
