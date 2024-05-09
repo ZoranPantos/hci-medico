@@ -61,8 +61,8 @@ public class PatientDetailsViewModel : Conductor<object>
         }
     }
 
-    public DateTime _dateOfBirth = DateTime.MinValue;
-    public DateTime DateOfBirth
+    public DateTime? _dateOfBirth = DateTime.MinValue;
+    public DateTime? DateOfBirth
     {
         get => _dateOfBirth;
         set
@@ -196,6 +196,7 @@ public class PatientDetailsViewModel : Conductor<object>
         LastName = patient?.LastName ?? DisplayMessages.NoData;
         UID = patient?.Uid ?? DisplayMessages.NoData;
         Gender = patient?.HealthRecord?.Gender.ToString() ?? DisplayMessages.NoData;
+        DateOfBirth = patient?.HealthRecord?.DateOfBirth ?? DateTime.MinValue;
         Country = patient?.Address?.Country ?? DisplayMessages.NoData;
         City = patient?.Address?.City ?? DisplayMessages.NoData;
         Street = patient?.Address?.Street ?? DisplayMessages.NoData;
@@ -207,7 +208,8 @@ public class PatientDetailsViewModel : Conductor<object>
         NextAppointmentDetails = GetAppointmentInfo(patient, AppointmentStatus.Scheduled) ?? DisplayMessages.NoData;
     }
 
-    public async Task EditDetails() => await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(patient));
+    public async Task EditDetails() =>
+        await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(patient, _patientRepository));
 
     public void ScheduleAppointment()
     {

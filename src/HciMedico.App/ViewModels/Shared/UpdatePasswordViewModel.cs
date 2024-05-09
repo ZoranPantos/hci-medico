@@ -106,7 +106,7 @@ public class UpdatePasswordViewModel : Conductor<object>
         }
         catch (Exception)
         {
-
+            ValidationMessage = "Failed to update password";
         }
     }
 
