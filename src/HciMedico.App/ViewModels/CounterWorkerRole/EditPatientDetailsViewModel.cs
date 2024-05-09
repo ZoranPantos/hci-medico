@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
+using HciMedico.Integration.Data.Repositories;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 
@@ -8,6 +9,9 @@ namespace HciMedico.App.ViewModels.CounterWorkerRole;
 
 public class EditPatientDetailsViewModel : Conductor<object>
 {
+    private Patient? _patient;
+    private readonly IRepository<Patient> _patientRepository;
+
     private string _firstName = string.Empty;
     public string FirstName
     {
@@ -142,28 +146,29 @@ public class EditPatientDetailsViewModel : Conductor<object>
         }
     }
 
-    public EditPatientDetailsViewModel(Patient? patient)
+    public EditPatientDetailsViewModel(Patient? patient, IRepository<Patient> patientRepository)
     {
-        ArgumentNullException.ThrowIfNull(patient);
+        _patient = patient ?? throw new ArgumentNullException(nameof(patient));
+        _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
 
-        InitializeViewModel(patient);
+        InitializeViewModel();
     }
 
-    private void InitializeViewModel(Patient patient)
+    private void InitializeViewModel()
     {
-        FirstName = patient.FirstName;
-        LastName = patient.LastName;
-        Uid = patient.Uid;
-        SelectedGender = patient.HealthRecord.Gender;
-        DateOfBirth = patient.HealthRecord.DateOfBirth;
-        Country = patient.Address.Country;
-        City = patient.Address.City;
-        Street = patient.Address.Street;
+        FirstName = _patient!.FirstName;
+        LastName = _patient.LastName;
+        Uid = _patient.Uid;
+        SelectedGender = _patient.HealthRecord.Gender;
+        DateOfBirth = _patient.HealthRecord.DateOfBirth;
+        Country = _patient.Address.Country;
+        City = _patient.Address.City;
+        Street = _patient.Address.Street;
 
         //TODO: Number needs to be changed to string in the model
-        Number = patient.Address.Number.ToString();
-        Email = patient.ContactInfo.Email;
-        TelephoneNumber = patient.ContactInfo.TelephoneNumber;
+        Number = _patient.Address.Number.ToString();
+        Email = _patient.ContactInfo.Email;
+        TelephoneNumber = _patient.ContactInfo.TelephoneNumber;
     }
 
     public bool CanSave(
@@ -185,7 +190,7 @@ public class EditPatientDetailsViewModel : Conductor<object>
             !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(telephoneNumber);
     }
 
-    public void Save(
+    public async Task Save(
         string firstName,
         string lastName,
         string uid,
@@ -198,49 +203,73 @@ public class EditPatientDetailsViewModel : Conductor<object>
         string email,
         string telephoneNumber)
     {
-        if (!ValidateFirstAndLastName(firstName, lastName))
+        try
         {
-            ValidationMessage = "Invalid first or last name value. Please check for non-letter values and leading/trailing whitespaces";
-            return;
-        }
+            if (!ValidateFirstAndLastName(firstName, lastName))
+            {
+                ValidationMessage = "Invalid first or last name value. Please check for non-letter values and leading/trailing whitespaces";
+                return;
+            }
 
-        if (!ValidateUID(uid))
-        {
-            ValidationMessage = "Invalid UID value. UID can only contain digits";
-            return;
-        }
+            if (!ValidateUID(uid))
+            {
+                ValidationMessage = "Invalid UID value. UID can only contain digits";
+                return;
+            }
 
-        if (!ValidateDateOfBirth(dateOfBirth))
-        {
-            ValidationMessage = "Invalid date of birth. Selected date is either too old or is in the future";
-            return;
-        }
+            if (!ValidateDateOfBirth(dateOfBirth))
+            {
+                ValidationMessage = "Invalid date of birth. Selected date is either too old or is in the future";
+                return;
+            }
 
-        if (!ValidateCountryCityAndStreetName(country, city, street))
-        {
-            ValidationMessage = "Invalid county, city or a street name. Please check for non-letter values and leading/trailing whitespaces";
-            return;
-        }
+            if (!ValidateCountryCityAndStreetName(country, city, street))
+            {
+                ValidationMessage = "Invalid county, city or a street name. Please check for non-letter values and leading/trailing whitespaces";
+                return;
+            }
 
-        if (!ValidateStreetNumber(number))
-        {
-            ValidationMessage = "Invalid street number value. Street number can be composed only of positive numbers and letters";
-            return;
-        }
+            if (!ValidateStreetNumber(number))
+            {
+                ValidationMessage = "Invalid street number value. Street number can be composed only of positive numbers and letters";
+                return;
+            }
 
-        if (!ValidateEmail(email))
-        {
-            ValidationMessage = "Invalid email format";
-            return;
-        }
-        
-        if (!ValidatePhoneNumber(telephoneNumber))
-        {
-            ValidationMessage = "Invalid phone number. Try to input full number format";
-            return;
-        }
+            if (!ValidateEmail(email))
+            {
+                ValidationMessage = "Invalid email format";
+                return;
+            }
 
-        ValidationMessage = "ALL IS GOOD";
+            if (!ValidatePhoneNumber(telephoneNumber))
+            {
+                ValidationMessage = "Invalid phone number. Try to input full number format";
+                return;
+            }
+
+            _patient!.FirstName = firstName;
+            _patient.LastName = lastName;
+            _patient.Uid = uid;
+            _patient.HealthRecord.Gender = selectedGender;
+            _patient.HealthRecord.DateOfBirth = dateOfBirth;
+            _patient.Address.Country = country;
+            _patient.Address.City = city;
+            _patient.Address.Street = street;
+
+            //TODO: Number needs to be string, otherwise risking exceptions
+            _patient.Address.Number = int.Parse(number);
+
+            _patient.ContactInfo.Email = email;
+            _patient.ContactInfo.TelephoneNumber = telephoneNumber;
+
+            await _patientRepository.Update(_patient);
+
+            await TryCloseAsync();
+        }
+        catch (Exception)
+        {
+            ValidationMessage = "Failed to update patient details";
+        }
     }
 
     public async Task Cancel() => await TryCloseAsync();
@@ -264,8 +293,7 @@ public class EditPatientDetailsViewModel : Conductor<object>
 
     private bool ValidatePhoneNumber(string telephoneNumber)
     {
-        string pattern = @"\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8
-            [6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\W*\d\W*\d\W*\d\W*\d\W*\d\W*\d\W*\d\W*(\d{1,2})$";
+        string pattern = @"^\s*(?:\+?([1-9]\d{1,14}))?(?! )[-\.]?(\d{3})[-\.]?(\d{3})(?!\s)$";
         
         var regex = new Regex(pattern);
 
@@ -285,7 +313,7 @@ public class EditPatientDetailsViewModel : Conductor<object>
 
     private bool ValidateFirstAndLastName(string firstName, string lastName)
     {
-        string pattern = "^[a-zA-Z]+(?:\\s+[a-zA-Z]+)*$";
+        string pattern = @"^[^\p{C}\s]+(?:\s+[^\p{C}\s]+)*$";
 
         var regex = new Regex(pattern);
 
