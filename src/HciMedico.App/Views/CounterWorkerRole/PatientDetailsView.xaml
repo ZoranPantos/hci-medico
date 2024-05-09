@@ -43,7 +43,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <ui:Button x:Name="EditInfo" Content="Edit" Icon="{ui:SymbolIcon Edit32}" />
+            <ui:Button x:Name="EditDetails" Content="Edit" Icon="{ui:SymbolIcon Edit32}" />
             <ui:Button x:Name="ScheduleAppointment" Content="Schedule appointment" Icon="{ui:SymbolIcon ShiftsAdd24}" />
         </StackPanel>
 

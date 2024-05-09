@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
 using HciMedico.App.Helpers;
+using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -13,6 +14,7 @@ public class PatientDetailsViewModel : Conductor<object>
     private readonly IMapper _mapper;
     private readonly IRepository<Patient> _patientRepository;
     private readonly PatientsViewModel _parentViewModel;
+    private readonly IWindowManager _windowManager;
 
     private string _firstName = string.Empty;
     public string FirstName
@@ -168,12 +170,18 @@ public class PatientDetailsViewModel : Conductor<object>
         }
     }
 
-    public PatientDetailsViewModel(int id, IMapper mapper, IRepository<Patient> patientRepository, PatientsViewModel parentViewModel)
+    public PatientDetailsViewModel(
+        int id,
+        IMapper mapper,
+        IRepository<Patient> patientRepository,
+        PatientsViewModel parentViewModel,
+        IWindowManager windowManager)
     {
         _id = id;
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
+        _windowManager = windowManager ?? throw new ArgumentNullException(nameof(windowManager));
     }
 
     public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
@@ -198,11 +206,7 @@ public class PatientDetailsViewModel : Conductor<object>
         NextAppointmentDetails = GetAppointmentInfo(patient, AppointmentStatus.Scheduled) ?? DisplayMessages.NoData;
     }
 
-    public void EditInfo()
-    {
-        //throw new NotImplementedException();
-        throw new Exception("test bla bla");
-    }
+    public async Task EditDetails() => await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel());
 
     public void ScheduleAppointment()
     {

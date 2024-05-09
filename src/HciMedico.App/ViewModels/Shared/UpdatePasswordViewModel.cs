@@ -110,8 +110,5 @@ public class UpdatePasswordViewModel : Conductor<object>
         }
     }
 
-    public async Task Cancel()
-    {
-        await TryCloseAsync();
-    }
+    public async Task Cancel() => await TryCloseAsync();
 }

@@ -59,7 +59,7 @@ public class PatientsViewModel : Conductor<object>
     }
 
     public async Task OpenPatientDetails(PatientDisplayModel patient) =>
-        await _shellViewModel.ActivateItemAsync(new PatientDetailsViewModel(patient.Id, _mapper, _patientRepository, this));
+        await _shellViewModel.ActivateItemAsync(new PatientDetailsViewModel(patient.Id, _mapper, _patientRepository, this, IoC.Get<IWindowManager>()));
 
     public async Task SelfActivateAsync() =>
         await _shellViewModel.ActivateItemAsync(new PatientsViewModel(_patientRepository, _mapper, _shellViewModel));
