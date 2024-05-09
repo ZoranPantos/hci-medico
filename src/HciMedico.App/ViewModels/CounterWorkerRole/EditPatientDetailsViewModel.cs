@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
@@ -139,6 +140,30 @@ public class EditPatientDetailsViewModel : Conductor<object>
             _validationMessage = value;
             NotifyOfPropertyChange(() => ValidationMessage);
         }
+    }
+
+    public EditPatientDetailsViewModel(Patient? patient)
+    {
+        ArgumentNullException.ThrowIfNull(patient);
+
+        InitializeViewModel(patient);
+    }
+
+    private void InitializeViewModel(Patient patient)
+    {
+        FirstName = patient.FirstName;
+        LastName = patient.LastName;
+        Uid = patient.Uid;
+        SelectedGender = patient.HealthRecord.Gender;
+        DateOfBirth = patient.HealthRecord.DateOfBirth;
+        Country = patient.Address.Country;
+        City = patient.Address.City;
+        Street = patient.Address.Street;
+
+        //TODO: Number needs to be changed to string in the model
+        Number = patient.Address.Number.ToString();
+        Email = patient.ContactInfo.Email;
+        TelephoneNumber = patient.ContactInfo.TelephoneNumber;
     }
 
     public bool CanSave(

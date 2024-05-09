@@ -15,6 +15,7 @@ public class PatientDetailsViewModel : Conductor<object>
     private readonly IRepository<Patient> _patientRepository;
     private readonly PatientsViewModel _parentViewModel;
     private readonly IWindowManager _windowManager;
+    private Patient? patient;
 
     private string _firstName = string.Empty;
     public string FirstName
@@ -188,8 +189,8 @@ public class PatientDetailsViewModel : Conductor<object>
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
     {
-        var patient = await _patientRepository
-            .FindAsync(patient => patient.Id == _id, true, "Appointments.AssignedTo.Specializations,HealthRecord");
+        patient = await _patientRepository
+            .FindAsync(patient => patient.Id == _id, false, "Appointments.AssignedTo.Specializations,HealthRecord");
 
         FirstName = patient?.FirstName ?? DisplayMessages.NoData;
         LastName = patient?.LastName ?? DisplayMessages.NoData;
@@ -206,7 +207,7 @@ public class PatientDetailsViewModel : Conductor<object>
         NextAppointmentDetails = GetAppointmentInfo(patient, AppointmentStatus.Scheduled) ?? DisplayMessages.NoData;
     }
 
-    public async Task EditDetails() => await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel());
+    public async Task EditDetails() => await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(patient));
 
     public void ScheduleAppointment()
     {
