@@ -9,8 +9,8 @@
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
-    
-    <Grid>
+
+    <Grid Margin="10,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />

@@ -7,8 +7,8 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
-    
-    <Grid>
+
+    <Grid Margin="10,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />

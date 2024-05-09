@@ -9,7 +9,7 @@
         Title="Edit Patient Details" Height="430" Width="800"
         Background="#C5CAE9">
 
-    <Grid Margin="10">
+    <Grid Margin="10,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
