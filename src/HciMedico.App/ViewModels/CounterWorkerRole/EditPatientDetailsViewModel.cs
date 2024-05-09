@@ -11,6 +11,7 @@ public class EditPatientDetailsViewModel : Conductor<object>
 {
     private Patient? _patient;
     private readonly IRepository<Patient> _patientRepository;
+    private PatientDetailsViewModel? _parentViewModel;
 
     private string _firstName = string.Empty;
     public string FirstName
@@ -146,10 +147,11 @@ public class EditPatientDetailsViewModel : Conductor<object>
         }
     }
 
-    public EditPatientDetailsViewModel(Patient? patient, IRepository<Patient> patientRepository)
+    public EditPatientDetailsViewModel(Patient? patient, IRepository<Patient> patientRepository, PatientDetailsViewModel parentViewModel)
     {
         _patient = patient ?? throw new ArgumentNullException(nameof(patient));
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
+        _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
 
         InitializeViewModel();
     }
@@ -265,6 +267,8 @@ public class EditPatientDetailsViewModel : Conductor<object>
             await _patientRepository.Update(_patient);
 
             await TryCloseAsync();
+
+            await _parentViewModel!.RefreshViewModel();
         }
         catch (Exception)
         {

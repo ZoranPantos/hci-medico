@@ -187,7 +187,11 @@ public class PatientDetailsViewModel : Conductor<object>
 
     public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
 
-    protected override async Task OnActivateAsync(CancellationToken cancellationToken)
+    public async Task RefreshViewModel() => await InitializeViewModel();
+
+    protected override async Task OnActivateAsync(CancellationToken cancellationToken) => await InitializeViewModel();
+
+    private async Task InitializeViewModel()
     {
         patient = await _patientRepository
             .FindAsync(patient => patient.Id == _id, false, "Appointments.AssignedTo.Specializations,HealthRecord");
@@ -209,7 +213,7 @@ public class PatientDetailsViewModel : Conductor<object>
     }
 
     public async Task EditDetails() =>
-        await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(patient, _patientRepository));
+        await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(patient, _patientRepository, this));
 
     public void ScheduleAppointment()
     {
