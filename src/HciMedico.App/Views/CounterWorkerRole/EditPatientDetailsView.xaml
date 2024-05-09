@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        xmlns:enums="clr-namespace:HciMedico.Domain.Models.Enums;assembly=HciMedico.Domain"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Edit Patient Details" Height="430" Width="800"
@@ -35,7 +34,7 @@
 
                 <ui:TextBlock Text="UID" />
                 <ui:TextBox x:Name="Uid" Margin="0,0,0,10" MaxLength="50"
-                            Background="White" />
+                            Background="White" PlaceholderText="0000000000000" />
 
                 <ui:TextBlock Text="Gender" />
                 <ComboBox x:Name="SelectedGender" Margin="0,0,0,10" Background="White"
@@ -71,11 +70,11 @@
             <StackPanel>
                 <ui:TextBlock Text="Email" />
                 <ui:TextBox x:Name="Email" Margin="0,0,0,10" MaxLength="50"
-                            Background="White" />
+                            Background="White" PlaceholderText="example@example.com" />
 
                 <ui:TextBlock Text="Telephone number" />
                 <ui:TextBox x:Name="TelephoneNumber" Margin="0,0,0,10" MaxLength="50"
-                            Background="White" />
+                            Background="White" PlaceholderText="+38711223344" />
             </StackPanel>
         </GroupBox>
 
