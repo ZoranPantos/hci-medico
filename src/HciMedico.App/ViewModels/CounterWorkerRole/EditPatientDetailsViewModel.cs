@@ -173,7 +173,7 @@ public class EditPatientDetailsViewModel : Conductor<object>
         TelephoneNumber = _patient.ContactInfo.TelephoneNumber;
     }
 
-    public bool CanSave(
+    public bool CanUpdate(
         string firstName,
         string lastName,
         string uid,
@@ -192,7 +192,7 @@ public class EditPatientDetailsViewModel : Conductor<object>
             !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(telephoneNumber);
     }
 
-    public async Task Save(
+    public async Task Update(
         string firstName,
         string lastName,
         string uid,
