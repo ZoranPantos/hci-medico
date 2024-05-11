@@ -85,8 +85,9 @@ public class LoginViewModel : Conductor<object>
 
             await _windowManager.ShowWindowAsync(new ShellViewModel());
         }
-        catch (Exception ex)
+        catch (Exception)
         {
+            ValidationMessage = "There was an error while trying to log in";
         }
     }
 
