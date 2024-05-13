@@ -31,14 +31,21 @@
             </Style>-->
 
             <Style x:Key="HeadingStyle" TargetType="ui:TextBlock">
-                <Setter Property="FontSize" Value="22" />
-                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="Foreground" Value="#1E1E5D" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Margin" Value="0,5" />
+            </Style>
+
+            <Style x:Key="SubHeadingStyle" TargetType="ui:TextBlock">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Foreground" Value="#587FFC" />
                 <Setter Property="FontWeight" Value="SemiBold" />
                 <Setter Property="Margin" Value="0,5,0,15" />
             </Style>
 
             <Style x:Key="SeparatorStyle" TargetType="Separator">
-                <Setter Property="BorderBrush" Value="#C5CAE9" />
+                <Setter Property="BorderBrush" Value="#FF8692" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="Margin" Value="0,10" />
             </Style>

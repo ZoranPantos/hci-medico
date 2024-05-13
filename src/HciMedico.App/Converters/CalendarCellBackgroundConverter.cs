@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
+using Wpf.Ui.Controls;
 
 namespace HciMedico.App.Converters;
 
@@ -12,10 +13,10 @@ public class CalendarCellBackgroundConverter : IValueConverter
         if (value is ScheduleCellDisplayModel cell)
         {
             if (cell.IsToday)
-                return Brushes.LightGreen;
-            
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF8692"));
+
             if (cell.IsSelectedMonth)
-                return Brushes.LightGray;
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#CBD5EB"));
 
             return Brushes.White;
         }

@@ -54,25 +54,25 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Width="120" Text="Monday" Background="Beige"
+            <TextBlock Grid.Column="0" Width="120" Text="Monday" Background="#92A5FD"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="1" Width="120" Text="Tuesday" Background="Beige"
+            <TextBlock Grid.Column="1" Width="120" Text="Tuesday" Background="#92A5FD"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="2" Width="120" Text="Wednesday" Background="Beige"
+            <TextBlock Grid.Column="2" Width="120" Text="Wednesday" Background="#92A5FD"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="3" Width="120" Text="Thursday" Background="Beige"
+            <TextBlock Grid.Column="3" Width="120" Text="Thursday" Background="#92A5FD"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="4" Width="120" Text="Friday" Background="Beige"
+            <TextBlock Grid.Column="4" Width="120" Text="Friday" Background="#92A5FD"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="5" Width="120" Text="Saturday" Background="Beige"
+            <TextBlock Grid.Column="5" Width="120" Text="Saturday" Background="#92A5FD"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="6" Width="120" Text="Sunday" Background="Beige"
+            <TextBlock Grid.Column="6" Width="120" Text="Sunday" Background="#92A5FD"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
             <ItemsControl x:Name="ScheduleCellDisplayModels" Grid.Row="1" Grid.ColumnSpan="7">
@@ -84,7 +84,7 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Gray" BorderThickness="1">
+                        <Border BorderBrush="#1E1E5D" BorderThickness="0.5">
                             <StackPanel Background="{Binding Converter={StaticResource CalendarCellBackgroundConverter}}">
                                 <TextBlock Text="{Binding Day}" HorizontalAlignment="Left" Margin="5,2,0,0" />
 
