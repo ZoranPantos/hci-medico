@@ -8,8 +8,8 @@
         Title="Medico" Height="800" Width="1200"
         WindowStartupLocation="CenterScreen">
 
-    <DockPanel Background="Azure">
-        <Grid DockPanel.Dock="Left" Background="#C5CAE9">
+    <DockPanel Background="#E5EAF5">
+        <Grid DockPanel.Dock="Left" Background="#1E1E5D">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -20,64 +20,108 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ui:Button Content="Appointments"
-                       Background="#C5CAE9"
+            <ui:Button x:Name="tmpA"
+                       Content="Appointments"
                        Icon="{ui:SymbolIcon ShiftsCheckmark20}"
-                       Width="200" Height="40"
+                       CornerRadius="0"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Background="#1E1E5D"
+                       Foreground="White"
+                       MouseOverBackground="#92A5FD"
+                       Width="200"
+                       Height="40"
                        BorderThickness="0"
                        HorizontalContentAlignment="Left" />
 
-            <ui:Button Content="Patients"
-                       x:Name="NavigateToPatients"
+            <ui:Button x:Name="NavigateToPatients"
                        Grid.Row="1"
-                       Background="#C5CAE9"
+                       Content="Patients"
                        Icon="{ui:SymbolIcon PeopleCommunity28}"
-                       Width="200" Height="40"
+                       CornerRadius="0"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Background="#1E1E5D"
+                       Foreground="White"
+                       MouseOverBackground="#92A5FD"
+                       Width="200"
+                       Height="40"
                        BorderThickness="0"
                        HorizontalContentAlignment="Left" />
 
-            <ui:Button Content="Health Records"
+            <ui:Button x:Name="tmpB"
                        Grid.Row="2"
-                       Background="#C5CAE9"
+                       Content="Health Records"
                        Icon="{ui:SymbolIcon DocumentHeart20}"
-                       Width="200" Height="40"
+                       CornerRadius="0"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Background="#1E1E5D"
+                       Foreground="White"
+                       MouseOverBackground="#92A5FD"
+                       Width="200"
+                       Height="40"
                        BorderThickness="0"
                        HorizontalContentAlignment="Left" />
-
-            <ui:Button Content="Work Schedule"
-                       x:Name="NavigateToWorkSchedule"
+            
+            <ui:Button x:Name="NavigateToWorkSchedule"
                        Grid.Row="3"
-                       Background="#C5CAE9"
+                       Content="Work Schedule"
                        Icon="{ui:SymbolIcon CalendarRtl28}"
-                       Width="200" Height="40"
+                       CornerRadius="0"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Background="#1E1E5D"
+                       Foreground="White"
+                       MouseOverBackground="#92A5FD"
+                       Width="200"
+                       Height="40"
                        BorderThickness="0"
                        HorizontalContentAlignment="Left" />
-
-            <ui:Button Content="Account Info"
-                       x:Name="NavigateToMyAccount"
+            
+            <ui:Button x:Name="NavigateToMyAccount"
                        Grid.Row="4"
-                       Background="#C5CAE9"
+                       Content="Account Info"
                        Icon="{ui:SymbolIcon PersonAccounts20}"
-                       Width="200" Height="40"
+                       CornerRadius="0"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Background="#1E1E5D"
+                       Foreground="White"
+                       MouseOverBackground="#92A5FD"
+                       Width="200"
+                       Height="40"
                        BorderThickness="0"
                        HorizontalContentAlignment="Left" />
-
-            <ui:Button Content="Settings"
-                       x:Name="NavigateToSettings"
+            
+            <ui:Button x:Name="NavigateToSettings"
                        Grid.Row="5"
-                       Background="#C5CAE9"
+                       Content="Settings"
                        Icon="{ui:SymbolIcon Settings28}"
-                       Width="200" Height="40"
+                       CornerRadius="0"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Background="#1E1E5D"
+                       Foreground="White"
+                       MouseOverBackground="#92A5FD"
+                       Width="200"
+                       Height="40"
                        BorderThickness="0"
                        HorizontalContentAlignment="Left"
                        VerticalAlignment="Bottom" />
 
-            <ui:Button Content="Logout"
-                       x:Name="Logout"
+            <ui:Button x:Name="Logout"
                        Grid.Row="6"
-                       Background="#C5CAE9"
+                       Content="Logout"
                        Icon="{ui:SymbolIcon ArrowReset24}"
-                       Width="200" Height="40"
+                       CornerRadius="0"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Background="#1E1E5D"
+                       Foreground="White"
+                       MouseOverBackground="#92A5FD"
+                       Width="200"
+                       Height="40"
                        BorderThickness="0"
                        HorizontalContentAlignment="Left" />
         </Grid>
