@@ -28,6 +28,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -38,132 +42,151 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
-            <ui:Button x:Name="NavigateBack"  Icon="{ui:SymbolIcon IosArrowLtr24}" />
+            <ui:Button x:Name="NavigateBack" Content="Back" Margin="0,0,5,0" Icon="{ui:SymbolIcon IosArrowLtr24}" />
             <ui:TextBlock Text="Patient Details" Style="{StaticResource HeadingStyle}" />
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <ui:Button x:Name="EditDetails" Content="Edit" Icon="{ui:SymbolIcon Edit32}" />
+        <Separator Grid.Row="1" Grid.ColumnSpan="3"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,0" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,5,0,0">
+            <ui:Button x:Name="EditDetails" Content="Edit" Margin="0,0,5,0" Icon="{ui:SymbolIcon Edit32}" />
             <ui:Button x:Name="ScheduleAppointment" Content="Schedule appointment" Icon="{ui:SymbolIcon ShiftsAdd24}" />
         </StackPanel>
 
-        <ui:TextBlock Grid.Row="2" Text="General Info" />
+        <Separator Grid.Row="3" Grid.ColumnSpan="3"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="3" 
+        <ui:TextBlock Grid.Row="4" Text="General Info"
+                      Style="{StaticResource SubHeadingStyle}" />
+
+        <ui:TextBlock Grid.Row="5" 
                       Text="First name:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="3" Grid.Column="1"
+        <ui:TextBlock Grid.Row="5" Grid.Column="1"
                       x:Name="FirstName"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="4"
+        <ui:TextBlock Grid.Row="6"
                       Text="Last name:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="4" Grid.Column="1"
+        <ui:TextBlock Grid.Row="6" Grid.Column="1"
                       x:Name="LastName"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="5" 
+        <ui:TextBlock Grid.Row="7" 
                       Text="UID:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="5" Grid.Column="1"
+        <ui:TextBlock Grid.Row="7" Grid.Column="1"
                       x:Name="UID"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="6"
+        <ui:TextBlock Grid.Row="8"
                       Text="Gender:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="6" Grid.Column="1"
+        <ui:TextBlock Grid.Row="8" Grid.Column="1"
                       x:Name="Gender"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="7"
+        <ui:TextBlock Grid.Row="9"
                       Text="Date of birth:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="7" Grid.Column="1"
+        <ui:TextBlock Grid.Row="9" Grid.Column="1"
                       x:Name="DateOfBirth"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="8" Text="Address and Contact" />
+        <Separator Grid.Row="10" Grid.ColumnSpan="3"
+                      Style="{StaticResource SeparatorStyle}"
+                      Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="9"
+        <ui:TextBlock Grid.Row="11" Text="Address and Contact"
+                      Style="{StaticResource SubHeadingStyle}" />
+
+        <ui:TextBlock Grid.Row="12"
                       Text="Country:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="9" Grid.Column="1"
+        <ui:TextBlock Grid.Row="12" Grid.Column="1"
                       x:Name="Country"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="10"
+        <ui:TextBlock Grid.Row="13"
                       Text="City:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="10" Grid.Column="1"
+        <ui:TextBlock Grid.Row="13" Grid.Column="1"
                       x:Name="City"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="11"
+        <ui:TextBlock Grid.Row="14"
                       Text="Street:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="11" Grid.Column="1"
+        <ui:TextBlock Grid.Row="14" Grid.Column="1"
                       x:Name="Street"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="12"
+        <ui:TextBlock Grid.Row="15"
                       Text="Number:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="12" Grid.Column="1"
+        <ui:TextBlock Grid.Row="15" Grid.Column="1"
                       x:Name="Number"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="13"
+        <ui:TextBlock Grid.Row="16"
                       Text="Email:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="13" Grid.Column="1"
+        <ui:TextBlock Grid.Row="16" Grid.Column="1"
                       x:Name="Email"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="14"
+        <ui:TextBlock Grid.Row="17"
                       Text="Telephone number:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="14" Grid.Column="1"
+        <ui:TextBlock Grid.Row="17" Grid.Column="1"
                       x:Name="TelephoneNumber"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="15" Text="Clinic Stats" />
+        <Separator Grid.Row="18" Grid.ColumnSpan="3"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="16"
+        <ui:TextBlock Grid.Row="19" Text="Clinic Stats"
+                      Style="{StaticResource SubHeadingStyle}" />
+
+        <ui:TextBlock Grid.Row="20"
                       Text="Number of visits:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="16" Grid.Column="1"
+        <ui:TextBlock Grid.Row="20" Grid.Column="1"
                       x:Name="NumberOfVisits"
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <!--Date + doctor's name and specialization-->
-        <ui:TextBlock Grid.Row="17"
+        <ui:TextBlock Grid.Row="21"
                       Text="Last visit:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="17" Grid.Column="1"
+        <ui:TextBlock Grid.Row="21" Grid.Column="1"
                       x:Name="LastVisitDetails"
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <!--Date + doctor's name and specialization-->
-        <ui:TextBlock Grid.Row="18"
+        <ui:TextBlock Grid.Row="22"
                       Text="Next appointment:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="18" Grid.Column="1"
+        <ui:TextBlock Grid.Row="22" Grid.Column="1"
                       x:Name="NextAppointmentDetails"
                       Style="{StaticResource DataTextBlockStyle}" />
 
