@@ -90,6 +90,12 @@
                 <Setter Property="MinHeight" Value="20" />
                 <Setter Property="Margin" Value="0,2,0,0" />
             </Style>
+
+            <Style x:Key="TableStackPanelHeader" TargetType="StackPanel">
+                <Setter Property="Height" Value="25" />
+                <Setter Property="Background" Value="#92A5FD" />
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

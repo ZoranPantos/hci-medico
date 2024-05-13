@@ -78,7 +78,7 @@
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="5" Grid.Column="1"
-                      Text="{Binding PasswordLastUpdated, StringFormat='yyyy-MM-dd HH:mm:ss'}"
+                      Text="{Binding PasswordLastUpdated, StringFormat={}{0:dd/MM/yyyy}}"
                       Style="{StaticResource DataTextBlockStyle}" />
         
         <Separator Grid.Row="6" Grid.ColumnSpan="3"

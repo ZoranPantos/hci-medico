@@ -19,6 +19,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -29,71 +33,89 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
-            <ui:Button x:Name="NavigateBack"  Icon="{ui:SymbolIcon IosArrowLtr24}" />
-            <ui:TextBlock Text="Patient Details" Style="{StaticResource HeadingStyle}" />
+            <ui:Button x:Name="NavigateBack" Content="Back" Margin="0,0,5,0" Icon="{ui:SymbolIcon IosArrowLtr24}" />
+            <ui:TextBlock Text="Treated Patient Details" Style="{StaticResource HeadingStyle}" />
         </StackPanel>
 
-        <ui:TextBlock Grid.Row="1" 
+        <Separator Grid.Row="2" Grid.ColumnSpan="3"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,0" />
+
+        <ui:TextBlock Grid.Row="3" Text="Basic details" Style="{StaticResource SubHeadingStyle}" />
+
+        <ui:TextBlock Grid.Row="4" 
                       Text="First name:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="1" Grid.Column="1"
+        <ui:TextBlock Grid.Row="4" Grid.Column="1"
                       x:Name="FirstName"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="2"
+        <ui:TextBlock Grid.Row="5"
                       Text="Last name:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="2" Grid.Column="1"
+        <ui:TextBlock Grid.Row="5" Grid.Column="1"
                       x:Name="LastName"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="3"
+        <ui:TextBlock Grid.Row="6"
                       Text="Place of residence:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="3" Grid.Column="1"
+        <ui:TextBlock Grid.Row="6" Grid.Column="1"
                       x:Name="PlaceOfResidence"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="4"
+        <ui:TextBlock Grid.Row="7"
                       Text="Email:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="4" Grid.Column="1"
+        <ui:TextBlock Grid.Row="7" Grid.Column="1"
                       x:Name="Email"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="5"
+        <ui:TextBlock Grid.Row="8"
                       Text="Telephone number:"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="5" Grid.Column="1"
+        <ui:TextBlock Grid.Row="8" Grid.Column="1"
                       x:Name="TelephoneNumber"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="6" Text="Appointments" />
+        <Separator Grid.Row="9" Grid.ColumnSpan="3"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,0" />
 
-        <StackPanel Grid.Row="7" Grid.ColumnSpan="3" Orientation="Horizontal" Background="#E0E0E0">
-            <TextBlock Text="Date and Time" Width="150" HorizontalAlignment="Center" FontWeight="Bold" />
-            <TextBlock Text="Status" Width="150" HorizontalAlignment="Center" FontWeight="Bold" />
-            <TextBlock Text="Type" Width="150" HorizontalAlignment="Center" FontWeight="Bold" />
+        <ui:TextBlock Grid.Row="10" Text="Appointments" Style="{StaticResource SubHeadingStyle}" />
+
+        <StackPanel Grid.Row="11" Grid.ColumnSpan="3" Style="{StaticResource TableStackPanelHeader}">
+            <TextBlock Text="Date and Time" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Status" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Type" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
         </StackPanel>
 
-        <ItemsControl x:Name="Appointments" Grid.Row="8" Grid.ColumnSpan="3">
+        <ItemsControl x:Name="Appointments" Grid.Row="12" Grid.ColumnSpan="3">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="{Binding DateAndTime, StringFormat={}{0:dd/MM/yyyy}}" Grid.Column="0" VerticalAlignment="Center" />
-                        <TextBlock Text="{Binding Status}" Grid.Column="1" VerticalAlignment="Center" />
-                        <TextBlock Text="{Binding Type}" Grid.Column="2" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding DateAndTime, StringFormat={}{0:dd/MM/yyyy}}"
+                                   VerticalAlignment="Center"
+                                   Margin="0,5,0,0" />
+                        
+                        <TextBlock Text="{Binding Status}" Grid.Column="1"
+                                   VerticalAlignment="Center"
+                                   Margin="0,5,0,0" />
+                        
+                        <TextBlock Text="{Binding Type}" Grid.Column="2"
+                                   VerticalAlignment="Center"
+                                   Margin="0,5,0,0"/>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
