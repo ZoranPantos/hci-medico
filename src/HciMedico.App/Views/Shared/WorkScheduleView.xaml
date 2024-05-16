@@ -24,11 +24,16 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <ui:TextBlock Text="Work Schedule" Style="{StaticResource HeadingStyle}" />
-            
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,10">
+
+            <Separator Grid.Row="1"
+                       Style="{StaticResource SeparatorStyle}"
+                       Margin="0,5,0,0" />
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,10">
                 <ui:Button x:Name="PreviousMonth" Icon="{ui:SymbolIcon ArrowLeft32}" />
                 
                 <ui:TextBlock x:Name="DisplayedMonthYearString" FontWeight="SemiBold" Width="120" FontSize="15"

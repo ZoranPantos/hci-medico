@@ -20,7 +20,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ui:Button x:Name="tmpA"
+            <ui:Button x:Name="NavigateToAppointments"
                        Content="Appointments"
                        Icon="{ui:SymbolIcon ShiftsCheckmark20}"
                        CornerRadius="0"
@@ -49,7 +49,7 @@
                        BorderThickness="0"
                        HorizontalContentAlignment="Left" />
 
-            <ui:Button x:Name="tmpB"
+            <ui:Button x:Name="NavigateToHealthRecords"
                        Grid.Row="2"
                        Content="Health Records"
                        Icon="{ui:SymbolIcon DocumentHeart20}"

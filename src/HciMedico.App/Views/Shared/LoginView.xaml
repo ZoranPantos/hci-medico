@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
-        Title="Medico Login" Height="250" Width="400"
+        Title="Medico Login" Height="250" Width="350"
         Background="{DynamicResource LoginBackgroundBrush}"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">

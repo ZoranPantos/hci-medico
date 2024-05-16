@@ -53,22 +53,41 @@ public class ShellViewModel : Conductor<object>
         if (UserContext.CurrentUser is null)
             throw new Exception("Current user is null");
 
-        switch (UserContext.CurrentUser.UserRole)
+        CurrentViewModelInShell = UserContext.CurrentUser.UserRole switch
         {
-            case UserRole.Doctor:
-                //CurrentViewModelInShell = IoC.Get<TreatedPatientsViewModel>();
-                //For enabling deeper levels of navigation, I need to send this (parent view model) to "sub-model" and navigate from there
-                //via the parent model
-                CurrentViewModelInShell = new TreatedPatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this);
-                break;
-            case UserRole.CounterWorker:
-                CurrentViewModelInShell = new PatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this);
-                break;
+            UserRole.Doctor => new TreatedPatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this),
+            //CurrentViewModelInShell = IoC.Get<TreatedPatientsViewModel>();
+            //For enabling deeper levels of navigation, I need to send this (parent view model) to "sub-model" and navigate from there
+            //via the parent model
+            UserRole.CounterWorker => new PatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this),
+            _ => throw new Exception("User role is not recognized"),
+        };
+    }
 
-            // Add more user roles
-            default:
-                throw new Exception("User role is not recognized");
-        }
+    public void NavigateToAppointments()
+    {
+        if (UserContext.CurrentUser is null)
+            throw new Exception("Current user is null");
+
+        CurrentViewModelInShell = UserContext.CurrentUser.UserRole switch
+        {
+            UserRole.Doctor => new AppointmentsDoctorViewModel(),
+            UserRole.CounterWorker => new AppointmentsCounterWorkerViewModel(),
+            _ => throw new Exception("User role is not recognized"),
+        };
+    }
+
+    public void NavigateToHealthRecords()
+    {
+        if (UserContext.CurrentUser is null)
+            throw new Exception("Current user is null");
+
+        CurrentViewModelInShell = UserContext.CurrentUser.UserRole switch
+        {
+            UserRole.Doctor => new HealthRecordsDoctorViewModel(),
+            UserRole.CounterWorker => new HealthRecordsCounterWorkerViewModel(),
+            _ => throw new Exception("User role is not recognized"),
+        };
     }
 
     public async Task NavigateToWorkSchedule() => await ActivateItemAsync(new WorkScheduleViewModel());
