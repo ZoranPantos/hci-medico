@@ -8,6 +8,27 @@
              d:DesignHeight="800" d:DesignWidth="1200">
 
     <Grid Margin="10,5">
-        <ui:Button x:Name="UpdatePassword" Content="Update password" Appearance="Secondary" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ui:TextBlock Text="Settings" Style="{StaticResource HeadingStyle}" />
+
+        <Separator Grid.Row="1" Grid.ColumnSpan="3"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,0" />
+
+        <ui:Button x:Name="UpdatePassword" Grid.Row="2" Margin="0,5,0,0"
+                   Content="Update password" Appearance="Secondary"
+                   Icon="{ui:SymbolIcon Key24}" />
     </Grid>
 </UserControl>
