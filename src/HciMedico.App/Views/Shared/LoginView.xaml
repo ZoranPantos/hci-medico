@@ -7,26 +7,39 @@
         mc:Ignorable="d"
         Title="Medico Login" Height="250" Width="400"
         Background="{DynamicResource LoginBackgroundBrush}"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
 
     <Window.Resources>
         <LinearGradientBrush x:Key="LoginBackgroundBrush">
-            <GradientStop Offset="0" Color="#90CAF9" />
-            <GradientStop Offset="1" Color="#7E57C2" />
+            <GradientStop Offset="0" Color="#E5EAF5" />
+            <GradientStop Offset="1.7" Color="#92A5FD" />
         </LinearGradientBrush>
     </Window.Resources>
 
     <StackPanel Margin="10">
-        <ui:TextBox x:Name="Username" Margin="0,0,0,5"
-                    PlaceholderText="Username" Background="White" />
-        
-        <ui:PasswordBox x:Name="Password" Margin="0,0,0,10"
-                        PlaceholderText="Password" Background="White" />
-        
-        <ui:Button x:Name="Login" Content="Log in" Appearance="Primary" />
+        <ui:TextBlock HorizontalAlignment="Center" Text="[APP LOGO HERE]" />
 
-        <ui:TextBlock x:Name="ValidationMessage" Foreground="Red" Margin="0,10" />
+        <ui:TextBlock Text="Username" />
+        <ui:TextBox x:Name="Username" Margin="0,0,0,5"
+                    Background="White" />
+
+        <ui:TextBlock Text="Password" />
+        <ui:PasswordBox x:Name="Password" Margin="0,0,0,10"
+                        Background="White" />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ui:Button x:Name="Login" Content="Log in" Appearance="Primary"
+                       Icon="{ui:SymbolIcon ArrowTurnDownRight48}" />
+
+            <ui:TextBlock x:Name="ValidationMessage" Grid.Column="2" Foreground="Red"
+                          VerticalAlignment="Center" />
+        </Grid>
     </StackPanel>
 </Window>
-
-<!--Background="#C5CAE9"-->
