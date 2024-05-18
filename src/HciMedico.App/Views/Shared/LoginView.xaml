@@ -6,16 +6,9 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         Title="Medico Login" Height="250" Width="350"
-        Background="{DynamicResource LoginBackgroundBrush}"
+        Background="#D1DAED"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
-
-    <Window.Resources>
-        <LinearGradientBrush x:Key="LoginBackgroundBrush">
-            <GradientStop Offset="0" Color="#E5EAF5" />
-            <GradientStop Offset="1.7" Color="#92A5FD" />
-        </LinearGradientBrush>
-    </Window.Resources>
 
     <StackPanel Margin="10">
         <ui:TextBlock HorizontalAlignment="Center" Text="[APP LOGO HERE]" />

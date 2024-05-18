@@ -90,3 +90,14 @@ private static bool IsCurrentMonth(DateTime dateTime) =>
         dateTime.Month == DateTime.Now.Month && dateTime.Year == DateTime.Now.Year;
 
 private static bool IsToday(DateTime dateTime) => dateTime.Date == DateTime.Today;
+
+Using gradient brush ####################################################################################################################
+
+Background="{DynamicResource LoginBackgroundBrush}"
+
+<Window.Resources>
+    <LinearGradientBrush x:Key="LoginBackgroundBrush">
+        <GradientStop Offset="0" Color="#E5EAF5" />
+        <GradientStop Offset="1.7" Color="#92A5FD" />
+    </LinearGradientBrush>
+</Window.Resources>
