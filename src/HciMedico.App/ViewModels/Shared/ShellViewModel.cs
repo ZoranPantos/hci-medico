@@ -59,7 +59,7 @@ public class ShellViewModel : Conductor<object>
             //CurrentViewModelInShell = IoC.Get<TreatedPatientsViewModel>();
             //For enabling deeper levels of navigation, I need to send this (parent view model) to "sub-model" and navigate from there
             //via the parent model
-            UserRole.CounterWorker => new PatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this),
+            UserRole.CounterWorker => new PatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this, IoC.Get<IWindowManager>()),
             _ => throw new Exception("User role is not recognized"),
         };
     }

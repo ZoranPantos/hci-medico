@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
-using HciMedico.App.ViewModels.DoctorRole;
 using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
@@ -14,6 +13,7 @@ public class PatientsViewModel : Conductor<object>
     private readonly IRepository<Patient> _patientRepository;
     private readonly ShellViewModel _shellViewModel;
     private readonly IMapper _mapper;
+    private readonly IWindowManager _windowManager;
 
     private BindableCollection<PatientDisplayModel> _patients = [];
     public BindableCollection<PatientDisplayModel> Patients
@@ -33,14 +33,19 @@ public class PatientsViewModel : Conductor<object>
         }
     }
 
-    public PatientsViewModel(IRepository<Patient> patientRepository, IMapper mapper, ShellViewModel shellViewModel)
+    public PatientsViewModel(IRepository<Patient> patientRepository, IMapper mapper, ShellViewModel shellViewModel, IWindowManager windowManager)
     {
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
         _shellViewModel = shellViewModel ?? throw new ArgumentNullException(nameof(shellViewModel));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        _windowManager = windowManager ?? throw new ArgumentNullException(nameof(windowManager));
     }
 
-    protected override async Task OnActivateAsync(CancellationToken cancellationToken)
+    protected override async Task OnActivateAsync(CancellationToken cancellationToken) => await InitializeViewModel();
+
+    public async Task RefreshViewModel() => await InitializeViewModel();
+
+    public async Task InitializeViewModel()
     {
         try
         {
@@ -49,6 +54,8 @@ public class PatientsViewModel : Conductor<object>
             var patientDtos = _mapper.Map<List<PatientDisplayModel>>(patients)
                 .OrderBy(dto => dto.FullName)
                 .ToList();
+
+            Patients.Clear();
 
             patientDtos.ForEach(Patients.Add);
         }
@@ -62,14 +69,14 @@ public class PatientsViewModel : Conductor<object>
         await _shellViewModel.ActivateItemAsync(new PatientDetailsViewModel(patient.Id, _mapper, _patientRepository, this, IoC.Get<IWindowManager>()));
 
     public async Task SelfActivateAsync() =>
-        await _shellViewModel.ActivateItemAsync(new PatientsViewModel(_patientRepository, _mapper, _shellViewModel));
+        await _shellViewModel.ActivateItemAsync(new PatientsViewModel(_patientRepository, _mapper, _shellViewModel, _windowManager));
 
     public async Task Search(string searchBar)
     {
         var patients = await _patientRepository.GetAllAsync(null, true, "Appointments,HealthRecord");
         var filteredPatients = new List<Patient>();
 
-        searchBar.Trim();
+        searchBar = searchBar.Trim();
 
         if (!string.IsNullOrEmpty(searchBar))
         {
@@ -110,8 +117,6 @@ public class PatientsViewModel : Conductor<object>
         patientDtos.ForEach(Patients.Add);
     }
 
-    public void RegisterNewPatient()
-    {
-        throw new NotImplementedException();
-    }
+    public async Task RegisterNewPatient() =>
+        await _windowManager.ShowWindowAsync(new RegisterPatientViewModel(IoC.Get<IRepository<MedicalCondition>>(), _patientRepository, this));
 }
