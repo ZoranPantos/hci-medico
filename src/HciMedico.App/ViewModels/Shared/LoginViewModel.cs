@@ -69,7 +69,7 @@ public class LoginViewModel : Conductor<object>
             string passwordHash = HashingService.GetHashString(password);
 
             var existingUser = await _userAccountRepository
-                .FindAsync(user => user.Username.Equals(username), true, "Employee.Specializations,Employee.AssignedAppointments,Employee.WorkSchedule.WorkShifts");
+                .FindAsync(user => user.Username.Equals(username), true, "Employee.Specializations,Employee.AssignedAppointments,Employee.WorkSchedule.WorkShifts,UserSettings");
 
             if (existingUser is null || !passwordHash.Equals(existingUser.Password))
             {
@@ -83,7 +83,7 @@ public class LoginViewModel : Conductor<object>
 
             await TryCloseAsync();
 
-            await _windowManager.ShowWindowAsync(new ShellViewModel());
+            await _windowManager.ShowWindowAsync(new ShellViewModel(existingUser.UserSettings.LandingPage));
         }
         catch (Exception)
         {

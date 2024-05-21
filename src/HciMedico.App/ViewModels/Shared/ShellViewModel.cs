@@ -14,6 +14,7 @@ namespace HciMedico.App.ViewModels.Shared;
 public class ShellViewModel : Conductor<object>
 {
     private bool _logoutTriggered;
+    private LandingPage _page;
 
     private IScreen? _currentViewModelInShell;
     public IScreen? CurrentViewModelInShell
@@ -30,10 +31,31 @@ public class ShellViewModel : Conductor<object>
         }
     }
 
+    public ShellViewModel(LandingPage page) => _page = page;
+
     // Called when the View is ready
     protected override Task OnActivateAsync(CancellationToken cancellationToken)
     {
         ((ShellView)GetView()).Closing += ShellView_OnClosing;
+
+        switch (_page)
+        {
+            case LandingPage.Appointments:
+                NavigateToAppointments();
+                break;
+            case LandingPage.Patients:
+                NavigateToPatients();
+                break;
+            case LandingPage.HealthRecords:
+                NavigateToHealthRecords();
+                break;
+            case LandingPage.WorkSchedule:
+                NavigateToWorkSchedule();
+                break;
+            case LandingPage.AccountInfo:
+                NavigateToMyAccount();
+                break;
+        }
 
         return base.OnActivateAsync(cancellationToken);
     }
@@ -90,7 +112,7 @@ public class ShellViewModel : Conductor<object>
         };
     }
 
-    public async Task NavigateToWorkSchedule() => await ActivateItemAsync(new WorkScheduleViewModel());
+    public void NavigateToWorkSchedule() => CurrentViewModelInShell = new WorkScheduleViewModel();
 
     public async Task Logout()
     {
