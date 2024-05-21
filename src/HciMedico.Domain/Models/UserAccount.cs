@@ -12,4 +12,6 @@ public class UserAccount
 
     public int EmployeeId { get; set; }
     public Employee Employee { get; set; }
+
+    public UserSettings UserSettings { get; set; }
 }

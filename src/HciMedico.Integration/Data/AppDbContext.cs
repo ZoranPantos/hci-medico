@@ -33,6 +33,7 @@ public sealed class AppDbContext : DbContext
         new AppointmentEntityTypeConfiguration().Configure(modelBuilder.Entity<Appointment>());
         new WorkScheduleEntityTypeConfiguration().Configure(modelBuilder.Entity<WorkSchedule>());
         new WorkShiftEntityTypeConfiguration().Configure(modelBuilder.Entity<WorkShift>());
+        new UserSettingsEntityTypeConfiguration().Configure(modelBuilder.Entity<UserSettings>());
 
         new HealthRecordMedicalConditionEntityTypeConfiguration()
             .Configure(modelBuilder.Entity<HealthRecordMedicalCondition>());
