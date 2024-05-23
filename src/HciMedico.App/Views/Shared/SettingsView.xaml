@@ -4,11 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:cal="http://caliburnmicro.com"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1200">
 
     <Grid Margin="10,5">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -27,8 +31,24 @@
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
-        <ui:Button x:Name="UpdatePassword" Grid.Row="2" Margin="0,5,0,0"
-                   Content="Update password" Appearance="Secondary"
+        <ui:TextBlock Grid.Row="2" Grid.ColumnSpan="3" Margin="0,5,20,0"
+                      Text="Update password"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:Button x:Name="UpdatePassword" Grid.Row="3" Margin="0,0,0,15"
+                   Content="Update" Appearance="Secondary"
                    Icon="{ui:SymbolIcon Key24}" />
+
+        <ui:TextBlock Grid.Row="4" Grid.ColumnSpan="3"
+                      Text="Landing page"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ComboBox Grid.Row="5"
+                  x:Name="SelectedLandingPage"
+                  Background="White"
+                  Width="150"
+                  ItemsSource="{Binding LandingPageOptions}"
+                  SelectedItem="{Binding SelectedLandingPage}"
+                  cal:Message.Attach="[Event SelectionChanged] = [Action OnLandingPageSelectionChanged]" />
     </Grid>
 </UserControl>
