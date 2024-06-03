@@ -24,6 +24,14 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"))
             .ForMember(dest => dest.LastVisit, opt => opt.MapFrom(src => GetDateTimeForLastResolvedAppointmentOfPatient(src)));
+
+        CreateMap<Appointment, AppointmentDisplayModel>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.PatientFullNameOrIdentifier, opt => opt.MapFrom(src => GetPatientFullNameOrIdentifier(src)))
+            .ForMember(dest => dest.DoctorFullName, opt => opt.MapFrom(src => $"{src.AssignedTo.FirstName} {src.AssignedTo.LastName}"))
+            .ForMember(dest => dest.AppointmentType, opt => opt.MapFrom(src => src.Type))
+            .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
+            .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Time));
     }
 
     private static int GetResolvedAppointmentsCount(Patient patient) =>
@@ -38,5 +46,12 @@ public class MappingProfile : Profile
             .Where(appointment => appointment.Status == AppointmentStatus.Resolved)
             .Select(appointment => appointment.DateAndTime)
             .Max();
+    }
+
+    private static string GetPatientFullNameOrIdentifier(Appointment appointment)
+    {
+        var patient = appointment.Patient;
+
+        return patient is not null ? $"{patient.FirstName} {patient.LastName}" : appointment.IdentifierName;
     }
 }

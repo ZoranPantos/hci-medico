@@ -12,19 +12,59 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
         <ui:TextBlock Text="Appointments" Style="{StaticResource HeadingStyle}" />
 
-        <Separator Grid.Row="1" Grid.ColumnSpan="3"
+        <Separator Grid.Row="1"
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5,0,0">
+            <ui:TextBox x:Name="SearchBar" PlaceholderText="Search [WIP]"
+                        Background="White" Width="300" Margin="0,0,5,0" />
+
+            <ui:Button x:Name="Search" Content="Search" Margin="0,0,5,0" Icon="{ui:SymbolIcon Search32}" />
+            <ui:Button x:Name="ScheduleNewAppointment" Content="Schedule new appointment" Icon="{ui:SymbolIcon Add32}" />
+        </StackPanel>
+
+        <Separator Grid.Row="3" Grid.ColumnSpan="3"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,10" />
+
+        <StackPanel Grid.Row="4" Style="{StaticResource TableStackPanelHeader}">
+            <TextBlock Text="Patient name/identifier" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Appointed doctor" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Appointment type" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Date" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Time" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+        </StackPanel>
+
+        <ListView x:Name="Appointments" SelectionMode="Single" Grid.Row="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding PatientFullNameOrIdentifier}" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding DoctorFullName}" VerticalAlignment="Center" Grid.Column="1" />
+                        <TextBlock Text="{Binding AppointmentType}" VerticalAlignment="Center" Grid.Column="2" />
+                        <TextBlock Text="{Binding Date, StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Center" Grid.Column="3" />
+                        <TextBlock Text="{Binding Time}" VerticalAlignment="Center" Grid.Column="4" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>
