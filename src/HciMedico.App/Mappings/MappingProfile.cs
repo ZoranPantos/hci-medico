@@ -31,7 +31,8 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.DoctorFullName, opt => opt.MapFrom(src => $"{src.AssignedTo.FirstName} {src.AssignedTo.LastName}"))
             .ForMember(dest => dest.AppointmentType, opt => opt.MapFrom(src => src.Type))
             .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
-            .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Time));
+            .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Time))
+            .ForMember(dest => dest.IsPatientRegistered, opt => opt.MapFrom(src => IsPatientRegistered(src)));
     }
 
     private static int GetResolvedAppointmentsCount(Patient patient) =>
@@ -54,4 +55,6 @@ public class MappingProfile : Profile
 
         return patient is not null ? $"{patient.FirstName} {patient.LastName}" : appointment.IdentifierName;
     }
+
+    private static bool IsPatientRegistered(Appointment appointment) => appointment.Patient is not null;
 }

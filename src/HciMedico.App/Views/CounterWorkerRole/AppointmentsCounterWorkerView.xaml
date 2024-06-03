@@ -2,13 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HciMedico.App.Views.CounterWorkerRole"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:local="clr-namespace:HciMedico.App.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
 
     <Grid Margin="10,5">
+        <Grid.Resources>
+            <local:AppointmentPatientNameForegroundConverter x:Key="AppointmentPatientNameForegroundConverter" />
+        </Grid.Resources>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -57,11 +61,25 @@
                             <ColumnDefinition Width="200" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="{Binding PatientFullNameOrIdentifier}" VerticalAlignment="Center" />
-                        <TextBlock Text="{Binding DoctorFullName}" VerticalAlignment="Center" Grid.Column="1" />
-                        <TextBlock Text="{Binding AppointmentType}" VerticalAlignment="Center" Grid.Column="2" />
-                        <TextBlock Text="{Binding Date, StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Center" Grid.Column="3" />
-                        <TextBlock Text="{Binding Time}" VerticalAlignment="Center" Grid.Column="4" />
+                        <TextBlock Text="{Binding PatientFullNameOrIdentifier}"
+                                   Foreground="{Binding Converter={StaticResource AppointmentPatientNameForegroundConverter}}"
+                                   VerticalAlignment="Center" />
+                        
+                        <TextBlock Text="{Binding DoctorFullName}"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="1" />
+                        
+                        <TextBlock Text="{Binding AppointmentType}"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="2" />
+                        
+                        <TextBlock Text="{Binding Date, StringFormat={}{0:dd/MM/yyyy}}"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="3" />
+                        
+                        <TextBlock Text="{Binding Time}"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="4" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
