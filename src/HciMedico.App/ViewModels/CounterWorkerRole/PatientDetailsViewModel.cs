@@ -15,7 +15,7 @@ public class PatientDetailsViewModel : Conductor<object>
     private readonly IRepository<Patient> _patientRepository;
     private readonly PatientsViewModel _parentViewModel;
     private readonly IWindowManager _windowManager;
-    private Patient? patient;
+    private Patient? _patient;
 
     private string _firstName = string.Empty;
     public string FirstName
@@ -193,27 +193,27 @@ public class PatientDetailsViewModel : Conductor<object>
 
     private async Task InitializeViewModel()
     {
-        patient = await _patientRepository
+        _patient = await _patientRepository
             .FindAsync(patient => patient.Id == _id, false, "Appointments.AssignedTo.Specializations,HealthRecord");
 
-        FirstName = patient?.FirstName ?? DisplayMessages.NoData;
-        LastName = patient?.LastName ?? DisplayMessages.NoData;
-        UID = patient?.Uid ?? DisplayMessages.NoData;
-        Gender = patient?.HealthRecord?.Gender.ToString() ?? DisplayMessages.NoData;
-        DateOfBirth = patient?.HealthRecord?.DateOfBirth ?? DateTime.MinValue;
-        Country = patient?.Address?.Country ?? DisplayMessages.NoData;
-        City = patient?.Address?.City ?? DisplayMessages.NoData;
-        Street = patient?.Address?.Street ?? DisplayMessages.NoData;
-        Number = patient?.Address?.Number.ToString() ?? DisplayMessages.NoData;
-        Email = patient?.ContactInfo?.Email ?? DisplayMessages.NoData;
-        TelephoneNumber = patient?.ContactInfo?.TelephoneNumber ?? DisplayMessages.NoData;
-        NumberOfVisits = patient?.Appointments.Count(appointment => appointment.Status == AppointmentStatus.Resolved) ?? 0;
-        LastVisitDetails = GetAppointmentInfo(patient, AppointmentStatus.Resolved) ?? DisplayMessages.NoData;
-        NextAppointmentDetails = GetAppointmentInfo(patient, AppointmentStatus.Scheduled) ?? DisplayMessages.NoData;
+        FirstName = _patient?.FirstName ?? DisplayMessages.NoData;
+        LastName = _patient?.LastName ?? DisplayMessages.NoData;
+        UID = _patient?.Uid ?? DisplayMessages.NoData;
+        Gender = _patient?.HealthRecord?.Gender.ToString() ?? DisplayMessages.NoData;
+        DateOfBirth = _patient?.HealthRecord?.DateOfBirth ?? DateTime.MinValue;
+        Country = _patient?.Address?.Country ?? DisplayMessages.NoData;
+        City = _patient?.Address?.City ?? DisplayMessages.NoData;
+        Street = _patient?.Address?.Street ?? DisplayMessages.NoData;
+        Number = _patient?.Address?.Number.ToString() ?? DisplayMessages.NoData;
+        Email = _patient?.ContactInfo?.Email ?? DisplayMessages.NoData;
+        TelephoneNumber = _patient?.ContactInfo?.TelephoneNumber ?? DisplayMessages.NoData;
+        NumberOfVisits = _patient?.Appointments.Count(appointment => appointment.Status == AppointmentStatus.Resolved) ?? 0;
+        LastVisitDetails = GetAppointmentInfo(_patient, AppointmentStatus.Resolved) ?? DisplayMessages.NoData;
+        NextAppointmentDetails = GetAppointmentInfo(_patient, AppointmentStatus.Scheduled) ?? DisplayMessages.NoData;
     }
 
     public async Task EditDetails() =>
-        await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(patient, _patientRepository, this));
+        await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(_patient, _patientRepository, this));
 
     public void ScheduleAppointment()
     {

@@ -29,7 +29,6 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.PatientFullNameOrIdentifier, opt => opt.MapFrom(src => GetPatientFullNameOrIdentifier(src)))
             .ForMember(dest => dest.DoctorFullName, opt => opt.MapFrom(src => $"{src.AssignedTo.FirstName} {src.AssignedTo.LastName}"))
-            .ForMember(dest => dest.AppointmentType, opt => opt.MapFrom(src => src.Type))
             .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
             .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Time))
             .ForMember(dest => dest.IsPatientRegistered, opt => opt.MapFrom(src => IsPatientRegistered(src)));

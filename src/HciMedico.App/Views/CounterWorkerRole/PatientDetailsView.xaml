@@ -50,7 +50,7 @@
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,5,0,0">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,5,0,0" Grid.ColumnSpan="3">
             <ui:Button x:Name="EditDetails" Content="Edit" Margin="0,0,5,0" Icon="{ui:SymbolIcon Edit32}" />
             <ui:Button x:Name="ScheduleAppointment" Content="Schedule appointment" Icon="{ui:SymbolIcon ShiftsAdd24}" />
         </StackPanel>

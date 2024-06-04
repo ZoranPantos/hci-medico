@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:local="clr-namespace:HciMedico.App.Converters"
+             xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
 
@@ -44,7 +46,6 @@
         <StackPanel Grid.Row="4" Style="{StaticResource TableStackPanelHeader}">
             <TextBlock Text="Patient name/identifier" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
             <TextBlock Text="Appointed doctor" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
-            <TextBlock Text="Appointment type" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
             <TextBlock Text="Date" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
             <TextBlock Text="Time" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
         </StackPanel>
@@ -54,7 +55,6 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200" />
                             <ColumnDefinition Width="200" />
                             <ColumnDefinition Width="200" />
                             <ColumnDefinition Width="200" />
@@ -69,17 +69,21 @@
                                    VerticalAlignment="Center"
                                    Grid.Column="1" />
                         
-                        <TextBlock Text="{Binding AppointmentType}"
+                        <TextBlock Text="{Binding Date, StringFormat={}{0:dd/MM/yyyy}}"
                                    VerticalAlignment="Center"
                                    Grid.Column="2" />
                         
-                        <TextBlock Text="{Binding Date, StringFormat={}{0:dd/MM/yyyy}}"
-                                   VerticalAlignment="Center"
-                                   Grid.Column="3" />
-                        
                         <TextBlock Text="{Binding Time}"
                                    VerticalAlignment="Center"
-                                   Grid.Column="4" />
+                                   Grid.Column="3" />
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <cal:ActionMessage MethodName="OpenAppointmentDetails">
+                                    <cal:Parameter Value="{Binding}" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

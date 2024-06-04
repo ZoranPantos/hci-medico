@@ -56,4 +56,10 @@ public class AppointmentsCounterWorkerViewModel : Conductor<object>
 
         }
     }
+
+    public async Task OpenAppointmentDetails(AppointmentDisplayModel appointment) =>
+        await _shellViewModel.ActivateItemAsync(new AppointmentDetailsViewModel(appointment.Id, this, _appointmentsRepository));
+
+    public async Task SelfActivateAsync() =>
+        await _shellViewModel.ActivateItemAsync(new AppointmentsCounterWorkerViewModel(_appointmentsRepository, _mapper, _shellViewModel, _windowManager));
 }
