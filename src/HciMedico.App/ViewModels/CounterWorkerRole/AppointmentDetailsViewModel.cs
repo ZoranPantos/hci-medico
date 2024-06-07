@@ -10,6 +10,7 @@ public class AppointmentDetailsViewModel : Conductor<object>
     private readonly int _id;
     private readonly AppointmentsCounterWorkerViewModel _parentViewModel;
     private readonly IRepository<Appointment> _appointmentsRepository;
+    private readonly IWindowManager _windowManager;
     private Appointment? _appointment;
 
     private DateTime _scheduledFor = DateTime.MinValue;
@@ -78,11 +79,16 @@ public class AppointmentDetailsViewModel : Conductor<object>
         }
     }
 
-    public AppointmentDetailsViewModel(int id, AppointmentsCounterWorkerViewModel parentViewModel, IRepository<Appointment> appointmentsRepository)
+    public AppointmentDetailsViewModel(
+        int id,
+        AppointmentsCounterWorkerViewModel parentViewModel,
+        IRepository<Appointment> appointmentsRepository,
+        IWindowManager windowManager)
     {
         _id = id;
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
         _appointmentsRepository = appointmentsRepository ?? throw new ArgumentNullException(nameof(appointmentsRepository));
+        _windowManager = windowManager ?? throw new ArgumentNullException(nameof(windowManager));
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken) => await InitializeViewModel();
@@ -106,5 +112,10 @@ public class AppointmentDetailsViewModel : Conductor<object>
         CreatedBy = $"{_appointment.CreatedBy.FirstName} {_appointment.CreatedBy.LastName}";
     }
 
+    public async Task RefreshViewModel() => await InitializeViewModel();
+
     public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
+
+    public async Task UpdateStatus() =>
+        await _windowManager.ShowWindowAsync(new AppointmentStatusUpdateViewModel(_appointment, _appointmentsRepository, this));
 }

@@ -58,7 +58,7 @@ public class AppointmentsCounterWorkerViewModel : Conductor<object>
     }
 
     public async Task OpenAppointmentDetails(AppointmentDisplayModel appointment) =>
-        await _shellViewModel.ActivateItemAsync(new AppointmentDetailsViewModel(appointment.Id, this, _appointmentsRepository));
+        await _shellViewModel.ActivateItemAsync(new AppointmentDetailsViewModel(appointment.Id, this, _appointmentsRepository, _windowManager));
 
     public async Task SelfActivateAsync() =>
         await _shellViewModel.ActivateItemAsync(new AppointmentsCounterWorkerViewModel(_appointmentsRepository, _mapper, _shellViewModel, _windowManager));

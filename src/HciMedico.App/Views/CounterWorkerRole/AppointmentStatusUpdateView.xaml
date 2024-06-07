@@ -1,0 +1,47 @@
+﻿<Window x:Class="HciMedico.App.Views.CounterWorkerRole.AppointmentStatusUpdateView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HciMedico.App.Converters"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:counterworkerrole="clr-namespace:HciMedico.App.ViewModels.CounterWorkerRole"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Appointment Status Update"
+        Background="#D1DAED"
+        Height="220" Width="300">
+
+    <Grid Margin="10,5">
+        <Grid.Resources>
+            <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TextBlock Text="This appointment is:" />
+
+        <StackPanel Grid.Row="1">
+            <RadioButton Content="Resolved"
+                         IsChecked="{Binding SelectedStatus, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Resolved}" />
+            
+            <RadioButton Content="Cancelled"
+                         IsChecked="{Binding SelectedStatus, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Cancelled}" />
+            
+            <RadioButton Content="Scheduled"
+                         IsChecked="{Binding SelectedStatus, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Scheduled}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <ui:Button x:Name="Update" Content="Update" Appearance="Primary"
+                       Margin="0,0,10,0" Icon="{ui:SymbolIcon SaveEdit24}" />
+            
+            <ui:Button x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
+        </StackPanel>
+    </Grid>
+</Window>
