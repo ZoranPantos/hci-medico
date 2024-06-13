@@ -32,7 +32,9 @@ public class Bootstrapper : BootstrapperBase
             .Singleton<IRepository<Patient>, PatientsRepository>()
             .Singleton<IRepository<MedicalCondition>, MedicalConditionsRepository>()
             .Singleton<IRepository<UserSettings>, UserSettingsRepository>()
-            .Singleton<IRepository<Appointment>, AppointmentsRepository>();
+            .Singleton<IRepository<Appointment>, AppointmentsRepository>()
+            .Singleton<IRepository<Doctor>, DoctorsRepository>()
+            .Singleton<IRepository<MedicalSpecialization>, MedicalSpecializationsRepository>();
 
         var mapperConfiguration = new MapperConfiguration(configuration => configuration.AddProfile<MappingProfile>());
         var mapper = mapperConfiguration.CreateMapper();

@@ -11,6 +11,8 @@ public class Employee
     public string LastName { get; set; } = string.Empty;
     public string Education { get; set; } = string.Empty;
 
+    public string FullName => $"{FirstName} {LastName}";
+
     public Gender Gender { get; set; }
     public DateTime DateOfBirth { get; set; }
     public Address Address { get; set; }

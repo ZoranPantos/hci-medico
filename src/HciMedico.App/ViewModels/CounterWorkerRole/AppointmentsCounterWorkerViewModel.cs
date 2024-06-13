@@ -35,6 +35,8 @@ public class AppointmentsCounterWorkerViewModel : Conductor<object>
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken) => await InitializeViewModel();
 
+    public async Task RefreshViewModel() => await InitializeViewModel();
+
     public async Task InitializeViewModel()
     {
         try
@@ -62,4 +64,16 @@ public class AppointmentsCounterWorkerViewModel : Conductor<object>
 
     public async Task SelfActivateAsync() =>
         await _shellViewModel.ActivateItemAsync(new AppointmentsCounterWorkerViewModel(_appointmentsRepository, _mapper, _shellViewModel, _windowManager));
+
+    public async Task ScheduleNewAppointment()
+    {
+        await _windowManager.ShowWindowAsync(
+            new ScheduleAppointmentViewModel(
+                this,
+                IoC.Get<IRepository<Patient>>(),
+                IoC.Get<IRepository<Doctor>>(),
+                IoC.Get<IRepository<MedicalSpecialization>>(),
+                IoC.Get<IRepository<Appointment>>())
+        );
+    }
 }

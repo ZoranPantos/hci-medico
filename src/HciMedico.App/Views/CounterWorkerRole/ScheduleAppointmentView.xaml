@@ -1,0 +1,101 @@
+﻿<Window x:Class="HciMedico.App.Views.CounterWorkerRole.ScheduleAppointmentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="ScheduleAppointmentView"
+        Height="550" Width="400"
+        Background="#D1DAED">
+
+    <Grid Margin="10,5">
+        <Grid.Resources>
+            <Style x:Key="CalendarDayButtonStyle" TargetType="{x:Type CalendarDayButton}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsBlackout}" Value="True">
+                        <Setter Property="Background" Value="LightGray" />
+                        <Setter Property="Foreground" Value="DarkGray" />
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Specialist selection" BorderThickness="0.5" Margin="0,0,0,5">
+            <StackPanel>
+                <ui:TextBlock Text="Specialization filter" />
+                <ComboBox IsEditable="True"
+                          ItemsSource="{Binding AvailableSpecializations}"
+                          SelectedItem="{Binding SelectedMedicalSpecialization}"
+                          DisplayMemberPath="Name"
+                          Background="White" />
+
+                <ui:TextBlock Text="Select a doctor:" />
+                <ComboBox x:Name="SelectedDoctor"
+                          IsEditable="True"
+                          ItemsSource="{Binding AvailableDoctors}"
+                          SelectedItem="{Binding SelectedDoctor}"
+                          DisplayMemberPath="FullName"
+                          Background="White" />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Header="Date and time selection" BorderThickness="0.5" Margin="0,0,0,5">
+            <StackPanel>
+                <ui:TextBlock Text="Select date" />
+                
+                <!-- Gives the standard UI look after managing to setup disabled dates -->
+                <DatePicker x:Name="AppointmentDate" Background="White">
+                    <DatePicker.CalendarStyle>
+                        <Style TargetType="Calendar">
+                            <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CalendarDayButtonStyle}" />
+                        </Style>
+                    </DatePicker.CalendarStyle>
+                </DatePicker>
+
+                <ui:TextBlock Text="Select available time" />
+                <ComboBox x:Name="AppointmentTime"
+                          ItemsSource="{Binding AvailableTimes}"
+                          SelectedItem="{Binding AppointmentTime}"
+                          Background="White"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Header="Requester" BorderThickness="0.5">
+            <StackPanel>
+                <ui:TextBlock Text="Unregistered patient" />
+                <ui:TextBox x:Name="RequesterIdentifier"
+                            PlaceholderText="Identifier"
+                            Background="White" />
+
+                <ui:TextBlock Text="Registered patient selection" />
+                <ComboBox x:Name="SelectedPatient"
+                          IsEditable="True"
+                          ItemsSource="{Binding RegisteredPatients}"
+                          SelectedItem="{Binding SelectedPatient}"
+                          DisplayMemberPath="FullName"
+                          Background="White" />
+
+                <ui:TextBlock Text="Appointment type" />
+                <ComboBox ItemsSource="{Binding AppointmentTypeOptions}"
+                          SelectedItem="{Binding SelectedAppointmentType}"
+                          Background="White" />
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <ui:Button x:Name="Schedule" Content="Schedule" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon Save28}" />
+            <ui:Button Grid.Column="1" x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
+        </StackPanel>
+    </Grid>
+</Window>
