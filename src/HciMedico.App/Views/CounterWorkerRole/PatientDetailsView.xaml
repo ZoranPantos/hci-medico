@@ -100,6 +100,7 @@
 
         <ui:TextBlock Grid.Row="9" Grid.Column="1"
                       x:Name="DateOfBirth"
+                      Text="{Binding DateOfBirth, StringFormat={}{0:dd/MM/yyyy}}"
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <Separator Grid.Row="10" Grid.ColumnSpan="3"

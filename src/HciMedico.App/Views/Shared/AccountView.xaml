@@ -129,6 +129,7 @@
         
         <ui:TextBlock Grid.Row="12" Grid.Column="1"
                       x:Name="DateOfBirth"
+                      Text="{Binding DateOfBirth, StringFormat={}{0:dd/MM/yyyy}}"
                       Style="{StaticResource DataTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="13"
@@ -155,6 +156,7 @@
 
         <ui:TextBlock Grid.Row="15" Grid.Column="1"
                       x:Name="EmployedSince"
+                      Text="{Binding EmployedSince, StringFormat={}{0:dd/MM/yyyy}}"
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="16"

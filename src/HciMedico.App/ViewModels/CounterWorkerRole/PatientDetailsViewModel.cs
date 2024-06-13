@@ -230,7 +230,7 @@ public class PatientDetailsViewModel : Conductor<object>
                 .Where(appointment => appointment.Status == appointmentStatus)
                 .MaxBy(appointment => appointment.DateAndTime);
 
-            string appointmentDateTimeString = appointment?.DateAndTime.ToString() ?? string.Empty;
+            string appointmentDateTimeString = appointment?.DateAndTime.ToString("dd/MM/yyyy HH:mm") ?? string.Empty;
 
             var assignedDoctor = appointment?.AssignedTo;
 
