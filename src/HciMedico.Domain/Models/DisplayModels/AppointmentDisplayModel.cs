@@ -9,5 +9,6 @@ public sealed class AppointmentDisplayModel
     public string DoctorFullName { get; set; } = string.Empty;
     public DateOnly Date { get; set; }
     public TimeOnly Time { get; set; }
+    public string FormattedTime => Time.ToString("HH:mm");
     public bool IsPatientRegistered { get; set; }
 }

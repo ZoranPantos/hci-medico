@@ -156,6 +156,10 @@ public class ScheduleAppointmentViewModel : Conductor<object>
             AvailableTimes.Add(new TimeOnly(10, 0));
             AvailableTimes.Add(new TimeOnly(10, 30));
             AvailableTimes.Add(new TimeOnly(11, 0));
+            AvailableTimes.Add(new TimeOnly(17, 0));
+            AvailableTimes.Add(new TimeOnly(17, 30));
+            AvailableTimes.Add(new TimeOnly(18, 0));
+
         }
         catch (Exception)
         {

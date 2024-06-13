@@ -73,7 +73,7 @@
                                    VerticalAlignment="Center"
                                    Grid.Column="2" />
                         
-                        <TextBlock Text="{Binding Time}"
+                        <TextBlock Text="{Binding FormattedTime}"
                                    VerticalAlignment="Center"
                                    Grid.Column="3" />
 
