@@ -61,6 +61,17 @@ public class AccountViewModel : Conductor<object>
         }
     }
 
+    private string _uid = string.Empty;
+    public string Uid
+    {
+        get => _uid;
+        set
+        {
+            _uid = value;
+            NotifyOfPropertyChange(() => Uid);
+        }
+    }
+
     private string _gender = string.Empty;
     public string Gender
     {
@@ -231,6 +242,7 @@ public class AccountViewModel : Conductor<object>
         PasswordLastUpdated = UserContext.CurrentUser?.PasswordLastUpdated ?? default;
         FirstName = UserContext.CurrentUser?.Employee?.FirstName ?? DisplayMessages.NoData;
         LastName = UserContext.CurrentUser?.Employee?.LastName ?? DisplayMessages.NoData;
+        Uid = UserContext.CurrentUser?.Employee?.Uid ?? DisplayMessages.NoData;
         Gender = UserContext.CurrentUser?.Employee?.Gender.ToString() ?? DisplayMessages.NoData;
         DateOfBirth = DateOnly.FromDateTime(UserContext.CurrentUser?.Employee?.DateOfBirth ?? default);
         Education = UserContext.CurrentUser?.Employee?.Education ?? DisplayMessages.NoData;
