@@ -326,7 +326,7 @@ public class EditPatientDetailsViewModel : Conductor<object>
 
     private bool ValidateCountryCityAndStreetName(string country, string city, string street)
     {
-        string pattern = "^[a-zA-Z]+(?:\\s+[a-zA-Z]+)*$";
+        string pattern = @"^(?!\s)(?!.*\s$)[a-zA-Z0-9čćšžđČĆŠŽĐ\u0400-\u04FF\u0500-\u052F\u2DE0-\u2DFF\uA640-\uA69F\u1C80-\u1C8F\s]+$";
 
         var regex = new Regex(pattern);
 
