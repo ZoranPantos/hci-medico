@@ -1,5 +1,9 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.ViewModels.Shared;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Events;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -7,18 +11,37 @@ namespace HciMedico.App;
 
 public partial class App : Application
 {
-    //TODO: add logging
+    private readonly ILoggerFactory _loggerFactory = LoggerFactory.Create(builder =>
+    {
+        var loggerConfiguration = new LoggerConfiguration()
+            .WriteTo
+            .File
+            (
+                //File will be in bin/debug
+                ConfigurationManager.AppSettings["LogOutputFileRelative"]!,
+                LogEventLevel.Error,
+                rollingInterval: RollingInterval.Day,
+                outputTemplate: "{Timestamp:HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}"
+            );
+
+        builder.AddSerilog(loggerConfiguration.CreateLogger());
+    });
+
+    private ILogger<App>? _logger;
+
     private async void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
         var originalException = e.Exception.InnerException;
         var originalInnerException = e.Exception.InnerException?.InnerException;
 
         string firstInnerMessage = originalException is not null ? $"Location: {originalException.Message}" : string.Empty;
-        string secondInnerMessage = originalInnerException is not null ? $"Error: {originalInnerException.Message}" : string.Empty;
+        string secondInnerMessage = originalInnerException is not null ? $"Message: {originalInnerException.Message}" : string.Empty;
 
-        string currentDateTime = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         string composedExceptionMessage = $"{firstInnerMessage}{Environment.NewLine}{secondInnerMessage}";
-        string logMessage = $"Log time: {currentDateTime}{Environment.NewLine}{composedExceptionMessage}";
+        string logMessage = $"{Environment.NewLine}{composedExceptionMessage}{Environment.NewLine}";
+
+        _logger = _loggerFactory.CreateLogger<App>();
+        _logger?.LogError(logMessage);
 
         var windowManager = IoC.Get<IWindowManager>();
 
