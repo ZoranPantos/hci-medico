@@ -11,4 +11,5 @@ public sealed class AppointmentDisplayModel
     public TimeOnly Time { get; set; }
     public string FormattedTime => Time.ToString("HH:mm");
     public bool IsPatientRegistered { get; set; }
+    public AppointmentStatus Status { get; set; }
 }

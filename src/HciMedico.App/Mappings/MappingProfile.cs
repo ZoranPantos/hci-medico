@@ -31,7 +31,8 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.DoctorFullName, opt => opt.MapFrom(src => $"{src.AssignedTo.FirstName} {src.AssignedTo.LastName}"))
             .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
             .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Time))
-            .ForMember(dest => dest.IsPatientRegistered, opt => opt.MapFrom(src => IsPatientRegistered(src)));
+            .ForMember(dest => dest.IsPatientRegistered, opt => opt.MapFrom(src => IsPatientRegistered(src)))
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
     }
 
     private static int GetResolvedAppointmentsCount(Patient patient) =>

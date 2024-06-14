@@ -13,6 +13,7 @@
     <Grid Margin="10,5">
         <Grid.Resources>
             <local:AppointmentPatientNameForegroundConverter x:Key="AppointmentPatientNameForegroundConverter" />
+            <local:AppointmentStatusForegroundConverter x:Key="AppointmentStatusForegroundConverter" />
         </Grid.Resources>
         
         <Grid.RowDefinitions>
@@ -48,6 +49,7 @@
             <TextBlock Text="Appointed doctor" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
             <TextBlock Text="Date" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
             <TextBlock Text="Time" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Status" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
         </StackPanel>
 
         <ListView x:Name="Appointments" SelectionMode="Single" Grid.Row="5">
@@ -55,6 +57,7 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
                             <ColumnDefinition Width="200" />
                             <ColumnDefinition Width="200" />
                             <ColumnDefinition Width="200" />
@@ -76,6 +79,11 @@
                         <TextBlock Text="{Binding FormattedTime}"
                                    VerticalAlignment="Center"
                                    Grid.Column="3" />
+
+                        <TextBlock Text="{Binding Status}"
+                                   Foreground="{Binding Converter={StaticResource AppointmentStatusForegroundConverter}}"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="4" />
 
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDown">
