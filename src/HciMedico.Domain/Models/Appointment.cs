@@ -31,4 +31,6 @@ public class Appointment
     public int? PatientId { get; set; }
     public Patient? Patient { get; set; }
     public string IdentifierName { get; set; } = string.Empty;
+
+    public DateTime CreationTime { get; set; }
 }

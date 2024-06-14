@@ -79,6 +79,17 @@ public class AppointmentDetailsViewModel : Conductor<object>
         }
     }
 
+    public DateTime _creationTime;
+    public DateTime CreationTime
+    {
+        get => _creationTime;
+        set
+        {
+            _creationTime = value;
+            NotifyOfPropertyChange(() => CreationTime);
+        }
+    }
+
     public AppointmentDetailsViewModel(
         int id,
         AppointmentsCounterWorkerViewModel parentViewModel,
@@ -110,6 +121,7 @@ public class AppointmentDetailsViewModel : Conductor<object>
             $"{_appointment.Patient.FirstName} {_appointment.Patient.LastName}" : _appointment.IdentifierName;
 
         CreatedBy = $"{_appointment.CreatedBy.FirstName} {_appointment.CreatedBy.LastName}";
+        CreationTime = _appointment.CreationTime;
     }
 
     public async Task RefreshViewModel() => await InitializeViewModel();

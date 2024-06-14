@@ -21,7 +21,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 15,
                 CounterWorkerId = 31,
                 PatientId = 1,
-                IdentifierName = "boris borisavljevic"
+                IdentifierName = "boris borisavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -33,7 +34,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 15,
                 CounterWorkerId = 31,
                 PatientId = 1,
-                IdentifierName = "boris borisavljevic"
+                IdentifierName = "boris borisavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -45,7 +47,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 16,
                 CounterWorkerId = 31,
                 PatientId = 2,
-                IdentifierName = "saska macetic"
+                IdentifierName = "saska macetic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -57,7 +60,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 16,
                 CounterWorkerId = 32,
                 PatientId = 2,
-                IdentifierName = "saska macetic"
+                IdentifierName = "saska macetic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -69,7 +73,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 15,
                 CounterWorkerId = 32,
                 PatientId = 3,
-                IdentifierName = "milos milosavljevic"
+                IdentifierName = "milos milosavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -81,7 +86,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 15,
                 CounterWorkerId = 32,
                 PatientId = 3,
-                IdentifierName = "milos milosavljevic"
+                IdentifierName = "milos milosavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -93,7 +99,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 3,
                 CounterWorkerId = 33,
                 PatientId = 4,
-                IdentifierName = "ana stanojevic"
+                IdentifierName = "ana stanojevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -105,7 +112,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 3,
                 CounterWorkerId = 33,
                 PatientId = 4,
-                IdentifierName = "ana stanojevic"
+                IdentifierName = "ana stanojevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -117,7 +125,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 4,
                 CounterWorkerId = 33,
                 PatientId = 5,
-                IdentifierName = "darko darkovic"
+                IdentifierName = "darko darkovic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -129,7 +138,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 4,
                 CounterWorkerId = 34,
                 PatientId = 5,
-                IdentifierName = "darko darkovic"
+                IdentifierName = "darko darkovic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -141,7 +151,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 3,
                 CounterWorkerId = 34,
                 PatientId = 6,
-                IdentifierName = "jovana jovanovic"
+                IdentifierName = "jovana jovanovic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -153,7 +164,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 3,
                 CounterWorkerId = 34,
                 PatientId = 6,
-                IdentifierName = "jovana jovanovic"
+                IdentifierName = "jovana jovanovic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -165,7 +177,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 4,
                 CounterWorkerId = 31,
                 PatientId = 7,
-                IdentifierName = "nikola nikolic"
+                IdentifierName = "nikola nikolic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -177,7 +190,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 4,
                 CounterWorkerId = 31,
                 PatientId = 7,
-                IdentifierName = "nikola nikolic"
+                IdentifierName = "nikola nikolic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -189,7 +203,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 1,
                 CounterWorkerId = 32,
                 PatientId = 8,
-                IdentifierName = "david davidovic"
+                IdentifierName = "david davidovic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -201,7 +216,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 1,
                 CounterWorkerId = 32,
                 PatientId = 8,
-                IdentifierName = "david davidovic"
+                IdentifierName = "david davidovic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -213,7 +229,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 1,
                 CounterWorkerId = 33,
                 PatientId = 9,
-                IdentifierName = "stana stanojevic"
+                IdentifierName = "stana stanojevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -225,7 +242,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 1,
                 CounterWorkerId = 33,
                 PatientId = 9,
-                IdentifierName = "stana stanojevic"
+                IdentifierName = "stana stanojevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -237,7 +255,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 1,
                 CounterWorkerId = 34,
                 PatientId = 10,
-                IdentifierName = "goran predojevic"
+                IdentifierName = "goran predojevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -249,7 +268,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 1,
                 CounterWorkerId = 34,
                 PatientId = 10,
-                IdentifierName = "goran predojevic"
+                IdentifierName = "goran predojevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             }
         );
 
@@ -265,7 +285,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 15,
                 CounterWorkerId = 31,
                 PatientId = 1,
-                IdentifierName = "boris borisavljevic"
+                IdentifierName = "boris borisavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -277,7 +298,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 15,
                 CounterWorkerId = 31,
                 PatientId = 1,
-                IdentifierName = "boris borisavljevic"
+                IdentifierName = "boris borisavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -289,7 +311,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 3,
                 CounterWorkerId = 33,
                 PatientId = 4,
-                IdentifierName = "ana stanojevic"
+                IdentifierName = "ana stanojevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -301,7 +324,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 3,
                 CounterWorkerId = 33,
                 PatientId = 4,
-                IdentifierName = "ana stanojevic"
+                IdentifierName = "ana stanojevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             }
         );
 
@@ -317,7 +341,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 9,
                 CounterWorkerId = 31,
                 PatientId = 1,
-                IdentifierName = "boris borisavljevic"
+                IdentifierName = "boris borisavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -329,7 +354,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 9,
                 CounterWorkerId = 31,
                 PatientId = 1,
-                IdentifierName = "boris borisavljevic"
+                IdentifierName = "boris borisavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -341,7 +367,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 9,
                 CounterWorkerId = 31,
                 PatientId = 2,
-                IdentifierName = "saska macetic"
+                IdentifierName = "saska macetic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -353,7 +380,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 9,
                 CounterWorkerId = 31,
                 PatientId = 2,
-                IdentifierName = "saska macetic"
+                IdentifierName = "saska macetic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -365,7 +393,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 9,
                 CounterWorkerId = 31,
                 PatientId = 3,
-                IdentifierName = "milos milosavljevic"
+                IdentifierName = "milos milosavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -377,7 +406,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 DoctorId = 9,
                 CounterWorkerId = 31,
                 PatientId = 3,
-                IdentifierName = "milos milosavljevic"
+                IdentifierName = "milos milosavljevic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             }
         );
 
@@ -391,7 +421,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 Type = AppointmentType.Initial,
                 DoctorId = 11,
                 CounterWorkerId = 32,
-                IdentifierName = "lana pepic"
+                IdentifierName = "lana pepic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -401,7 +432,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 Type = AppointmentType.Initial,
                 DoctorId = 12,
                 CounterWorkerId = 32,
-                IdentifierName = "nikola jokic"
+                IdentifierName = "nikola jokic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -411,7 +443,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 Type = AppointmentType.Initial,
                 DoctorId = 14,
                 CounterWorkerId = 32,
-                IdentifierName = "marija novakovic"
+                IdentifierName = "marija novakovic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             },
             new Appointment
             {
@@ -421,7 +454,8 @@ public class AppointmentEntityTypeConfiguration : IEntityTypeConfiguration<Appoi
                 Type = AppointmentType.Initial,
                 DoctorId = 19,
                 CounterWorkerId = 32,
-                IdentifierName = "branko brankovic"
+                IdentifierName = "branko brankovic",
+                CreationTime = new(2022, 1, 1, 8, 0, 0)
             }
         );
     }

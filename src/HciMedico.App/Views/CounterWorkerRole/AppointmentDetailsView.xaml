@@ -21,6 +21,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -99,6 +100,15 @@
 
         <ui:TextBlock Grid.Row="10" Grid.Column="1"
                       x:Name="CreatedBy"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="11" 
+                      Text="Creation time:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="11" Grid.Column="1"
+                      x:Name="CreationTime"
+                      Text="{Binding CreationTime, StringFormat={}{0:dd/MM/yyyy HH:mm}}"
                       Style="{StaticResource DataTextBlockStyle}" />
     </Grid>
 </UserControl>

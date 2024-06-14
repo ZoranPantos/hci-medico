@@ -195,7 +195,8 @@ public class ScheduleAppointmentViewModel : Conductor<object>
                 Status = AppointmentStatus.Scheduled,
                 Type = SelectedAppointmentType,
                 AssignedTo = SelectedDoctor!,
-                CounterWorkerId = UserContext.CurrentUser!.Id
+                CounterWorkerId = UserContext.CurrentUser!.Id,
+                CreationTime = DateTime.Now
 
                 //Issue with saving in db
                 //CreatedBy = (CounterWorker)UserContext.CurrentUser!.Employee
