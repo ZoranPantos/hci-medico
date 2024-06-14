@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
@@ -53,9 +54,10 @@ public class TreatedPatientsViewModel : Conductor<object>
 
             treatedPatientsDtos.ForEach(TreatedPatients.Add);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
+            string message = $"Exception caught and rethrown in {nameof(TreatedPatientsViewModel)}.{nameof(OnActivateAsync)}";
+            throw new MedicoException(message, ex);
         }
     }
 
@@ -114,14 +116,22 @@ public class TreatedPatientsViewModel : Conductor<object>
 
     private async Task<List<Patient>> FetchTreatedPatients()
     {
-        var currentDoctor = (Doctor?)(UserContext.CurrentUser?.Employee)
-                ?? throw new Exception("Cannot load doctor entity");
+        try
+        {
+            var currentDoctor = (Doctor?)(UserContext.CurrentUser?.Employee)
+                    ?? throw new Exception("Cannot load doctor entity");
 
-        Expression<Func<Patient, bool>>? filter =
-            patient => patient.Appointments.Select(appointment => appointment.DoctorId).Contains(currentDoctor.Id);
+            Expression<Func<Patient, bool>>? filter =
+                patient => patient.Appointments.Select(appointment => appointment.DoctorId).Contains(currentDoctor.Id);
 
-        var treatedPatients = await _patientRepository.GetAllAsync(filter, true, "Appointments,HealthRecord");
+            var treatedPatients = await _patientRepository.GetAllAsync(filter, true, "Appointments,HealthRecord");
 
-        return treatedPatients;
+            return treatedPatients;
+        }
+        catch (Exception ex)
+        {
+            string message = $"Exception caught and rethrown in {nameof(TreatedPatientsViewModel)}.{nameof(FetchTreatedPatients)}";
+            throw new MedicoException(message, ex);
+        }
     }
 }

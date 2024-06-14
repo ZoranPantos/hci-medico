@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -270,9 +271,12 @@ public class EditPatientDetailsViewModel : Conductor<object>
 
             await _parentViewModel!.RefreshViewModel();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             ValidationMessage = "Failed to update patient details";
+
+            string message = $"Exception caught and rethrown in {nameof(EditPatientDetailsViewModel)}.{nameof(Update)}";
+            throw new MedicoException(message, ex);
         }
     }
 

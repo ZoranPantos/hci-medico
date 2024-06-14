@@ -1,9 +1,8 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
-using System.Collections.ObjectModel;
-using System.Windows.Controls;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
 
@@ -161,9 +160,10 @@ public class ScheduleAppointmentViewModel : Conductor<object>
             AvailableTimes.Add(new TimeOnly(18, 0));
 
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
+            string message = $"Exception caught and rethrown in {nameof(ScheduleAppointmentViewModel)}.{nameof(OnActivateAsync)}";
+            throw new MedicoException(message, ex);
         }
     }
 
@@ -216,8 +216,10 @@ public class ScheduleAppointmentViewModel : Conductor<object>
 
             await _parentViewModel!.RefreshViewModel();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            string message = $"Exception caught and rethrown in {nameof(ScheduleAppointmentViewModel)}.{nameof(Schedule)}";
+            throw new MedicoException(message, ex);
         }
     }
 

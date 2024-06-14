@@ -1,4 +1,4 @@
-﻿<Window x:Class="HciMedico.App.Views.Shared.GlobalExceptionView"
+﻿<Window x:Class="HciMedico.App.Views.Shared.ErrorDisplayView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,9 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Exception display" Height="300" Width="400">
+        Title="Error" 
+        Height="180" Width="380"
+        ResizeMode="NoResize">
     
     <Grid>
         <DockPanel Margin="10">
@@ -16,8 +18,8 @@
 
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <ui:TextBlock Text="Oops! Unhandled exception occurred!" FontWeight="Bold" Margin="0,0,0,10" Foreground="Red" />
-                    <ui:TextBlock x:Name="Message" TextWrapping="Wrap" Margin="0,0,0,0" />
+                    <ui:TextBlock x:Name="HeadingMessage" FontWeight="SemiBold" Margin="0,0,0,10" Foreground="Red" />
+                    <ui:TextBlock x:Name="ContentMessage" TextWrapping="Wrap" Margin="0,0,0,0" />
                 </StackPanel>
             </ScrollViewer>
         </DockPanel>

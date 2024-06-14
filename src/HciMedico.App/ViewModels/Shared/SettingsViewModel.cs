@@ -1,8 +1,8 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
-using System.Windows.Controls;
 
 namespace HciMedico.App.ViewModels.Shared;
 
@@ -52,9 +52,10 @@ public class SettingsViewModel : Conductor<object>
             _currentUserSettings.LandingPage = _selectedLandingPage;
             await _userSettingsRepository.Update(_currentUserSettings);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
+            string message = $"Exception caught and rethrown in {nameof(SettingsViewModel)}.{nameof(OnLandingPageSelectionChanged)}";
+            throw new MedicoException(message, ex);
         }
     }
 }

@@ -6,6 +6,7 @@ using HciMedico.Integration.Data.Repositories;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using HciMedico.Domain.Models.Relationships;
+using HciMedico.App.Exceptions;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
 
@@ -222,9 +223,10 @@ public class RegisterPatientViewModel : Conductor<object>
 
             _medicalConditions?.ForEach(MedicalConditions.Add);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
+            string message = $"Exception caught and rethrown in {nameof(RegisterPatientViewModel)}.{nameof(OnActivateAsync)}";
+            throw new MedicoException(message, ex);
         }
     }
 
@@ -253,9 +255,12 @@ public class RegisterPatientViewModel : Conductor<object>
 
             AddedMedicalConditionDisplayModelsString = AddedMedicalConditionDisplayModelsString[..^2];
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             ValidationMessage = "An error was encountered while trying to add a medical condition";
+
+            string message = $"Exception caught and rethrown in {nameof(RegisterPatientViewModel)}.{nameof(AddMedicalCondition)}";
+            throw new MedicoException(message, ex);
         }
     }
 
@@ -288,9 +293,12 @@ public class RegisterPatientViewModel : Conductor<object>
             if (string.IsNullOrEmpty(AddedMedicalConditionDisplayModelsString))
                 AddedMedicalConditionDisplayModelsString = "None";
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             ValidationMessage = "An error was encountered while trying to remove a medical condition";
+
+            string message = $"Exception caught and rethrown in {nameof(RegisterPatientViewModel)}.{nameof(RemoveMedicalCondition)}";
+            throw new MedicoException(message, ex);
         }
     }
 
@@ -438,9 +446,12 @@ public class RegisterPatientViewModel : Conductor<object>
 
             await _parentViewModel!.RefreshViewModel();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             ValidationMessage = "Failed to update patient details";
+
+            string message = $"Exception caught and rethrown in {nameof(RegisterPatientViewModel)}.{nameof(Save)}";
+            throw new MedicoException(message, ex);
         }
     }
 

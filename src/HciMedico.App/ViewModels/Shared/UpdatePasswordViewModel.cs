@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.App.Services;
 using HciMedico.Domain.Models;
 using HciMedico.Integration.Data.Repositories;
@@ -104,9 +105,12 @@ public class UpdatePasswordViewModel : Conductor<object>
 
             await TryCloseAsync();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             ValidationMessage = "Failed to update password";
+
+            string message = $"Exception caught and rethrown in {nameof(UpdatePasswordViewModel)}.{nameof(Save)}";
+            throw new MedicoException(message, ex);
         }
     }
 

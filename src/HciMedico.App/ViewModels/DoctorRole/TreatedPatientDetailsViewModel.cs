@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.App.Helpers;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
@@ -119,9 +120,10 @@ public class TreatedPatientDetailsViewModel : Conductor<object>
 
             validAppointmentDtos.ForEach(Appointments.Add);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
+            string message = $"Exception caught and rethrown in {nameof(TreatedPatientDetailsViewModel)}.{nameof(OnActivateAsync)}";
+            throw new MedicoException(message, ex);
         }
     }
 }

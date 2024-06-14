@@ -7,20 +7,22 @@ namespace HciMedico.App;
 
 public partial class App : Application
 {
+    //TODO: add logging
     private async void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
-        string exceptionMessage = e.Exception.Message;
+        var originalException = e.Exception.InnerException;
+        var originalInnerException = e.Exception.InnerException?.InnerException;
 
-        string innerExceptionMessage =
-            e.Exception.InnerException is not null ? e.Exception.InnerException.Message : "Inner exception was null";
+        string firstInnerMessage = originalException is not null ? $"Location: {originalException.Message}" : string.Empty;
+        string secondInnerMessage = originalInnerException is not null ? $"Error: {originalInnerException.Message}" : string.Empty;
 
-        string displayMessage = $"{exceptionMessage}{Environment.NewLine}{innerExceptionMessage}";
+        string currentDateTime = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        string composedExceptionMessage = $"{firstInnerMessage}{Environment.NewLine}{secondInnerMessage}";
+        string logMessage = $"Log time: {currentDateTime}{Environment.NewLine}{composedExceptionMessage}";
 
         var windowManager = IoC.Get<IWindowManager>();
 
-        var viewModel = new GlobalExceptionViewModel { Message = displayMessage };
-
-        await windowManager.ShowWindowAsync(viewModel);
+        await windowManager.ShowWindowAsync(new ErrorDisplayViewModel());
 
         e.Handled = true;
     }

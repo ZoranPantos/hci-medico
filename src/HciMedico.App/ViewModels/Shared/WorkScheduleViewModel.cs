@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.Domain.Models.DisplayModels;
 
 namespace HciMedico.App.ViewModels.Shared;
@@ -113,6 +114,8 @@ public class WorkScheduleViewModel : Conductor<object>
         }
         catch (Exception ex)
         {
+            string message = $"Exception caught and rethrown in {nameof(WorkScheduleViewModel)}.{nameof(InitializeCalendar)}";
+            throw new MedicoException(message, ex);
         }
     }
 

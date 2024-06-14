@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.App.Helpers;
 using HciMedico.Domain.Models;
 
@@ -229,10 +230,18 @@ public class AccountViewModel : Conductor<object>
 
     protected override Task OnInitializeAsync(CancellationToken cancellationToken)
     {
-        InitializeCommonFields();
-        InitializeRoleFields();
+        try
+        {
+            InitializeCommonFields();
+            InitializeRoleFields();
 
-        return base.OnInitializeAsync(cancellationToken);
+            return base.OnInitializeAsync(cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            string message = $"Exception caught and rethrown in {nameof(AccountViewModel)}.{nameof(OnInitializeAsync)}";
+            throw new MedicoException(message, ex);
+        }
     }
 
     private void InitializeCommonFields()

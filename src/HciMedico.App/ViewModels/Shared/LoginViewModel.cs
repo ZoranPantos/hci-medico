@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.App.Services;
 using HciMedico.App.Views.Shared;
 using HciMedico.Domain.Models;
@@ -85,9 +86,12 @@ public class LoginViewModel : Conductor<object>
 
             await _windowManager.ShowWindowAsync(new ShellViewModel(existingUser.UserSettings.LandingPage));
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             ValidationMessage = "There was an error while trying to log in";
+
+            string message = $"Exception caught and rethrown in {nameof(LoginViewModel)}.{nameof(Login)}";
+            throw new MedicoException(message, ex);
         }
     }
 

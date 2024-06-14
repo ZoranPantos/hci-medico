@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.App.Helpers;
-using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -193,23 +193,31 @@ public class PatientDetailsViewModel : Conductor<object>
 
     private async Task InitializeViewModel()
     {
-        _patient = await _patientRepository
-            .FindAsync(patient => patient.Id == _id, false, "Appointments.AssignedTo.Specializations,HealthRecord");
+        try
+        {
+            _patient = await _patientRepository
+                .FindAsync(patient => patient.Id == _id, false, "Appointments.AssignedTo.Specializations,HealthRecord");
 
-        FirstName = _patient?.FirstName ?? DisplayMessages.NoData;
-        LastName = _patient?.LastName ?? DisplayMessages.NoData;
-        UID = _patient?.Uid ?? DisplayMessages.NoData;
-        Gender = _patient?.HealthRecord?.Gender.ToString() ?? DisplayMessages.NoData;
-        DateOfBirth = _patient?.HealthRecord?.DateOfBirth ?? DateTime.MinValue;
-        Country = _patient?.Address?.Country ?? DisplayMessages.NoData;
-        City = _patient?.Address?.City ?? DisplayMessages.NoData;
-        Street = _patient?.Address?.Street ?? DisplayMessages.NoData;
-        Number = _patient?.Address?.Number.ToString() ?? DisplayMessages.NoData;
-        Email = _patient?.ContactInfo?.Email ?? DisplayMessages.NoData;
-        TelephoneNumber = _patient?.ContactInfo?.TelephoneNumber ?? DisplayMessages.NoData;
-        NumberOfVisits = _patient?.Appointments.Count(appointment => appointment.Status == AppointmentStatus.Resolved) ?? 0;
-        LastVisitDetails = GetAppointmentInfo(_patient, AppointmentStatus.Resolved) ?? DisplayMessages.NoData;
-        NextAppointmentDetails = GetAppointmentInfo(_patient, AppointmentStatus.Scheduled) ?? DisplayMessages.NoData;
+            FirstName = _patient?.FirstName ?? DisplayMessages.NoData;
+            LastName = _patient?.LastName ?? DisplayMessages.NoData;
+            UID = _patient?.Uid ?? DisplayMessages.NoData;
+            Gender = _patient?.HealthRecord?.Gender.ToString() ?? DisplayMessages.NoData;
+            DateOfBirth = _patient?.HealthRecord?.DateOfBirth ?? DateTime.MinValue;
+            Country = _patient?.Address?.Country ?? DisplayMessages.NoData;
+            City = _patient?.Address?.City ?? DisplayMessages.NoData;
+            Street = _patient?.Address?.Street ?? DisplayMessages.NoData;
+            Number = _patient?.Address?.Number.ToString() ?? DisplayMessages.NoData;
+            Email = _patient?.ContactInfo?.Email ?? DisplayMessages.NoData;
+            TelephoneNumber = _patient?.ContactInfo?.TelephoneNumber ?? DisplayMessages.NoData;
+            NumberOfVisits = _patient?.Appointments.Count(appointment => appointment.Status == AppointmentStatus.Resolved) ?? 0;
+            LastVisitDetails = GetAppointmentInfo(_patient, AppointmentStatus.Resolved) ?? DisplayMessages.NoData;
+            NextAppointmentDetails = GetAppointmentInfo(_patient, AppointmentStatus.Scheduled) ?? DisplayMessages.NoData;
+        }
+        catch (Exception ex)
+        {
+            string message = $"Exception caught and rethrown in {nameof(PatientDetailsViewModel)}.{nameof(InitializeViewModel)}";
+            throw new MedicoException(message, ex);
+        }
     }
 
     public async Task EditDetails() =>
@@ -217,9 +225,17 @@ public class PatientDetailsViewModel : Conductor<object>
 
     public void ScheduleAppointment()
     {
-        //throw new NotImplementedException();
-        int y = 0;
-        int x = 6 / y;
+        try
+        {
+            // test
+            int y = 0;
+            int x = 6 / y;
+        }
+        catch (Exception ex)
+        {
+            string message = $"Exception caught and rethrown in {nameof(PatientDetailsViewModel)}.{nameof(ScheduleAppointment)}";
+            throw new MedicoException(message, ex);
+        }
     }
 
     private string? GetAppointmentInfo(Patient? patient, AppointmentStatus appointmentStatus)
@@ -256,9 +272,10 @@ public class PatientDetailsViewModel : Conductor<object>
 
             return $"{appointmentDateTimeString} with {assignedDoctorFullName} ({assignedDoctorSpecializations})";
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            throw;
+            string message = $"Exception caught and rethrown in {nameof(PatientDetailsViewModel)}.{nameof(GetAppointmentInfo)}";
+            throw new MedicoException(message, ex);
         }
     }
 }

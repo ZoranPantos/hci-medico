@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using HciMedico.App.Exceptions;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -38,16 +39,24 @@ public class AppointmentStatusUpdateViewModel : Conductor<object>
 
     public async Task Update()
     {
-        if (_appointment is null)
-            return;
+        try
+        {
+            if (_appointment is null)
+                return;
 
-        _appointment.Status = SelectedStatus;
+            _appointment.Status = SelectedStatus;
 
-        await _appointmentsRepository.Update(_appointment);
+            await _appointmentsRepository.Update(_appointment);
 
-        await TryCloseAsync();
+            await TryCloseAsync();
 
-        await _parentViewModel!.RefreshViewModel();
+            await _parentViewModel!.RefreshViewModel();
+        }
+        catch (Exception ex)
+        {
+            string message = $"Exception caught and rethrown in {nameof(AppointmentStatusUpdateViewModel)}.{nameof(Update)}";
+            throw new MedicoException(message, ex);
+        }
     }
 
     public async Task Cancel() => await TryCloseAsync();
