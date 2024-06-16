@@ -16,7 +16,7 @@ public class InputValidator : IInputValidator
 
     // Checks if date of birth is realistic for registered person today
     public bool IsDateOfBirthValid(DateTime input) =>
-        input.CompareTo(new DateTime(1920, 1, 1)) >= 0 && input.CompareTo(DateTime.Now.Date) <= 0;
+        input.CompareTo(new DateTime(1920, 1, 1)) >= 0 && input.CompareTo(DateTime.Today) <= 0;
 
     public bool IsEmailValid(string input)
     {
