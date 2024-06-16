@@ -33,6 +33,10 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Time))
             .ForMember(dest => dest.IsPatientRegistered, opt => opt.MapFrom(src => IsPatientRegistered(src)))
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
+
+        CreateMap<Appointment, RegistrationLinkedAppointment>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.Information, opt => opt.MapFrom(src => GetLinkedAppointmentInfo(src)));
     }
 
     private static int GetResolvedAppointmentsCount(Patient patient) =>
@@ -40,8 +44,14 @@ public class MappingProfile : Profile
 
     private static DateTime? GetDateTimeForLastResolvedAppointmentOfPatient(Patient patient)
     {
-        if (patient.Appointments is null || patient.Appointments.Count == 0)
+        var appointments = patient.Appointments;
+
+        if (appointments is null ||
+            appointments.Count == 0 ||
+            appointments.Where(apt => apt.Status == AppointmentStatus.Resolved).ToList().Count == 0)
+        {
             return null;
+        }
 
         return patient.Appointments
             .Where(appointment => appointment.Status == AppointmentStatus.Resolved)
@@ -57,4 +67,7 @@ public class MappingProfile : Profile
     }
 
     private static bool IsPatientRegistered(Appointment appointment) => appointment.Patient is not null;
+
+    private static string GetLinkedAppointmentInfo(Appointment appointment) =>
+        $"{appointment.IdentifierName} - {appointment.DateAndTime:dd/MM/yyyy HH:mm} - {appointment.AssignedTo.FullName}";
 }
