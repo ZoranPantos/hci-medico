@@ -18,6 +18,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HciMedico.Integration", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HciMedico.Domain", "src\HciMedico.Domain\HciMedico.Domain.csproj", "{A4238902-92C8-46DE-998C-52BF4F583203}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{623E4ED1-360A-412C-9AF5-7944ED307C84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HciMedico.UnitTests", "tests\HciMedico.UnitTests\HciMedico.UnitTests.csproj", "{F4493CDA-F0C4-4B47-97F6-8C4BE2ED0011}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,12 +40,19 @@ Global
 		{A4238902-92C8-46DE-998C-52BF4F583203}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4238902-92C8-46DE-998C-52BF4F583203}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4238902-92C8-46DE-998C-52BF4F583203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4493CDA-F0C4-4B47-97F6-8C4BE2ED0011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4493CDA-F0C4-4B47-97F6-8C4BE2ED0011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4493CDA-F0C4-4B47-97F6-8C4BE2ED0011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4493CDA-F0C4-4B47-97F6-8C4BE2ED0011}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F5F00D6B-6FD7-42AD-920F-A329C7505734} = {6A5922F3-F19F-423F-A931-B461AF2633B3}
+		{2129C569-7814-4A03-9C0E-FF47DDE7CB3A} = {6A5922F3-F19F-423F-A931-B461AF2633B3}
+		{A4238902-92C8-46DE-998C-52BF4F583203} = {6A5922F3-F19F-423F-A931-B461AF2633B3}
+		{F4493CDA-F0C4-4B47-97F6-8C4BE2ED0011} = {623E4ED1-360A-412C-9AF5-7944ED307C84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E9F79E4-FF5F-47A2-AEC8-6CF5D93E2CE6}
