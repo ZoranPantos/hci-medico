@@ -196,7 +196,9 @@ public class ScheduleAppointmentViewModel : Conductor<object>
                 Type = SelectedAppointmentType,
                 AssignedTo = SelectedDoctor!,
                 CounterWorkerId = UserContext.CurrentUser!.Id,
-                CreationTime = DateTime.Now
+
+                //To avoid inclusion of millisecond precision when using only DateTime.Now
+                CreationTime = new(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second)
 
                 //Issue with saving in db
                 //CreatedBy = (CounterWorker)UserContext.CurrentUser!.Employee

@@ -215,49 +215,42 @@ public class EditPatientDetailsViewModel : Conductor<object>
     {
         try
         {
-            //if (!ValidateFirstAndLastName(firstName, lastName))
             if (!_inputValidator.IsPersonNameValid(firstName) || !_inputValidator.IsPersonNameValid(lastName))
             {
                 ValidationMessage = "Invalid first or last name value. Please check for non-letter values and leading/trailing whitespaces";
                 return;
             }
 
-            //if (!ValidateUID(uid))
             if (!_inputValidator.IsUidValid(uid))
             {
                 ValidationMessage = "Invalid UID value. UID can only contain digits";
                 return;
             }
 
-            //if (!ValidateDateOfBirth(dateOfBirth))
             if (!_inputValidator.IsDateOfBirthValid(dateOfBirth))
             {
                 ValidationMessage = "Invalid date of birth. Selected date is either too old or is in the future";
                 return;
             }
 
-            //if (!ValidateCountryCityAndStreetName(country, city, street))
             if (!_inputValidator.IsRegionalNameValid(country) || !_inputValidator.IsRegionalNameValid(city) || !_inputValidator.IsRegionalNameValid(street))
             {
                 ValidationMessage = "Invalid county, city or a street name. Please check for non-letter values and leading/trailing whitespaces";
                 return;
             }
 
-            //if (!ValidateStreetNumber(number))
             if (!_inputValidator.IsStreetNumberValid(number))
             {
                 ValidationMessage = "Invalid street number value. Street number can be composed only of positive numbers and letters";
                 return;
             }
 
-            //if (!ValidateEmail(email))
             if (!_inputValidator.IsEmailValid(email))
             {
                 ValidationMessage = "Invalid email format";
                 return;
             }
 
-            //if (!ValidatePhoneNumber(telephoneNumber))
             if (!_inputValidator.IsPhoneNumberValid(telephoneNumber))
             {
                 ValidationMessage = "Invalid phone number. Try to input full number format";
@@ -295,59 +288,4 @@ public class EditPatientDetailsViewModel : Conductor<object>
     }
 
     public async Task Cancel() => await TryCloseAsync();
-
-    //private bool ValidateDateOfBirth(DateTime date) =>
-    //    date.CompareTo(new DateTime(1920, 1, 1)) >= 0 && date.CompareTo(DateTime.Now.Date) <= 0;
-
-    //private bool ValidateEmail(string email)
-    //{
-    //    try
-    //    {
-    //        var mailAddress = new MailAddress(email);
-
-    //        return mailAddress.Address.Equals(email);
-    //    }
-    //    catch (Exception)
-    //    {
-    //        return false;
-    //    }
-    //}
-
-    //private bool ValidatePhoneNumber(string telephoneNumber)
-    //{
-    //    string pattern = @"^\s*(?:\+?([1-9]\d{1,14}))?(?! )[-\.]?(\d{3})[-\.]?(\d{3})(?!\s)$";
-        
-    //    var regex = new Regex(pattern);
-
-    //    return regex.IsMatch(telephoneNumber);
-    //}
-
-    //private bool ValidateStreetNumber(string streetNumber)
-    //{
-    //    string pattern = "^(?![a-zA-Z]+$)[a-zA-Z0-9]*$";
-
-    //    var regex = new Regex(pattern);
-
-    //    return regex.IsMatch(streetNumber);
-    //}
-
-    //private bool ValidateUID(string uid) => uid.All(Char.IsDigit);
-
-    //private bool ValidateFirstAndLastName(string firstName, string lastName)
-    //{
-    //    string pattern = @"^[^\p{C}\s]+(?:\s+[^\p{C}\s]+)*$";
-
-    //    var regex = new Regex(pattern);
-
-    //    return regex.IsMatch(firstName) && regex.IsMatch(lastName);
-    //}
-
-    //private bool ValidateCountryCityAndStreetName(string country, string city, string street)
-    //{
-    //    string pattern = @"^(?!\s)(?!.*\s$)[a-zA-Z0-9čćšžđČĆŠŽĐ\u0400-\u04FF\u0500-\u052F\u2DE0-\u2DFF\uA640-\uA69F\u1C80-\u1C8F\s]+$";
-
-    //    var regex = new Regex(pattern);
-
-    //    return regex.IsMatch(country) && regex.IsMatch(city) && regex.IsMatch(street);
-    //}
 }

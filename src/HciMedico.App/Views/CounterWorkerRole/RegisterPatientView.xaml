@@ -134,9 +134,10 @@
             <StackPanel>
                 <ui:TextBlock Text="Linked appointment" />
                 <ComboBox x:Name="SelectedAppointment" Margin="0,0,0,10" Background="White"
-                          MinWidth="350" HorizontalAlignment="Left"
+                          MinWidth="500" HorizontalAlignment="Left"
                           ItemsSource="{Binding Appointments}"
-                          SelectedItem="{Binding SelectedAppointment}"/>
+                          SelectedItem="{Binding SelectedAppointment}"
+                          DisplayMemberPath="Information" />
             </StackPanel>
         </GroupBox>
 
