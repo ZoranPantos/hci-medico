@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Validation;
 using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
@@ -120,5 +121,5 @@ public class PatientsViewModel : Conductor<object>
     }
 
     public async Task RegisterNewPatient() =>
-        await _windowManager.ShowWindowAsync(new RegisterPatientViewModel(IoC.Get<IRepository<MedicalCondition>>(), _patientRepository, this));
+        await _windowManager.ShowWindowAsync(new RegisterPatientViewModel(IoC.Get<IRepository<MedicalCondition>>(), _patientRepository, this, IoC.Get<IInputValidator>()));
 }

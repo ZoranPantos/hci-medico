@@ -2,6 +2,7 @@
 using Caliburn.Micro;
 using HciMedico.App.Exceptions;
 using HciMedico.App.Helpers;
+using HciMedico.App.Validation;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -221,7 +222,7 @@ public class PatientDetailsViewModel : Conductor<object>
     }
 
     public async Task EditDetails() =>
-        await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(_patient, _patientRepository, this));
+        await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(_patient, _patientRepository, this, IoC.Get<IInputValidator>()));
 
     public void ScheduleAppointment()
     {
