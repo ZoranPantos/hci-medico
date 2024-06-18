@@ -9,6 +9,7 @@ public class ValidRegionalNameTestData : IEnumerable<object[]>
         yield return new object[] { "Bosnia and Herzegovina" };
         yield return new object[] { "Srbija" };
         yield return new object[] { "Hrvatska" };
+        yield return new object[] { "Češka" };
     }
 
     IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
