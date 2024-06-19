@@ -3,11 +3,11 @@ using System.Security.Cryptography;
 
 namespace HciMedico.App.Services;
 
-public class HashingService
+public class HashingService : IHashingService
 {
-    public static string GetHashString(string password)
+    public string GetHashString(string input)
     {
-        byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+        byte[] passwordBytes = Encoding.UTF8.GetBytes(input);
 
         using var sha256 = SHA256.Create();
 

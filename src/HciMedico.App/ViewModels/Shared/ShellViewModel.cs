@@ -34,7 +34,7 @@ public class ShellViewModel : Conductor<object>
 
     public ShellViewModel(LandingPage page) => _page = page;
 
-    // Called when the View is ready
+    // Called when the View is ready (after constructor)
     protected override Task OnActivateAsync(CancellationToken cancellationToken)
     {
         ((ShellView)GetView()).Closing += ShellView_OnClosing;
@@ -79,7 +79,7 @@ public class ShellViewModel : Conductor<object>
         CurrentViewModelInShell = UserContext.CurrentUser.UserRole switch
         {
             UserRole.Doctor => new TreatedPatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this, IoC.Get<ISearchService>()),
-            //CurrentViewModelInShell = IoC.Get<TreatedPatientsViewModel>();
+
             //For enabling deeper levels of navigation, I need to send this (parent view model) to "sub-model" and navigate from there
             //via the parent model
             UserRole.CounterWorker => new PatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this, IoC.Get<IWindowManager>(), IoC.Get<ISearchService>()),
@@ -125,6 +125,6 @@ public class ShellViewModel : Conductor<object>
         var windowManager = IoC.Get<IWindowManager>();
         var userAccountRepository = IoC.Get<IRepository<UserAccount>>();
 
-        await windowManager.ShowWindowAsync(new LoginViewModel(windowManager, userAccountRepository));
+        await windowManager.ShowWindowAsync(new LoginViewModel(windowManager, userAccountRepository, IoC.Get<IHashingService>()));
     }
 }

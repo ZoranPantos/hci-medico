@@ -40,7 +40,8 @@ public class Bootstrapper : BootstrapperBase
 
         _container
             .Singleton<IInputValidator, InputValidator>()
-            .Singleton<ISearchService, SearchService>();
+            .Singleton<ISearchService, SearchService>()
+            .Singleton<IHashingService, HashingService>();
 
         var mapperConfiguration = new MapperConfiguration(configuration => configuration.AddProfile<MappingProfile>());
         var mapper = mapperConfiguration.CreateMapper();

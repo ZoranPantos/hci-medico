@@ -15,11 +15,13 @@ public class LoginViewModel : Conductor<object>
     private bool _loginViewQuit = true;
     private readonly IWindowManager _windowManager;
     private readonly IRepository<UserAccount> _userAccountRepository;
+    private readonly IHashingService _hashingService;
 
-    public LoginViewModel(IWindowManager windowManager, IRepository<UserAccount> userAccountRepository)
+    public LoginViewModel(IWindowManager windowManager, IRepository<UserAccount> userAccountRepository, IHashingService hashingService)
     {
-        _windowManager = windowManager;
-        _userAccountRepository = userAccountRepository;
+        _windowManager = windowManager ?? throw new ArgumentNullException(nameof(windowManager));
+        _userAccountRepository = userAccountRepository ?? throw new ArgumentNullException(nameof(userAccountRepository));
+        _hashingService = hashingService ?? throw new ArgumentNullException(nameof(hashingService));
     }
 
     private string _username = string.Empty;
@@ -67,7 +69,7 @@ public class LoginViewModel : Conductor<object>
             username = "ksenija.markovic31";
             password = "ksenija.markovic31";
 
-            string passwordHash = HashingService.GetHashString(password);
+            string passwordHash = _hashingService.GetHashString(password);
 
             var existingUser = await _userAccountRepository
                 .FindAsync(user => user.Username.Equals(username), true, "Employee.Specializations,Employee.AssignedAppointments,Employee.WorkSchedule.WorkShifts,UserSettings");

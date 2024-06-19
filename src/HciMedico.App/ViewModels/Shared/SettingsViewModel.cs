@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -40,7 +41,7 @@ public class SettingsViewModel : Conductor<object>
         SelectedLandingPage = _currentUserSettings.LandingPage;
     }
 
-    public async Task UpdatePassword() => await _windowManager.ShowWindowAsync(new UpdatePasswordViewModel());
+    public async Task UpdatePassword() => await _windowManager.ShowWindowAsync(new UpdatePasswordViewModel(IoC.Get<IHashingService>()));
 
     //Will be called after the corresponding property setter is executed
     public async Task OnLandingPageSelectionChanged()

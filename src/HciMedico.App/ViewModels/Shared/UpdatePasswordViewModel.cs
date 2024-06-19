@@ -8,6 +8,8 @@ namespace HciMedico.App.ViewModels.Shared;
 
 public class UpdatePasswordViewModel : Conductor<object>
 {
+    private readonly IHashingService _hashingService;
+
     private string _oldPassword = string.Empty;
     public string OldPassword
     {
@@ -52,6 +54,9 @@ public class UpdatePasswordViewModel : Conductor<object>
         }
     }
 
+    public UpdatePasswordViewModel(IHashingService hashingService) =>
+        _hashingService = hashingService ?? throw new ArgumentNullException(nameof(hashingService));
+
     public bool CanSave(string oldPassword, string newPassword, string confirmedNewPassword) =>
         oldPassword.Length >= 6 && oldPassword.Length <= 20 &&
         newPassword.Length >= 6 && newPassword.Length <= 20 &&
@@ -62,7 +67,7 @@ public class UpdatePasswordViewModel : Conductor<object>
         try
         {
             string currentPasswordHash = UserContext.CurrentUser!.Password;
-            string oldPasswordHash = HashingService.GetHashString(oldPassword);
+            string oldPasswordHash = _hashingService.GetHashString(oldPassword);
 
             if (!oldPasswordHash.Equals(currentPasswordHash))
             {
@@ -82,7 +87,7 @@ public class UpdatePasswordViewModel : Conductor<object>
                 return;
             }
 
-            string newPasswordHash = HashingService.GetHashString(newPassword);
+            string newPasswordHash = _hashingService.GetHashString(newPassword);
 
             if (newPasswordHash.Equals(currentPasswordHash))
             {
