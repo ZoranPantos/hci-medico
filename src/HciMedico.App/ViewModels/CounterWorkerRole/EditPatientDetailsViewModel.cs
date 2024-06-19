@@ -4,8 +4,6 @@ using HciMedico.App.Validation;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
-using System.Net.Mail;
-using System.Text.RegularExpressions;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
 

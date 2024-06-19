@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace HciMedico.App.Exceptions;
+﻿namespace HciMedico.App.Exceptions;
 
 public class MedicoException : Exception
 {

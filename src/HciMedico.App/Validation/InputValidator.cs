@@ -1,5 +1,4 @@
-﻿using System.Net.Mail;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace HciMedico.App.Validation;
 
