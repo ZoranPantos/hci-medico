@@ -1,7 +1,7 @@
-﻿using HciMedico.UnitTests.Services.TestData;
+﻿using HciMedico.UnitTests.Services.HashingService.TestData;
 using Xunit.Abstractions;
 
-namespace HciMedico.UnitTests.Services;
+namespace HciMedico.UnitTests.Services.HashingService;
 
 public class HashingServiceTests : IClassFixture<HashingServiceFixture>
 {

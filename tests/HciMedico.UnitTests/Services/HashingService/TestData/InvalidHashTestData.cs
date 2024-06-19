@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace HciMedico.UnitTests.Services.TestData;
+namespace HciMedico.UnitTests.Services.HashingService.TestData;
 
 public class InvalidHashTestData : IEnumerable<object[]>
 {
@@ -11,5 +11,5 @@ public class InvalidHashTestData : IEnumerable<object[]>
         yield return new object[] { "cricket", "ETTk9KE7Bq6qhHH5NFiaPhgL8/5kLjLh+UVOdqkAd+c=" };
     }
 
-    IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
