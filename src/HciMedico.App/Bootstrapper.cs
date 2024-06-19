@@ -2,6 +2,7 @@
 using Caliburn.Micro;
 using HciMedico.App.Helpers;
 using HciMedico.App.Mappings;
+using HciMedico.App.Services;
 using HciMedico.App.Validation;
 using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
@@ -37,7 +38,9 @@ public class Bootstrapper : BootstrapperBase
             .Singleton<IRepository<Doctor>, DoctorsRepository>()
             .Singleton<IRepository<MedicalSpecialization>, MedicalSpecializationsRepository>();
 
-        _container.Singleton<IInputValidator, InputValidator>();
+        _container
+            .Singleton<IInputValidator, InputValidator>()
+            .Singleton<ISearchService, SearchService>();
 
         var mapperConfiguration = new MapperConfiguration(configuration => configuration.AddProfile<MappingProfile>());
         var mapper = mapperConfiguration.CreateMapper();

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services;
 using HciMedico.App.Validation;
 using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Integration.Data.Repositories;
-using System.Text.RegularExpressions;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
 
@@ -16,6 +16,7 @@ public class PatientsViewModel : Conductor<object>
     private readonly ShellViewModel _shellViewModel;
     private readonly IMapper _mapper;
     private readonly IWindowManager _windowManager;
+    private readonly ISearchService _searchService;
 
     private BindableCollection<PatientDisplayModel> _patients = [];
     public BindableCollection<PatientDisplayModel> Patients
@@ -35,12 +36,13 @@ public class PatientsViewModel : Conductor<object>
         }
     }
 
-    public PatientsViewModel(IRepository<Patient> patientRepository, IMapper mapper, ShellViewModel shellViewModel, IWindowManager windowManager)
+    public PatientsViewModel(IRepository<Patient> patientRepository, IMapper mapper, ShellViewModel shellViewModel, IWindowManager windowManager, ISearchService searchService)
     {
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
         _shellViewModel = shellViewModel ?? throw new ArgumentNullException(nameof(shellViewModel));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         _windowManager = windowManager ?? throw new ArgumentNullException(nameof(windowManager));
+        _searchService = searchService ?? throw new ArgumentNullException(nameof(searchService));
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken) => await InitializeViewModel();
@@ -72,44 +74,13 @@ public class PatientsViewModel : Conductor<object>
         await _shellViewModel.ActivateItemAsync(new PatientDetailsViewModel(patient.Id, _mapper, _patientRepository, this, IoC.Get<IWindowManager>()));
 
     public async Task SelfActivateAsync() =>
-        await _shellViewModel.ActivateItemAsync(new PatientsViewModel(_patientRepository, _mapper, _shellViewModel, _windowManager));
+        await _shellViewModel.ActivateItemAsync(new PatientsViewModel(_patientRepository, _mapper, _shellViewModel, _windowManager, _searchService));
 
     public async Task Search(string searchBar)
     {
         var patients = await _patientRepository.GetAllAsync(null, true, "Appointments,HealthRecord");
-        var filteredPatients = new List<Patient>();
 
-        searchBar = searchBar.Trim();
-
-        if (!string.IsNullOrEmpty(searchBar))
-        {
-            searchBar = Regex.Replace(searchBar, @"\s+", " ");
-
-            string[] queryPartitions = searchBar.Split(" ");
-
-            if (queryPartitions.Length == 2)
-            {
-                filteredPatients = patients
-                    .Where(patient =>
-                        (patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
-                        patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase)) ||
-                        (patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
-                        patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase)))
-                    .ToList();
-            }
-
-            if (!filteredPatients.Any())
-            {
-                filteredPatients = patients
-                    .Where(patient => queryPartitions
-                        .Any(partition =>
-                            patient.FirstName.StartsWith(partition, StringComparison.OrdinalIgnoreCase) ||
-                            patient.LastName.StartsWith(partition, StringComparison.OrdinalIgnoreCase)))
-                    .ToList();
-            }
-        }
-        else
-            filteredPatients = patients;
+        var filteredPatients = _searchService.SearchPatients(patients, searchBar);
 
         var patientDtos = _mapper.Map<List<PatientDisplayModel>>(filteredPatients)
             .OrderBy(dto => dto.FullName)

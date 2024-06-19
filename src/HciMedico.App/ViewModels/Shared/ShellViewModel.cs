@@ -8,6 +8,7 @@ using HciMedico.Integration.Data.Repositories;
 using HciMedico.Domain.Models;
 using AutoMapper;
 using HciMedico.App.ViewModels.CounterWorkerRole;
+using HciMedico.App.Services;
 
 namespace HciMedico.App.ViewModels.Shared;
 
@@ -77,11 +78,11 @@ public class ShellViewModel : Conductor<object>
 
         CurrentViewModelInShell = UserContext.CurrentUser.UserRole switch
         {
-            UserRole.Doctor => new TreatedPatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this),
+            UserRole.Doctor => new TreatedPatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this, IoC.Get<ISearchService>()),
             //CurrentViewModelInShell = IoC.Get<TreatedPatientsViewModel>();
             //For enabling deeper levels of navigation, I need to send this (parent view model) to "sub-model" and navigate from there
             //via the parent model
-            UserRole.CounterWorker => new PatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this, IoC.Get<IWindowManager>()),
+            UserRole.CounterWorker => new PatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this, IoC.Get<IWindowManager>(), IoC.Get<ISearchService>()),
             _ => throw new Exception("User role is not recognized"),
         };
     }
