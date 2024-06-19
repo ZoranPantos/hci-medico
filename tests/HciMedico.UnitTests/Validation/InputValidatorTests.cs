@@ -1,6 +1,5 @@
 ﻿using HciMedico.UnitTests.Validation.TestData;
 using Xunit.Abstractions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HciMedico.UnitTests.Validation;
 
