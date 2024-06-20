@@ -45,4 +45,81 @@ public class SearchService : ISearchService
 
         return foundPatients;
     }
+
+    public List<Appointment>? SearchTrendingAppointments(List<Appointment> targetSet, string key)
+    {
+        ArgumentNullException.ThrowIfNull(targetSet);
+
+        var foundAppointments = new List<Appointment>();
+
+        key = key.Trim();
+
+        if (!string.IsNullOrEmpty(key))
+        {
+            key = Regex.Replace(key, @"\s+", " ");
+
+            string[] queryPartitions = key.Split(" ");
+
+            if (queryPartitions.Length == 2)
+            {
+                foundAppointments = targetSet
+                    .Where(appointment =>
+                    {
+                        var patient = appointment.Patient;
+
+                        if (patient is not null)
+                        {
+                            return (patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
+                                patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase)) ||
+                                (patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
+                                patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase));
+                        }
+
+                        if (!string.IsNullOrEmpty(appointment.IdentifierName))
+                        {
+                            string[]? identifierPartitions = !string.IsNullOrEmpty(appointment.IdentifierName) ? appointment.IdentifierName.Split(" ") : null;
+
+                            if (identifierPartitions is null)
+                                return false;
+
+                            if (identifierPartitions.Length != 2)
+                            {
+                                return identifierPartitions[0].StartsWith(queryPartitions[0], StringComparison.OrdinalIgnoreCase) ||
+                                    identifierPartitions[1].StartsWith(queryPartitions[0], StringComparison.OrdinalIgnoreCase);
+                            }
+
+                            return (queryPartitions[0].Equals(identifierPartitions[0], StringComparison.OrdinalIgnoreCase) &&
+                                queryPartitions[1].Equals(identifierPartitions[1], StringComparison.OrdinalIgnoreCase)) ||
+                                (queryPartitions[0].Equals(identifierPartitions[1], StringComparison.OrdinalIgnoreCase) &&
+                                queryPartitions[1].Equals(identifierPartitions[0], StringComparison.OrdinalIgnoreCase));
+                        }
+
+                        return false;
+                    })
+                    .ToList();
+            }
+
+            if (!foundAppointments.Any())
+            {
+                foundAppointments = targetSet
+                    .Where(appointment =>
+                    {
+                        if (appointment.Patient is not null)
+                        {
+                            return queryPartitions.Any(partition =>
+                                appointment.Patient.FirstName.StartsWith(partition, StringComparison.OrdinalIgnoreCase) ||
+                                appointment.Patient.LastName.StartsWith(partition, StringComparison.OrdinalIgnoreCase));
+                        }
+
+                        return queryPartitions.Any(partition =>
+                            appointment.IdentifierName.StartsWith(partition, StringComparison.OrdinalIgnoreCase));
+                    })
+                    .ToList();
+            }
+        }
+        else
+            foundAppointments = targetSet;
+
+        return foundAppointments;
+    }
 }

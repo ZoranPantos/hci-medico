@@ -82,7 +82,13 @@ public class ShellViewModel : Conductor<object>
 
             //For enabling deeper levels of navigation, I need to send this (parent view model) to "sub-model" and navigate from there
             //via the parent model
-            UserRole.CounterWorker => new PatientsViewModel(IoC.Get<IRepository<Patient>>(), IoC.Get<IMapper>(), this, IoC.Get<IWindowManager>(), IoC.Get<ISearchService>()),
+            UserRole.CounterWorker => new PatientsViewModel(
+                IoC.Get<IRepository<Patient>>(),
+                IoC.Get<IMapper>(),
+                this,
+                IoC.Get<IWindowManager>(),
+                IoC.Get<ISearchService>()),
+
             _ => throw new Exception("User role is not recognized"),
         };
     }
@@ -95,7 +101,14 @@ public class ShellViewModel : Conductor<object>
         CurrentViewModelInShell = UserContext.CurrentUser.UserRole switch
         {
             UserRole.Doctor => new AppointmentsDoctorViewModel(),
-            UserRole.CounterWorker => new AppointmentsCounterWorkerViewModel(IoC.Get<IRepository<Appointment>>(), IoC.Get<IMapper>(), this, IoC.Get<IWindowManager>()),
+
+            UserRole.CounterWorker => new AppointmentsCounterWorkerViewModel(
+                IoC.Get<IRepository<Appointment>>(),
+                IoC.Get<IMapper>(),
+                this,
+                IoC.Get<IWindowManager>(),
+                IoC.Get<ISearchService>()),
+
             _ => throw new Exception("User role is not recognized"),
         };
     }

@@ -33,7 +33,7 @@
                    Margin="0,5,0,0" />
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5,0,0">
-            <ui:TextBox x:Name="SearchBar" PlaceholderText="Search [WIP]"
+            <ui:TextBox x:Name="SearchBar" PlaceholderText="Search by name..."
                         Background="White" Width="300" Margin="0,0,5,0" />
 
             <ui:Button x:Name="Search" Content="Search" Margin="0,0,5,0" Icon="{ui:SymbolIcon Search32}" />
