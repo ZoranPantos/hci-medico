@@ -241,9 +241,22 @@ public class PatientDetailsViewModel : Conductor<object>
     {
         try
         {
-            var appointment = patient?.Appointments
-                .Where(appointment => appointment.Status == appointmentStatus)
-                .MaxBy(appointment => appointment.DateAndTime);
+            Appointment? appointment = null;
+
+            var appointments = patient?.Appointments
+                .Where(appointment => appointment.Status == appointmentStatus).ToList();
+
+            if (appointments is null)
+                return null;
+
+            if (appointmentStatus == AppointmentStatus.Resolved)
+                appointment = appointments.MaxBy(appointment => appointment.DateAndTime);
+
+            if (appointmentStatus == AppointmentStatus.Scheduled)
+                appointment = appointments.MinBy(appointment => appointment.DateAndTime);
+
+            if (appointment is null)
+                return null;
 
             string appointmentDateTimeString = appointment?.DateAndTime.ToString("dd/MM/yyyy HH:mm") ?? string.Empty;
 
