@@ -224,19 +224,17 @@ public class PatientDetailsViewModel : Conductor<object>
     public async Task EditDetails() =>
         await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(_patient, _patientRepository, this, IoC.Get<IInputValidator>()));
 
-    public void ScheduleAppointment()
+    public async Task ScheduleAppointment()
     {
-        try
-        {
-            // test
-            int y = 0;
-            int x = 6 / y;
-        }
-        catch (Exception ex)
-        {
-            string message = $"Exception caught and rethrown in {nameof(PatientDetailsViewModel)}.{nameof(ScheduleAppointment)}";
-            throw new MedicoException(message, ex);
-        }
+        await _windowManager.ShowWindowAsync(
+            new ScheduleAppointmentViewModel(
+                this,
+                IoC.Get<IRepository<Patient>>(),
+                IoC.Get<IRepository<Doctor>>(),
+                IoC.Get<IRepository<MedicalSpecialization>>(),
+                IoC.Get<IRepository<Appointment>>(),
+                _patient)
+        );
     }
 
     private string? GetAppointmentInfo(Patient? patient, AppointmentStatus appointmentStatus)

@@ -76,6 +76,7 @@
                 <ui:TextBlock Text="Unregistered patient" />
                 <ui:TextBox x:Name="RequesterIdentifier"
                             PlaceholderText="Identifier"
+                            IsEnabled="{Binding IsIdentifierBoxActive}"
                             Background="White" />
 
                 <ui:TextBlock Text="Registered patient selection" />

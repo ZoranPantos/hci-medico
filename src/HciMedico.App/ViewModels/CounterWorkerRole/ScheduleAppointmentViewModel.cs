@@ -12,8 +12,30 @@ public class ScheduleAppointmentViewModel : Conductor<object>
     private readonly IRepository<Doctor> _doctorsRepository;
     private readonly IRepository<Appointment> _appointmentsRepository;
     private readonly IRepository<MedicalSpecialization> _medicalSpecializationsRepository;
-    private AppointmentsCounterWorkerViewModel? _parentViewModel;
+    private object? _parentViewModel;
     private List<Doctor> _allDoctors = [];
+
+    private Patient? _preselectedPatient;
+    public Patient? PreselectedPatient
+    {
+        get => _preselectedPatient;
+        set
+        {
+            _preselectedPatient = value;
+            NotifyOfPropertyChange(() => PreselectedPatient);
+        }
+    }
+
+    private bool _isIdentifierBoxActive = true;
+    public bool IsIdentifierBoxActive
+    {
+        get => _isIdentifierBoxActive;
+        set
+        {
+            _isIdentifierBoxActive = value;
+            NotifyOfPropertyChange(() => IsIdentifierBoxActive);
+        }
+    }
 
     public BindableCollection<Doctor> AvailableDoctors { get; set; } = [];
 
@@ -106,17 +128,20 @@ public class ScheduleAppointmentViewModel : Conductor<object>
     public BindableCollection<TimeOnly> AvailableTimes { get; set; } = [];
 
     public ScheduleAppointmentViewModel(
-        AppointmentsCounterWorkerViewModel? parentViewModel,
+        object? parentViewModel,
         IRepository<Patient> patientRepository,
         IRepository<Doctor> doctorsRepository,
         IRepository<MedicalSpecialization> medicalSpecializationsRepository,
-        IRepository<Appointment> appointmentsRepository)
+        IRepository<Appointment> appointmentsRepository,
+        Patient? preselectedPatient = null)
     {
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
         _doctorsRepository = doctorsRepository ?? throw new ArgumentNullException(nameof(doctorsRepository));
         _medicalSpecializationsRepository = medicalSpecializationsRepository ?? throw new ArgumentNullException(nameof(medicalSpecializationsRepository));
         _appointmentsRepository = appointmentsRepository ?? throw new ArgumentNullException(nameof(appointmentsRepository));
+
+        _preselectedPatient = preselectedPatient;
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
@@ -133,7 +158,16 @@ public class ScheduleAppointmentViewModel : Conductor<object>
 
             patients = patients.OrderBy(patient => patient.FullName).ToList();
 
-            patients?.ForEach(RegisteredPatients.Add);
+            if (_preselectedPatient is not null)
+            {
+                RegisteredPatients.Add(_preselectedPatient);
+
+                SelectedPatient = _preselectedPatient;
+
+                IsIdentifierBoxActive = false;
+            }
+            else
+                patients?.ForEach(RegisteredPatients.Add);
 
             var medicalSpecializations = await _medicalSpecializationsRepository.GetAllAsync(propertiesToInclude: "Doctors");
 
@@ -216,7 +250,16 @@ public class ScheduleAppointmentViewModel : Conductor<object>
 
             await TryCloseAsync();
 
-            await _parentViewModel!.RefreshViewModel();
+            if (_parentViewModel is not null && _parentViewModel.GetType() == typeof(AppointmentsCounterWorkerViewModel))
+            {
+                var typedParentViewModel = _parentViewModel as AppointmentsCounterWorkerViewModel;
+                await typedParentViewModel!.RefreshViewModel();
+            }
+            else if (_parentViewModel is not null && _parentViewModel.GetType() == typeof(PatientDetailsViewModel))
+            {
+                var typedParentViewModel = _parentViewModel as PatientDetailsViewModel;
+                await typedParentViewModel!.RefreshViewModel();
+            }
         }
         catch (Exception ex)
         {
