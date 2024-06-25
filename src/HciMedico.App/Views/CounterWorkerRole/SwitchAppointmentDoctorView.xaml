@@ -1,0 +1,51 @@
+﻿<Window x:Class="HciMedico.App.Views.CounterWorkerRole.SwitchAppointmentDoctorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Switch Doctor"
+        Height="200" Width="350"
+        Background="#D1DAED">
+
+    <Grid Margin="10,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ui:TextBlock Text="Scheduled for:" />
+        <ui:TextBlock x:Name="ScheduledFor" Grid.Column="1"
+                      Text="{Binding ScheduledFor, StringFormat={}{0:dd/MM/yyyy HH:mm}}" />
+
+        <ui:TextBlock Grid.Row="1" Text="Specialization:" />
+        <ui:TextBlock x:Name="Specializations" Grid.Row="1" Grid.Column="1" />
+
+        <ui:TextBlock Grid.Row="2" Grid.ColumnSpan="3" Text="Available doctors:" />
+        <ComboBox x:Name="SelectedDoctor"
+                  Grid.Row="3" Grid.ColumnSpan="3"
+                  IsEditable="True"
+                  ItemsSource="{Binding AvailableDoctors}"
+                  SelectedItem="{Binding SelectedDoctor}"
+                  DisplayMemberPath="FullName"
+                  Background="White" />
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="5" Grid.ColumnSpan="3" >
+            <ui:Button x:Name="Save" Content="Save" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon Save28}" />
+            <ui:Button x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
+        </StackPanel>
+    </Grid>
+</Window>
