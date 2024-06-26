@@ -1,0 +1,65 @@
+﻿<Window x:Class="HciMedico.App.Views.CounterWorkerRole.RescheduleAppointmentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Reschedule Appointment"
+        Height="450" Width="400"
+        Background="#D1DAED">
+
+    <Grid Margin="10,5">
+        <Grid.Resources>
+            <Style x:Key="CalendarDayButtonStyle" TargetType="{x:Type CalendarDayButton}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsBlackout}" Value="True">
+                        <Setter Property="Background" Value="LightGray" />
+                        <Setter Property="Foreground" Value="DarkGray" />
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ui:TextBlock Text="Assigned doctor:" />
+
+        <ui:TextBlock Grid.Row="1" Text="Available date:" />
+        <DatePicker Grid.Row="2" Grid.ColumnSpan="3" x:Name="AppointmentDate" Background="White">
+            <DatePicker.CalendarStyle>
+                <Style TargetType="Calendar">
+                    <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CalendarDayButtonStyle}" />
+                </Style>
+            </DatePicker.CalendarStyle>
+        </DatePicker>
+
+        <ui:TextBlock Grid.Row="3" Text="Available time:" />
+        <ComboBox Grid.Row="4" Grid.ColumnSpan="3"
+                  x:Name="AppointmentTime"
+                  ItemsSource="{Binding AvailableTimes}"
+                  SelectedItem="{Binding AppointmentTime}"
+                  Background="White"/>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <ui:Button x:Name="Reschedule" Content="Reschedule" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon SaveEdit24}" />
+            <ui:Button x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
+        </StackPanel>
+    </Grid>
+</Window>
