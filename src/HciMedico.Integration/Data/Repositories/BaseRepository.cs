@@ -90,6 +90,12 @@ public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEnti
         await SaveChangesAsync();
     }
 
+    public virtual async Task UpdateRange(IEnumerable<TEntity> entities)
+    {
+        _dbSet.UpdateRange(entities);
+        await SaveChangesAsync();
+    }
+
     public virtual async Task Delete(TEntity entity)
     {
         _dbSet.Remove(entity);
