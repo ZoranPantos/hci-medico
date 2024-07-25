@@ -41,7 +41,8 @@ public class Bootstrapper : BootstrapperBase
         _container
             .Singleton<IInputValidator, InputValidator>()
             .Singleton<ISearchService, SearchService>()
-            .Singleton<IHashingService, HashingService>();
+            .Singleton<IHashingService, HashingService>()
+            .Singleton<IAppointmentAutoCancellerService, AppointmentAutoCancellerService>();
 
         var mapperConfiguration = new MapperConfiguration(configuration => configuration.AddProfile<MappingProfile>());
         var mapper = mapperConfiguration.CreateMapper();
@@ -62,6 +63,9 @@ public class Bootstrapper : BootstrapperBase
     protected override async void OnStartup(object sender, StartupEventArgs e)
     {
         Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+
+        var service = _container.GetInstance<IAppointmentAutoCancellerService>();
+        await service.Start(CancellationToken.None);
 
         await DisplayRootViewForAsync(typeof(LoginViewModel));
     }
