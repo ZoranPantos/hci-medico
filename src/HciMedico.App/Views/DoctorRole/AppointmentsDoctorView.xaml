@@ -3,28 +3,91 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HciMedico.App.Views.DoctorRole"
+             xmlns:local="clr-namespace:HciMedico.App.Converters"
+             xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
 
     <Grid Margin="10,5">
+        <Grid.Resources>
+            <local:AppointmentPatientNameForegroundConverter x:Key="AppointmentPatientNameForegroundConverter" />
+            <local:AppointmentStatusForegroundConverter x:Key="AppointmentStatusForegroundConverter" />
+        </Grid.Resources>
+        
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
         <ui:TextBlock Text="Appointments" Style="{StaticResource HeadingStyle}" />
 
         <Separator Grid.Row="1" Grid.ColumnSpan="3"
-           Style="{StaticResource SeparatorStyle}"
-           Margin="0,5,0,0" />
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,0" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5,0,0">
+            <ui:TextBox x:Name="SearchBar" PlaceholderText="Search by name..."
+                Background="White" Width="300" Margin="0,0,5,0" />
+            
+            <ui:Button x:Name="Search" Content="Search" Margin="0,0,5,0" Icon="{ui:SymbolIcon Search32}" />
+        </StackPanel>
+
+        <Separator Grid.Row="3" Grid.ColumnSpan="3"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,10" />
+
+        <StackPanel Grid.Row="4" Style="{StaticResource TableStackPanelHeader}">
+            <TextBlock Text="Patient name/identifier" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Date" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Time" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Status" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+        </StackPanel>
+
+        <ListView x:Name="Appointments" SelectionMode="Single" Grid.Row="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding PatientFullNameOrIdentifier}"
+                           Foreground="{Binding Converter={StaticResource AppointmentPatientNameForegroundConverter}}"
+                           VerticalAlignment="Center" />
+
+                        <TextBlock Text="{Binding Date, StringFormat={}{0:dd/MM/yyyy}}"
+                           VerticalAlignment="Center"
+                           Grid.Column="1" />
+
+                        <TextBlock Text="{Binding FormattedTime}"
+                           VerticalAlignment="Center"
+                           Grid.Column="2" />
+
+                        <TextBlock Text="{Binding Status}"
+                           Foreground="{Binding Converter={StaticResource AppointmentStatusForegroundConverter}}"
+                           VerticalAlignment="Center"
+                           Grid.Column="3" />
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <cal:ActionMessage MethodName="OpenAppointmentDetails">
+                                    <cal:Parameter Value="{Binding}" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>
