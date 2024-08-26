@@ -7,6 +7,7 @@ public class Appointment
     public int Id { get; set; }
 
     public DateTime DateAndTime { get; set; }
+    public DateTime CreationTime { get; set; }
 
     public DateOnly Date => DateOnly.FromDateTime(DateAndTime);
     public TimeOnly Time => TimeOnly.FromDateTime(DateAndTime);
@@ -32,5 +33,5 @@ public class Appointment
     public Patient? Patient { get; set; }
     public string IdentifierName { get; set; } = string.Empty;
 
-    public DateTime CreationTime { get; set; }
+    public MedicalReport MedicalReport { get; set; }
 }

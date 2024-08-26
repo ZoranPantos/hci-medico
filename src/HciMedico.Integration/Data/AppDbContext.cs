@@ -34,6 +34,7 @@ public sealed class AppDbContext : DbContext
         new WorkScheduleEntityTypeConfiguration().Configure(modelBuilder.Entity<WorkSchedule>());
         new WorkShiftEntityTypeConfiguration().Configure(modelBuilder.Entity<WorkShift>());
         new UserSettingsEntityTypeConfiguration().Configure(modelBuilder.Entity<UserSettings>());
+        new MedicalReportEntityTypeConfiguration().Configure(modelBuilder.Entity<MedicalReport>());
 
         new HealthRecordMedicalConditionEntityTypeConfiguration()
             .Configure(modelBuilder.Entity<HealthRecordMedicalCondition>());

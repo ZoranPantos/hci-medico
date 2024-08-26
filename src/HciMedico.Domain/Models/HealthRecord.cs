@@ -16,4 +16,5 @@ public class HealthRecord
 
     public ICollection<HealthRecordMedicalCondition> HealthRecordMedicalConditions { get; set; }
     public ICollection<Appointment> Appointments { get; set; }
+    public ICollection<MedicalReport> MedicalReports { get; set; }
 }

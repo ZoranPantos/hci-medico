@@ -8,4 +8,5 @@ public class MedicalCondition
     public string Name { get; set; } = string.Empty;
 
     public ICollection<HealthRecordMedicalCondition> HealthRecordMedicalConditions { get; set; }
+    public ICollection<MedicalReport> MedicalReports { get; set; }
 }
