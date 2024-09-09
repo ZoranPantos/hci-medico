@@ -37,6 +37,11 @@ public class MappingProfile : Profile
         CreateMap<Appointment, RegistrationLinkedAppointment>()
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Information, opt => opt.MapFrom(src => GetLinkedAppointmentInfo(src)));
+
+        CreateMap<HealthRecord, HealthRecordDisplayModel>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.PatientFullName, opt => opt.MapFrom(src => GetPatientFullName(src)))
+            .ForMember(dest => dest.PatientUid, opt => opt.MapFrom(src => src.Patient.Uid));
     }
 
     private static int GetResolvedAppointmentsCount(Patient patient) =>
@@ -64,6 +69,13 @@ public class MappingProfile : Profile
         var patient = appointment.Patient;
 
         return patient is not null ? $"{patient.FirstName} {patient.LastName}" : appointment.IdentifierName;
+    }
+
+    private static string GetPatientFullName(HealthRecord healthRecord)
+    {
+        var patient = healthRecord.Patient;
+
+        return patient is not null ? $"{patient.FirstName} {patient.LastName}" : string.Empty;
     }
 
     private static bool IsPatientRegistered(Appointment appointment) => appointment.Patient is not null;
