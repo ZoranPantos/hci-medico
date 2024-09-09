@@ -2,31 +2,63 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HciMedico.App.Views.CounterWorkerRole"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
-    
-    <Grid>
-        <Grid Margin="10,5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+    <Grid Margin="10,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-            <ui:TextBlock Text="Health Records" Style="{StaticResource HeadingStyle}" />
+        <ui:TextBlock Text="Health Records" Style="{StaticResource HeadingStyle}" />
 
-            <Separator Grid.Row="1" Grid.ColumnSpan="3"
-               Style="{StaticResource SeparatorStyle}"
-               Margin="0,5,0,0" />
-        </Grid>
+        <Separator Grid.Row="1"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,0" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5,0,0">
+            <ui:TextBox x:Name="SearchBar" PlaceholderText="Search by name..."
+                        Background="White" Width="300" Margin="0,0,5,0" />
+
+            <ui:Button x:Name="Search" Content="Search" Margin="0,0,5,0" Icon="{ui:SymbolIcon Search32}" />
+            <ui:Button x:Name="OpenNewRecord" Content="Open new record" Icon="{ui:SymbolIcon Add32}" />
+        </StackPanel>
+
+        <Separator Grid.Row="3" Grid.ColumnSpan="3"
+                   Style="{StaticResource SeparatorStyle}"
+                   Margin="0,5,0,10" />
+
+        <StackPanel Grid.Row="4" Style="{StaticResource TableStackPanelHeader}">
+            <TextBlock Text="Patient name" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Patient UID" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+        </StackPanel>
+
+        <ListView x:Name="HealthRecords" SelectionMode="Single" Grid.Row="5">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding PatientFullName}"
+                                   VerticalAlignment="Center" />
+
+                        <TextBlock Text="{Binding PatientUid}"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="1" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>

@@ -126,7 +126,12 @@ public class ShellViewModel : Conductor<object>
         CurrentViewModelInShell = UserContext.CurrentUser.UserRole switch
         {
             UserRole.Doctor => new HealthRecordsDoctorViewModel(),
-            UserRole.CounterWorker => new HealthRecordsCounterWorkerViewModel(),
+            UserRole.CounterWorker => new HealthRecordsCounterWorkerViewModel(
+                IoC.Get<IRepository<HealthRecord>>(),
+                IoC.Get<IMapper>(),
+                this,
+                IoC.Get<IWindowManager>(),
+                IoC.Get<ISearchService>()),
             _ => throw new Exception("User role is not recognized"),
         };
     }

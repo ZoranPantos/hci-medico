@@ -36,7 +36,8 @@ public class Bootstrapper : BootstrapperBase
             .Singleton<IRepository<UserSettings>, UserSettingsRepository>()
             .Singleton<IRepository<Appointment>, AppointmentsRepository>()
             .Singleton<IRepository<Doctor>, DoctorsRepository>()
-            .Singleton<IRepository<MedicalSpecialization>, MedicalSpecializationsRepository>();
+            .Singleton<IRepository<MedicalSpecialization>, MedicalSpecializationsRepository>()
+            .Singleton<IRepository<HealthRecord>, HealthRecordsRepository>();
 
         _container
             .Singleton<IInputValidator, InputValidator>()
