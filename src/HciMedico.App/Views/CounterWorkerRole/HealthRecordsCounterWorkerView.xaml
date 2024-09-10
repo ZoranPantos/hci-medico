@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
 
@@ -56,6 +58,14 @@
                         <TextBlock Text="{Binding PatientUid}"
                                    VerticalAlignment="Center"
                                    Grid.Column="1" />
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <cal:ActionMessage MethodName="OpenHealthRecordDetails">
+                                    <cal:Parameter Value="{Binding}" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

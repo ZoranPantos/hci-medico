@@ -9,7 +9,7 @@ using HciMedico.Integration.Data.Repositories;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
 
-class HealthRecordsCounterWorkerViewModel : Conductor<object>
+public class HealthRecordsCounterWorkerViewModel : Conductor<object>
 {
     private readonly IRepository<HealthRecord> _healthRecordsRepository;
     private readonly ShellViewModel _shellViewModel;
@@ -73,4 +73,10 @@ class HealthRecordsCounterWorkerViewModel : Conductor<object>
             throw new MedicoException(message, ex);
         }
     }
+
+    public async Task OpenHealthRecordDetails(HealthRecordDisplayModel healthRecord) =>
+        await _shellViewModel.ActivateItemAsync(new HealthRecordDetailsViewModel(healthRecord.Id, this, _healthRecordsRepository, _windowManager));
+
+    public async Task SelfActivateAsync() =>
+        await _shellViewModel.ActivateItemAsync(new HealthRecordsCounterWorkerViewModel(_healthRecordsRepository, _mapper, _shellViewModel, _windowManager, _searchService));
 }
