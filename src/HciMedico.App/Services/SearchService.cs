@@ -122,4 +122,61 @@ public class SearchService : ISearchService
 
         return foundAppointments;
     }
+
+    public List<HealthRecord>? SearchHealthRecords(List<HealthRecord> targetSet, string key)
+    {
+        ArgumentNullException.ThrowIfNull(targetSet);
+
+        var foundHealthRecords = new List<HealthRecord>();
+
+        key = key.Trim();
+
+        if (!string.IsNullOrEmpty(key))
+        {
+            key = Regex.Replace(key, @"\s+", " ");
+
+            string[] queryPartitions = key.Split(" ");
+
+            if (queryPartitions.Length == 1)
+            {
+                foundHealthRecords = targetSet.Where(healthRecord =>
+                {
+                    var patient = healthRecord.Patient;
+
+                    if (patient is not null)
+                    {
+                        return (patient.Uid.Equals(queryPartitions[0]) ||
+                            patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) ||
+                            patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase));
+                    }
+
+                    return false;
+                })
+                .ToList();
+            }
+
+            if (queryPartitions.Length == 2)
+            {
+                foundHealthRecords = targetSet.Where(healthRecord =>
+                {
+                    var patient = healthRecord.Patient;
+
+                    if (patient is not null)
+                    {
+                        return (patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
+                            patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase)) ||
+                            (patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
+                            patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase));
+                    }
+
+                    return false;
+                })
+                .ToList();
+            }
+        }
+        else
+            foundHealthRecords = targetSet;
+
+        return foundHealthRecords;
+    }
 }
