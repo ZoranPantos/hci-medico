@@ -125,7 +125,13 @@ public class ShellViewModel : Conductor<object>
 
         CurrentViewModelInShell = UserContext.CurrentUser.UserRole switch
         {
-            UserRole.Doctor => new HealthRecordsDoctorViewModel(),
+            UserRole.Doctor => new HealthRecordsDoctorViewModel(
+                IoC.Get<IRepository<HealthRecord>>(),
+                IoC.Get<IMapper>(),
+                this,
+                IoC.Get<IWindowManager>(),
+                IoC.Get<ISearchService>()),
+
             UserRole.CounterWorker => new HealthRecordsCounterWorkerViewModel(
                 IoC.Get<IRepository<HealthRecord>>(),
                 IoC.Get<IMapper>(),
