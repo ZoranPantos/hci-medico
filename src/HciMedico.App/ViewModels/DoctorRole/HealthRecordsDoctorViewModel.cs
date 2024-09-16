@@ -76,4 +76,21 @@ public class HealthRecordsDoctorViewModel : Conductor<object>
             throw new MedicoException(message, ex);
         }
     }
+
+    public async Task Search(string searchBar)
+    {
+        var healthRecords = await _healthRecordsRepository
+            .GetAllAsync(healthRecord =>
+                    healthRecord.Appointments.Any(appointment => appointment.DoctorId == UserContext.CurrentUser!.Id), true, "Patient,Appointments");
+
+        var filteredHealthRecords = _searchService.SearchHealthRecords(healthRecords, searchBar);
+
+        var healthRecordDtos = _mapper.Map<List<HealthRecordDisplayModel>>(filteredHealthRecords)
+            .OrderBy(dto => dto.PatientFullName)
+            .ToList();
+
+        HealthRecords.Clear();
+
+        healthRecordDtos.ForEach(HealthRecords.Add);
+    }
 }
