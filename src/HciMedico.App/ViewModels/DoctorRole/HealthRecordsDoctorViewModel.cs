@@ -54,6 +54,9 @@ public class HealthRecordsDoctorViewModel : Conductor<object>
 
     public async Task RefreshViewModel() => await InitializeViewModel();
 
+    public async Task SelfActivateAsync() =>
+        await _shellViewModel.ActivateItemAsync(new HealthRecordsDoctorViewModel(_healthRecordsRepository, _mapper, _shellViewModel, _windowManager, _searchService));
+
     public async Task InitializeViewModel()
     {
         try
@@ -76,6 +79,9 @@ public class HealthRecordsDoctorViewModel : Conductor<object>
             throw new MedicoException(message, ex);
         }
     }
+
+    public async Task OpenHealthRecordDetails(HealthRecordDisplayModel healthRecord) =>
+        await _shellViewModel.ActivateItemAsync(new HealthRecordDetailsViewModel(healthRecord.Id, this, _healthRecordsRepository, _windowManager));
 
     public async Task Search(string searchBar)
     {

@@ -1,15 +1,16 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.ViewModels.CounterWorkerRole;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
 
-namespace HciMedico.App.ViewModels.CounterWorkerRole;
+namespace HciMedico.App.ViewModels.DoctorRole;
 
 public class HealthRecordDetailsViewModel : Conductor<object>
 {
     private readonly int _id;
-    private readonly HealthRecordsCounterWorkerViewModel _parentViewModel;
+    private readonly HealthRecordsDoctorViewModel _parentViewModel;
     private readonly IRepository<HealthRecord> _healthRecordsRepository;
     private readonly IWindowManager _windowManager;
     private HealthRecord? _healthRecord;
@@ -93,7 +94,7 @@ public class HealthRecordDetailsViewModel : Conductor<object>
 
     public HealthRecordDetailsViewModel(
         int id,
-        HealthRecordsCounterWorkerViewModel parentViewModel,
+        HealthRecordsDoctorViewModel parentViewModel,
         IRepository<HealthRecord> healthRecordsRepository,
         IWindowManager windowManager)
     {
