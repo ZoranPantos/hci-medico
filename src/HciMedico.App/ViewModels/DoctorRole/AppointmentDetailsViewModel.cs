@@ -125,4 +125,7 @@ public class AppointmentDetailsViewModel : Conductor<object>
     public async Task RefreshViewModel() => await InitializeViewModel();
 
     public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
+
+    public async Task CreateReport() =>
+        await _windowManager.ShowWindowAsync(new CreateReportViewModel(_id, _appointment!.HealthRecordId ?? 0, IoC.Get<IRepository<MedicalCondition>>(), IoC.Get<IRepository<MedicalReport>>()));
 }
