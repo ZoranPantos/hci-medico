@@ -81,6 +81,19 @@ public class AppointmentDetailsViewModel : Conductor<object>
         }
     }
 
+    // Using explicit property binding instead of 'Can' method because with 'Can' method control flow will move into it
+    // before view model is initialized fully, so objects required to perform a check will always be null
+    private bool _canCreateReport;
+    public bool CanCreateReport
+    {
+        get => _canCreateReport;
+        set
+        {
+            _canCreateReport = value;
+            NotifyOfPropertyChange(() => CanCreateReport);
+        }
+    }
+
     public AppointmentDetailsViewModel(
         int id,
         AppointmentsDoctorViewModel parentViewModel,
@@ -109,8 +122,13 @@ public class AppointmentDetailsViewModel : Conductor<object>
             AppointmentType = _appointment.Type;
             AppointmentStatus = _appointment.Status;
 
-            Requester = _appointment.Patient is not null ?
-                $"{_appointment.Patient.FirstName} {_appointment.Patient.LastName}" : _appointment.IdentifierName;
+            if (_appointment.Patient is not null)
+            {
+                Requester = $"{_appointment.Patient.FirstName} {_appointment.Patient.LastName}";
+                CanCreateReport = true;
+            }
+            else
+                Requester = _appointment.IdentifierName;
 
             CreatedBy = $"{_appointment.CreatedBy.FirstName} {_appointment.CreatedBy.LastName}";
             CreationTime = _appointment.CreationTime;

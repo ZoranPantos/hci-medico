@@ -39,7 +39,7 @@
            Margin="0,5,0,0" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,5,0,0" Grid.ColumnSpan="3">
-            <ui:Button x:Name="CreateReport" Content="Create a report" Icon="{ui:SymbolIcon DocumentText24}" />
+            <ui:Button x:Name="CreateReport" Content="Create a report" Icon="{ui:SymbolIcon DocumentText24}" IsEnabled="{Binding CanCreateReport}" />
         </StackPanel>
 
         <Separator Grid.Row="3" Grid.ColumnSpan="3"
