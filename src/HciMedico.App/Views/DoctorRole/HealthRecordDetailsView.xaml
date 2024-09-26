@@ -4,11 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro.Platform"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
 
     <Grid Margin="10,5">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -106,5 +110,38 @@
 
         <ui:TextBlock Grid.Row="11" Text="Reports"
                       Style="{StaticResource SubHeadingStyle}" />
+
+        <StackPanel Grid.Row="12" Grid.ColumnSpan="3" Style="{StaticResource TableStackPanelHeader}">
+            <TextBlock Text="Date and time" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Doctor" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+        </StackPanel>
+
+        <ListView x:Name="MedicalReports" SelectionMode="Single" Grid.Row="13" Grid.ColumnSpan="3">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding DateAndTime, StringFormat={}{0:dd/MM/yyyy HH:mm}}"
+                                   VerticalAlignment="Center" />
+
+                        <TextBlock Text="{Binding DoctorFullName}"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="1" />
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <cal:ActionMessage MethodName="OpenMedicalReport">
+                                    <cal:Parameter Value="{Binding}" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>

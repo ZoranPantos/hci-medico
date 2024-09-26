@@ -1,7 +1,8 @@
-﻿using Caliburn.Micro;
+﻿using AutoMapper;
+using Caliburn.Micro;
 using HciMedico.App.Exceptions;
-using HciMedico.App.ViewModels.CounterWorkerRole;
 using HciMedico.Domain.Models;
+using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
 
@@ -13,7 +14,15 @@ public class HealthRecordDetailsViewModel : Conductor<object>
     private readonly HealthRecordsDoctorViewModel _parentViewModel;
     private readonly IRepository<HealthRecord> _healthRecordsRepository;
     private readonly IWindowManager _windowManager;
+    private readonly IMapper _mapper;
     private HealthRecord? _healthRecord;
+
+    private BindableCollection<MedicalReportDisplayModel> _medicalReports = [];
+    public BindableCollection<MedicalReportDisplayModel> MedicalReports
+    {
+        get => _medicalReports;
+        set => _medicalReports = value;
+    }
 
     public string _patientFullName = string.Empty;
     public string PatientFullName
@@ -96,12 +105,14 @@ public class HealthRecordDetailsViewModel : Conductor<object>
         int id,
         HealthRecordsDoctorViewModel parentViewModel,
         IRepository<HealthRecord> healthRecordsRepository,
-        IWindowManager windowManager)
+        IWindowManager windowManager,
+        IMapper mapper)
     {
         _id = id;
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
         _healthRecordsRepository = healthRecordsRepository ?? throw new ArgumentNullException(nameof(healthRecordsRepository));
         _windowManager = windowManager ?? throw new ArgumentNullException(nameof(windowManager));
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken) => await InitializeViewModel();
@@ -111,7 +122,7 @@ public class HealthRecordDetailsViewModel : Conductor<object>
         try
         {
             _healthRecord = await _healthRecordsRepository
-                .FindAsync(record => record.Id == _id, false, "Patient,Appointments");
+                .FindAsync(record => record.Id == _id, false, "Patient,Appointments.AssignedTo,MedicalReports");
 
             if (_healthRecord is null)
                 return;
@@ -124,6 +135,14 @@ public class HealthRecordDetailsViewModel : Conductor<object>
 
             AttendedAppointmentsCount = _healthRecord.Appointments.Where(appointment => appointment.Status == AppointmentStatus.Resolved).Count();
             LastAppointmentDate = _healthRecord.Appointments.Max(appointment => appointment.DateAndTime);
+
+            var medicalReportDtos = _mapper.Map<List<MedicalReportDisplayModel>>(_healthRecord.MedicalReports)
+                .OrderByDescending(dto => dto.DateAndTime)
+                .ToList();
+
+            MedicalReports.Clear();
+
+            medicalReportDtos.ForEach(MedicalReports.Add);
         }
         catch (Exception ex)
         {

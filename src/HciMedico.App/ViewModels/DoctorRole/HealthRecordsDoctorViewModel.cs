@@ -81,7 +81,7 @@ public class HealthRecordsDoctorViewModel : Conductor<object>
     }
 
     public async Task OpenHealthRecordDetails(HealthRecordDisplayModel healthRecord) =>
-        await _shellViewModel.ActivateItemAsync(new HealthRecordDetailsViewModel(healthRecord.Id, this, _healthRecordsRepository, _windowManager));
+        await _shellViewModel.ActivateItemAsync(new HealthRecordDetailsViewModel(healthRecord.Id, this, _healthRecordsRepository, _windowManager, _mapper));
 
     public async Task Search(string searchBar)
     {

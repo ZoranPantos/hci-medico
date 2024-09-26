@@ -29,7 +29,7 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5,0,0">
             <ui:TextBox x:Name="SearchBar" PlaceholderText="Search by name or UID..."
-                Background="White" Width="300" Margin="0,0,5,0" />
+                        Background="White" Width="300" Margin="0,0,5,0" />
 
             <ui:Button x:Name="Search" Content="Search" Margin="0,0,5,0" Icon="{ui:SymbolIcon Search32}" />
         </StackPanel>
@@ -53,11 +53,11 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="{Binding PatientFullName}"
-                               VerticalAlignment="Center" />
+                                   VerticalAlignment="Center" />
 
                         <TextBlock Text="{Binding PatientUid}"
-                               VerticalAlignment="Center"
-                               Grid.Column="1" />
+                                   VerticalAlignment="Center"
+                                   Grid.Column="1" />
 
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDown">

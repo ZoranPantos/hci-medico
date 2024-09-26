@@ -42,6 +42,11 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.PatientFullName, opt => opt.MapFrom(src => GetPatientFullName(src)))
             .ForMember(dest => dest.PatientUid, opt => opt.MapFrom(src => src.Patient.Uid));
+
+        CreateMap<MedicalReport, MedicalReportDisplayModel>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.DateAndTime, opt => opt.MapFrom(src => src.DateTime))
+            .ForMember(dest => dest.DoctorFullName, opt => opt.MapFrom(src => GetDoctorFullName(src)));
     }
 
     private static int GetResolvedAppointmentsCount(Patient patient) =>
@@ -82,4 +87,11 @@ public class MappingProfile : Profile
 
     private static string GetLinkedAppointmentInfo(Appointment appointment) =>
         $"{appointment.IdentifierName} - {appointment.DateAndTime:dd/MM/yyyy HH:mm} - {appointment.AssignedTo.FullName}";
+
+    private static string GetDoctorFullName(MedicalReport medicalReport)
+    {
+        var doctor = medicalReport.Appointment.AssignedTo;
+
+        return doctor is not null ? doctor.FullName : string.Empty;
+    }
 }
