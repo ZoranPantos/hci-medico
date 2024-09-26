@@ -86,10 +86,6 @@
             </StackPanel>
         </Grid>
 
-        
-
-        
-
         <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="0,0,0,15">
             <ui:TextBlock Text="Added conditions: " />
             <ui:TextBlock x:Name="AddedMedicalConditionDisplayModelsString" />

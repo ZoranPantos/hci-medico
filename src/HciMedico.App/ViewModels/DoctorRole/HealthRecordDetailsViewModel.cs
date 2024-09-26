@@ -154,4 +154,7 @@ public class HealthRecordDetailsViewModel : Conductor<object>
     public async Task RefreshViewModel() => await InitializeViewModel();
 
     public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
+
+    public async Task OpenMedicalReport(MedicalReportDisplayModel medicalReport) =>
+        await _windowManager.ShowWindowAsync(new MedicalReportDetailsViewModel(medicalReport.Id, IoC.Get<IRepository<MedicalReport>>()));
 }
