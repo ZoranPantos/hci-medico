@@ -1,9 +1,9 @@
-﻿using HciMedico.Domain.Models;
-using HciMedico.Integration.Data.Repositories;
+﻿using HciMedico.Integration.Data.Repositories;
 using Microsoft.Extensions.Hosting;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.App.Exceptions;
 using HciMedico.App.Services.Interfaces;
+using HciMedico.Domain.Models.Entities;
 
 namespace HciMedico.App.Services.Classes;
 

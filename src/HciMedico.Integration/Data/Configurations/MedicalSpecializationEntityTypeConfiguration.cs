@@ -1,4 +1,4 @@
-﻿using HciMedico.Domain.Models;
+﻿using HciMedico.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

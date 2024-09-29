@@ -1,4 +1,4 @@
-﻿using HciMedico.Domain.Models;
+﻿using HciMedico.Domain.Models.Entities;
 using HciMedico.UnitTests.Services.SearchService.TestData;
 using Xunit.Abstractions;
 

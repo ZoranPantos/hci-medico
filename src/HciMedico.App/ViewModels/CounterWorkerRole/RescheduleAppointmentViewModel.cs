@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
-using HciMedico.Domain.Models;
+using HciMedico.Domain.Models.Entities;
 using HciMedico.Integration.Data.Repositories;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;

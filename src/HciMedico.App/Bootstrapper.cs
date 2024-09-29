@@ -6,7 +6,7 @@ using HciMedico.App.Services.Classes;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.App.Validation;
 using HciMedico.App.ViewModels.Shared;
-using HciMedico.Domain.Models;
+using HciMedico.Domain.Models.Entities;
 using HciMedico.Integration.Data;
 using HciMedico.Integration.Data.Repositories;
 using System.Windows;

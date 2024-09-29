@@ -5,10 +5,10 @@ using System.Windows;
 using HciMedico.App.ViewModels.DoctorRole;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
-using HciMedico.Domain.Models;
 using AutoMapper;
 using HciMedico.App.ViewModels.CounterWorkerRole;
 using HciMedico.App.Services.Interfaces;
+using HciMedico.Domain.Models.Entities;
 
 namespace HciMedico.App.ViewModels.Shared;
 

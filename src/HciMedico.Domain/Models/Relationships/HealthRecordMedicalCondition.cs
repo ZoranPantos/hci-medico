@@ -1,4 +1,5 @@
-﻿using HciMedico.Domain.Models.Enums;
+﻿using HciMedico.Domain.Models.Entities;
+using HciMedico.Domain.Models.Enums;
 
 namespace HciMedico.Domain.Models.Relationships;
 

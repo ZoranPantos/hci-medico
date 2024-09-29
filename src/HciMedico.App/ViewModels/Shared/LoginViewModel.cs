@@ -2,7 +2,7 @@
 using HciMedico.App.Exceptions;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.App.Views.Shared;
-using HciMedico.Domain.Models;
+using HciMedico.Domain.Models.Entities;
 using HciMedico.Integration.Data.Repositories;
 using System.ComponentModel;
 using System.Windows;

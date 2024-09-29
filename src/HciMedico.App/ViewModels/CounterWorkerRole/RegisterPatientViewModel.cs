@@ -7,6 +7,7 @@ using HciMedico.Domain.Models.Relationships;
 using HciMedico.App.Exceptions;
 using HciMedico.App.Validation;
 using AutoMapper;
+using HciMedico.Domain.Models.Entities;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
 

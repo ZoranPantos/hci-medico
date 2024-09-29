@@ -1,5 +1,5 @@
 ﻿using HciMedico.App.Services.Interfaces;
-using HciMedico.Domain.Models;
+using HciMedico.Domain.Models.Entities;
 using System.Text.RegularExpressions;
 
 namespace HciMedico.App.Services.Classes;

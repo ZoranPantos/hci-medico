@@ -4,8 +4,8 @@ using HciMedico.App.Exceptions;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.App.Validation;
 using HciMedico.App.ViewModels.Shared;
-using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
+using HciMedico.Domain.Models.Entities;
 using HciMedico.Integration.Data.Repositories;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;

@@ -1,4 +1,4 @@
-﻿namespace HciMedico.Domain.Models;
+﻿namespace HciMedico.Domain.Models.Entities;
 
 public class MedicalSpecialization
 {

@@ -1,7 +1,7 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
 using HciMedico.App.Validation;
-using HciMedico.Domain.Models;
+using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
 

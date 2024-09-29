@@ -1,6 +1,6 @@
 ﻿using HciMedico.Domain.Models.Enums;
 
-namespace HciMedico.Domain.Models;
+namespace HciMedico.Domain.Models.Entities;
 
 public class Appointment
 {

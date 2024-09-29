@@ -1,11 +1,11 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
 using HciMedico.App.ViewModels.CounterWorkerRole;
-using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Integration.Data.Repositories;
 using Microsoft.AspNetCore.Components.Forms;
 using HciMedico.Domain.Models.Enums;
+using HciMedico.Domain.Models.Entities;
 
 namespace HciMedico.App.ViewModels.DoctorRole;
 

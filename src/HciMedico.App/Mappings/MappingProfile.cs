@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
+using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
 
 namespace HciMedico.App.Mappings;

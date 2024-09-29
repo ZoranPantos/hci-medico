@@ -1,4 +1,4 @@
-﻿using HciMedico.Domain.Models;
+﻿using HciMedico.Domain.Models.Entities;
 using System.Collections;
 
 namespace HciMedico.UnitTests.Services.SearchService.TestData;

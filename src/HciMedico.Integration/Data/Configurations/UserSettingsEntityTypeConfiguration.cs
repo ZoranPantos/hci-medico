@@ -1,7 +1,7 @@
-﻿using HciMedico.Domain.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using HciMedico.Domain.Models.Enums;
+using HciMedico.Domain.Models.Entities;
 
 namespace HciMedico.Integration.Data.Configurations;
 

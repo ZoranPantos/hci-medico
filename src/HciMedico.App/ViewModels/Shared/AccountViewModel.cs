@@ -1,7 +1,7 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
 using HciMedico.App.Helpers;
-using HciMedico.Domain.Models;
+using HciMedico.Domain.Models.Entities;
 
 namespace HciMedico.App.ViewModels.Shared;
 

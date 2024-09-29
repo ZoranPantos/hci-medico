@@ -1,4 +1,4 @@
-﻿using HciMedico.Domain.Models;
+﻿using HciMedico.Domain.Models.Entities;
 
 namespace HciMedico.App;
 

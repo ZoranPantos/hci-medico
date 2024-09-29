@@ -1,4 +1,4 @@
-﻿namespace HciMedico.Domain.Models;
+﻿namespace HciMedico.Domain.Models.Entities;
 
 public class Patient
 {
@@ -9,7 +9,7 @@ public class Patient
     public string LastName { get; set; } = string.Empty;
 
     public string FullName => $"{FirstName} {LastName}";
-    
+
     public Address Address { get; set; }
     public ContactInfo ContactInfo { get; set; }
 

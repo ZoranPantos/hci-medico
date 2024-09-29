@@ -2,11 +2,11 @@
 using Caliburn.Micro;
 using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models.DisplayModels;
-using HciMedico.Domain.Models;
 using HciMedico.Integration.Data.Repositories;
 using HciMedico.App.Exceptions;
 using HciMedico.App.ViewModels.CounterWorkerRole;
 using HciMedico.App.Services.Interfaces;
+using HciMedico.Domain.Models.Entities;
 
 namespace HciMedico.App.ViewModels.DoctorRole;
 
