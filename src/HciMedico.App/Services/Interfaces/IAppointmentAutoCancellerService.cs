@@ -1,4 +1,4 @@
-﻿namespace HciMedico.App.Services;
+﻿namespace HciMedico.App.Services.Interfaces;
 
 public interface IAppointmentAutoCancellerService
 {

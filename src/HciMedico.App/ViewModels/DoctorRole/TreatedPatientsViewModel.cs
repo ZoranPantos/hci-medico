@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
 using HciMedico.App.Exceptions;
-using HciMedico.App.Services;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;

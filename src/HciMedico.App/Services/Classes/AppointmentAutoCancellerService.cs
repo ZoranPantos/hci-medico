@@ -3,8 +3,9 @@ using HciMedico.Integration.Data.Repositories;
 using Microsoft.Extensions.Hosting;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Interfaces;
 
-namespace HciMedico.App.Services;
+namespace HciMedico.App.Services.Classes;
 
 public class AppointmentAutoCancellerService : BackgroundService, IAppointmentAutoCancellerService
 {

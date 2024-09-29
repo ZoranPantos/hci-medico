@@ -1,10 +1,8 @@
-﻿using HciMedico.App.Services;
-
-namespace HciMedico.UnitTests.Services.HashingService;
+﻿namespace HciMedico.UnitTests.Services.HashingService;
 
 public class HashingServiceFixture
 {
-    public App.Services.HashingService HashingService { get; private set; }
+    public App.Services.Classes.HashingService HashingService { get; private set; }
 
     public HashingServiceFixture() => HashingService = new();
 }

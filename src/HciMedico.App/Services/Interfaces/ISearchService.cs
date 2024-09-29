@@ -1,6 +1,6 @@
 ﻿using HciMedico.Domain.Models;
 
-namespace HciMedico.App.Services;
+namespace HciMedico.App.Services.Interfaces;
 
 public interface ISearchService
 {

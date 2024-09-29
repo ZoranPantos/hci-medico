@@ -1,7 +1,8 @@
 ﻿using System.Text;
 using System.Security.Cryptography;
+using HciMedico.App.Services.Interfaces;
 
-namespace HciMedico.App.Services;
+namespace HciMedico.App.Services.Classes;
 
 public class HashingService : IHashingService
 {

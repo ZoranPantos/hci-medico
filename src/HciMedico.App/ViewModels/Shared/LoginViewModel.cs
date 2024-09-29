@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
-using HciMedico.App.Services;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.App.Views.Shared;
 using HciMedico.Domain.Models;
 using HciMedico.Integration.Data.Repositories;

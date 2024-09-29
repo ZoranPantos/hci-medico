@@ -2,7 +2,8 @@
 using Caliburn.Micro;
 using HciMedico.App.Helpers;
 using HciMedico.App.Mappings;
-using HciMedico.App.Services;
+using HciMedico.App.Services.Classes;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.App.Validation;
 using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models;

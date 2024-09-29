@@ -2,7 +2,7 @@
 
 public class SearchServiceFixture
 {
-    public App.Services.SearchService SearchService { get; private set; }
+    public App.Services.Classes.SearchService SearchService { get; private set; }
 
     public SearchServiceFixture() => SearchService = new();
 }

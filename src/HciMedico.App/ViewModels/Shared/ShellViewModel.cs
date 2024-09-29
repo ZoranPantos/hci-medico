@@ -8,7 +8,7 @@ using HciMedico.Integration.Data.Repositories;
 using HciMedico.Domain.Models;
 using AutoMapper;
 using HciMedico.App.ViewModels.CounterWorkerRole;
-using HciMedico.App.Services;
+using HciMedico.App.Services.Interfaces;
 
 namespace HciMedico.App.ViewModels.Shared;
 

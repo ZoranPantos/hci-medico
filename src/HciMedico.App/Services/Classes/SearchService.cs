@@ -1,7 +1,8 @@
-﻿using HciMedico.Domain.Models;
+﻿using HciMedico.App.Services.Interfaces;
+using HciMedico.Domain.Models;
 using System.Text.RegularExpressions;
 
-namespace HciMedico.App.Services;
+namespace HciMedico.App.Services.Classes;
 
 public class SearchService : ISearchService
 {
@@ -23,10 +24,10 @@ public class SearchService : ISearchService
             {
                 foundPatients = targetSet
                     .Where(patient =>
-                        (patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
-                        patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase)) ||
-                        (patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
-                        patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase)))
+                        patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
+                        patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) ||
+                        patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
+                        patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase))
                     .ToList();
             }
 
@@ -69,10 +70,10 @@ public class SearchService : ISearchService
 
                         if (patient is not null)
                         {
-                            return (patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
-                                patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase)) ||
-                                (patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
-                                patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase));
+                            return patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
+                                patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) ||
+                                patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
+                                patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase);
                         }
 
                         if (!string.IsNullOrEmpty(appointment.IdentifierName))
@@ -88,10 +89,10 @@ public class SearchService : ISearchService
                                     identifierPartitions[1].StartsWith(queryPartitions[0], StringComparison.OrdinalIgnoreCase);
                             }
 
-                            return (queryPartitions[0].Equals(identifierPartitions[0], StringComparison.OrdinalIgnoreCase) &&
-                                queryPartitions[1].Equals(identifierPartitions[1], StringComparison.OrdinalIgnoreCase)) ||
-                                (queryPartitions[0].Equals(identifierPartitions[1], StringComparison.OrdinalIgnoreCase) &&
-                                queryPartitions[1].Equals(identifierPartitions[0], StringComparison.OrdinalIgnoreCase));
+                            return queryPartitions[0].Equals(identifierPartitions[0], StringComparison.OrdinalIgnoreCase) &&
+                                queryPartitions[1].Equals(identifierPartitions[1], StringComparison.OrdinalIgnoreCase) ||
+                                queryPartitions[0].Equals(identifierPartitions[1], StringComparison.OrdinalIgnoreCase) &&
+                                queryPartitions[1].Equals(identifierPartitions[0], StringComparison.OrdinalIgnoreCase);
                         }
 
                         return false;
@@ -145,9 +146,9 @@ public class SearchService : ISearchService
 
                     if (patient is not null)
                     {
-                        return (patient.Uid.Equals(queryPartitions[0]) ||
+                        return patient.Uid.Equals(queryPartitions[0]) ||
                             patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) ||
-                            patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase));
+                            patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase);
                     }
 
                     return false;
@@ -163,10 +164,10 @@ public class SearchService : ISearchService
 
                     if (patient is not null)
                     {
-                        return (patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
-                            patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase)) ||
-                            (patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
-                            patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase));
+                        return patient.FirstName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase) &&
+                            patient.LastName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) ||
+                            patient.FirstName.Equals(queryPartitions[1], StringComparison.OrdinalIgnoreCase) &&
+                            patient.LastName.Equals(queryPartitions[0], StringComparison.OrdinalIgnoreCase);
                     }
 
                     return false;
