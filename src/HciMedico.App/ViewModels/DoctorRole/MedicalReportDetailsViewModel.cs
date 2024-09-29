@@ -8,6 +8,7 @@ public class MedicalReportDetailsViewModel : Conductor<object>
 {
     private int _id;
     private readonly IRepository<MedicalReport> _medicalReportsRepository;
+    private MedicalReport? _medicalReport;
 
     private string _analysis = string.Empty;
     public string Analysis
@@ -72,20 +73,25 @@ public class MedicalReportDetailsViewModel : Conductor<object>
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
     {
-        var medicalRecord = await _medicalReportsRepository.FindAsync(record => record.Id == _id, true, "MedicalConditions");
+        _medicalReport = await _medicalReportsRepository.FindAsync(record => record.Id == _id, true, "MedicalConditions");
 
-        if (medicalRecord is null) return;
+        if (_medicalReport is null) return;
 
-        Analysis = medicalRecord.Analysis;
-        PreviousFindings = medicalRecord.PreviousFindings;
+        Analysis = _medicalReport.Analysis;
+        PreviousFindings = _medicalReport.PreviousFindings;
 
         string allConditions = "";
-        medicalRecord.MedicalConditions.ToList().ForEach(condition => { allConditions += $"{condition.Name}, "; });
+        _medicalReport.MedicalConditions.ToList().ForEach(condition => { allConditions += $"{condition.Name}, "; });
 
         Diagnosis = allConditions[..^2];
-        Therapy = medicalRecord.Therapy;
-        AdditionalNotes = medicalRecord.AdditionalNotes;
+        Therapy = _medicalReport.Therapy;
+        AdditionalNotes = _medicalReport.AdditionalNotes;
     }
 
     public async Task Close() => await TryCloseAsync();
+
+    public void Export()
+    {
+
+    }
 }
