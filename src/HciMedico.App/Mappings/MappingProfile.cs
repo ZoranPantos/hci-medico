@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using HciMedico.App.ViewModels.DoctorRole;
 using HciMedico.Domain.Models.DisplayModels;
+using HciMedico.Domain.Models.DTOs;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
 
@@ -47,6 +49,16 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.DateAndTime, opt => opt.MapFrom(src => src.DateTime))
             .ForMember(dest => dest.DoctorFullName, opt => opt.MapFrom(src => GetDoctorFullName(src)));
+
+        CreateMap<MedicalReportDetailsViewModel, MedicalReportExportDto>()
+            .ForMember(dest => dest.DateTime, opt => opt.MapFrom(src => src.MedicalReport!.DateTime))
+            .ForMember(dest => dest.Analysis, opt => opt.MapFrom(src => src.Analysis))
+            .ForMember(dest => dest.PreviousFindings, opt => opt.MapFrom(src => src.PreviousFindings))
+            .ForMember(dest => dest.Diagnosis, opt => opt.MapFrom(src => src.Diagnosis))
+            .ForMember(dest => dest.AdditionalNotes, opt => opt.MapFrom(src => src.AdditionalNotes))
+            .ForMember(dest => dest.PatientFullName, opt => opt.MapFrom(src => src.MedicalReport!.HealthRecord.Patient.FullName))
+            .ForMember(dest => dest.PatientUid, opt => opt.MapFrom(src => src.MedicalReport!.HealthRecord.Patient.Uid))
+            .ForMember(dest => dest.DoctorFullName, opt => opt.MapFrom(src => src.MedicalReport!.Appointment.AssignedTo.FullName));
     }
 
     private static int GetResolvedAppointmentsCount(Patient patient) =>

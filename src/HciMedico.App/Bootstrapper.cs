@@ -45,7 +45,8 @@ public class Bootstrapper : BootstrapperBase
             .Singleton<IInputValidator, InputValidator>()
             .Singleton<ISearchService, SearchService>()
             .Singleton<IHashingService, HashingService>()
-            .Singleton<IAppointmentAutoCancellerService, AppointmentAutoCancellerService>();
+            .Singleton<IAppointmentAutoCancellerService, AppointmentAutoCancellerService>()
+            .Singleton<IPdfExporter, PdfExporter>();
 
         var mapperConfiguration = new MapperConfiguration(configuration => configuration.AddProfile<MappingProfile>());
         var mapper = mapperConfiguration.CreateMapper();

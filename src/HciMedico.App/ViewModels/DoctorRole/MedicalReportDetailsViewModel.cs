@@ -1,4 +1,8 @@
-﻿using Caliburn.Micro;
+﻿using AutoMapper;
+using Caliburn.Micro;
+using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Interfaces;
+using HciMedico.Domain.Models.DTOs;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Integration.Data.Repositories;
 
@@ -8,7 +12,11 @@ public class MedicalReportDetailsViewModel : Conductor<object>
 {
     private int _id;
     private readonly IRepository<MedicalReport> _medicalReportsRepository;
+    private readonly IPdfExporter _pdfExporter;
+    private readonly IMapper _mapper;
     private MedicalReport? _medicalReport;
+
+    public MedicalReport? MedicalReport => _medicalReport;
 
     private string _analysis = string.Empty;
     public string Analysis
@@ -65,33 +73,52 @@ public class MedicalReportDetailsViewModel : Conductor<object>
         }
     }
 
-    public MedicalReportDetailsViewModel(int id, IRepository<MedicalReport> medicalReportsRepository)
+    public MedicalReportDetailsViewModel(int id, IRepository<MedicalReport> medicalReportsRepository, IPdfExporter pdfExporter, IMapper mapper)
     {
         _id = id;
         _medicalReportsRepository = medicalReportsRepository ?? throw new ArgumentNullException(nameof(medicalReportsRepository));
+        _pdfExporter = pdfExporter ?? throw new ArgumentNullException(nameof(pdfExporter));
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
     {
-        _medicalReport = await _medicalReportsRepository.FindAsync(record => record.Id == _id, true, "MedicalConditions");
+        try
+        {
+            _medicalReport = await _medicalReportsRepository.FindAsync(record => record.Id == _id, true, "MedicalConditions,HealthRecord.Patient,Appointment.AssignedTo");
 
-        if (_medicalReport is null) return;
+            if (_medicalReport is null) return;
 
-        Analysis = _medicalReport.Analysis;
-        PreviousFindings = _medicalReport.PreviousFindings;
+            Analysis = _medicalReport.Analysis;
+            PreviousFindings = _medicalReport.PreviousFindings;
 
-        string allConditions = "";
-        _medicalReport.MedicalConditions.ToList().ForEach(condition => { allConditions += $"{condition.Name}, "; });
+            string allConditions = "";
+            _medicalReport.MedicalConditions.ToList().ForEach(condition => { allConditions += $"{condition.Name}, "; });
 
-        Diagnosis = allConditions[..^2];
-        Therapy = _medicalReport.Therapy;
-        AdditionalNotes = _medicalReport.AdditionalNotes;
+            Diagnosis = allConditions[..^2];
+            Therapy = _medicalReport.Therapy;
+            AdditionalNotes = _medicalReport.AdditionalNotes;
+        }
+        catch (Exception ex)
+        {
+            string message = $"Exception caught and rethrown in {nameof(MedicalReportDetailsViewModel)}.{nameof(OnActivateAsync)}";
+            throw new MedicoException(message, ex);
+        }
     }
 
     public async Task Close() => await TryCloseAsync();
 
     public void Export()
     {
-
+        try
+        {
+            var exportDto = _mapper.Map<MedicalReportExportDto>(this);
+            _pdfExporter.Export(exportDto);
+        }
+        catch (Exception ex)
+        {
+            string message = $"Exception caught and rethrown in {nameof(MedicalReportDetailsViewModel)}.{nameof(Export)}";
+            throw new MedicoException(message, ex);
+        }
     }
 }

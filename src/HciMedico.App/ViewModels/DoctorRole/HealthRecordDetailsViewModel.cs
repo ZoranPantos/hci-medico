@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
@@ -156,5 +157,5 @@ public class HealthRecordDetailsViewModel : Conductor<object>
     public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
 
     public async Task OpenMedicalReport(MedicalReportDisplayModel medicalReport) =>
-        await _windowManager.ShowWindowAsync(new MedicalReportDetailsViewModel(medicalReport.Id, IoC.Get<IRepository<MedicalReport>>()));
+        await _windowManager.ShowWindowAsync(new MedicalReportDetailsViewModel(medicalReport.Id, IoC.Get<IRepository<MedicalReport>>(), IoC.Get<IPdfExporter>(), _mapper));
 }
