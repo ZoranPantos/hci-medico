@@ -41,7 +41,7 @@ public class SettingsViewModel : Conductor<object>
         SelectedLandingPage = _currentUserSettings.LandingPage;
     }
 
-    public async Task UpdatePassword() => await _windowManager.ShowWindowAsync(new UpdatePasswordViewModel(IoC.Get<IHashingService>()));
+    public async Task UpdatePassword() => await _windowManager.ShowDialogAsync(new UpdatePasswordViewModel(IoC.Get<IHashingService>()));
 
     //Will be called after the corresponding property setter is executed
     public async Task OnLandingPageSelectionChanged()

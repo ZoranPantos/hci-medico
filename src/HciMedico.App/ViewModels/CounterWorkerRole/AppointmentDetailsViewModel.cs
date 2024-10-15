@@ -138,11 +138,11 @@ public class AppointmentDetailsViewModel : Conductor<object>
     public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
 
     public async Task UpdateStatus() =>
-        await _windowManager.ShowWindowAsync(new AppointmentStatusUpdateViewModel(_appointment, _appointmentsRepository, this));
+        await _windowManager.ShowDialogAsync(new AppointmentStatusUpdateViewModel(_appointment, _appointmentsRepository, this));
 
     public async Task SwitchDoctor() =>
-        await _windowManager.ShowWindowAsync(new SwitchAppointmentDoctorViewModel(_appointment, _appointmentsRepository, IoC.Get<IRepository<Doctor>>(), this));
+        await _windowManager.ShowDialogAsync(new SwitchAppointmentDoctorViewModel(_appointment, _appointmentsRepository, IoC.Get<IRepository<Doctor>>(), this));
 
     public async Task RescheduleAppointment() =>
-        await _windowManager.ShowWindowAsync(new RescheduleAppointmentViewModel(_appointment, _appointmentsRepository, this));
+        await _windowManager.ShowDialogAsync(new RescheduleAppointmentViewModel(_appointment, _appointmentsRepository, this));
 }

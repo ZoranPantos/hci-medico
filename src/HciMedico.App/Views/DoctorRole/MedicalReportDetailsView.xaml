@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Report Details"
-        Height="700" Width="700"
-        Background="#E5EAF5">
+        Height="700" Width="800"
+        Background="#E5EAF5"
+        ResizeMode="NoResize">
 
     <Grid Margin="10,5">
         <Grid.RowDefinitions>

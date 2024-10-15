@@ -6,8 +6,10 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Edit Patient Details" Height="430" Width="800"
-        Background="#D1DAED">
+        Title="Edit Patient Details"
+        Height="415" Width="800"
+        Background="#D1DAED"
+        ResizeMode="NoResize">
 
     <Grid Margin="10,5">
         <Grid.RowDefinitions>

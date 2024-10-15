@@ -8,7 +8,8 @@
         WindowStartupLocation="CenterScreen"
         Title="Reschedule Appointment"
         Height="450" Width="400"
-        Background="#D1DAED">
+        Background="#D1DAED"
+        ResizeMode="NoResize">
 
     <Grid Margin="10,5">
         <Grid.Resources>

@@ -7,8 +7,10 @@
         xmlns:local="clr-namespace:HciMedico.App.Views.CounterWorkerRole"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Register Patient" Height="650" Width="800"
-        Background="#D1DAED">
+        Title="Register Patient"
+        Height="650" Width="800"
+        Background="#D1DAED"
+        ResizeMode="NoResize">
 
     <Grid Margin="10,5">
         <Grid.RowDefinitions>
@@ -98,7 +100,7 @@
                     <StackPanel>
                         <ui:TextBlock Text="Patient's medical conditions" />
                         <ComboBox x:Name="SelectedMedicalCondition" Margin="0,0,5,10" Background="White"
-                                  MinWidth="350" IsEditable="True"
+                                  MinWidth="370" IsEditable="True"
                                   ItemsSource="{Binding MedicalConditions}"
                                   SelectedItem="{Binding SelectedMedicalCondition}"
                                   DisplayMemberPath="Name" />

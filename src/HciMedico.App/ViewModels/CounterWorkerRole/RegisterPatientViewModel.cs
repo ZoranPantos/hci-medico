@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using HciMedico.Domain.Models;
 using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;

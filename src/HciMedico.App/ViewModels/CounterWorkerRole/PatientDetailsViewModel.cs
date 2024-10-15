@@ -222,11 +222,11 @@ public class PatientDetailsViewModel : Conductor<object>
     }
 
     public async Task EditDetails() =>
-        await _windowManager.ShowWindowAsync(new EditPatientDetailsViewModel(_patient, _patientRepository, this, IoC.Get<IInputValidator>()));
+        await _windowManager.ShowDialogAsync(new EditPatientDetailsViewModel(_patient, _patientRepository, this, IoC.Get<IInputValidator>()));
 
     public async Task ScheduleAppointment()
     {
-        await _windowManager.ShowWindowAsync(
+        await _windowManager.ShowDialogAsync(
             new ScheduleAppointmentViewModel(
                 this,
                 IoC.Get<IRepository<Patient>>(),

@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Create Report"
-        Height="700" Width="700"
-        Background="#D1DAED">
+        Height="705" Width="800"
+        Background="#D1DAED"
+        ResizeMode="NoResize">
 
     <Grid Margin="10,5">
         <Grid.RowDefinitions>
@@ -98,6 +99,7 @@
         <ui:TextBox x:Name="Therapy"
                     Grid.Row="9"
                     Margin="0,0,0,15"
+                    MaxLength="120"
                     Background="White"
                     AcceptsReturn="True"
                     TextWrapping="Wrap" />
@@ -109,7 +111,7 @@
         <ui:TextBox x:Name="AdditionalNotes"
                     Grid.Row="11"
                     Margin="0,0,0,15"
-                    Height="50"
+                    Height="55"
                     Background="White"
                     AcceptsReturn="True"
                     TextWrapping="Wrap" />

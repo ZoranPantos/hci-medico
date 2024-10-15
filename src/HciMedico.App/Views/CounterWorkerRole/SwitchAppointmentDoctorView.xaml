@@ -8,7 +8,8 @@
         WindowStartupLocation="CenterScreen"
         Title="Switch Doctor"
         Height="200" Width="350"
-        Background="#D1DAED">
+        Background="#D1DAED"
+        ResizeMode="NoResize">
 
     <Grid Margin="10,5">
         <Grid.RowDefinitions>

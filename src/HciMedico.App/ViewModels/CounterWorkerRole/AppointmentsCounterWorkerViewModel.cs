@@ -84,7 +84,7 @@ public class AppointmentsCounterWorkerViewModel : Conductor<object>
 
     public async Task ScheduleNewAppointment()
     {
-        await _windowManager.ShowWindowAsync(
+        await _windowManager.ShowDialogAsync(
             new ScheduleAppointmentViewModel(
                 this,
                 IoC.Get<IRepository<Patient>>(),
