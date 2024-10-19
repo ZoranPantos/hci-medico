@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ui:ThemesDictionary Theme="Light" />
                 <ui:ControlsDictionary />
+                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
                 
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="Bootstrapper" />
