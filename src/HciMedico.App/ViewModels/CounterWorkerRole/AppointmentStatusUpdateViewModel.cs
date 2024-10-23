@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -11,6 +12,7 @@ public class AppointmentStatusUpdateViewModel : Conductor<object>
     private Appointment? _appointment;
     private readonly IRepository<Appointment> _appointmentsRepository;
     private AppointmentDetailsViewModel? _parentViewModel;
+    private readonly IToastNotificationService _toastNotificationService;
 
     private AppointmentStatus _selectedStatus = AppointmentStatus.Resolved;
     public AppointmentStatus SelectedStatus
@@ -26,11 +28,13 @@ public class AppointmentStatusUpdateViewModel : Conductor<object>
     public AppointmentStatusUpdateViewModel(
         Appointment appointment,
         IRepository<Appointment> appointmentsRepository,
-        AppointmentDetailsViewModel? parentViewModel)
+        AppointmentDetailsViewModel? parentViewModel,
+        IToastNotificationService toastNotificationService)
     {
         _appointment = appointment ?? throw new ArgumentNullException(nameof(appointment));
         _appointmentsRepository = appointmentsRepository ?? throw new ArgumentNullException(nameof(appointmentsRepository));
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
 
         InitializeViewModel();
     }
@@ -41,8 +45,7 @@ public class AppointmentStatusUpdateViewModel : Conductor<object>
     {
         try
         {
-            if (_appointment is null)
-                return;
+            if (_appointment is null) return;
 
             _appointment.Status = SelectedStatus;
 
@@ -51,9 +54,13 @@ public class AppointmentStatusUpdateViewModel : Conductor<object>
             await TryCloseAsync();
 
             await _parentViewModel!.RefreshViewModel();
+
+            _toastNotificationService.ShowSuccess("Status updated");
         }
         catch (Exception ex)
         {
+            _toastNotificationService.ShowError("Status update failed");
+
             string message = $"Exception caught and rethrown in {nameof(AppointmentStatusUpdateViewModel)}.{nameof(Update)}";
             throw new MedicoException(message, ex);
         }

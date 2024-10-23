@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -112,8 +113,7 @@ public class AppointmentDetailsViewModel : Conductor<object>
             _appointment = await _appointmentsRepository
                 .FindAsync(appointment => appointment.Id == _id, false, "AssignedTo.Specializations,CreatedBy,Patient");
 
-            if (_appointment is null)
-                return;
+            if (_appointment is null) return;
 
             ScheduledFor = _appointment.DateAndTime;
             AssignedTo = $"{_appointment.AssignedTo.FirstName} {_appointment.AssignedTo.LastName}";
@@ -138,11 +138,11 @@ public class AppointmentDetailsViewModel : Conductor<object>
     public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
 
     public async Task UpdateStatus() =>
-        await _windowManager.ShowDialogAsync(new AppointmentStatusUpdateViewModel(_appointment, _appointmentsRepository, this));
+        await _windowManager.ShowDialogAsync(new AppointmentStatusUpdateViewModel(_appointment!, _appointmentsRepository, this, IoC.Get<IToastNotificationService>()));
 
     public async Task SwitchDoctor() =>
-        await _windowManager.ShowDialogAsync(new SwitchAppointmentDoctorViewModel(_appointment, _appointmentsRepository, IoC.Get<IRepository<Doctor>>(), this));
+        await _windowManager.ShowDialogAsync(new SwitchAppointmentDoctorViewModel(_appointment, _appointmentsRepository, IoC.Get<IRepository<Doctor>>(), this, IoC.Get<IToastNotificationService>()));
 
     public async Task RescheduleAppointment() =>
-        await _windowManager.ShowDialogAsync(new RescheduleAppointmentViewModel(_appointment, _appointmentsRepository, this));
+        await _windowManager.ShowDialogAsync(new RescheduleAppointmentViewModel(_appointment, _appointmentsRepository, this, IoC.Get<IToastNotificationService>()));
 }

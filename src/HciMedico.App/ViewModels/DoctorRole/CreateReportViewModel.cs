@@ -4,6 +4,7 @@ using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Integration.Data.Repositories;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Domain.Models.Entities;
+using HciMedico.App.Services.Interfaces;
 
 namespace HciMedico.App.ViewModels.DoctorRole;
 
@@ -11,6 +12,7 @@ public class CreateReportViewModel : Conductor<object>
 {
     private readonly IRepository<MedicalCondition> _medicalConditionsRepository;
     private readonly IRepository<MedicalReport> _medicalReportsRepository;
+    private readonly IToastNotificationService _toastNotificationService;
     private List<MedicalCondition>? _medicalConditions = [];
     private int _appointmentId;
     private int _healthRecordId;
@@ -107,12 +109,18 @@ public class CreateReportViewModel : Conductor<object>
         }
     }
 
-    public CreateReportViewModel(int appointmentId, int healthRecordId, IRepository<MedicalCondition> medicalConditionsRepository, IRepository<MedicalReport> medicalReportsRepository)
+    public CreateReportViewModel(
+        int appointmentId,
+        int healthRecordId,
+        IRepository<MedicalCondition> medicalConditionsRepository,
+        IRepository<MedicalReport> medicalReportsRepository,
+        IToastNotificationService toastNotificationService)
     {
         _appointmentId = appointmentId;
         _healthRecordId = healthRecordId;
         _medicalConditionsRepository = medicalConditionsRepository ?? throw new ArgumentNullException(nameof(medicalConditionsRepository));
         _medicalReportsRepository = medicalReportsRepository ?? throw new ArgumentNullException(nameof(medicalReportsRepository));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
@@ -229,10 +237,13 @@ public class CreateReportViewModel : Conductor<object>
             await _medicalReportsRepository.Add(medicalReport);
 
             await TryCloseAsync();
+
+            _toastNotificationService.ShowSuccess("Report created");
         }
         catch (Exception ex)
         {
             ValidationMessage = "Failed to create medical report";
+            _toastNotificationService.ShowError("Create failed");
 
             string message = $"Exception caught and rethrown in {nameof(CreateReportViewModel)}.{nameof(Save)}";
             throw new MedicoException(message, ex);

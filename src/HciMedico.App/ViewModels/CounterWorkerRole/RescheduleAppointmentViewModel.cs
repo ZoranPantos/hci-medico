@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Integration.Data.Repositories;
 
@@ -10,6 +11,7 @@ public class RescheduleAppointmentViewModel : Conductor<object>
     private Appointment? _appointment;
     private readonly IRepository<Appointment> _appointmentsRepository;
     private AppointmentDetailsViewModel? _parentViewModel;
+    private readonly IToastNotificationService _toastNotificationService;
 
     private DateTime _appointmentDate = DateTime.Today;
     public DateTime AppointmentDate
@@ -38,11 +40,13 @@ public class RescheduleAppointmentViewModel : Conductor<object>
     public RescheduleAppointmentViewModel(
         Appointment? appointment,
         IRepository<Appointment> appointmentsRepository,
-        AppointmentDetailsViewModel? parentViewModel)
+        AppointmentDetailsViewModel? parentViewModel,
+        IToastNotificationService toastNotificationService)
     {
         _appointment = appointment ?? throw new ArgumentNullException(nameof(appointment));
         _appointmentsRepository = appointmentsRepository ?? throw new ArgumentNullException(nameof(appointmentsRepository));
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
     }
 
     protected override Task OnActivateAsync(CancellationToken cancellationToken)
@@ -82,9 +86,13 @@ public class RescheduleAppointmentViewModel : Conductor<object>
             await TryCloseAsync();
 
             await _parentViewModel!.RefreshViewModel();
+
+            _toastNotificationService.ShowSuccess("Appointment rescheduled");
         }
         catch (Exception ex)
         {
+            _toastNotificationService.ShowError("Rescheduling failed");
+
             string message = $"Exception caught and rethrown in {nameof(RescheduleAppointmentViewModel)}.{nameof(Reschedule)}";
             throw new MedicoException(message, ex);
         }

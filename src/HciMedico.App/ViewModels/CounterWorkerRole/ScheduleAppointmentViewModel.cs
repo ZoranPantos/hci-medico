@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -12,6 +13,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
     private readonly IRepository<Doctor> _doctorsRepository;
     private readonly IRepository<Appointment> _appointmentsRepository;
     private readonly IRepository<MedicalSpecialization> _medicalSpecializationsRepository;
+    private readonly IToastNotificationService _toastNotificationService;
     private object? _parentViewModel;
     private List<Doctor> _allDoctors = [];
 
@@ -133,6 +135,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
         IRepository<Doctor> doctorsRepository,
         IRepository<MedicalSpecialization> medicalSpecializationsRepository,
         IRepository<Appointment> appointmentsRepository,
+        IToastNotificationService toastNotificationService,
         Patient? preselectedPatient = null)
     {
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
@@ -140,6 +143,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
         _doctorsRepository = doctorsRepository ?? throw new ArgumentNullException(nameof(doctorsRepository));
         _medicalSpecializationsRepository = medicalSpecializationsRepository ?? throw new ArgumentNullException(nameof(medicalSpecializationsRepository));
         _appointmentsRepository = appointmentsRepository ?? throw new ArgumentNullException(nameof(appointmentsRepository));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
 
         _preselectedPatient = preselectedPatient;
     }
@@ -260,9 +264,13 @@ public class ScheduleAppointmentViewModel : Conductor<object>
                 var typedParentViewModel = _parentViewModel as PatientDetailsViewModel;
                 await typedParentViewModel!.RefreshViewModel();
             }
+
+            _toastNotificationService.ShowSuccess("Appointment scheduled");
         }
         catch (Exception ex)
         {
+            _toastNotificationService.ShowError("Scheduling failed");
+
             string message = $"Exception caught and rethrown in {nameof(ScheduleAppointmentViewModel)}.{nameof(Schedule)}";
             throw new MedicoException(message, ex);
         }

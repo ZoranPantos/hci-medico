@@ -11,6 +11,7 @@ public class SettingsViewModel : Conductor<object>
 {
     private readonly IWindowManager _windowManager;
     private readonly IRepository<UserSettings> _userSettingsRepository;
+    private readonly IToastNotificationService _toastNotificationService;
     private UserSettings? _currentUserSettings = null;
 
     public LandingPage[] LandingPageOptions { get; } = Enum.GetValues<LandingPage>();
@@ -26,10 +27,14 @@ public class SettingsViewModel : Conductor<object>
         }
     }
 
-    public SettingsViewModel(IWindowManager windowManager, IRepository<UserSettings> userSettingsRepository)
+    public SettingsViewModel(
+        IWindowManager windowManager,
+        IRepository<UserSettings> userSettingsRepository,
+        IToastNotificationService toastNotificationService)
     {
         _windowManager = windowManager ?? throw new ArgumentNullException(nameof(windowManager));
         _userSettingsRepository = userSettingsRepository ?? throw new ArgumentNullException(nameof(userSettingsRepository));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
@@ -41,7 +46,8 @@ public class SettingsViewModel : Conductor<object>
         SelectedLandingPage = _currentUserSettings.LandingPage;
     }
 
-    public async Task UpdatePassword() => await _windowManager.ShowDialogAsync(new UpdatePasswordViewModel(IoC.Get<IHashingService>()));
+    public async Task UpdatePassword() =>
+        await _windowManager.ShowDialogAsync(new UpdatePasswordViewModel(IoC.Get<IHashingService>(), _toastNotificationService));
 
     //Will be called after the corresponding property setter is executed
     public async Task OnLandingPageSelectionChanged()
@@ -52,9 +58,13 @@ public class SettingsViewModel : Conductor<object>
         {
             _currentUserSettings.LandingPage = _selectedLandingPage;
             await _userSettingsRepository.Update(_currentUserSettings);
+
+            _toastNotificationService.ShowSuccess("Landing page updated");
         }
         catch (Exception ex)
         {
+            _toastNotificationService.ShowError("Update failed");
+
             string message = $"Exception caught and rethrown in {nameof(SettingsViewModel)}.{nameof(OnLandingPageSelectionChanged)}";
             throw new MedicoException(message, ex);
         }

@@ -93,5 +93,12 @@ public class PatientsViewModel : Conductor<object>
 
     public async Task RegisterNewPatient() =>
         await _windowManager.ShowDialogAsync(
-            new RegisterPatientViewModel(IoC.Get<IRepository<MedicalCondition>>(), _patientRepository, this, IoC.Get<IInputValidator>(), IoC.Get<IRepository<Appointment>>(), IoC.Get<IMapper>()));
+            new RegisterPatientViewModel(
+                IoC.Get<IRepository<MedicalCondition>>(),
+                _patientRepository,
+                this,
+                IoC.Get<IInputValidator>(),
+                IoC.Get<IRepository<Appointment>>(),
+                IoC.Get<IMapper>(),
+                IoC.Get<IToastNotificationService>()));
 }

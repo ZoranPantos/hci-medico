@@ -9,6 +9,7 @@ namespace HciMedico.App.ViewModels.Shared;
 public class UpdatePasswordViewModel : Conductor<object>
 {
     private readonly IHashingService _hashingService;
+    private readonly IToastNotificationService _toastNotificationService;
 
     private string _oldPassword = string.Empty;
     public string OldPassword
@@ -54,8 +55,11 @@ public class UpdatePasswordViewModel : Conductor<object>
         }
     }
 
-    public UpdatePasswordViewModel(IHashingService hashingService) =>
+    public UpdatePasswordViewModel(IHashingService hashingService, IToastNotificationService toastNotificationService)
+    {
         _hashingService = hashingService ?? throw new ArgumentNullException(nameof(hashingService));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
+    }
 
     public bool CanSave(string oldPassword, string newPassword, string confirmedNewPassword) =>
         oldPassword.Length >= 6 && oldPassword.Length <= 20 &&
@@ -109,10 +113,13 @@ public class UpdatePasswordViewModel : Conductor<object>
             UserContext.Initialize(currentUserAccount);
 
             await TryCloseAsync();
+
+            _toastNotificationService.ShowSuccess("Password updated");
         }
         catch (Exception ex)
         {
             ValidationMessage = "Failed to update password";
+            _toastNotificationService.ShowError("Update failed");
 
             string message = $"Exception caught and rethrown in {nameof(UpdatePasswordViewModel)}.{nameof(Save)}";
             throw new MedicoException(message, ex);

@@ -157,5 +157,10 @@ public class HealthRecordDetailsViewModel : Conductor<object>
     public async Task NavigateBack() => await _parentViewModel.SelfActivateAsync();
 
     public async Task OpenMedicalReport(MedicalReportDisplayModel medicalReport) =>
-        await _windowManager.ShowDialogAsync(new MedicalReportDetailsViewModel(medicalReport.Id, IoC.Get<IRepository<MedicalReport>>(), IoC.Get<IPdfExporter>(), _mapper));
+        await _windowManager.ShowDialogAsync(new MedicalReportDetailsViewModel(
+            medicalReport.Id,
+            IoC.Get<IRepository<MedicalReport>>(),
+            IoC.Get<IPdfExporter>(),
+            _mapper,
+            IoC.Get<IToastNotificationService>()));
 }

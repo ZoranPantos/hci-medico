@@ -12,6 +12,7 @@ public class MedicalReportDetailsViewModel : Conductor<object>
 {
     private int _id;
     private readonly IRepository<MedicalReport> _medicalReportsRepository;
+    private readonly IToastNotificationService _toastNotificationService;
     private readonly IPdfExporter _pdfExporter;
     private readonly IMapper _mapper;
     private MedicalReport? _medicalReport;
@@ -73,12 +74,17 @@ public class MedicalReportDetailsViewModel : Conductor<object>
         }
     }
 
-    public MedicalReportDetailsViewModel(int id, IRepository<MedicalReport> medicalReportsRepository, IPdfExporter pdfExporter, IMapper mapper)
+    public MedicalReportDetailsViewModel(int id,
+        IRepository<MedicalReport> medicalReportsRepository,
+        IPdfExporter pdfExporter,
+        IMapper mapper,
+        IToastNotificationService toastNotificationService)
     {
         _id = id;
         _medicalReportsRepository = medicalReportsRepository ?? throw new ArgumentNullException(nameof(medicalReportsRepository));
         _pdfExporter = pdfExporter ?? throw new ArgumentNullException(nameof(pdfExporter));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
@@ -114,9 +120,13 @@ public class MedicalReportDetailsViewModel : Conductor<object>
         {
             var exportDto = _mapper.Map<MedicalReportExportDto>(this);
             _pdfExporter.Export(exportDto);
+
+            _toastNotificationService.ShowSuccess("Report exported");
         }
         catch (Exception ex)
         {
+            _toastNotificationService.ShowError("Export failed");
+
             string message = $"Exception caught and rethrown in {nameof(MedicalReportDetailsViewModel)}.{nameof(Export)}";
             throw new MedicoException(message, ex);
         }

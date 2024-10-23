@@ -7,6 +7,7 @@ using HciMedico.App.Exceptions;
 using HciMedico.App.Validation;
 using AutoMapper;
 using HciMedico.Domain.Models.Entities;
+using HciMedico.App.Services.Interfaces;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
 
@@ -17,6 +18,7 @@ public class RegisterPatientViewModel : Conductor<object>
     private readonly IRepository<Appointment> _appointmentsRepository;
     private readonly IInputValidator _inputValidator;
     private readonly IMapper _mapper;
+    private readonly IToastNotificationService _toastNotificationService;
 
     private PatientsViewModel? _parentViewModel;
     private List<MedicalCondition>? _medicalConditions = [];
@@ -227,7 +229,8 @@ public class RegisterPatientViewModel : Conductor<object>
         PatientsViewModel? parentViewModel,
         IInputValidator inputValidator,
         IRepository<Appointment> appointmentsRepository,
-        IMapper mapper)
+        IMapper mapper,
+        IToastNotificationService toastNotificationService)
     {
         _medicalConditionsRepository = medicalConditionsRepository ?? throw new ArgumentNullException(nameof(medicalConditionsRepository));
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
@@ -235,6 +238,7 @@ public class RegisterPatientViewModel : Conductor<object>
         _inputValidator = inputValidator ?? throw new ArgumentNullException(nameof(inputValidator));
         _appointmentsRepository = appointmentsRepository ?? throw new ArgumentNullException(nameof(appointmentsRepository));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
@@ -494,10 +498,13 @@ public class RegisterPatientViewModel : Conductor<object>
             await TryCloseAsync();
 
             await _parentViewModel!.RefreshViewModel();
+
+            _toastNotificationService.ShowSuccess("Patient registered");
         }
         catch (Exception ex)
         {
             ValidationMessage = "Failed to update patient details";
+            _toastNotificationService.ShowError("Registration failed");
 
             string message = $"Exception caught and rethrown in {nameof(RegisterPatientViewModel)}.{nameof(Save)}";
             throw new MedicoException(message, ex);

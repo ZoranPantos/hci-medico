@@ -2,8 +2,8 @@
 using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
 using ToastNotifications.Messages;
-using System.Windows;
 using ToastNotifications.Core;
+using System.Windows;
 using HciMedico.App.Services.Interfaces;
 
 namespace HciMedico.App.Services.Classes;
@@ -53,5 +53,4 @@ public class ToastNotificationService : IToastNotificationService
     public void ShowInformation(string message) => _notifier.ShowInformation(message, _messageOptions);
 
     public void ShowWarning(string message) => _notifier.ShowWarning(message, _messageOptions);
-
 }

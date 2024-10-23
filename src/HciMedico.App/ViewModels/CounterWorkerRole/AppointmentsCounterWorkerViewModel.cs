@@ -90,7 +90,8 @@ public class AppointmentsCounterWorkerViewModel : Conductor<object>
                 IoC.Get<IRepository<Patient>>(),
                 IoC.Get<IRepository<Doctor>>(),
                 IoC.Get<IRepository<MedicalSpecialization>>(),
-                IoC.Get<IRepository<Appointment>>())
+                IoC.Get<IRepository<Appointment>>(),
+                IoC.Get<IToastNotificationService>())
         );
     }
 

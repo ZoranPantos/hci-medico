@@ -1,8 +1,8 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Integration.Data.Repositories;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
 
@@ -12,6 +12,7 @@ public class SwitchAppointmentDoctorViewModel : Conductor<object>
     private readonly IRepository<Appointment> _appointmentsRepository;
     private readonly IRepository<Doctor> _doctorsRepository;
     private AppointmentDetailsViewModel? _parentViewModel;
+    private readonly IToastNotificationService _toastNotificationService;
 
     private DateTime _scheduledFor = DateTime.MinValue;
     public DateTime ScheduledFor
@@ -54,12 +55,14 @@ public class SwitchAppointmentDoctorViewModel : Conductor<object>
         Appointment? appointment,
         IRepository<Appointment> appointmentsRepository,
         IRepository<Doctor> doctorsRepository,
-        AppointmentDetailsViewModel? parentViewModel)
+        AppointmentDetailsViewModel? parentViewModel,
+        IToastNotificationService toastNotificationService)
     {
         _appointment = appointment ?? throw new ArgumentNullException(nameof(appointment));
         _appointmentsRepository = appointmentsRepository ?? throw new ArgumentNullException(nameof(appointmentsRepository));
         _doctorsRepository = doctorsRepository ?? throw new ArgumentNullException(nameof(doctorsRepository));
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
     }
 
     protected override async Task OnActivateAsync(CancellationToken cancellationToken)
@@ -99,16 +102,28 @@ public class SwitchAppointmentDoctorViewModel : Conductor<object>
 
     public async Task Save(Doctor selectedDoctor)
     {
-        if (_appointment is null)
-            return;
+        try
+        {
+            if (_appointment is null)
+                return;
 
-        _appointment.AssignedTo = SelectedDoctor!;
+            _appointment.AssignedTo = SelectedDoctor!;
 
-        await _appointmentsRepository.Update(_appointment);
+            await _appointmentsRepository.Update(_appointment);
 
-        await TryCloseAsync();
+            await TryCloseAsync();
 
-        await _parentViewModel!.RefreshViewModel();
+            await _parentViewModel!.RefreshViewModel();
+
+            _toastNotificationService.ShowSuccess("Doctor switched");
+        }
+        catch (Exception ex)
+        {
+            _toastNotificationService.ShowError("Switch failed");
+
+            string message = $"Exception caught and rethrown in {nameof(SwitchAppointmentDoctorViewModel)}.{nameof(Save)}";
+            throw new MedicoException(message, ex);
+        }
     }
 
     public async Task Cancel() => await TryCloseAsync();

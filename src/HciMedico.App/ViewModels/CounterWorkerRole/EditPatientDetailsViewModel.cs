@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Interfaces;
 using HciMedico.App.Validation;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
@@ -13,6 +14,7 @@ public class EditPatientDetailsViewModel : Conductor<object>
     private readonly IRepository<Patient> _patientRepository;
     private readonly IInputValidator _inputValidator;
     private PatientDetailsViewModel? _parentViewModel;
+    private readonly IToastNotificationService _toastNotificationService;
 
     private string _firstName = string.Empty;
     public string FirstName
@@ -152,12 +154,14 @@ public class EditPatientDetailsViewModel : Conductor<object>
         Patient? patient,
         IRepository<Patient> patientRepository,
         PatientDetailsViewModel parentViewModel,
-        IInputValidator inputValidator)
+        IInputValidator inputValidator,
+        IToastNotificationService toastNotificationService)
     {
         _patient = patient ?? throw new ArgumentNullException(nameof(patient));
         _patientRepository = patientRepository ?? throw new ArgumentNullException(nameof(patientRepository));
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
         _inputValidator = inputValidator ?? throw new ArgumentNullException(nameof(inputValidator));
+        _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
 
         InitializeViewModel();
     }
@@ -275,10 +279,13 @@ public class EditPatientDetailsViewModel : Conductor<object>
             await TryCloseAsync();
 
             await _parentViewModel!.RefreshViewModel();
+
+            _toastNotificationService.ShowSuccess("Patient updated");
         }
         catch (Exception ex)
         {
             ValidationMessage = "Failed to update patient details";
+            _toastNotificationService.ShowError("Update failed");
 
             string message = $"Exception caught and rethrown in {nameof(EditPatientDetailsViewModel)}.{nameof(Update)}";
             throw new MedicoException(message, ex);
