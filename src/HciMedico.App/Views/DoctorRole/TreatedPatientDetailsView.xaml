@@ -90,9 +90,26 @@
         <ui:TextBlock Grid.Row="10" Text="Appointments" Style="{StaticResource SubHeadingStyle}" />
 
         <StackPanel Grid.Row="11" Grid.ColumnSpan="3" Style="{StaticResource TableStackPanelHeader}">
-            <TextBlock Text="Date and Time" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" />
-            <TextBlock Text="Status" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" />
-            <TextBlock Text="Type" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" />
+            <TextBlock Text="Date and Time"
+                       Width="200"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       FontSize="15"
+                       Padding="5,0,0,0" />
+            
+            <TextBlock Text="Status"
+                       Width="200"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       FontSize="15"
+                       Padding="5,0,0,0" />
+            
+            <TextBlock Text="Type"
+                       Width="200"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       FontSize="15"
+                       Padding="5,0,0,0" />
         </StackPanel>
 
         <ItemsControl x:Name="Appointments" Grid.Row="12" Grid.ColumnSpan="3">
@@ -108,16 +125,19 @@
                         <TextBlock Text="{Binding DateAndTime, StringFormat={}{0:dd/MM/yyyy}}"
                                    VerticalAlignment="Center"
                                    Margin="0,5,0,0"
+                                   Padding="5,0,0,0"
                                    FontSize="15" />
                         
                         <TextBlock Text="{Binding Status}" Grid.Column="1"
                                    VerticalAlignment="Center"
                                    Margin="0,5,0,0"
+                                   Padding="5,0,0,0"
                                    FontSize="15" />
                         
                         <TextBlock Text="{Binding Type}" Grid.Column="2"
                                    VerticalAlignment="Center"
                                    Margin="0,5,0,0"
+                                   Padding="5,0,0,0"
                                    FontSize="15" />
                     </Grid>
                 </DataTemplate>

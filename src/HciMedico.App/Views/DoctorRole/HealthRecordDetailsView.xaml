@@ -112,8 +112,17 @@
                       Style="{StaticResource SubHeadingStyle}" />
 
         <StackPanel Grid.Row="12" Grid.ColumnSpan="3" Style="{StaticResource TableStackPanelHeader}">
-            <TextBlock Text="Date and time" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
-            <TextBlock Text="Doctor" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Date and time"
+                       Width="200"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       Padding="5,0,0,0" />
+            
+            <TextBlock Text="Doctor"
+                       Width="200"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"
+                       Padding="5,0,0,0" />
         </StackPanel>
 
         <ListView x:Name="MedicalReports" SelectionMode="Single" Grid.Row="13" Grid.ColumnSpan="3">
