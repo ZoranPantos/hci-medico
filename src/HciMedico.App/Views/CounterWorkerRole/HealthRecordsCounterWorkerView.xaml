@@ -31,7 +31,7 @@
                         Background="White" Width="300" Margin="0,0,5,0" />
 
             <ui:Button x:Name="Search" Content="Search" Margin="0,0,5,0" Icon="{ui:SymbolIcon Search32}" />
-            <ui:Button x:Name="OpenNewRecord" Content="Open new record" Icon="{ui:SymbolIcon Add32}" />
+            <ui:Button x:Name="OpenNewRecord" Content="Open new record" Icon="{ui:SymbolIcon Add32}" Visibility="Hidden" />
         </StackPanel>
 
         <Separator Grid.Row="3" Grid.ColumnSpan="3"
