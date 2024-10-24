@@ -5,14 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
-        Title="Medico Login"
-        Height="250" Width="400"
+        Title="HciMedico Login"
+        Height="395" Width="400"
         Background="#D1DAED"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
 
     <StackPanel Margin="10">
-        <ui:TextBlock HorizontalAlignment="Center" Text="[APP LOGO HERE]" />
+        <ui:Image Source="pack://application:,,,/HciMedico.App;component/Resources/Icons/heart_with_pulse.png" Height="100" Width="100" />
+        <ui:TextBlock Text="HciMedico"
+                      HorizontalAlignment="Center"
+                      Foreground="#EC3542"
+                      FontWeight="Bold"
+                      FontSize="30"
+                      Margin="0,0,0,30"/>
 
         <ui:TextBlock Text="Username" Style="{StaticResource LabelTextBlockStyle}" />
         <ui:TextBox x:Name="Username" Margin="0,0,0,10"

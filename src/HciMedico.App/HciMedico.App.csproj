@@ -6,7 +6,17 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+	<ApplicationIcon>Resources\Icons\heart_with_pulse.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\heart_with_pulse.ico" />
+    <None Remove="Resources\Icons\heart_with_pulse.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Icons\heart_with_pulse.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
@@ -26,6 +36,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HciMedico.Integration\HciMedico.Integration.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\heart_with_pulse.png" />
   </ItemGroup>
 
 </Project>

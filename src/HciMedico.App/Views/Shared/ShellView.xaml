@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
-        Title="Medico" Height="800" Width="1200"
+        Title="HciMedico"
+        Height="800" Width="1200"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
 
