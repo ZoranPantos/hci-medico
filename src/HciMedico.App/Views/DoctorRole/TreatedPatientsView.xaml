@@ -38,15 +38,18 @@
         <StackPanel Grid.Row="4" Style="{StaticResource TableStackPanelHeader}">
             <TextBlock Text="Full Name" Width="200"
                        FontWeight="SemiBold"
-                       VerticalAlignment="Center" />
+                       VerticalAlignment="Center"
+                       FontSize="15" />
             
             <TextBlock Text="Date of Birth" Width="200"
                        FontWeight="SemiBold"
-                       VerticalAlignment="Center" />
+                       VerticalAlignment="Center"
+                       FontSize="15" />
             
             <TextBlock Text="Number of Visits" Width="200"
                        FontWeight="SemiBold"
-                       VerticalAlignment="Center" />
+                       VerticalAlignment="Center"
+                       FontSize="15" />
         </StackPanel>
 
         <ListView x:Name="TreatedPatients" SelectionMode="Single" Grid.Row="5">
@@ -58,10 +61,10 @@
                             <ColumnDefinition Width="200" />
                             <ColumnDefinition Width="200" />
                         </Grid.ColumnDefinitions>
-                            
-                        <TextBlock Text="{Binding FullName}" VerticalAlignment="Center" />
-                        <TextBlock Text="{Binding DateOfBirth, StringFormat={}{0:dd/MM/yyyy}}" Grid.Column="1" VerticalAlignment="Center" />
-                        <TextBlock Text="{Binding NumberOfVisits}" Grid.Column="2" VerticalAlignment="Center" />
+
+                        <TextBlock Text="{Binding FullName}" VerticalAlignment="Center" FontSize="15" />
+                        <TextBlock Text="{Binding DateOfBirth, StringFormat={}{0:dd/MM/yyyy}}" Grid.Column="1" VerticalAlignment="Center" FontSize="15" />
+                        <TextBlock Text="{Binding NumberOfVisits}" Grid.Column="2" VerticalAlignment="Center" FontSize="15" />
 
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDown">

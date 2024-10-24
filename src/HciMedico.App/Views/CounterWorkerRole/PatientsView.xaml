@@ -39,8 +39,8 @@
                    Margin="0,5,0,10" />
 
         <StackPanel Grid.Row="4" Style="{StaticResource TableStackPanelHeader}">
-            <TextBlock Text="Full Name" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
-            <TextBlock Text="Last Visit" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" />
+            <TextBlock Text="Full Name" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" />
+            <TextBlock Text="Last Visit" Width="200" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" />
         </StackPanel>
 
         <ListView x:Name="Patients" SelectionMode="Single" Grid.Row="5">
@@ -52,8 +52,8 @@
                             <ColumnDefinition Width="200" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="{Binding FullName}" VerticalAlignment="Center" />
-                        <TextBlock Text="{Binding LastVisit, StringFormat={}{0:dd/MM/yyyy}}" Grid.Column="1" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding FullName}" VerticalAlignment="Center" FontSize="15" />
+                        <TextBlock Text="{Binding LastVisit, StringFormat={}{0:dd/MM/yyyy}}" Grid.Column="1" VerticalAlignment="Center" FontSize="15" />
 
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDown">
