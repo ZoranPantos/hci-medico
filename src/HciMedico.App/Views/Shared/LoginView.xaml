@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
-        Title="Medico Login" Height="250" Width="350"
+        Title="Medico Login"
+        Height="250" Width="400"
         Background="#D1DAED"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -13,11 +14,11 @@
     <StackPanel Margin="10">
         <ui:TextBlock HorizontalAlignment="Center" Text="[APP LOGO HERE]" />
 
-        <ui:TextBlock Text="Username" />
-        <ui:TextBox x:Name="Username" Margin="0,0,0,5"
+        <ui:TextBlock Text="Username" Style="{StaticResource LabelTextBlockStyle}" />
+        <ui:TextBox x:Name="Username" Margin="0,0,0,10"
                     Background="White" />
 
-        <ui:TextBlock Text="Password" />
+        <ui:TextBlock Text="Password" Style="{StaticResource LabelTextBlockStyle}" />
         <ui:PasswordBox x:Name="Password" Margin="0,0,0,10"
                         Background="White" />
 
@@ -26,6 +27,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <ui:Button x:Name="Login" Content="Log in" Appearance="Primary"

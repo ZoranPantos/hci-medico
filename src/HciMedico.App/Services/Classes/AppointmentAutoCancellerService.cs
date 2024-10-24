@@ -29,7 +29,7 @@ public class AppointmentAutoCancellerService : BackgroundService, IAppointmentAu
                     await _appointmentsRepository.UpdateRange(appointmentsForCancellation);
                 }
 
-                await Task.Delay(TimeSpan.FromMinutes(10), stoppingToken);
+                await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
             }
         }
         catch (Exception ex)

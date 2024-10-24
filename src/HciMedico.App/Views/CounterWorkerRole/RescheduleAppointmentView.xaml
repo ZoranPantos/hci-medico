@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Reschedule Appointment"
-        Height="450" Width="400"
+        Height="300" Width="350"
         Background="#D1DAED"
         ResizeMode="NoResize">
 
@@ -40,10 +40,19 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ui:TextBlock Text="Assigned doctor:" />
+        <ui:TextBlock Text="Assigned doctor:" Style="{StaticResource LabelTextBlockStyle}" />
+        <ui:TextBlock x:Name="AssignedTo"
+                      Grid.Column="1"
+                      Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="1" Text="Available date:" />
-        <DatePicker Grid.Row="2" Grid.ColumnSpan="3" x:Name="AppointmentDate" Background="White">
+        <ui:TextBlock Grid.Row="1"
+                      Text="Available date:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+        
+        <DatePicker Grid.Row="2" Grid.ColumnSpan="3"
+                    x:Name="AppointmentDate"
+                    Background="White"
+                    Margin="0,0,0,10">
             <DatePicker.CalendarStyle>
                 <Style TargetType="Calendar">
                     <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CalendarDayButtonStyle}" />
@@ -51,14 +60,17 @@
             </DatePicker.CalendarStyle>
         </DatePicker>
 
-        <ui:TextBlock Grid.Row="3" Text="Available time:" />
+        <ui:TextBlock Grid.Row="3"
+                      Text="Available time:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+        
         <ComboBox Grid.Row="4" Grid.ColumnSpan="3"
                   x:Name="AppointmentTime"
                   ItemsSource="{Binding AvailableTimes}"
                   SelectedItem="{Binding AppointmentTime}"
                   Background="White"/>
 
-        <StackPanel Grid.Row="6" Orientation="Horizontal">
+        <StackPanel Grid.Row="6" Grid.ColumnSpan="3" Orientation="Horizontal">
             <ui:Button x:Name="Reschedule" Content="Reschedule" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon SaveEdit24}" />
             <ui:Button x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
         </StackPanel>

@@ -40,7 +40,7 @@
                    Icon="{ui:SymbolIcon Key24}" />
 
         <ui:TextBlock Grid.Row="4" Grid.ColumnSpan="3"
-                      Text="Landing page"
+                      Text="Set landing page"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ComboBox Grid.Row="5"

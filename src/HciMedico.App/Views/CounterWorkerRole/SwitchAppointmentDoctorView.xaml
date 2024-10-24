@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Switch Doctor"
-        Height="200" Width="350"
+        Height="300" Width="350"
         Background="#D1DAED"
         ResizeMode="NoResize">
 
@@ -27,14 +27,21 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ui:TextBlock Text="Scheduled for:" />
+        <ui:TextBlock Text="Scheduled for:" Style="{StaticResource LabelTextBlockStyle}" />
         <ui:TextBlock x:Name="ScheduledFor" Grid.Column="1"
-                      Text="{Binding ScheduledFor, StringFormat={}{0:dd/MM/yyyy HH:mm}}" />
+                      Text="{Binding ScheduledFor, StringFormat={}{0:dd/MM/yyyy HH:mm}}"
+                      Style="{StaticResource DataTextBlockStyle}"/>
 
-        <ui:TextBlock Grid.Row="1" Text="Specialization:" />
-        <ui:TextBlock x:Name="Specializations" Grid.Row="1" Grid.Column="1" />
+        <ui:TextBlock Grid.Row="1" Text="Specialization:" Style="{StaticResource LabelTextBlockStyle}" />
+        <ui:TextBlock x:Name="Specializations"
+                      Grid.Row="1" Grid.Column="1"
+                      Style="{StaticResource DataTextBlockStyle}"
+                      Margin="0,0,0,10" />
 
-        <ui:TextBlock Grid.Row="2" Grid.ColumnSpan="3" Text="Available doctors:" />
+        <ui:TextBlock Grid.Row="2" Grid.ColumnSpan="3"
+                      Text="Available doctors:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+        
         <ComboBox x:Name="SelectedDoctor"
                   Grid.Row="3" Grid.ColumnSpan="3"
                   IsEditable="True"

@@ -6,8 +6,8 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="ScheduleAppointmentView"
-        Height="550" Width="400"
+        Title="Schedule Appointment"
+        Height="655" Width="400"
         Background="#D1DAED"
         ResizeMode="NoResize">
 
@@ -34,29 +34,38 @@
 
         <GroupBox Header="Specialist selection" BorderThickness="0.5" Margin="0,0,0,5">
             <StackPanel>
-                <ui:TextBlock Text="Specialization filter" />
+                <ui:TextBlock Text="Specialization filter"
+                              Style="{StaticResource LabelTextBlockStyle}"
+                              Margin="0,5,0,0" />
+                
                 <ComboBox IsEditable="True"
                           ItemsSource="{Binding AvailableSpecializations}"
                           SelectedItem="{Binding SelectedMedicalSpecialization}"
                           DisplayMemberPath="Name"
-                          Background="White" />
+                          Background="White"
+                          Margin="0,0,0,10" />
 
-                <ui:TextBlock Text="Select a doctor:" />
+                <ui:TextBlock Text="Select a doctor:"
+                              Style="{StaticResource LabelTextBlockStyle}" />
+                
                 <ComboBox x:Name="SelectedDoctor"
                           IsEditable="True"
                           ItemsSource="{Binding AvailableDoctors}"
                           SelectedItem="{Binding SelectedDoctor}"
                           DisplayMemberPath="FullName"
-                          Background="White" />
+                          Background="White"
+                          Margin="0,0,0,5" />
             </StackPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="1" Header="Date and time selection" BorderThickness="0.5" Margin="0,0,0,5">
             <StackPanel>
-                <ui:TextBlock Text="Select date" />
+                <ui:TextBlock Text="Select date"
+                              Style="{StaticResource LabelTextBlockStyle}"
+                              Margin="0,5,0,0" />
                 
                 <!-- Gives the standard UI look after managing to setup disabled dates -->
-                <DatePicker x:Name="AppointmentDate" Background="White">
+                <DatePicker x:Name="AppointmentDate" Background="White" Margin="0,0,0,10">
                     <DatePicker.CalendarStyle>
                         <Style TargetType="Calendar">
                             <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CalendarDayButtonStyle}" />
@@ -64,34 +73,47 @@
                     </DatePicker.CalendarStyle>
                 </DatePicker>
 
-                <ui:TextBlock Text="Select available time" />
+                <ui:TextBlock Text="Select available time"
+                              Style="{StaticResource LabelTextBlockStyle}" />
+                
                 <ComboBox x:Name="AppointmentTime"
                           ItemsSource="{Binding AvailableTimes}"
                           SelectedItem="{Binding AppointmentTime}"
-                          Background="White"/>
+                          Background="White"
+                          Margin="0,0,0,5" />
             </StackPanel>
         </GroupBox>
 
         <GroupBox Grid.Row="2" Header="Requester" BorderThickness="0.5">
             <StackPanel>
-                <ui:TextBlock Text="Unregistered patient" />
+                <ui:TextBlock Text="Unregistered patient"
+                              Style="{StaticResource LabelTextBlockStyle}"
+                              Margin="0,5,0,0" />
+                
                 <ui:TextBox x:Name="RequesterIdentifier"
                             PlaceholderText="Identifier"
                             IsEnabled="{Binding IsIdentifierBoxActive}"
-                            Background="White" />
+                            Background="White"
+                            Margin="0,0,0,10" />
 
-                <ui:TextBlock Text="Registered patient selection" />
+                <ui:TextBlock Text="Registered patient selection"
+                              Style="{StaticResource LabelTextBlockStyle}" />
+                
                 <ComboBox x:Name="SelectedPatient"
                           IsEditable="True"
                           ItemsSource="{Binding RegisteredPatients}"
                           SelectedItem="{Binding SelectedPatient}"
                           DisplayMemberPath="FullName"
-                          Background="White" />
+                          Background="White"
+                          Margin="0,0,0,10" />
 
-                <ui:TextBlock Text="Appointment type" />
+                <ui:TextBlock Text="Appointment type"
+                              Style="{StaticResource LabelTextBlockStyle}" />
+                
                 <ComboBox ItemsSource="{Binding AppointmentTypeOptions}"
                           SelectedItem="{Binding SelectedAppointmentType}"
-                          Background="White" />
+                          Background="White"
+                          Margin="0,0,0,5" />
             </StackPanel>
         </GroupBox>
 

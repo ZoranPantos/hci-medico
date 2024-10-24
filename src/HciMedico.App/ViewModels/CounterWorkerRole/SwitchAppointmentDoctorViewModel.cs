@@ -115,11 +115,11 @@ public class SwitchAppointmentDoctorViewModel : Conductor<object>
 
             await _parentViewModel!.RefreshViewModel();
 
-            _toastNotificationService.ShowSuccess("Doctor switched");
+            _toastNotificationService.ShowSuccess("Doctor assigned");
         }
         catch (Exception ex)
         {
-            _toastNotificationService.ShowError("Switch failed");
+            _toastNotificationService.ShowError("Assign failed");
 
             string message = $"Exception caught and rethrown in {nameof(SwitchAppointmentDoctorViewModel)}.{nameof(Save)}";
             throw new MedicoException(message, ex);

@@ -13,6 +13,17 @@ public class RescheduleAppointmentViewModel : Conductor<object>
     private AppointmentDetailsViewModel? _parentViewModel;
     private readonly IToastNotificationService _toastNotificationService;
 
+    private string _assignedTo = string.Empty;
+    public string AssignedTo
+    {
+        get => _assignedTo;
+        set
+        {
+            _assignedTo = value;
+            NotifyOfPropertyChange(() => AssignedTo);
+        }
+    }
+
     private DateTime _appointmentDate = DateTime.Today;
     public DateTime AppointmentDate
     {
@@ -51,7 +62,8 @@ public class RescheduleAppointmentViewModel : Conductor<object>
 
     protected override Task OnActivateAsync(CancellationToken cancellationToken)
     {
-        AppointmentDate = _appointment!.DateAndTime.Date;
+        AssignedTo = _appointment!.AssignedTo.FullName;
+        AppointmentDate = _appointment.DateAndTime.Date;
 
         // Mock
         // TODO: Implement processing real available times for appointments and fill the collection properly

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Edit Patient Details"
-        Height="415" Width="800"
+        Height="455" Width="800"
         Background="#D1DAED"
         ResizeMode="NoResize">
 
@@ -26,43 +26,49 @@
 
         <GroupBox Header="Basic Info" BorderThickness="0.5" Margin="0,0,5,0">
             <StackPanel>
-                <ui:TextBlock Text="First name" />
+                <ui:TextBlock Text="First name"
+                              Style="{StaticResource LabelTextBlockStyle}"
+                              Margin="0,5,0,0" />
                 <ui:TextBox x:Name="FirstName" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
 
-                <ui:TextBlock Text="Last name" />
+                <ui:TextBlock Text="Last name" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="LastName" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
 
-                <ui:TextBlock Text="UID" />
+                <ui:TextBlock Text="UID" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="Uid" Margin="0,0,0,10" MaxLength="50"
                             Background="White" PlaceholderText="0000000000000" />
 
-                <ui:TextBlock Text="Gender" />
+                <ui:TextBlock Text="Gender" Style="{StaticResource LabelTextBlockStyle}" />
                 <ComboBox x:Name="SelectedGender" Margin="0,0,0,10" Background="White"
                           ItemsSource="{Binding GenderOptions}"
                           SelectedItem="{Binding SelectedGender}"/>
 
-                <ui:TextBlock Text="Date of birth" />
-                <DatePicker x:Name="DateOfBirth" Background="White" />
+                <ui:TextBlock Text="Date of birth" Style="{StaticResource LabelTextBlockStyle}" />
+                <DatePicker x:Name="DateOfBirth"
+                            Background="White"
+                            Margin="0,0,0,5" />
             </StackPanel>
         </GroupBox>
 
         <GroupBox Grid.Column="1" Header="Address" BorderThickness="0.5" Margin="0,0,5,0">
             <StackPanel>
-                <ui:TextBlock Text="Country" />
+                <ui:TextBlock Text="Country"
+                              Style="{StaticResource LabelTextBlockStyle}"
+                              Margin="0,5,0,0" />
                 <ui:TextBox x:Name="Country" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
 
-                <ui:TextBlock Text="City" />
+                <ui:TextBlock Text="City" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="City" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
 
-                <ui:TextBlock Text="Street" />
+                <ui:TextBlock Text="Street" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="Street" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
 
-                <ui:TextBlock Text="Street number" />
+                <ui:TextBlock Text="Street number" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="Number" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
             </StackPanel>
@@ -70,11 +76,13 @@
 
         <GroupBox Grid.Column="2" Header="Contact" BorderThickness="0.5">
             <StackPanel>
-                <ui:TextBlock Text="Email" />
+                <ui:TextBlock Text="Email"
+                              Style="{StaticResource LabelTextBlockStyle}"
+                              Margin="0,5,0,0" />
                 <ui:TextBox x:Name="Email" Margin="0,0,0,10" MaxLength="50"
                             Background="White" PlaceholderText="example@example.com" />
 
-                <ui:TextBlock Text="Telephone number" />
+                <ui:TextBlock Text="Telephone number" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="TelephoneNumber" Margin="0,0,0,10" MaxLength="50"
                             Background="White" PlaceholderText="+38711223344" />
             </StackPanel>
