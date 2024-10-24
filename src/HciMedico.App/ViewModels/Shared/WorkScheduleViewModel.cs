@@ -80,15 +80,15 @@ public class WorkScheduleViewModel : Conductor<object>
             var firstDayOfMonth = new DateTime(_displayedMonthYear.Year, _displayedMonthYear.Month, 1);
             int daysInMonth = DateTime.DaysInMonth(_displayedMonthYear.Year, _displayedMonthYear.Month);
 
-            //Note: DayOfWeek.Sunday has index value of 0 in enum
+            // Note: DayOfWeek.Sunday has index value of 0 in enum
             var firstDayOfWeek = firstDayOfMonth.DayOfWeek;
             int firstDayOfWeekIndex = firstDayOfWeek.Equals(DayOfWeek.Sunday) ? 6 : (int)firstDayOfWeek - 1;
 
-            //Initialize first day in current month
+            // Initialize first day in current month
             ScheduleCellDisplayModels[firstDayOfWeekIndex].IsSelectedMonth = true;
             ScheduleCellDisplayModels[firstDayOfWeekIndex].DateTime = firstDayOfMonth;
 
-            //Initialize days from previous month
+            // Initialize days from previous month
             var firstDayOfMonthTmp = firstDayOfMonth;
             for (int i = firstDayOfWeekIndex - 1; i >= 0; i--)
             {
@@ -97,7 +97,7 @@ public class WorkScheduleViewModel : Conductor<object>
                 ScheduleCellDisplayModels[i].IsSelectedMonth = false;
             }
 
-            //Initialize following days from current and next month
+            // Initialize following days from current and next month
             var firstDayOfMonthTmp2 = firstDayOfMonth;
             for (int i = firstDayOfWeekIndex + 1; i < cellsCount; i++)
             {
@@ -105,7 +105,7 @@ public class WorkScheduleViewModel : Conductor<object>
                 ScheduleCellDisplayModels[i].DateTime = firstDayOfMonthTmp2;
                 ScheduleCellDisplayModels[i].IsSelectedMonth = i <= daysInMonth + firstDayOfWeekIndex - 1;
 
-                //Check for today
+                // Check for today
                 if (DateTime.Now.Date == firstDayOfMonthTmp2.Date)
                 {
                     ScheduleCellDisplayModels[i].IsToday = true;
@@ -129,7 +129,6 @@ public class WorkScheduleViewModel : Conductor<object>
 
         foreach (var cell in scheduleCells)
         {
-            //TODO: Refactor and improve this
             for (int i = 0; i < cellsCount; i++)
             {
                 if (ScheduleCellDisplayModels[i].DateTime.Date == cell.DateTime.Date)

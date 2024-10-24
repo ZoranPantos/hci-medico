@@ -17,20 +17,6 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
-            <!--<Style x:Key="MainMenuButtonStyle" TargetType="ui:Button">
-                <Setter Property="Background" Value="#D0BDF4" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="FontSize" Value="22" />
-                <Setter Property="FontWeight" Value="SemiBold" />
-                <Setter Property="MouseOverBackground" Value="#8458B3" />
-                <Setter Property="PressedForeground" Value="Red" />
-                <Setter Property="PressedBackground" Value="Green" />
-                <Setter Property="Width" Value="200" />
-                <Setter Property="Height" Value="40" />
-                <Setter Property="BorderThickness" Value="0" />
-                <Setter Property="HorizontalContentAlignment" Value="Left" />
-            </Style>-->
-
             <Style x:Key="HeadingStyle" TargetType="ui:TextBlock">
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="Foreground" Value="#1E1E5D" />
@@ -79,14 +65,14 @@
             </Style>
 
             <Style x:Key="LabelCalendarCellBlockStyle" TargetType="ui:TextBlock">
-                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontSize" Value="15" />
                 <Setter Property="Foreground" Value="#455A64" />
                 <Setter Property="MinHeight" Value="20" />
                 <Setter Property="Margin" Value="2,2,2,0" />
             </Style>
 
             <Style x:Key="DataCalendarCellBlockStyle" TargetType="ui:TextBlock">
-                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontSize" Value="15" />
                 <Setter Property="Foreground" Value="Black" />
                 <Setter Property="MinHeight" Value="20" />
                 <Setter Property="Margin" Value="0,2,0,0" />
