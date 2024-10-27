@@ -24,11 +24,6 @@ public class Appointment
     public int CounterWorkerId { get; set; }
     public CounterWorker CreatedBy { get; set; }
 
-    // Person calls and schedules an appointment
-    // They may be existing or new patient
-    // They will provide their identifier name, and afterwards they will be processed fully
-    // when they come into the waiting room
-
     public int? PatientId { get; set; }
     public Patient? Patient { get; set; }
     public string IdentifierName { get; set; } = string.Empty;

@@ -31,7 +31,8 @@
 
         <StackPanel Grid.Row="1">
             <RadioButton Content="Resolved"
-                         IsChecked="{Binding SelectedStatus, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Resolved}" />
+                         IsChecked="{Binding SelectedStatus, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Resolved}"
+                         IsEnabled="{Binding IsPastAppointment}" />
             
             <RadioButton Content="Cancelled"
                          IsChecked="{Binding SelectedStatus, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Cancelled}" />

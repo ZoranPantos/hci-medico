@@ -25,6 +25,8 @@ public class AppointmentStatusUpdateViewModel : Conductor<object>
         }
     }
 
+    public bool IsPastAppointment => _appointment is not null && DateTime.Now > _appointment.DateAndTime;
+
     public AppointmentStatusUpdateViewModel(
         Appointment appointment,
         IRepository<Appointment> appointmentsRepository,
@@ -39,7 +41,11 @@ public class AppointmentStatusUpdateViewModel : Conductor<object>
         InitializeViewModel();
     }
 
-    private void InitializeViewModel() => SelectedStatus = _appointment!.Status;
+    private void InitializeViewModel()
+    {
+        SelectedStatus = _appointment!.Status;
+        NotifyOfPropertyChange(() => IsPastAppointment);
+    }
 
     public async Task Update()
     {
