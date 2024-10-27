@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Helpers;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
@@ -80,8 +81,8 @@ public class HealthRecordDetailsViewModel : Conductor<object>
         }
     }
 
-    public DateTime _lastAppointmentDate;
-    public DateTime LastAppointmentDate
+    public string _lastAppointmentDate = string.Empty;
+    public string LastAppointmentDate
     {
         get => _lastAppointmentDate;
         set
@@ -122,7 +123,10 @@ public class HealthRecordDetailsViewModel : Conductor<object>
             BloodGroup = _healthRecord.BloodGroup;
 
             AttendedAppointmentsCount = _healthRecord.Appointments.Where(appointment => appointment.Status == AppointmentStatus.Resolved).Count();
-            LastAppointmentDate = _healthRecord.Appointments.Max(appointment => appointment.DateAndTime);
+
+            LastAppointmentDate = _healthRecord.Appointments.Any() ?
+                _healthRecord.Appointments.Max(appointment => appointment.DateAndTime).Date.ToString("dd/MM/yyyy") :
+                DisplayMessages.NoData;
         }
         catch (Exception ex)
         {

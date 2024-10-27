@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Helpers;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.DisplayModels;
 using HciMedico.Domain.Models.Entities;
@@ -91,8 +92,8 @@ public class HealthRecordDetailsViewModel : Conductor<object>
         }
     }
 
-    public DateTime _lastAppointmentDate;
-    public DateTime LastAppointmentDate
+    public string _lastAppointmentDate = string.Empty;
+    public string LastAppointmentDate
     {
         get => _lastAppointmentDate;
         set
@@ -135,7 +136,10 @@ public class HealthRecordDetailsViewModel : Conductor<object>
             BloodGroup = _healthRecord.BloodGroup;
 
             AttendedAppointmentsCount = _healthRecord.Appointments.Where(appointment => appointment.Status == AppointmentStatus.Resolved).Count();
-            LastAppointmentDate = _healthRecord.Appointments.Max(appointment => appointment.DateAndTime);
+
+            LastAppointmentDate = _healthRecord.Appointments.Any() ?
+                _healthRecord.Appointments.Max(appointment => appointment.DateAndTime).Date.ToString("dd/MM/yyyy") :
+                DisplayMessages.NoData;
 
             var medicalReportDtos = _mapper.Map<List<MedicalReportDisplayModel>>(_healthRecord.MedicalReports)
                 .OrderByDescending(dto => dto.DateAndTime)

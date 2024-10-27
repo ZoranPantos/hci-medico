@@ -95,7 +95,6 @@
 
         <ui:TextBlock Grid.Row="9" Grid.Column="1"
                       x:Name="LastAppointmentDate"
-                      Text="{Binding DateOfBirth, StringFormat={}{0:dd/MM/yyyy}}"
                       Style="{StaticResource DataTextBlockStyle}" />
     </Grid>
 </UserControl>
