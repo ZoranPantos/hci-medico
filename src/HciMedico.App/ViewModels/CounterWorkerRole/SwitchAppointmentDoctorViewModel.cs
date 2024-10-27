@@ -98,14 +98,13 @@ public class SwitchAppointmentDoctorViewModel : Conductor<object>
         }
     }
 
-    public bool CanSave(Doctor selectedDoctor) => selectedDoctor is not null;
+    public bool CanSave(Doctor selectedDoctor) => selectedDoctor is not null && AvailableDoctors.Count > 1;
 
     public async Task Save(Doctor selectedDoctor)
     {
         try
         {
-            if (_appointment is null)
-                return;
+            if (_appointment is null) return;
 
             _appointment.AssignedTo = SelectedDoctor!;
 
