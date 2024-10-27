@@ -49,6 +49,8 @@ public class AppointmentsCounterWorkerViewModel : Conductor<object>
         _searchService = searchService ?? throw new ArgumentNullException(nameof(searchService));
     }
 
+    public AppointmentsCounterWorkerViewModel() { }
+
     protected override async Task OnActivateAsync(CancellationToken cancellationToken) => await InitializeViewModel();
 
     public async Task RefreshViewModel() => await InitializeViewModel();
