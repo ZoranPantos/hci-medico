@@ -92,6 +92,11 @@ public class AppointmentDetailsViewModel : Conductor<object>
         }
     }
 
+    // We don't disable possibility to update status after assigning to Cancelled, to give some leverage if patient changes his mind and calls again
+    public bool CanUpdateStatus => AppointmentStatus != AppointmentStatus.Resolved;
+    public bool CanRescheduleAppointment => AppointmentStatus == AppointmentStatus.Scheduled;
+    public bool CanSwitchDoctor => AppointmentStatus == AppointmentStatus.Scheduled;
+
     public AppointmentDetailsViewModel(
         int id,
         AppointmentsCounterWorkerViewModel parentViewModel,
@@ -125,6 +130,10 @@ public class AppointmentDetailsViewModel : Conductor<object>
 
             CreatedBy = $"{_appointment.CreatedBy.FirstName} {_appointment.CreatedBy.LastName}";
             CreationTime = _appointment.CreationTime;
+
+            NotifyOfPropertyChange(nameof(CanUpdateStatus));
+            NotifyOfPropertyChange(nameof(CanRescheduleAppointment));
+            NotifyOfPropertyChange(nameof(CanSwitchDoctor));
         }
         catch (Exception ex)
         {
