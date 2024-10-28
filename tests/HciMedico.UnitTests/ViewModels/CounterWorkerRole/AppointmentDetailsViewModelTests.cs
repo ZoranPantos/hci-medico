@@ -9,14 +9,14 @@ namespace HciMedico.UnitTests.ViewModels.CounterWorkerRole;
 
 public class AppointmentDetailsViewModelTests
 {
-    private AppointmentDetailsViewModel _viewModel;
-    private Mock<AppointmentsCounterWorkerViewModel> _parentViewModelMock = new();
-    private Mock<IRepository<Appointment>> _appointmentsRepositoryMock = new();
-    private Mock<IWindowManager> _windowManagerMock = new();
-    private int _appointmentId = 1;
-    private Appointment _resolvedAppointment;
-    private Appointment _cancelledAppointment;
-    private Appointment _scheduledAppointment;
+    private readonly AppointmentDetailsViewModel _viewModel;
+    private readonly Mock<AppointmentsCounterWorkerViewModel> _parentViewModelMock = new();
+    private readonly Mock<IRepository<Appointment>> _appointmentsRepositoryMock = new();
+    private readonly Mock<IWindowManager> _windowManagerMock = new();
+    private readonly int _appointmentId = 1;
+    private readonly Appointment _resolvedAppointment;
+    private readonly Appointment _cancelledAppointment;
+    private readonly Appointment _scheduledAppointment;
 
     public AppointmentDetailsViewModelTests()
     {
