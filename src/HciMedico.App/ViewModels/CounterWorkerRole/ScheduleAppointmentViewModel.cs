@@ -79,6 +79,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
         {
             _selectedPatient = value;
             NotifyOfPropertyChange(() => SelectedPatient);
+            UpdateAvailableAppointmentTimesByPatient();
         }
     }
 
@@ -128,8 +129,11 @@ public class ScheduleAppointmentViewModel : Conductor<object>
         {
             _appointmentTime = value;
             NotifyOfPropertyChange(() => AppointmentTime);
+            UpdateAvailableAppointmentTimesByPatient();
         }
     }
+
+    private readonly Queue<TimeOnly> _appointmentTimesToReadd = new();
 
     public BindableCollection<TimeOnly> AvailableTimes { get; set; } = [];
 
@@ -164,7 +168,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
 
             _allDoctors?.ForEach(AvailableDoctors.Add);
 
-            var patients = await _patientRepository.GetAllAsync(asReadOnly: false, propertiesToInclude: "HealthRecord");
+            var patients = await _patientRepository.GetAllAsync(asReadOnly: false, propertiesToInclude: "HealthRecord,Appointments");
 
             patients = patients.OrderBy(patient => patient.FullName).ToList();
 
@@ -211,6 +215,78 @@ public class ScheduleAppointmentViewModel : Conductor<object>
 
         var availableTimes = (await _timeSlotDetectionService.GetTimeSlotsByDate(AppointmentDate, SelectedDoctor)).ToList();
         availableTimes.ForEach(AvailableTimes.Add);
+    }
+
+    private void UpdateAvailableAppointmentTimesByPatient()
+    {
+        if (_appointmentTimesToReadd.Any())
+        {
+            while (_appointmentTimesToReadd.Any())
+                AvailableTimes.Add(_appointmentTimesToReadd.Dequeue());
+
+            var availableTimes = AvailableTimes.Order().ToList();
+
+            availableTimes.Remove(_timeSlotDetectionService.GetEndShift());
+            availableTimes.Remove(_timeSlotDetectionService.GetEndShift().AddMinutes(-5));
+            availableTimes.Remove(_timeSlotDetectionService.GetEndShift().AddMinutes(-10));
+
+            AvailableTimes.Clear();
+            availableTimes.ForEach(AvailableTimes.Add);
+        }
+
+        if (SelectedPatient is null || SelectedDoctor is null || AppointmentTime is null) return;
+
+        var appointments = SelectedPatient.Appointments?
+            .Where(appointment => appointment.Status == AppointmentStatus.Scheduled)
+            .ToList();
+
+        if (appointments is null || !appointments.Any()) return;
+
+        var existingAppointments = appointments.Where(app =>
+            app.Time == AppointmentTime ||
+            app.Time == AppointmentTime.Value.AddMinutes(-5) ||
+            app.Time == AppointmentTime.Value.AddMinutes(-10) ||
+            app.Time == AppointmentTime.Value.AddMinutes(-15) ||
+            app.Time == AppointmentTime.Value.AddMinutes(5) ||
+            app.Time == AppointmentTime.Value.AddMinutes(10) ||
+            app.Time == AppointmentTime.Value.AddMinutes(15)
+        ).ToList();
+
+        if (existingAppointments.Any())
+        {
+            AppointmentTime = null;
+
+            existingAppointments.ForEach(existingAppointment =>
+            {
+                AvailableTimes.Remove(existingAppointment.Time.AddMinutes(-5));
+                _appointmentTimesToReadd.Enqueue(existingAppointment.Time.AddMinutes(-5));
+
+                AvailableTimes.Remove(existingAppointment.Time.AddMinutes(-10));
+                _appointmentTimesToReadd.Enqueue(existingAppointment.Time.AddMinutes(-10));
+
+                AvailableTimes.Remove(existingAppointment.Time.AddMinutes(-15));
+                _appointmentTimesToReadd.Enqueue(existingAppointment.Time.AddMinutes(-15));
+
+                AvailableTimes.Remove(existingAppointment.Time);
+                _appointmentTimesToReadd.Enqueue(existingAppointment.Time);
+
+                var lastPossibleAppointmentTime = _timeSlotDetectionService.GetEndShift().AddMinutes((-1) * _timeSlotDetectionService.GetDefaultAppointmentDuration().Minutes);
+
+                if (existingAppointment.Time < lastPossibleAppointmentTime)
+                {
+                    AvailableTimes.Remove(existingAppointment.Time.AddMinutes(5));
+                    _appointmentTimesToReadd.Enqueue(existingAppointment.Time.AddMinutes(5));
+
+                    AvailableTimes.Remove(existingAppointment.Time.AddMinutes(10));
+                    _appointmentTimesToReadd.Enqueue(existingAppointment.Time.AddMinutes(10));
+
+                    AvailableTimes.Remove(existingAppointment.Time.AddMinutes(15));
+                    _appointmentTimesToReadd.Enqueue(existingAppointment.Time.AddMinutes(15));
+                }
+            });
+
+            _toastNotificationService.ShowWarning("Patient has overlapping appointment");
+        }
     }
 
     private void UpdateDoctorsSource()

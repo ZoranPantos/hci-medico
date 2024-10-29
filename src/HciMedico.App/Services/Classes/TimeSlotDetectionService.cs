@@ -8,10 +8,10 @@ namespace HciMedico.App.Services.Classes;
 public class TimeSlotDetectionService : ITimeSlotDetectionService
 {
     private readonly IRepository<Appointment> _appointmentRepository;
-    private TimeSpan DefaultAppointmentDuration { get; set; } = new(0, minutes: 15, 0);
-    private TimeSpan InBetweenAppointmentsBreak { get; set; } = new(0, minutes: 5, 0);
-    private TimeOnly StartShift { get; set; } = new(8, 0);
-    private TimeOnly EndShift { get; set; } = new(16, 0);
+    public TimeSpan DefaultAppointmentDuration { get; } = new(0, minutes: 15, 0);
+    public TimeSpan InBetweenAppointmentsBreak { get; } = new(0, minutes: 5, 0);
+    public TimeOnly StartShift { get; } = new(8, 0);
+    public TimeOnly EndShift { get; } = new(23, 0);
 
     public TimeSlotDetectionService(IRepository<Appointment> appointmentRepository) =>
         _appointmentRepository = appointmentRepository ?? throw new ArgumentNullException(nameof(appointmentRepository));
@@ -61,6 +61,10 @@ public class TimeSlotDetectionService : ITimeSlotDetectionService
                 resultTimes.Remove(appointmentTime.AddMinutes(15));
             }
 
+            resultTimes.Remove(EndShift);
+            resultTimes.Remove(EndShift.AddMinutes(-5));
+            resultTimes.Remove(EndShift.AddMinutes(-10));
+
             return resultTimes;
         }
         catch (Exception ex)
@@ -69,4 +73,12 @@ public class TimeSlotDetectionService : ITimeSlotDetectionService
             throw new MedicoException(message, ex);
         }
     }
+
+    public TimeSpan GetDefaultAppointmentDuration() => DefaultAppointmentDuration;
+
+    public TimeSpan GetInBetweenAppointmentsBreak() => InBetweenAppointmentsBreak;
+
+    public TimeOnly GetStartShift() => StartShift;
+
+    public TimeOnly GetEndShift() => EndShift;
 }
