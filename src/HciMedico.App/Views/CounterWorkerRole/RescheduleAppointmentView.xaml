@@ -58,6 +58,7 @@
         <ui:TextBlock Text="Assigned time:"
                       Grid.Row="2"
                       Style="{StaticResource LabelTextBlockStyle}" />
+        
         <ui:TextBlock x:Name="AssignedTime"
                       Grid.Row="2" Grid.Column="1"
                       Style="{StaticResource DataTextBlockStyle}" />
@@ -65,12 +66,19 @@
         <ui:TextBlock Grid.Row="3" Margin="0,5,0,0"
                       Text="Select new time:"
                       Style="{StaticResource LabelTextBlockStyle}" />
-        
+
         <ComboBox Grid.Row="4" Grid.ColumnSpan="3"
                   x:Name="AppointmentTime"
                   ItemsSource="{Binding AvailableTimes}"
                   SelectedItem="{Binding AppointmentTime}"
-                  Background="White"/>
+                  Background="White">
+            
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding StringFormat='HH:mm'}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <StackPanel Grid.Row="6" Grid.ColumnSpan="3" Orientation="Horizontal">
             <ui:Button x:Name="Reschedule" Content="Reschedule" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon SaveEdit24}" />
