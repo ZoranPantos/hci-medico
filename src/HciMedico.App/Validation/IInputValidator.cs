@@ -6,7 +6,7 @@ public interface IInputValidator
     bool IsRegionalNameValid(string input);
     bool IsStreetNumberValid(string input);
     bool IsPhoneNumberValid(string input);
-    bool IsUidValid(string input);
+    Task<bool> IsUidValid(string input, int patientId, bool editState);
     bool IsEmailValid(string input);
     bool IsDateOfBirthValid(DateTime input);
 }

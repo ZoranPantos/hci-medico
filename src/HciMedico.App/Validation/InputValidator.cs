@@ -1,9 +1,16 @@
-﻿using System.Text.RegularExpressions;
+﻿using HciMedico.Domain.Models.Entities;
+using HciMedico.Integration.Data.Repositories;
+using System.Text.RegularExpressions;
 
 namespace HciMedico.App.Validation;
 
 public class InputValidator : IInputValidator
 {
+    private readonly IRepository<Patient> _patientsRepository;
+
+    public InputValidator(IRepository<Patient> patientsRepository) =>
+        _patientsRepository = patientsRepository ?? throw new ArgumentNullException(nameof(patientsRepository));
+
     // Used for country, city or street name
     public bool IsRegionalNameValid(string input)
     {
@@ -54,5 +61,15 @@ public class InputValidator : IInputValidator
         return regex.IsMatch(input);
     }
 
-    public bool IsUidValid(string input) => input.All(Char.IsDigit);
+    public async Task<bool> IsUidValid(string input, int patientId, bool editState)
+    {
+        bool isInDigits = input.All(Char.IsDigit);
+
+        if (!editState) return isInDigits;
+
+        var patient = await _patientsRepository.FindAsync(patient => patient.Uid.Equals(input) && patient.Id != patientId);
+        var isUidInUse = patient is not null;
+
+        return isInDigits && !isUidInUse;
+    }
 }

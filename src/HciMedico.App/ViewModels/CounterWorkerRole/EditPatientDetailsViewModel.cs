@@ -223,9 +223,9 @@ public class EditPatientDetailsViewModel : Conductor<object>
                 return;
             }
 
-            if (!_inputValidator.IsUidValid(uid))
+            if (!(await _inputValidator.IsUidValid(uid, _patient.Id, editState: true)))
             {
-                ValidationMessage = "Invalid UID value. UID can only contain digits";
+                ValidationMessage = "Invalid UID value. UID can only contain digits and must be unique";
                 return;
             }
 

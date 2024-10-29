@@ -385,7 +385,7 @@ public class RegisterPatientViewModel : Conductor<object>
                 return;
             }
 
-            if (!_inputValidator.IsUidValid(uid))
+            if (!(await _inputValidator.IsUidValid(uid, new Random().Next(), editState: false)))
             {
                 ValidationMessage = "Invalid UID value. UID can only contain digits";
                 return;

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HciMedico.Integration.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240508124205_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20241029213245_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,7 +212,7 @@ namespace HciMedico.Integration.Migrations
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Appointment", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Appointment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -222,6 +222,9 @@ namespace HciMedico.Integration.Migrations
 
                     b.Property<int>("CounterWorkerId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DateAndTime")
                         .HasColumnType("datetime(6)");
@@ -262,6 +265,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 1,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 15,
                             HealthRecordId = 1,
@@ -274,6 +278,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 2,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 19, 8, 20, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 15,
                             HealthRecordId = 1,
@@ -286,6 +291,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 3,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 5, 8, 40, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 16,
                             HealthRecordId = 2,
@@ -298,6 +304,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 4,
                             CounterWorkerId = 32,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 19, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 16,
                             HealthRecordId = 2,
@@ -310,6 +317,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 5,
                             CounterWorkerId = 32,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 5, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 15,
                             HealthRecordId = 3,
@@ -322,6 +330,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 6,
                             CounterWorkerId = 32,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 19, 10, 30, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 15,
                             HealthRecordId = 3,
@@ -334,6 +343,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 7,
                             CounterWorkerId = 33,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 5, 11, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             HealthRecordId = 4,
@@ -346,6 +356,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 8,
                             CounterWorkerId = 33,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 19, 11, 30, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             HealthRecordId = 4,
@@ -358,6 +369,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 9,
                             CounterWorkerId = 33,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 5, 12, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             HealthRecordId = 5,
@@ -370,6 +382,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 10,
                             CounterWorkerId = 34,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 19, 12, 30, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             HealthRecordId = 5,
@@ -382,6 +395,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 11,
                             CounterWorkerId = 34,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 5, 13, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             HealthRecordId = 6,
@@ -394,6 +408,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 12,
                             CounterWorkerId = 34,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 19, 13, 30, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             HealthRecordId = 6,
@@ -406,6 +421,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 13,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 5, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             HealthRecordId = 7,
@@ -418,6 +434,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 14,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 1, 19, 14, 30, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             HealthRecordId = 7,
@@ -430,6 +447,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 15,
                             CounterWorkerId = 32,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 5, 15, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             HealthRecordId = 8,
@@ -442,6 +460,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 16,
                             CounterWorkerId = 32,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 25, 15, 20, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             HealthRecordId = 8,
@@ -454,6 +473,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 17,
                             CounterWorkerId = 33,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 5, 15, 40, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             HealthRecordId = 9,
@@ -466,6 +486,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 18,
                             CounterWorkerId = 33,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 25, 16, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             HealthRecordId = 9,
@@ -478,6 +499,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 19,
                             CounterWorkerId = 34,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 5, 16, 20, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             HealthRecordId = 10,
@@ -490,6 +512,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 20,
                             CounterWorkerId = 34,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 25, 16, 40, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             HealthRecordId = 10,
@@ -502,6 +525,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 21,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 6, 17, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 15,
                             HealthRecordId = 1,
@@ -514,6 +538,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 22,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 20, 17, 20, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 15,
                             HealthRecordId = 1,
@@ -526,6 +551,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 23,
                             CounterWorkerId = 33,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 7, 17, 40, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             HealthRecordId = 4,
@@ -538,6 +564,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 24,
                             CounterWorkerId = 33,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 2, 22, 18, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             HealthRecordId = 4,
@@ -550,6 +577,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 25,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 3, 20, 18, 20, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 9,
                             HealthRecordId = 1,
@@ -562,6 +590,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 26,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2025, 1, 19, 18, 40, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 9,
                             HealthRecordId = 1,
@@ -574,6 +603,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 27,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 3, 19, 19, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 9,
                             HealthRecordId = 2,
@@ -586,6 +616,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 28,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2025, 1, 19, 19, 20, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 9,
                             HealthRecordId = 2,
@@ -598,6 +629,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 29,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2024, 3, 22, 19, 40, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 9,
                             HealthRecordId = 3,
@@ -610,6 +642,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 30,
                             CounterWorkerId = 31,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2025, 1, 19, 9, 20, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 9,
                             HealthRecordId = 3,
@@ -622,6 +655,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 31,
                             CounterWorkerId = 32,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2025, 3, 20, 9, 40, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 11,
                             IdentifierName = "lana pepic",
@@ -632,6 +666,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 32,
                             CounterWorkerId = 32,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2025, 3, 20, 10, 20, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 12,
                             IdentifierName = "nikola jokic",
@@ -642,6 +677,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 33,
                             CounterWorkerId = 32,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2025, 3, 20, 10, 40, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 14,
                             IdentifierName = "marija novakovic",
@@ -652,6 +688,7 @@ namespace HciMedico.Integration.Migrations
                         {
                             Id = 34,
                             CounterWorkerId = 32,
+                            CreationTime = new DateTime(2022, 1, 1, 8, 0, 0, 0, DateTimeKind.Unspecified),
                             DateAndTime = new DateTime(2025, 3, 20, 11, 20, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 19,
                             IdentifierName = "branko brankovic",
@@ -660,7 +697,7 @@ namespace HciMedico.Integration.Migrations
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Employee", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -710,7 +747,7 @@ namespace HciMedico.Integration.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.HealthRecord", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.HealthRecord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -820,7 +857,7 @@ namespace HciMedico.Integration.Migrations
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.MedicalCondition", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.MedicalCondition", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1839,7 +1876,68 @@ namespace HciMedico.Integration.Migrations
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.MedicalSpecialization", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.MedicalReport", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AdditionalNotes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Analysis")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("AppointmentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Diagnosis")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("HealthRecordId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PreviousFindings")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Therapy")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppointmentId")
+                        .IsUnique();
+
+                    b.HasIndex("HealthRecordId");
+
+                    b.ToTable("MedicalReport");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdditionalNotes = "Follow-up in 4 weeks to assess response to therapy. Patient advised to avoid high-impact activities and wear supportive shoes.",
+                            Analysis = "Patient presents with heel pain, particularly upon first steps in the morning. Pain is localized to the medial aspect of the heel.",
+                            AppointmentId = 1,
+                            DateTime = new DateTime(2024, 1, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            Diagnosis = "",
+                            HealthRecordId = 1,
+                            PreviousFindings = "No significant previous findings. Patient reports occasional mild discomfort after long periods of standing.",
+                            Therapy = "Recommend rest, ice application, stretching exercises, and over-the-counter NSAIDs. Consider custom orthotics if pain persists."
+                        });
+                });
+
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.MedicalSpecialization", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2078,7 +2176,7 @@ namespace HciMedico.Integration.Migrations
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Patient", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Patient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2108,172 +2206,74 @@ namespace HciMedico.Integration.Migrations
                             Id = 1,
                             FirstName = "Boris",
                             LastName = "Borisavljević",
-                            Uid = "93030105260"
+                            Uid = "18179386304"
                         },
                         new
                         {
                             Id = 2,
                             FirstName = "Saška",
                             LastName = "Mačetić",
-                            Uid = "54920128100"
+                            Uid = "89223326672"
                         },
                         new
                         {
                             Id = 3,
                             FirstName = "Miloš",
                             LastName = "Milosavljević",
-                            Uid = "39973006011"
+                            Uid = "46548392330"
                         },
                         new
                         {
                             Id = 4,
                             FirstName = "Ana",
                             LastName = "Stanojević",
-                            Uid = "23660450734"
+                            Uid = "96293082244"
                         },
                         new
                         {
                             Id = 5,
                             FirstName = "Darko",
                             LastName = "Darković",
-                            Uid = "52774348003"
+                            Uid = "64191925601"
                         },
                         new
                         {
                             Id = 6,
                             FirstName = "Jovana",
                             LastName = "Jovanović",
-                            Uid = "17462968856"
+                            Uid = "86951189417"
                         },
                         new
                         {
                             Id = 7,
                             FirstName = "Nikola",
                             LastName = "Nikolić",
-                            Uid = "52012901783"
+                            Uid = "30119196772"
                         },
                         new
                         {
                             Id = 8,
                             FirstName = "David",
                             LastName = "Davidović",
-                            Uid = "75771300911"
+                            Uid = "29520209488"
                         },
                         new
                         {
                             Id = 9,
                             FirstName = "Stana",
                             LastName = "Stanojević",
-                            Uid = "92740865178"
+                            Uid = "44946581522"
                         },
                         new
                         {
                             Id = 10,
                             FirstName = "Goran",
                             LastName = "Predojević",
-                            Uid = "25011951373"
+                            Uid = "62059127053"
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Relationships.HealthRecordMedicalCondition", b =>
-                {
-                    b.Property<int>("HealthRecordId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MedicalConditionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("HealthRecordId", "MedicalConditionId");
-
-                    b.HasIndex("MedicalConditionId");
-
-                    b.ToTable("healthrecord_medicalcondition", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            HealthRecordId = 1,
-                            MedicalConditionId = 4,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 2,
-                            MedicalConditionId = 4,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 3,
-                            MedicalConditionId = 4,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 4,
-                            MedicalConditionId = 90,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 5,
-                            MedicalConditionId = 90,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 6,
-                            MedicalConditionId = 90,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 7,
-                            MedicalConditionId = 90,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 8,
-                            MedicalConditionId = 97,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 9,
-                            MedicalConditionId = 97,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 10,
-                            MedicalConditionId = 97,
-                            Status = 0
-                        },
-                        new
-                        {
-                            HealthRecordId = 1,
-                            MedicalConditionId = 24,
-                            Status = 1
-                        },
-                        new
-                        {
-                            HealthRecordId = 2,
-                            MedicalConditionId = 24,
-                            Status = 1
-                        },
-                        new
-                        {
-                            HealthRecordId = 3,
-                            MedicalConditionId = 24,
-                            Status = 1
-                        });
-                });
-
-            modelBuilder.Entity("HciMedico.Domain.Models.UserAccount", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.UserAccount", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2614,7 +2614,235 @@ namespace HciMedico.Integration.Migrations
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.WorkSchedule", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.UserSettings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("LandingPage")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserAccountId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserAccountId")
+                        .IsUnique();
+
+                    b.ToTable("UserSettings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LandingPage = 0,
+                            UserAccountId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LandingPage = 0,
+                            UserAccountId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            LandingPage = 0,
+                            UserAccountId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            LandingPage = 0,
+                            UserAccountId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            LandingPage = 0,
+                            UserAccountId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            LandingPage = 0,
+                            UserAccountId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            LandingPage = 0,
+                            UserAccountId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            LandingPage = 0,
+                            UserAccountId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            LandingPage = 0,
+                            UserAccountId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            LandingPage = 0,
+                            UserAccountId = 10
+                        },
+                        new
+                        {
+                            Id = 11,
+                            LandingPage = 0,
+                            UserAccountId = 11
+                        },
+                        new
+                        {
+                            Id = 12,
+                            LandingPage = 0,
+                            UserAccountId = 12
+                        },
+                        new
+                        {
+                            Id = 13,
+                            LandingPage = 0,
+                            UserAccountId = 13
+                        },
+                        new
+                        {
+                            Id = 14,
+                            LandingPage = 0,
+                            UserAccountId = 14
+                        },
+                        new
+                        {
+                            Id = 15,
+                            LandingPage = 0,
+                            UserAccountId = 15
+                        },
+                        new
+                        {
+                            Id = 16,
+                            LandingPage = 0,
+                            UserAccountId = 16
+                        },
+                        new
+                        {
+                            Id = 17,
+                            LandingPage = 0,
+                            UserAccountId = 17
+                        },
+                        new
+                        {
+                            Id = 18,
+                            LandingPage = 0,
+                            UserAccountId = 18
+                        },
+                        new
+                        {
+                            Id = 19,
+                            LandingPage = 0,
+                            UserAccountId = 19
+                        },
+                        new
+                        {
+                            Id = 20,
+                            LandingPage = 0,
+                            UserAccountId = 20
+                        },
+                        new
+                        {
+                            Id = 21,
+                            LandingPage = 0,
+                            UserAccountId = 21
+                        },
+                        new
+                        {
+                            Id = 22,
+                            LandingPage = 0,
+                            UserAccountId = 22
+                        },
+                        new
+                        {
+                            Id = 23,
+                            LandingPage = 0,
+                            UserAccountId = 23
+                        },
+                        new
+                        {
+                            Id = 24,
+                            LandingPage = 0,
+                            UserAccountId = 24
+                        },
+                        new
+                        {
+                            Id = 25,
+                            LandingPage = 0,
+                            UserAccountId = 25
+                        },
+                        new
+                        {
+                            Id = 26,
+                            LandingPage = 0,
+                            UserAccountId = 26
+                        },
+                        new
+                        {
+                            Id = 27,
+                            LandingPage = 0,
+                            UserAccountId = 27
+                        },
+                        new
+                        {
+                            Id = 28,
+                            LandingPage = 0,
+                            UserAccountId = 28
+                        },
+                        new
+                        {
+                            Id = 29,
+                            LandingPage = 0,
+                            UserAccountId = 29
+                        },
+                        new
+                        {
+                            Id = 30,
+                            LandingPage = 0,
+                            UserAccountId = 30
+                        },
+                        new
+                        {
+                            Id = 31,
+                            LandingPage = 0,
+                            UserAccountId = 31
+                        },
+                        new
+                        {
+                            Id = 32,
+                            LandingPage = 0,
+                            UserAccountId = 32
+                        },
+                        new
+                        {
+                            Id = 33,
+                            LandingPage = 0,
+                            UserAccountId = 33
+                        },
+                        new
+                        {
+                            Id = 34,
+                            LandingPage = 0,
+                            UserAccountId = 34
+                        });
+                });
+
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.WorkSchedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2645,7 +2873,7 @@ namespace HciMedico.Integration.Migrations
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.WorkShift", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.WorkShift", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2677,200 +2905,320 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 1,
-                            DateTime = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 29, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 2,
-                            DateTime = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 31, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 3,
-                            DateTime = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 11, 2, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 4,
-                            DateTime = new DateTime(2024, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 5,
-                            DateTime = new DateTime(2024, 5, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 6,
-                            DateTime = new DateTime(2024, 5, 24, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 11, 14, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 7,
-                            DateTime = new DateTime(2024, 6, 15, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 12, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 8,
-                            DateTime = new DateTime(2024, 6, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 12, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 9,
-                            DateTime = new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 10,
-                            DateTime = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 11,
-                            DateTime = new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 12,
-                            DateTime = new DateTime(2024, 4, 24, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 1
                         },
                         new
                         {
                             Id = 13,
-                            DateTime = new DateTime(2024, 5, 8, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 29, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 14,
-                            DateTime = new DateTime(2024, 5, 10, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 31, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 15,
-                            DateTime = new DateTime(2024, 5, 12, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 11, 2, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 16,
-                            DateTime = new DateTime(2024, 5, 15, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 11, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 17,
-                            DateTime = new DateTime(2024, 5, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 18,
-                            DateTime = new DateTime(2024, 5, 24, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 11, 14, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 19,
-                            DateTime = new DateTime(2024, 6, 15, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 12, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 20,
-                            DateTime = new DateTime(2024, 6, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 12, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 21,
-                            DateTime = new DateTime(2024, 6, 24, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 22,
-                            DateTime = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 23,
-                            DateTime = new DateTime(2024, 4, 16, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         },
                         new
                         {
                             Id = 24,
-                            DateTime = new DateTime(2024, 4, 24, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "4 PM",
-                            ShiftStartTime = "8 AM",
+                            DateTime = new DateTime(2024, 10, 15, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
                             WorkScheduleId = 2
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.CounterWorker", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Relationships.HealthRecordMedicalCondition", b =>
                 {
-                    b.HasBaseType("HciMedico.Domain.Models.Employee");
+                    b.Property<int>("HealthRecordId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MedicalConditionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("HealthRecordId", "MedicalConditionId");
+
+                    b.HasIndex("MedicalConditionId");
+
+                    b.ToTable("healthrecord_medicalcondition", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            HealthRecordId = 1,
+                            MedicalConditionId = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 2,
+                            MedicalConditionId = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 3,
+                            MedicalConditionId = 4,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 4,
+                            MedicalConditionId = 90,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 5,
+                            MedicalConditionId = 90,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 6,
+                            MedicalConditionId = 90,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 7,
+                            MedicalConditionId = 90,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 8,
+                            MedicalConditionId = 97,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 9,
+                            MedicalConditionId = 97,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 10,
+                            MedicalConditionId = 97,
+                            Status = 0
+                        },
+                        new
+                        {
+                            HealthRecordId = 1,
+                            MedicalConditionId = 24,
+                            Status = 1
+                        },
+                        new
+                        {
+                            HealthRecordId = 2,
+                            MedicalConditionId = 24,
+                            Status = 1
+                        },
+                        new
+                        {
+                            HealthRecordId = 3,
+                            MedicalConditionId = 24,
+                            Status = 1
+                        });
+                });
+
+            modelBuilder.Entity("MedicalConditionMedicalReport", b =>
+                {
+                    b.Property<int>("MedicalConditionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MedicalReportsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MedicalConditionsId", "MedicalReportsId");
+
+                    b.HasIndex("MedicalReportsId");
+
+                    b.ToTable("report_medicalcondition", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            MedicalConditionsId = 1,
+                            MedicalReportsId = 1
+                        });
+                });
+
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.CounterWorker", b =>
+                {
+                    b.HasBaseType("HciMedico.Domain.Models.Entities.Employee");
 
                     b.HasDiscriminator().HasValue("CounterWorker");
 
@@ -2885,7 +3233,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ksenija",
                             Gender = 1,
                             LastName = "Marković",
-                            Uid = "8057969233605"
+                            Uid = "5779732416197"
                         },
                         new
                         {
@@ -2897,7 +3245,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Milica",
                             Gender = 1,
                             LastName = "Simeunović",
-                            Uid = "4315445964702"
+                            Uid = "7268398561664"
                         },
                         new
                         {
@@ -2909,7 +3257,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Petar",
                             Gender = 0,
                             LastName = "Tomić",
-                            Uid = "6724330199370"
+                            Uid = "6321629475232"
                         },
                         new
                         {
@@ -2921,13 +3269,13 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Jovanović",
-                            Uid = "9862470845205"
+                            Uid = "5497357002942"
                         });
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Doctor", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Doctor", b =>
                 {
-                    b.HasBaseType("HciMedico.Domain.Models.Employee");
+                    b.HasBaseType("HciMedico.Domain.Models.Entities.Employee");
 
                     b.HasDiscriminator().HasValue("Doctor");
 
@@ -2942,7 +3290,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Marko",
                             Gender = 0,
                             LastName = "Petrović",
-                            Uid = "6507913008713"
+                            Uid = "2799420993082"
                         },
                         new
                         {
@@ -2954,7 +3302,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Jovanović",
-                            Uid = "2106743812007"
+                            Uid = "6052503646290"
                         },
                         new
                         {
@@ -2966,7 +3314,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nikola",
                             Gender = 0,
                             LastName = "Stojanović",
-                            Uid = "2191052436896"
+                            Uid = "8878632707165"
                         },
                         new
                         {
@@ -2978,7 +3326,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Milan",
                             Gender = 0,
                             LastName = "Popović",
-                            Uid = "6578979536339"
+                            Uid = "5970662650812"
                         },
                         new
                         {
@@ -2990,7 +3338,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Jovana",
                             Gender = 1,
                             LastName = "Nikolić",
-                            Uid = "1900880048216"
+                            Uid = "7164497981243"
                         },
                         new
                         {
@@ -3002,7 +3350,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Stefan",
                             Gender = 0,
                             LastName = "Ilić",
-                            Uid = "8810366406161"
+                            Uid = "4528720990335"
                         },
                         new
                         {
@@ -3014,7 +3362,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Marija",
                             Gender = 1,
                             LastName = "Pavlović",
-                            Uid = "1013450857382"
+                            Uid = "8243490550840"
                         },
                         new
                         {
@@ -3026,7 +3374,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Aleksandar",
                             Gender = 0,
                             LastName = "Đorđević",
-                            Uid = "7605669675585"
+                            Uid = "2064255702666"
                         },
                         new
                         {
@@ -3038,7 +3386,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Janković",
-                            Uid = "6677900675763"
+                            Uid = "1561098965142"
                         },
                         new
                         {
@@ -3050,7 +3398,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Petar",
                             Gender = 0,
                             LastName = "Stanković",
-                            Uid = "8693197021966"
+                            Uid = "7776483142868"
                         },
                         new
                         {
@@ -3062,7 +3410,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Jelena",
                             Gender = 1,
                             LastName = "Petrović",
-                            Uid = "4284094485189"
+                            Uid = "5140467060058"
                         },
                         new
                         {
@@ -3074,7 +3422,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Dragan",
                             Gender = 0,
                             LastName = "Kovačević",
-                            Uid = "9877687280698"
+                            Uid = "1325359055536"
                         },
                         new
                         {
@@ -3086,7 +3434,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Milica",
                             Gender = 1,
                             LastName = "Ivanović",
-                            Uid = "9420438927473"
+                            Uid = "3340999722266"
                         },
                         new
                         {
@@ -3098,7 +3446,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nemanja",
                             Gender = 0,
                             LastName = "Jović",
-                            Uid = "5525521373649"
+                            Uid = "1055846180215"
                         },
                         new
                         {
@@ -3110,7 +3458,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Mina",
                             Gender = 1,
                             LastName = "Pavlović",
-                            Uid = "6550026633346"
+                            Uid = "5301018591286"
                         },
                         new
                         {
@@ -3122,7 +3470,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Vladimir",
                             Gender = 0,
                             LastName = "Stanišić",
-                            Uid = "7616841913837"
+                            Uid = "1162270975669"
                         },
                         new
                         {
@@ -3134,7 +3482,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Jovanka",
                             Gender = 1,
                             LastName = "Đorđević",
-                            Uid = "4174178143398"
+                            Uid = "4563739544754"
                         },
                         new
                         {
@@ -3146,7 +3494,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Branimir",
                             Gender = 0,
                             LastName = "Nikolić",
-                            Uid = "2065590161306"
+                            Uid = "3433899209420"
                         },
                         new
                         {
@@ -3158,7 +3506,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Janković",
-                            Uid = "5494596244255"
+                            Uid = "3157855688489"
                         },
                         new
                         {
@@ -3170,7 +3518,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nikola",
                             Gender = 0,
                             LastName = "Stanković",
-                            Uid = "2562524189198"
+                            Uid = "9522177937700"
                         },
                         new
                         {
@@ -3182,7 +3530,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Sanja",
                             Gender = 1,
                             LastName = "Petrović",
-                            Uid = "9808777222768"
+                            Uid = "8811143340407"
                         },
                         new
                         {
@@ -3194,7 +3542,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Miloš",
                             Gender = 0,
                             LastName = "Jovanović",
-                            Uid = "9206820169736"
+                            Uid = "6071604875747"
                         },
                         new
                         {
@@ -3206,7 +3554,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Tatjana",
                             Gender = 1,
                             LastName = "Stojanović",
-                            Uid = "7252945668450"
+                            Uid = "6236969043097"
                         },
                         new
                         {
@@ -3218,7 +3566,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Vladimir",
                             Gender = 0,
                             LastName = "Stanković",
-                            Uid = "2232706038484"
+                            Uid = "6587032690563"
                         },
                         new
                         {
@@ -3230,7 +3578,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ivana",
                             Gender = 1,
                             LastName = "Janković",
-                            Uid = "8238542909378"
+                            Uid = "1295240027929"
                         },
                         new
                         {
@@ -3242,7 +3590,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nenad",
                             Gender = 0,
                             LastName = "Petrović",
-                            Uid = "7213527989474"
+                            Uid = "9235805061506"
                         },
                         new
                         {
@@ -3254,7 +3602,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Milica",
                             Gender = 1,
                             LastName = "Ilić",
-                            Uid = "4093547090237"
+                            Uid = "4938634708328"
                         },
                         new
                         {
@@ -3266,7 +3614,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Vladan",
                             Gender = 0,
                             LastName = "Đorđević",
-                            Uid = "8243904967333"
+                            Uid = "6902497446663"
                         },
                         new
                         {
@@ -3278,7 +3626,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Sara",
                             Gender = 1,
                             LastName = "Pavlović",
-                            Uid = "8940557563714"
+                            Uid = "1702563124188"
                         },
                         new
                         {
@@ -3290,44 +3638,44 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nemanja",
                             Gender = 0,
                             LastName = "Stanišić",
-                            Uid = "4769557796371"
+                            Uid = "5937809602362"
                         });
                 });
 
             modelBuilder.Entity("DoctorMedicalSpecialization", b =>
                 {
-                    b.HasOne("HciMedico.Domain.Models.Doctor", null)
+                    b.HasOne("HciMedico.Domain.Models.Entities.Doctor", null)
                         .WithMany()
                         .HasForeignKey("DoctorsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HciMedico.Domain.Models.MedicalSpecialization", null)
+                    b.HasOne("HciMedico.Domain.Models.Entities.MedicalSpecialization", null)
                         .WithMany()
                         .HasForeignKey("SpecializationsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Appointment", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Appointment", b =>
                 {
-                    b.HasOne("HciMedico.Domain.Models.CounterWorker", "CreatedBy")
+                    b.HasOne("HciMedico.Domain.Models.Entities.CounterWorker", "CreatedBy")
                         .WithMany("CreatedAppointments")
                         .HasForeignKey("CounterWorkerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HciMedico.Domain.Models.Doctor", "AssignedTo")
+                    b.HasOne("HciMedico.Domain.Models.Entities.Doctor", "AssignedTo")
                         .WithMany("AssignedAppointments")
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HciMedico.Domain.Models.HealthRecord", "HealthRecord")
+                    b.HasOne("HciMedico.Domain.Models.Entities.HealthRecord", "HealthRecord")
                         .WithMany("Appointments")
                         .HasForeignKey("HealthRecordId");
 
-                    b.HasOne("HciMedico.Domain.Models.Patient", "Patient")
+                    b.HasOne("HciMedico.Domain.Models.Entities.Patient", "Patient")
                         .WithMany("Appointments")
                         .HasForeignKey("PatientId");
 
@@ -3340,9 +3688,9 @@ namespace HciMedico.Integration.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Employee", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Employee", b =>
                 {
-                    b.OwnsOne("HciMedico.Domain.Models.Address", "Address", b1 =>
+                    b.OwnsOne("HciMedico.Domain.Models.Entities.Address", "Address", b1 =>
                         {
                             b1.Property<int>("EmployeeId")
                                 .HasColumnType("int");
@@ -3644,7 +3992,7 @@ namespace HciMedico.Integration.Migrations
                                 });
                         });
 
-                    b.OwnsOne("HciMedico.Domain.Models.ContactInfo", "ContactInfo", b1 =>
+                    b.OwnsOne("HciMedico.Domain.Models.Entities.ContactInfo", "ContactInfo", b1 =>
                         {
                             b1.Property<int>("EmployeeId")
                                 .HasColumnType("int");
@@ -3669,205 +4017,205 @@ namespace HciMedico.Integration.Migrations
                                 {
                                     EmployeeId = 1,
                                     Email = "marko.petrovic@test.com",
-                                    TelephoneNumber = "+21658003945"
+                                    TelephoneNumber = "+80036027954"
                                 },
                                 new
                                 {
                                     EmployeeId = 2,
                                     Email = "ana.jovanovic@test.com",
-                                    TelephoneNumber = "+24825305702"
+                                    TelephoneNumber = "+98714081547"
                                 },
                                 new
                                 {
                                     EmployeeId = 3,
                                     Email = "nikola.stojanovic@test.com",
-                                    TelephoneNumber = "+42297314023"
+                                    TelephoneNumber = "+54573476490"
                                 },
                                 new
                                 {
                                     EmployeeId = 4,
                                     Email = "milan.popovic@test.com",
-                                    TelephoneNumber = "+27539494254"
+                                    TelephoneNumber = "+97273441050"
                                 },
                                 new
                                 {
                                     EmployeeId = 5,
                                     Email = "jovana.nikolic@test.com",
-                                    TelephoneNumber = "+72799071918"
+                                    TelephoneNumber = "+51556887254"
                                 },
                                 new
                                 {
                                     EmployeeId = 6,
                                     Email = "stefan.ilic@test.com",
-                                    TelephoneNumber = "+48876595444"
+                                    TelephoneNumber = "+32043408870"
                                 },
                                 new
                                 {
                                     EmployeeId = 7,
                                     Email = "marija.pavlovic@test.com",
-                                    TelephoneNumber = "+40185881062"
+                                    TelephoneNumber = "+72027638829"
                                 },
                                 new
                                 {
                                     EmployeeId = 8,
                                     Email = "aleksandar.djordjevic@test.com",
-                                    TelephoneNumber = "+45288968605"
+                                    TelephoneNumber = "+46861751060"
                                 },
                                 new
                                 {
                                     EmployeeId = 9,
                                     Email = "ana.jankovic@test.com",
-                                    TelephoneNumber = "+84941361207"
+                                    TelephoneNumber = "+68835281099"
                                 },
                                 new
                                 {
                                     EmployeeId = 10,
                                     Email = "petar.stankovic@test.com",
-                                    TelephoneNumber = "+34607699077"
+                                    TelephoneNumber = "+13440232654"
                                 },
                                 new
                                 {
                                     EmployeeId = 11,
                                     Email = "jelena.petrovic@test.com",
-                                    TelephoneNumber = "+52514283721"
+                                    TelephoneNumber = "+82569729093"
                                 },
                                 new
                                 {
                                     EmployeeId = 12,
                                     Email = "dragan.kovacevic@test.com",
-                                    TelephoneNumber = "+60463699765"
+                                    TelephoneNumber = "+77450457112"
                                 },
                                 new
                                 {
                                     EmployeeId = 13,
                                     Email = "milica.ivanovic@test.com",
-                                    TelephoneNumber = "+53102086786"
+                                    TelephoneNumber = "+72928767275"
                                 },
                                 new
                                 {
                                     EmployeeId = 14,
                                     Email = "nemanja.jovic@test.com",
-                                    TelephoneNumber = "+66717598496"
+                                    TelephoneNumber = "+56742533174"
                                 },
                                 new
                                 {
                                     EmployeeId = 15,
                                     Email = "mina.pavlovic@test.com",
-                                    TelephoneNumber = "+93442579075"
+                                    TelephoneNumber = "+60832734272"
                                 },
                                 new
                                 {
                                     EmployeeId = 16,
                                     Email = "vladimir.stanisic@test.com",
-                                    TelephoneNumber = "+80896045327"
+                                    TelephoneNumber = "+87517958640"
                                 },
                                 new
                                 {
                                     EmployeeId = 17,
                                     Email = "jovanka.djordjevic@test.com",
-                                    TelephoneNumber = "+20668706053"
+                                    TelephoneNumber = "+89173474553"
                                 },
                                 new
                                 {
                                     EmployeeId = 18,
                                     Email = "branimir.nikolic@test.com",
-                                    TelephoneNumber = "+37508562319"
+                                    TelephoneNumber = "+64014745332"
                                 },
                                 new
                                 {
                                     EmployeeId = 19,
                                     Email = "ana.jankovic@test.com",
-                                    TelephoneNumber = "+85725371827"
+                                    TelephoneNumber = "+37721631441"
                                 },
                                 new
                                 {
                                     EmployeeId = 20,
                                     Email = "nikola.stankovic@test.com",
-                                    TelephoneNumber = "+41066185865"
+                                    TelephoneNumber = "+77350417929"
                                 },
                                 new
                                 {
                                     EmployeeId = 21,
                                     Email = "sanja.petrovic@test.com",
-                                    TelephoneNumber = "+26704385537"
+                                    TelephoneNumber = "+29301076314"
                                 },
                                 new
                                 {
                                     EmployeeId = 22,
                                     Email = "milos.jovanovic@test.com",
-                                    TelephoneNumber = "+75120038678"
+                                    TelephoneNumber = "+27956993516"
                                 },
                                 new
                                 {
                                     EmployeeId = 23,
                                     Email = "tatjana.stojanovic@test.com",
-                                    TelephoneNumber = "+52278124996"
+                                    TelephoneNumber = "+62407437551"
                                 },
                                 new
                                 {
                                     EmployeeId = 24,
                                     Email = "vladimir.stankovic@test.com",
-                                    TelephoneNumber = "+33652354147"
+                                    TelephoneNumber = "+80858414598"
                                 },
                                 new
                                 {
                                     EmployeeId = 25,
                                     Email = "ivana.jankovic@test.com",
-                                    TelephoneNumber = "+18748180509"
+                                    TelephoneNumber = "+50186495759"
                                 },
                                 new
                                 {
                                     EmployeeId = 26,
                                     Email = "nenad.petrovic@test.com",
-                                    TelephoneNumber = "+31693213756"
+                                    TelephoneNumber = "+35018239587"
                                 },
                                 new
                                 {
                                     EmployeeId = 27,
                                     Email = "milica.ilic@test.com",
-                                    TelephoneNumber = "+63987517041"
+                                    TelephoneNumber = "+42109809655"
                                 },
                                 new
                                 {
                                     EmployeeId = 28,
                                     Email = "vladan.djordjevic@test.com",
-                                    TelephoneNumber = "+88397436385"
+                                    TelephoneNumber = "+67335723643"
                                 },
                                 new
                                 {
                                     EmployeeId = 29,
                                     Email = "sara.pavlovic@test.com",
-                                    TelephoneNumber = "+99234136897"
+                                    TelephoneNumber = "+82511921550"
                                 },
                                 new
                                 {
                                     EmployeeId = 30,
                                     Email = "nemanja.stanisic@test.com",
-                                    TelephoneNumber = "+27408590625"
+                                    TelephoneNumber = "+74581499488"
                                 },
                                 new
                                 {
                                     EmployeeId = 31,
                                     Email = "ksenija.markovic@test.com",
-                                    TelephoneNumber = "+97478172683"
+                                    TelephoneNumber = "+21634910758"
                                 },
                                 new
                                 {
                                     EmployeeId = 32,
                                     Email = "milica.simeunovic@test.com",
-                                    TelephoneNumber = "+82531688782"
+                                    TelephoneNumber = "+34473672208"
                                 },
                                 new
                                 {
                                     EmployeeId = 33,
                                     Email = "petar.tomic@test.com",
-                                    TelephoneNumber = "+31579902143"
+                                    TelephoneNumber = "+15954404074"
                                 },
                                 new
                                 {
                                     EmployeeId = 34,
                                     Email = "ana.jovanovic@test.com",
-                                    TelephoneNumber = "+60282289656"
+                                    TelephoneNumber = "+52006474109"
                                 });
                         });
 
@@ -3878,20 +4226,39 @@ namespace HciMedico.Integration.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.HealthRecord", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.HealthRecord", b =>
                 {
-                    b.HasOne("HciMedico.Domain.Models.Patient", "Patient")
+                    b.HasOne("HciMedico.Domain.Models.Entities.Patient", "Patient")
                         .WithOne("HealthRecord")
-                        .HasForeignKey("HciMedico.Domain.Models.HealthRecord", "PatientId")
+                        .HasForeignKey("HciMedico.Domain.Models.Entities.HealthRecord", "PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Patient", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.MedicalReport", b =>
                 {
-                    b.OwnsOne("HciMedico.Domain.Models.Address", "Address", b1 =>
+                    b.HasOne("HciMedico.Domain.Models.Entities.Appointment", "Appointment")
+                        .WithOne("MedicalReport")
+                        .HasForeignKey("HciMedico.Domain.Models.Entities.MedicalReport", "AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HciMedico.Domain.Models.Entities.HealthRecord", "HealthRecord")
+                        .WithMany("MedicalReports")
+                        .HasForeignKey("HealthRecordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
+
+                    b.Navigation("HealthRecord");
+                });
+
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Patient", b =>
+                {
+                    b.OwnsOne("HciMedico.Domain.Models.Entities.Address", "Address", b1 =>
                         {
                             b1.Property<int>("PatientId")
                                 .HasColumnType("int");
@@ -4001,7 +4368,7 @@ namespace HciMedico.Integration.Migrations
                                 });
                         });
 
-                    b.OwnsOne("HciMedico.Domain.Models.ContactInfo", "ContactInfo", b1 =>
+                    b.OwnsOne("HciMedico.Domain.Models.Entities.ContactInfo", "ContactInfo", b1 =>
                         {
                             b1.Property<int>("PatientId")
                                 .HasColumnType("int");
@@ -4026,61 +4393,61 @@ namespace HciMedico.Integration.Migrations
                                 {
                                     PatientId = 1,
                                     Email = "boris.borisavljevic@test.com",
-                                    TelephoneNumber = "+39614585472"
+                                    TelephoneNumber = "+20414146755"
                                 },
                                 new
                                 {
                                     PatientId = 2,
                                     Email = "saska.macetic@test.com",
-                                    TelephoneNumber = "+44027294241"
+                                    TelephoneNumber = "+45649196201"
                                 },
                                 new
                                 {
                                     PatientId = 3,
                                     Email = "milos.milosevic@test.com",
-                                    TelephoneNumber = "+92054225142"
+                                    TelephoneNumber = "+78973443325"
                                 },
                                 new
                                 {
                                     PatientId = 4,
                                     Email = "ana.stanojevic@test.com",
-                                    TelephoneNumber = "+87812460578"
+                                    TelephoneNumber = "+18339997708"
                                 },
                                 new
                                 {
                                     PatientId = 5,
                                     Email = "darko.darkovic@test.com",
-                                    TelephoneNumber = "+67072816613"
+                                    TelephoneNumber = "+87872174488"
                                 },
                                 new
                                 {
                                     PatientId = 6,
                                     Email = "jovana.jovanovic@test.com",
-                                    TelephoneNumber = "+73278388544"
+                                    TelephoneNumber = "+31769233852"
                                 },
                                 new
                                 {
                                     PatientId = 7,
                                     Email = "nikola.nikolic@test.com",
-                                    TelephoneNumber = "+65528680478"
+                                    TelephoneNumber = "+84344368466"
                                 },
                                 new
                                 {
                                     PatientId = 8,
                                     Email = "david.davidovic@test.com",
-                                    TelephoneNumber = "+63430794564"
+                                    TelephoneNumber = "+77153808822"
                                 },
                                 new
                                 {
                                     PatientId = 9,
                                     Email = "stana.stanojevic@test.com",
-                                    TelephoneNumber = "+14756002178"
+                                    TelephoneNumber = "+10401369089"
                                 },
                                 new
                                 {
                                     PatientId = 10,
                                     Email = "goran.predojevic@test.com",
-                                    TelephoneNumber = "+73589372366"
+                                    TelephoneNumber = "+62823252336"
                                 });
                         });
 
@@ -4091,15 +4458,59 @@ namespace HciMedico.Integration.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.UserAccount", b =>
+                {
+                    b.HasOne("HciMedico.Domain.Models.Entities.Employee", "Employee")
+                        .WithOne("UserAccount")
+                        .HasForeignKey("HciMedico.Domain.Models.Entities.UserAccount", "EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.UserSettings", b =>
+                {
+                    b.HasOne("HciMedico.Domain.Models.Entities.UserAccount", "UserAccount")
+                        .WithOne("UserSettings")
+                        .HasForeignKey("HciMedico.Domain.Models.Entities.UserSettings", "UserAccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserAccount");
+                });
+
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.WorkSchedule", b =>
+                {
+                    b.HasOne("HciMedico.Domain.Models.Entities.Employee", "Employee")
+                        .WithOne("WorkSchedule")
+                        .HasForeignKey("HciMedico.Domain.Models.Entities.WorkSchedule", "EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.WorkShift", b =>
+                {
+                    b.HasOne("HciMedico.Domain.Models.Entities.WorkSchedule", "WorkSchedule")
+                        .WithMany("WorkShifts")
+                        .HasForeignKey("WorkScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("WorkSchedule");
+                });
+
             modelBuilder.Entity("HciMedico.Domain.Models.Relationships.HealthRecordMedicalCondition", b =>
                 {
-                    b.HasOne("HciMedico.Domain.Models.HealthRecord", "HealthRecord")
+                    b.HasOne("HciMedico.Domain.Models.Entities.HealthRecord", "HealthRecord")
                         .WithMany("HealthRecordMedicalConditions")
                         .HasForeignKey("HealthRecordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HciMedico.Domain.Models.MedicalCondition", "MedicalCondition")
+                    b.HasOne("HciMedico.Domain.Models.Entities.MedicalCondition", "MedicalCondition")
                         .WithMany("HealthRecordMedicalConditions")
                         .HasForeignKey("MedicalConditionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -4110,40 +4521,28 @@ namespace HciMedico.Integration.Migrations
                     b.Navigation("MedicalCondition");
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.UserAccount", b =>
+            modelBuilder.Entity("MedicalConditionMedicalReport", b =>
                 {
-                    b.HasOne("HciMedico.Domain.Models.Employee", "Employee")
-                        .WithOne("UserAccount")
-                        .HasForeignKey("HciMedico.Domain.Models.UserAccount", "EmployeeId")
+                    b.HasOne("HciMedico.Domain.Models.Entities.MedicalCondition", null)
+                        .WithMany()
+                        .HasForeignKey("MedicalConditionsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("HciMedico.Domain.Models.WorkSchedule", b =>
-                {
-                    b.HasOne("HciMedico.Domain.Models.Employee", "Employee")
-                        .WithOne("WorkSchedule")
-                        .HasForeignKey("HciMedico.Domain.Models.WorkSchedule", "EmployeeId")
+                    b.HasOne("HciMedico.Domain.Models.Entities.MedicalReport", null)
+                        .WithMany()
+                        .HasForeignKey("MedicalReportsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.WorkShift", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Appointment", b =>
                 {
-                    b.HasOne("HciMedico.Domain.Models.WorkSchedule", "WorkSchedule")
-                        .WithMany("WorkShifts")
-                        .HasForeignKey("WorkScheduleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.Navigation("MedicalReport")
                         .IsRequired();
-
-                    b.Navigation("WorkSchedule");
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Employee", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Employee", b =>
                 {
                     b.Navigation("UserAccount")
                         .IsRequired();
@@ -4152,19 +4551,21 @@ namespace HciMedico.Integration.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.HealthRecord", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.HealthRecord", b =>
                 {
                     b.Navigation("Appointments");
 
                     b.Navigation("HealthRecordMedicalConditions");
+
+                    b.Navigation("MedicalReports");
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.MedicalCondition", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.MedicalCondition", b =>
                 {
                     b.Navigation("HealthRecordMedicalConditions");
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Patient", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Patient", b =>
                 {
                     b.Navigation("Appointments");
 
@@ -4172,17 +4573,23 @@ namespace HciMedico.Integration.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.WorkSchedule", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.UserAccount", b =>
+                {
+                    b.Navigation("UserSettings")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.WorkSchedule", b =>
                 {
                     b.Navigation("WorkShifts");
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.CounterWorker", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.CounterWorker", b =>
                 {
                     b.Navigation("CreatedAppointments");
                 });
 
-            modelBuilder.Entity("HciMedico.Domain.Models.Doctor", b =>
+            modelBuilder.Entity("HciMedico.Domain.Models.Entities.Doctor", b =>
                 {
                     b.Navigation("AssignedAppointments");
                 });
