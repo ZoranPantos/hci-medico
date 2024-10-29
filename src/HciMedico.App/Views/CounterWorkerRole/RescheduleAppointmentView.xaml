@@ -40,28 +40,30 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ui:TextBlock Text="Assigned doctor:" Style="{StaticResource LabelTextBlockStyle}" />
+        <ui:TextBlock Text="Assigned doctor:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+        
         <ui:TextBlock x:Name="AssignedTo"
                       Grid.Column="1"
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="1"
-                      Text="Available date:"
+                      Text="Assigned date:"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
-        <DatePicker Grid.Row="2" Grid.ColumnSpan="3"
-                    x:Name="AppointmentDate"
-                    Background="White"
-                    Margin="0,0,0,10">
-            <DatePicker.CalendarStyle>
-                <Style TargetType="Calendar">
-                    <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CalendarDayButtonStyle}" />
-                </Style>
-            </DatePicker.CalendarStyle>
-        </DatePicker>
+        <ui:TextBlock x:Name="AssignedDate"
+                      Grid.Row="1" Grid.Column="1"
+                      Style="{StaticResource DataTextBlockStyle}" />
 
-        <ui:TextBlock Grid.Row="3"
-                      Text="Available time:"
+        <ui:TextBlock Text="Assigned time:"
+                      Grid.Row="2"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+        <ui:TextBlock x:Name="AssignedTime"
+                      Grid.Row="2" Grid.Column="1"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="3" Margin="0,5,0,0"
+                      Text="Select new time:"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ComboBox Grid.Row="4" Grid.ColumnSpan="3"

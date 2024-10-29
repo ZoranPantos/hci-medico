@@ -47,7 +47,8 @@ public class Bootstrapper : BootstrapperBase
             .Singleton<IHashingService, HashingService>()
             .Singleton<IAppointmentAutoCancellerService, AppointmentAutoCancellerService>()
             .Singleton<IPdfExporter, PdfExporter>()
-            .Singleton<IToastNotificationService, ToastNotificationService>();
+            .Singleton<IToastNotificationService, ToastNotificationService>()
+            .Singleton<ITimeSlotDetectionService, TimeSlotDetectionService>();
 
         var mapperConfiguration = new MapperConfiguration(configuration => configuration.AddProfile<MappingProfile>());
         var mapper = mapperConfiguration.CreateMapper();
@@ -70,8 +71,8 @@ public class Bootstrapper : BootstrapperBase
         Application.Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
         var service = _container.GetInstance<IAppointmentAutoCancellerService>();
-        await service.Start(CancellationToken.None);
 
+        await service.Start(CancellationToken.None);
         await DisplayRootViewForAsync(typeof(LoginViewModel));
     }
 

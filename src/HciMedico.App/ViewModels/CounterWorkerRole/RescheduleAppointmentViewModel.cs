@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Classes;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Integration.Data.Repositories;
@@ -12,6 +13,7 @@ public class RescheduleAppointmentViewModel : Conductor<object>
     private readonly IRepository<Appointment> _appointmentsRepository;
     private AppointmentDetailsViewModel? _parentViewModel;
     private readonly IToastNotificationService _toastNotificationService;
+    private readonly ITimeSlotDetectionService _timeSlotDetectionService;
 
     private string _assignedTo = string.Empty;
     public string AssignedTo
@@ -24,14 +26,26 @@ public class RescheduleAppointmentViewModel : Conductor<object>
         }
     }
 
-    private DateTime _appointmentDate = DateTime.Today;
-    public DateTime AppointmentDate
+    private DateTime _appointmentDate;
+    private string _assignedDate = string.Empty;
+    public string AssignedDate
     {
-        get => _appointmentDate;
+        get => _assignedDate;
         set
         {
-            _appointmentDate = value;
-            NotifyOfPropertyChange(() => AppointmentDate);
+            _assignedDate = value;
+            NotifyOfPropertyChange(() => AssignedDate);
+        }
+    }
+
+    private string _assignedTime = string.Empty;
+    public string AssignedTime
+    {
+        get => _assignedTime;
+        set
+        {
+            _assignedTime = value;
+            NotifyOfPropertyChange(() => AssignedTime);
         }
     }
 
@@ -52,29 +66,35 @@ public class RescheduleAppointmentViewModel : Conductor<object>
         Appointment? appointment,
         IRepository<Appointment> appointmentsRepository,
         AppointmentDetailsViewModel? parentViewModel,
-        IToastNotificationService toastNotificationService)
+        IToastNotificationService toastNotificationService,
+        ITimeSlotDetectionService timeSlotDetectionService)
     {
         _appointment = appointment ?? throw new ArgumentNullException(nameof(appointment));
         _appointmentsRepository = appointmentsRepository ?? throw new ArgumentNullException(nameof(appointmentsRepository));
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
         _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
+        _timeSlotDetectionService = timeSlotDetectionService ?? throw new ArgumentNullException(nameof(timeSlotDetectionService));
     }
 
-    protected override Task OnActivateAsync(CancellationToken cancellationToken)
+    protected override async Task OnActivateAsync(CancellationToken cancellationToken)
     {
         AssignedTo = _appointment!.AssignedTo.FullName;
-        AppointmentDate = _appointment.DateAndTime.Date;
+        _appointmentDate = _appointment.DateAndTime.Date;
+        AssignedDate = _appointmentDate.ToString("dd/MM/yyyy");
+        AssignedTime = _appointment.Time.ToString();
 
-        // Mock
-        // TODO: Implement processing real available times for appointments and fill the collection properly
-        AvailableTimes.Add(new TimeOnly(10, 0));
-        AvailableTimes.Add(new TimeOnly(10, 30));
-        AvailableTimes.Add(new TimeOnly(11, 0));
-        AvailableTimes.Add(new TimeOnly(17, 0));
-        AvailableTimes.Add(new TimeOnly(17, 30));
-        AvailableTimes.Add(new TimeOnly(18, 0));
+        await UpdateAvailableAppointmentTimes();
+        AppointmentTime = AvailableTimes.FirstOrDefault();
+    }
 
-        return base.OnActivateAsync(cancellationToken);
+    private async Task UpdateAvailableAppointmentTimes()
+    {
+        if (_appointment?.AssignedTo is null) return;
+
+        AvailableTimes.Clear();
+
+        var availableTimes = (await _timeSlotDetectionService.GetTimeSlotsByDate(_appointmentDate, _appointment.AssignedTo)).ToList();
+        availableTimes.ForEach(AvailableTimes.Add);
     }
 
     public bool CanReschedule(TimeOnly? appointmentTime) => appointmentTime is not null;
@@ -84,9 +104,9 @@ public class RescheduleAppointmentViewModel : Conductor<object>
         try
         {
             var newDateTime = new DateTime(
-                AppointmentDate.Year,
-                AppointmentDate.Month,
-                AppointmentDate.Day,
+                _appointmentDate.Year,
+                _appointmentDate.Month,
+                _appointmentDate.Day,
                 AppointmentTime!.Value.Hour,
                 AppointmentTime!.Value.Minute,
                 0);

@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Classes;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
@@ -14,6 +15,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
     private readonly IRepository<Appointment> _appointmentsRepository;
     private readonly IRepository<MedicalSpecialization> _medicalSpecializationsRepository;
     private readonly IToastNotificationService _toastNotificationService;
+    private readonly ITimeSlotDetectionService _timeSlotDetectionService;
     private object? _parentViewModel;
     private List<Doctor> _allDoctors = [];
 
@@ -49,6 +51,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
         {
             _selectedDoctor = value;
             NotifyOfPropertyChange(() => SelectedDoctor);
+            UpdateAvailableAppointmentTimes();
         }
     }
 
@@ -111,6 +114,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
         {
             _appointmentDate = value;
             NotifyOfPropertyChange(() => AppointmentDate);
+            UpdateAvailableAppointmentTimes();
         }
     }
 
@@ -136,6 +140,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
         IRepository<MedicalSpecialization> medicalSpecializationsRepository,
         IRepository<Appointment> appointmentsRepository,
         IToastNotificationService toastNotificationService,
+        ITimeSlotDetectionService timeSlotDetectionService,
         Patient? preselectedPatient = null)
     {
         _parentViewModel = parentViewModel ?? throw new ArgumentNullException(nameof(parentViewModel));
@@ -144,6 +149,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
         _medicalSpecializationsRepository = medicalSpecializationsRepository ?? throw new ArgumentNullException(nameof(medicalSpecializationsRepository));
         _appointmentsRepository = appointmentsRepository ?? throw new ArgumentNullException(nameof(appointmentsRepository));
         _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
+        _timeSlotDetectionService = timeSlotDetectionService ?? throw new ArgumentNullException(nameof(timeSlotDetectionService));
 
         _preselectedPatient = preselectedPatient;
     }
@@ -188,21 +194,23 @@ public class ScheduleAppointmentViewModel : Conductor<object>
 
             SelectedMedicalSpecialization = AvailableSpecializations.FirstOrDefault(spec => spec.Id == 0 && spec.Name.Equals("ALL"));
 
-            // Mock
-            // TODO: Implement processing real available times for appointments and fill the collection properly
-            AvailableTimes.Add(new TimeOnly(10, 0));
-            AvailableTimes.Add(new TimeOnly(10, 30));
-            AvailableTimes.Add(new TimeOnly(11, 0));
-            AvailableTimes.Add(new TimeOnly(17, 0));
-            AvailableTimes.Add(new TimeOnly(17, 30));
-            AvailableTimes.Add(new TimeOnly(18, 0));
-
+            await UpdateAvailableAppointmentTimes();
         }
         catch (Exception ex)
         {
             string message = $"Exception caught and rethrown in {nameof(ScheduleAppointmentViewModel)}.{nameof(OnActivateAsync)}";
             throw new MedicoException(message, ex);
         }
+    }
+
+    private async Task UpdateAvailableAppointmentTimes()
+    {
+        if (SelectedDoctor is null) return;
+
+        AvailableTimes.Clear();
+
+        var availableTimes = (await _timeSlotDetectionService.GetTimeSlotsByDate(AppointmentDate, SelectedDoctor)).ToList();
+        availableTimes.ForEach(AvailableTimes.Add);
     }
 
     private void UpdateDoctorsSource()

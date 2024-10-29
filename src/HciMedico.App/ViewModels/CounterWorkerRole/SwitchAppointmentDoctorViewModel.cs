@@ -78,7 +78,22 @@ public class SwitchAppointmentDoctorViewModel : Conductor<object>
 
             _allSpecializedDoctors = _allSpecializedDoctors.OrderBy(doctor => doctor.FullName).ToList();
 
-            _allSpecializedDoctors?.ForEach(AvailableDoctors.Add);
+            // All busy doctors should be removed from the selection
+            var appointments = await _appointmentsRepository.GetAllAsync(appointment =>
+                appointment.DateAndTime.Date == _appointment.DateAndTime.Date &&
+                (appointment.DateAndTime.TimeOfDay == _appointment.DateAndTime.TimeOfDay ||
+                appointment.DateAndTime.TimeOfDay == _appointment.DateAndTime.AddMinutes(-5).TimeOfDay ||
+                appointment.DateAndTime.TimeOfDay == _appointment.DateAndTime.AddMinutes(-10).TimeOfDay ||
+                appointment.DateAndTime.TimeOfDay == _appointment.DateAndTime.AddMinutes(-15).TimeOfDay)
+            );
+
+            var busyDoctors = appointments.Select(appointment => appointment.AssignedTo);
+
+            foreach (var doctor in _allSpecializedDoctors)
+            {
+                if (!busyDoctors.Contains(doctor) || (busyDoctors.Contains(doctor) && doctor.Id == _appointment.AssignedTo.Id))
+                    AvailableDoctors.Add(doctor);
+            }
 
             SelectedDoctor = currentlyAssignedDoctor;
 

@@ -1,0 +1,8 @@
+﻿using HciMedico.Domain.Models.Entities;
+
+namespace HciMedico.App.Services.Classes;
+
+public interface ITimeSlotDetectionService
+{
+    Task<ICollection<TimeOnly>> GetTimeSlotsByDate(DateTime appointmentDateTime, Doctor? assignedTo);
+}

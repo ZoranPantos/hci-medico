@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Classes;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.Domain.Models.Enums;
@@ -153,5 +154,5 @@ public class AppointmentDetailsViewModel : Conductor<object>
         await _windowManager.ShowDialogAsync(new SwitchAppointmentDoctorViewModel(_appointment, _appointmentsRepository, IoC.Get<IRepository<Doctor>>(), this, IoC.Get<IToastNotificationService>()));
 
     public async Task RescheduleAppointment() =>
-        await _windowManager.ShowDialogAsync(new RescheduleAppointmentViewModel(_appointment, _appointmentsRepository, this, IoC.Get<IToastNotificationService>()));
+        await _windowManager.ShowDialogAsync(new RescheduleAppointmentViewModel(_appointment, _appointmentsRepository, this, IoC.Get<IToastNotificationService>(), IoC.Get<ITimeSlotDetectionService>()));
 }

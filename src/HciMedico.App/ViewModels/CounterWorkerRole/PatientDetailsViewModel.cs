@@ -2,6 +2,7 @@
 using Caliburn.Micro;
 using HciMedico.App.Exceptions;
 using HciMedico.App.Helpers;
+using HciMedico.App.Services.Classes;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.App.Validation;
 using HciMedico.Domain.Models.Entities;
@@ -240,6 +241,7 @@ public class PatientDetailsViewModel : Conductor<object>
                 IoC.Get<IRepository<MedicalSpecialization>>(),
                 IoC.Get<IRepository<Appointment>>(),
                 IoC.Get<IToastNotificationService>(),
+                IoC.Get<ITimeSlotDetectionService>(),
                 _patient)
         );
     }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Classes;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.App.ViewModels.Shared;
 using HciMedico.Domain.Models.DisplayModels;
@@ -93,7 +94,8 @@ public class AppointmentsCounterWorkerViewModel : Conductor<object>
                 IoC.Get<IRepository<Doctor>>(),
                 IoC.Get<IRepository<MedicalSpecialization>>(),
                 IoC.Get<IRepository<Appointment>>(),
-                IoC.Get<IToastNotificationService>())
+                IoC.Get<IToastNotificationService>(),
+                IoC.Get<ITimeSlotDetectionService>())
         );
     }
 
