@@ -92,6 +92,17 @@ public class HealthRecordDetailsViewModel : Conductor<object>
         }
     }
 
+    private string _diagnosis = string.Empty;
+    public string Diagnosis
+    {
+        get => _diagnosis;
+        set
+        {
+            _diagnosis = value;
+            NotifyOfPropertyChange(() => Diagnosis);
+        }
+    }
+
     public HealthRecordDetailsViewModel(
         int id,
         HealthRecordsCounterWorkerViewModel parentViewModel,
@@ -111,10 +122,9 @@ public class HealthRecordDetailsViewModel : Conductor<object>
         try
         {
             _healthRecord = await _healthRecordsRepository
-                .FindAsync(record => record.Id == _id, false, "Patient,Appointments");
+                .FindAsync(record => record.Id == _id, false, "Patient,Appointments,HealthRecordMedicalConditions.MedicalCondition");
 
-            if (_healthRecord is null)
-                return;
+            if (_healthRecord is null) return;
 
             PatientFullName = _healthRecord.Patient.FullName;
             PatientUid = _healthRecord.Patient.Uid;
@@ -129,6 +139,17 @@ public class HealthRecordDetailsViewModel : Conductor<object>
                     .Where(appointment => appointment.Status == AppointmentStatus.Resolved)
                     .Max(appointment => appointment.DateAndTime).Date.ToString("dd/MM/yyyy") :
                 DisplayMessages.NoData;
+
+            var conditions = _healthRecord.HealthRecordMedicalConditions.Select(hrmc => new
+            {
+                ConditionName = hrmc.MedicalCondition.Name,
+                ConditionStatus = hrmc.Status.ToString()
+            }).ToList();
+
+            string diagnosis = "";
+            conditions.ForEach(condition => diagnosis += $"{condition.ConditionName} ({condition.ConditionStatus}), ");
+
+            Diagnosis = diagnosis[..^2];
         }
         catch (Exception ex)
         {

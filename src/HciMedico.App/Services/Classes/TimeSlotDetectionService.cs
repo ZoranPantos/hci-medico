@@ -11,7 +11,7 @@ public class TimeSlotDetectionService : ITimeSlotDetectionService
     public TimeSpan DefaultAppointmentDuration { get; } = new(0, minutes: 15, 0);
     public TimeSpan InBetweenAppointmentsBreak { get; } = new(0, minutes: 5, 0);
     public TimeOnly StartShift { get; } = new(8, 0);
-    public TimeOnly EndShift { get; } = new(23, 0);
+    public TimeOnly EndShift { get; } = new(23, 30);
 
     public TimeSlotDetectionService(IRepository<Appointment> appointmentRepository) =>
         _appointmentRepository = appointmentRepository ?? throw new ArgumentNullException(nameof(appointmentRepository));

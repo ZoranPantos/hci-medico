@@ -24,6 +24,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -102,14 +103,23 @@
                       x:Name="LastAppointmentDate"
                       Style="{StaticResource DataTextBlockStyle}" />
 
-        <Separator Grid.Row="10" Grid.ColumnSpan="3"
+        <ui:TextBlock Grid.Row="10"
+                      Text="Diagnosis:"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ui:TextBlock Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2"
+                      x:Name="Diagnosis"
+                      TextWrapping="Wrap"
+                      Style="{StaticResource DataTextBlockStyle}" />
+
+        <Separator Grid.Row="11" Grid.ColumnSpan="3"
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="11" Text="Reports"
+        <ui:TextBlock Grid.Row="12" Text="Reports"
                       Style="{StaticResource SubHeadingStyle}" />
 
-        <StackPanel Grid.Row="12" Grid.ColumnSpan="3" Style="{StaticResource TableStackPanelHeader}">
+        <StackPanel Grid.Row="13" Grid.ColumnSpan="3" Style="{StaticResource TableStackPanelHeader}">
             <TextBlock Text="Date and time"
                        Width="200"
                        VerticalAlignment="Center"
@@ -123,7 +133,7 @@
                        Padding="5,0,0,0" />
         </StackPanel>
 
-        <ListView x:Name="MedicalReports" SelectionMode="Single" Grid.Row="13" Grid.ColumnSpan="3">
+        <ListView x:Name="MedicalReports" SelectionMode="Single" Grid.Row="14" Grid.ColumnSpan="3">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
