@@ -66,8 +66,8 @@ public class LoginViewModel : Conductor<object>
             //TODO: Remove this after testing
             username = "marko.petrovic1";
             password = "marko.petrovic1";
-            username = "ksenija.markovic31";
-            password = "ksenija.markovic31";
+            //username = "ksenija.markovic31";
+            //password = "ksenija.markovic31";
 
             string passwordHash = _hashingService.GetHashString(password);
 

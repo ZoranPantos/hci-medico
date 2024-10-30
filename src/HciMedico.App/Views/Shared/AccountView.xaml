@@ -9,6 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
 
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
     <Grid Margin="10,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -224,4 +225,5 @@
                       x:Name="TelephoneNumber"
                       Style="{StaticResource DataTextBlockStyle}" />
     </Grid>
+    </ScrollViewer>
 </UserControl>

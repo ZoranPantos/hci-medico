@@ -112,7 +112,12 @@
                        Padding="5,0,0,0" />
         </StackPanel>
 
-        <ItemsControl x:Name="Appointments" Grid.Row="12" Grid.ColumnSpan="3">
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto"
+                      Grid.Row="12"
+                      Grid.ColumnSpan="3">
+            
+        <ItemsControl x:Name="Appointments">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -143,6 +148,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
+        </ScrollViewer>
     </Grid>
 </UserControl>

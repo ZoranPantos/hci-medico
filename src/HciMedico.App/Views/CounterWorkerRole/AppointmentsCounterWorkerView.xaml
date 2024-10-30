@@ -22,7 +22,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -81,7 +80,7 @@
                        Padding="5,0,0,0" />
         </StackPanel>
 
-        <ListView x:Name="Appointments" SelectionMode="Single" Grid.Row="5">
+        <ListView x:Name="Appointments" Grid.Row="5" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
