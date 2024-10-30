@@ -131,10 +131,15 @@
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
-                    <ui:TextBlock Text="Added conditions: " Style="{StaticResource LabelTextBlockStyle}" />
-                    <ui:TextBlock x:Name="AddedMedicalConditionDisplayModelsString" Style="{StaticResource DataTextBlockStyle}" />
-                </StackPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Horizontal">
+                        <ui:TextBlock Text="Added conditions: "
+                                      Style="{StaticResource LabelTextBlockStyle}" />
+
+                        <ui:TextBlock x:Name="AddedMedicalConditionDisplayModelsString"
+                                      Style="{StaticResource DataTextBlockStyle}" />
+                    </StackPanel>
+                </ScrollViewer>
             </StackPanel>
         </GroupBox>
 

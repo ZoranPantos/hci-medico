@@ -87,11 +87,18 @@
             </StackPanel>
         </Grid>
 
-        <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="0,0,0,15">
-            <ui:TextBlock Text="Added conditions: " Style="{StaticResource LabelTextBlockStyle}" />
-            <ui:TextBlock x:Name="AddedMedicalConditionDisplayModelsString"
+        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      Grid.Row="7"
+                      Margin="0,0,0,15">
+                      
+            <StackPanel Orientation="Horizontal">
+                <ui:TextBlock Text="Added conditions: "
+                          Style="{StaticResource LabelTextBlockStyle}" />
+
+                <ui:TextBlock x:Name="AddedMedicalConditionDisplayModelsString"
                           Style="{StaticResource DataTextBlockStyle}" />
-        </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
 
         <ui:TextBlock Grid.Row="8"
                       Text="Therapy"
