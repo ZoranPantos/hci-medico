@@ -137,8 +137,10 @@ public class HealthRecordDetailsViewModel : Conductor<object>
 
             AttendedAppointmentsCount = _healthRecord.Appointments.Where(appointment => appointment.Status == AppointmentStatus.Resolved).Count();
 
-            LastAppointmentDate = _healthRecord.Appointments.Any() ?
-                _healthRecord.Appointments.Max(appointment => appointment.DateAndTime).Date.ToString("dd/MM/yyyy") :
+            LastAppointmentDate = AttendedAppointmentsCount > 0 ?
+                _healthRecord.Appointments
+                    .Where(appointment => appointment.Status == AppointmentStatus.Resolved)
+                    .Max(appointment => appointment.DateAndTime).Date.ToString("dd/MM/yyyy") :
                 DisplayMessages.NoData;
 
             var medicalReportDtos = _mapper.Map<List<MedicalReportDisplayModel>>(_healthRecord.MedicalReports)

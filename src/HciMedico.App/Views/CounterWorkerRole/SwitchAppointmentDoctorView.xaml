@@ -33,8 +33,8 @@
                       Style="{StaticResource DataTextBlockStyle}"/>
 
         <ui:TextBlock Grid.Row="1" Text="Specialization:" Style="{StaticResource LabelTextBlockStyle}" />
-        <ui:TextBlock x:Name="Specializations"
-                      Grid.Row="1" Grid.Column="1"
+        <ui:TextBlock x:Name="Specializations" TextWrapping="Wrap"
+                      Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
                       Style="{StaticResource DataTextBlockStyle}"
                       Margin="0,0,0,10" />
 

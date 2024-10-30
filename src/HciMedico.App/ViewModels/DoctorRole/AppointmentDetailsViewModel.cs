@@ -125,7 +125,7 @@ public class AppointmentDetailsViewModel : Conductor<object>
             if (_appointment.Patient is not null)
             {
                 Requester = $"{_appointment.Patient.FirstName} {_appointment.Patient.LastName}";
-                CanCreateReport = true;
+                CanCreateReport = _appointment.Status == AppointmentStatus.Scheduled;
             }
             else
                 Requester = _appointment.IdentifierName;
