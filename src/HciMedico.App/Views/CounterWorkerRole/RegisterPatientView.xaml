@@ -33,11 +33,11 @@
                 <ui:TextBlock Text="First name"
                               Style="{StaticResource LabelTextBlockStyle}"
                               Margin="0,5,0,0" />
-                <ui:TextBox x:Name="FirstName" Margin="0,0,0,10" MaxLength="50"
+                <ui:TextBox x:Name="FirstName" Margin="0,0,0,10" MaxLength="10"
                             Background="White" />
 
                 <ui:TextBlock Text="Last name" Style="{StaticResource LabelTextBlockStyle}" />
-                <ui:TextBox x:Name="LastName" Margin="0,0,0,10" MaxLength="50"
+                <ui:TextBox x:Name="LastName" Margin="0,0,0,10" MaxLength="13"
                             Background="White" />
 
                 <ui:TextBlock Text="UID" Style="{StaticResource LabelTextBlockStyle}" />
