@@ -46,6 +46,8 @@ public partial class App : Application
         var windowManager = IoC.Get<IWindowManager>();
 
         await windowManager.ShowWindowAsync(new ErrorDisplayViewModel());
+        Console.WriteLine(originalException?.Message);
+        Console.WriteLine(originalInnerException?.InnerException?.Message);
 
         e.Handled = true;
     }
