@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
-        Title="HciMedico Login"
+        Title="{DynamicResource ResourceKey=LoginTitle}"
         Height="395" Width="400"
         Background="#D1DAED"
         WindowStartupLocation="CenterScreen"
@@ -20,11 +20,11 @@
                       FontSize="30"
                       Margin="0,0,0,30"/>
 
-        <ui:TextBlock Text="Username" Style="{StaticResource LabelTextBlockStyle}" />
+        <ui:TextBlock Text="{DynamicResource ResourceKey=UsernameLabelLogin}" Style="{StaticResource LabelTextBlockStyle}" />
         <ui:TextBox x:Name="Username" Margin="0,0,0,10"
                     Background="White" />
 
-        <ui:TextBlock Text="Password" Style="{StaticResource LabelTextBlockStyle}" />
+        <ui:TextBlock Text="{DynamicResource ResourceKey=PasswordLabelLogin}" Style="{StaticResource LabelTextBlockStyle}" />
         <ui:PasswordBox x:Name="Password" Margin="0,0,0,10"
                         Background="White" />
 
@@ -36,7 +36,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <ui:Button x:Name="Login" Content="Log in" Appearance="Primary"
+            <ui:Button x:Name="Login" Content="{DynamicResource ResourceKey=LoginButton}" Appearance="Primary"
                        Icon="{ui:SymbolIcon ArrowTurnDownRight48}" />
 
             <ui:TextBlock x:Name="ValidationMessage" Grid.Column="2" Foreground="Red"
