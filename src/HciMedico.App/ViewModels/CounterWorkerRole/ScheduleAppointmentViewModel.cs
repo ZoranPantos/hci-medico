@@ -285,7 +285,11 @@ public class ScheduleAppointmentViewModel : Conductor<object>
                 }
             });
 
-            _toastNotificationService.ShowWarning("Patient has overlapping appointment");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Patient has overlapping appointment" :
+                "Pacijent ima preklapajući termin";
+
+            _toastNotificationService.ShowWarning(toastMessage);
         }
     }
 
@@ -349,11 +353,19 @@ public class ScheduleAppointmentViewModel : Conductor<object>
                 await typedParentViewModel!.RefreshViewModel();
             }
 
-            _toastNotificationService.ShowSuccess("Appointment scheduled");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Appointment scheduled" :
+                "Pregled zakazan";
+
+            _toastNotificationService.ShowSuccess(toastMessage);
         }
         catch (Exception ex)
         {
-            _toastNotificationService.ShowError("Scheduling failed");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Scheduling failed" :
+                "Zakazivanje neuspješno";
+
+            _toastNotificationService.ShowError(toastMessage);
 
             string message = $"Exception caught and rethrown in {nameof(ScheduleAppointmentViewModel)}.{nameof(Schedule)}";
             throw new MedicoException(message, ex);

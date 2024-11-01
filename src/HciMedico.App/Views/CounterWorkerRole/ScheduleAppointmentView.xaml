@@ -6,7 +6,7 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Schedule Appointment"
+        Title="{DynamicResource ResourceKey=ScheduleAppointmentTitle}"
         Height="655" Width="400"
         Background="#D1DAED"
         ResizeMode="NoResize">
@@ -32,9 +32,9 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <GroupBox Header="Specialist selection" BorderThickness="0.5" Margin="0,0,0,5">
+        <GroupBox Header="{DynamicResource ResourceKey=SpecialistSelectionGroupHeading}" BorderThickness="0.5" Margin="0,0,0,5">
             <StackPanel>
-                <ui:TextBlock Text="Specialization filter"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=SpecializationFilterLabel}"
                               Style="{StaticResource LabelTextBlockStyle}"
                               Margin="0,5,0,0" />
                 
@@ -45,7 +45,7 @@
                           Background="White"
                           Margin="0,0,0,10" />
 
-                <ui:TextBlock Text="Select a doctor:"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=SelectDoctorLabel}"
                               Style="{StaticResource LabelTextBlockStyle}" />
                 
                 <ComboBox x:Name="SelectedDoctor"
@@ -58,9 +58,9 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Row="1" Header="Date and time selection" BorderThickness="0.5" Margin="0,0,0,5">
+        <GroupBox Grid.Row="1" Header="{DynamicResource ResourceKey=DateAndTimeSelectionGroupHeading}" BorderThickness="0.5" Margin="0,0,0,5">
             <StackPanel>
-                <ui:TextBlock Text="Select date"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=SelectDateLabel}"
                               Style="{StaticResource LabelTextBlockStyle}"
                               Margin="0,5,0,0" />
                 
@@ -73,7 +73,7 @@
                     </DatePicker.CalendarStyle>
                 </DatePicker>
 
-                <ui:TextBlock Text="Select available time"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=SelectAvailableTimeLabel}"
                               Style="{StaticResource LabelTextBlockStyle}" />
 
                 <ComboBox x:Name="AppointmentTime"
@@ -91,19 +91,19 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Row="2" Header="Requester" BorderThickness="0.5">
+        <GroupBox Grid.Row="2" Header="{DynamicResource ResourceKey=RequesterGroupHeading}" BorderThickness="0.5">
             <StackPanel>
-                <ui:TextBlock Text="Unregistered patient"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=UnregisteredPatientLabel}"
                               Style="{StaticResource LabelTextBlockStyle}"
                               Margin="0,5,0,0" />
                 
                 <ui:TextBox x:Name="RequesterIdentifier"
-                            PlaceholderText="Identifier"
+                            PlaceholderText="{DynamicResource ResourceKey=UnregisteredPatientIdentifierPlaceholder}"
                             IsEnabled="{Binding IsIdentifierBoxActive}"
                             Background="White"
                             Margin="0,0,0,10" />
 
-                <ui:TextBlock Text="Registered patient selection"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=RegisteredPatientSelectionLabel}"
                               Style="{StaticResource LabelTextBlockStyle}" />
                 
                 <ComboBox x:Name="SelectedPatient"
@@ -114,7 +114,7 @@
                           Background="White"
                           Margin="0,0,0,10" />
 
-                <ui:TextBlock Text="Appointment type"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=AppointmentTypeLabel}"
                               Style="{StaticResource LabelTextBlockStyle}" />
                 
                 <ComboBox ItemsSource="{Binding AppointmentTypeOptions}"
@@ -125,8 +125,8 @@
         </GroupBox>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal">
-            <ui:Button x:Name="Schedule" Content="Schedule" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon Save28}" />
-            <ui:Button Grid.Column="1" x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
+            <ui:Button x:Name="Schedule" Content="{DynamicResource ResourceKey=ScheduleAppointmentButton}" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon Save28}" />
+            <ui:Button Grid.Column="1" x:Name="Cancel" Content="{DynamicResource CancelScheduleAppointmentButton}" Appearance="Secondary" />
         </StackPanel>
     </Grid>
 </Window>
