@@ -16,6 +16,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -25,22 +27,22 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ui:TextBlock Text="Settings" Style="{StaticResource HeadingStyle}" />
+        <ui:TextBlock Text="{DynamicResource ResourceKey=SettingsHeading}" Style="{StaticResource HeadingStyle}" />
 
         <Separator Grid.Row="1" Grid.ColumnSpan="3"
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
         <ui:TextBlock Grid.Row="2" Grid.ColumnSpan="3" Margin="0,5,20,0"
-                      Text="Update password"
+                      Text="{DynamicResource ResourceKey=UpdatePasswordLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:Button x:Name="UpdatePassword" Grid.Row="3" Margin="0,0,0,15"
-                   Content="Update" Appearance="Secondary"
+                   Content="{DynamicResource ResourceKey=UpdatePasswordButton}" Appearance="Secondary"
                    Icon="{ui:SymbolIcon Key24}" />
 
         <ui:TextBlock Grid.Row="4" Grid.ColumnSpan="3"
-                      Text="Set landing page"
+                      Text="{DynamicResource ResourceKey=SetLandingPageLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ComboBox Grid.Row="5"
@@ -50,5 +52,17 @@
                   ItemsSource="{Binding LandingPageOptions}"
                   SelectedItem="{Binding SelectedLandingPage}"
                   cal:Message.Attach="[Event SelectionChanged] = [Action OnLandingPageSelectionChanged]" />
+
+        <ui:TextBlock Grid.Row="6" Grid.ColumnSpan="3" Margin="0,15,0,0"
+                      Text="{DynamicResource ResourceKey=SetApplicationLanguageLabel}"
+                      Style="{StaticResource LabelTextBlockStyle}" />
+
+        <ComboBox Grid.Row="7"
+                  x:Name="SetApplicationLanguage"
+                  Background="White"
+                  Width="150"
+                  ItemsSource="{Binding ApplicationLanguageOptions}"
+                  SelectedItem="{Binding SelectedApplicationLanguage}"
+                  cal:Message.Attach="[Event SelectionChanged] = [Action OnApplicationLanguageSelectionChanged]" />
     </Grid>
 </UserControl>

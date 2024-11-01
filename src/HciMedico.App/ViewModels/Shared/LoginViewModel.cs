@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using HciMedico.App.Exceptions;
+using HciMedico.App.Services.Classes;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.App.Views.Shared;
 using HciMedico.Domain.Models.Entities;
@@ -22,6 +23,8 @@ public class LoginViewModel : Conductor<object>
         _windowManager = windowManager ?? throw new ArgumentNullException(nameof(windowManager));
         _userAccountRepository = userAccountRepository ?? throw new ArgumentNullException(nameof(userAccountRepository));
         _hashingService = hashingService ?? throw new ArgumentNullException(nameof(hashingService));
+
+        LanguageManager.SetLanguage();
     }
 
     private string _username = string.Empty;
@@ -63,12 +66,6 @@ public class LoginViewModel : Conductor<object>
     {
         try
         {
-            //TODO: Remove this after testing
-            //username = "marko.petrovic1";
-            //password = "marko.petrovic1";
-            //username = "ksenija.markovic31";
-            //password = "ksenija.markovic31";
-
             string passwordHash = _hashingService.GetHashString(password);
 
             var existingUser = await _userAccountRepository
