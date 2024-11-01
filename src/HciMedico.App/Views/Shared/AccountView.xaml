@@ -46,7 +46,7 @@
         </Grid.ColumnDefinitions>
 
         <ui:TextBlock Grid.ColumnSpan="3" 
-                      Text="Account Info"
+                      Text="{DynamicResource ResourceKey=AccountInfoHeading}"
                       Style="{StaticResource HeadingStyle}" />
 
         <Separator Grid.Row="1" Grid.ColumnSpan="3"
@@ -56,11 +56,11 @@
         <!-- Account information section -->
         <ui:TextBlock Grid.Row="2"
                       Grid.ColumnSpan="3"
-                      Text="User Account details"
+                      Text="{DynamicResource ResourceKey=UserAccountDetailsSubheading}"
                       Style="{StaticResource SubHeadingStyle}" />
 
         <ui:TextBlock Grid.Row="3"
-                      Text="Username:"
+                      Text="{DynamicResource ResourceKey=UsernameLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="3" Grid.Column="1"
@@ -68,7 +68,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="4"
-                      Text="Role:"
+                      Text="{DynamicResource ResourceKey=RoleLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="4" Grid.Column="1"
@@ -76,7 +76,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="5"
-                      Text="Password last updated:"
+                      Text="{DynamicResource ResourceKey=PasswordLastUpdatedLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="5" Grid.Column="1"
@@ -89,11 +89,11 @@
 
         <!-- Employee section -->
         <ui:TextBlock Grid.Row="7"
-                      Text="Employee details"
+                      Text="{DynamicResource ResourceKey=EmployeeDetailsSubheading}"
                       Style="{StaticResource SubHeadingStyle}" />
 
         <ui:TextBlock Grid.Row="8"
-                      Text="First name:"
+                      Text="{DynamicResource ResourceKey=FirstNameLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="8" Grid.Column="1"
@@ -101,7 +101,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="9"
-                      Text="Last name:"
+                      Text="{DynamicResource ResourceKey=LastNameLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="9" Grid.Column="1"
@@ -109,7 +109,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="10"
-                      Text="UID:"
+                      Text="{DynamicResource ResourceKey=UidLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="10" Grid.Column="1"
@@ -117,7 +117,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="11"
-                      Text="Gender:"
+                      Text="{DynamicResource ResourceKey=GenderLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="11" Grid.Column="1"
@@ -125,7 +125,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="12"
-                      Text="Date of birth:"
+                      Text="{DynamicResource ResourceKey=DateOfBirthLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="12" Grid.Column="1"
@@ -134,7 +134,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="13"
-                      Text="Education:"
+                      Text="{DynamicResource ResourceKey=EducationLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ui:TextBlock Grid.Row="13" Grid.Column="1"
@@ -152,7 +152,7 @@
                       Height="{Binding SpecializationsRowHeight, Mode=OneWay}" />
 
         <ui:TextBlock Grid.Row="15"
-                      Text="Employed since:"
+                      Text="{DynamicResource ResourceKey=EmployedSinceLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="15" Grid.Column="1"
@@ -161,7 +161,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="16"
-                      Text="Current salary:"
+                      Text="{DynamicResource ResourceKey=CurrentSalaryLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="16" Grid.Column="1"
@@ -174,11 +174,11 @@
 
         <!-- Address and contact section-->
         <ui:TextBlock Grid.Row="18"
-                      Text="Address and Contact"
+                      Text="{DynamicResource ResourceKey=AddressAndContactSubheading}"
                       Style="{StaticResource SubHeadingStyle}" />
 
         <ui:TextBlock Grid.Row="19"
-                      Text="Country:"
+                      Text="{DynamicResource ResourceKey=CountryLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="19" Grid.Column="1"
@@ -186,7 +186,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="20"
-                      Text="City:"
+                      Text="{DynamicResource ResourceKey=CityLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="20" Grid.Column="1"
@@ -194,7 +194,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="21"
-                      Text="Street:"
+                      Text="{DynamicResource ResourceKey=StreetLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="21" Grid.Column="1"
@@ -202,7 +202,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="22"
-                      Text="Number:"
+                      Text="{DynamicResource ResourceKey=NumberLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="22" Grid.Column="1"
@@ -210,7 +210,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="23"
-                      Text="Email:"
+                      Text="{DynamicResource ResourceKey=EmailLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="23" Grid.Column="1"
@@ -218,7 +218,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="24"
-                      Text="Telephone number:"
+                      Text="{DynamicResource ResourceKey=TelephoneNumberLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="24" Grid.Column="1"

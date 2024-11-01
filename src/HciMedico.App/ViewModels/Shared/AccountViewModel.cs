@@ -2,6 +2,7 @@
 using HciMedico.App.Exceptions;
 using HciMedico.App.Helpers;
 using HciMedico.Domain.Models.Entities;
+using HciMedico.Domain.Models.Enums;
 
 namespace HciMedico.App.ViewModels.Shared;
 
@@ -277,7 +278,10 @@ public class AccountViewModel : Conductor<object>
                 doctor.Specializations.ToList()
                     .ForEach(specialization => specializationsStr += $"{specialization.Name}, ");
 
-                SpecializationsLabel = "Specializations:";
+                SpecializationsLabel = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                    "Specializations:" :
+                    "Specijalizacije:";
+
                 Specializations = specializationsStr.Trim()[..^1];
             }
         }
