@@ -42,4 +42,8 @@
     <Resource Include="Resources\Icons\heart_with_pulse.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
 </Project>

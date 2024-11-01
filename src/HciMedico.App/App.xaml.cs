@@ -31,13 +31,15 @@ public partial class App : Application
 
     private async void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
+        var mainException = e.Exception;
         var originalException = e.Exception.InnerException;
         var originalInnerException = e.Exception.InnerException?.InnerException;
 
+        string mainExceptionMessage = mainException.Message;
         string firstInnerMessage = originalException is not null ? $"Location: {originalException.Message}" : string.Empty;
         string secondInnerMessage = originalInnerException is not null ? $"Message: {originalInnerException.Message}" : string.Empty;
 
-        string composedExceptionMessage = $"{firstInnerMessage}{Environment.NewLine}{secondInnerMessage}";
+        string composedExceptionMessage = $"{mainExceptionMessage}{Environment.NewLine}{firstInnerMessage}{Environment.NewLine}{secondInnerMessage}";
         string logMessage = $"{Environment.NewLine}{composedExceptionMessage}{Environment.NewLine}";
 
         _logger = _loggerFactory.CreateLogger<App>();
