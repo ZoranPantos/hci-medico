@@ -32,8 +32,13 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
-            <ui:Button x:Name="NavigateBack" Content="Back" Margin="0,0,5,0" Icon="{ui:SymbolIcon IosArrowLtr24}" />
-            <ui:TextBlock Text="Appointment Details" Style="{StaticResource HeadingStyle}" />
+            <ui:Button x:Name="NavigateBack"
+                       Content="{DynamicResource ResourceKey=BackButton}"
+                       Margin="0,0,5,0"
+                       Icon="{ui:SymbolIcon IosArrowLtr24}" />
+
+            <ui:TextBlock Text="{DynamicResource ResourceKey=AppointmentDetailsHeading}"
+                          Style="{StaticResource HeadingStyle}" />
         </StackPanel>
 
         <Separator Grid.Row="1" Grid.ColumnSpan="3"
@@ -41,20 +46,32 @@
                    Margin="0,5,0,0" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,5,0,0" Grid.ColumnSpan="3">
-            <ui:Button x:Name="RescheduleAppointment" Content="Reschedule" Margin="0,0,5,0" Icon="{ui:SymbolIcon CalendarEdit24}" IsEnabled="{Binding CanRescheduleAppointment}" />
-            <ui:Button x:Name="SwitchDoctor" Content="Switch doctor" Margin="0,0,5,0" Icon="{ui:SymbolIcon PersonLink28}" IsEnabled="{Binding CanSwitchDoctor}" />
-            <ui:Button x:Name="UpdateStatus" Content="Update status" Icon="{ui:SymbolIcon Edit28}" />
+            <ui:Button x:Name="RescheduleAppointment"
+                       Content="{DynamicResource ResourceKey=RescheduleTimeButton}"
+                       Margin="0,0,5,0"
+                       Icon="{ui:SymbolIcon CalendarEdit24}"
+                       IsEnabled="{Binding CanRescheduleAppointment}" />
+            
+            <ui:Button x:Name="SwitchDoctor"
+                       Content="{DynamicResource ResourceKey=SwitchDoctorButton}"
+                       Margin="0,0,5,0"
+                       Icon="{ui:SymbolIcon PersonLink28}"
+                       IsEnabled="{Binding CanSwitchDoctor}" />
+            
+            <ui:Button x:Name="UpdateStatus"
+                       Content="{DynamicResource ResourceKey=UpdateStatusButton}"
+                       Icon="{ui:SymbolIcon Edit28}" />
         </StackPanel>
 
         <Separator Grid.Row="3" Grid.ColumnSpan="3"
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="4" Text="General Info"
+        <ui:TextBlock Grid.Row="4" Text="{DynamicResource ResourceKey=GeneralInfoSubheading}"
                       Style="{StaticResource SubHeadingStyle}" />
 
         <ui:TextBlock Grid.Row="5" 
-                      Text="Scheduled for:"
+                      Text="{DynamicResource ResourceKey=ScheduledForLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="5" Grid.Column="1"
@@ -63,7 +80,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="6" 
-                      Text="Assigned to:"
+                      Text="{DynamicResource ResourceKey=AssignedToLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="6" Grid.Column="1"
@@ -71,7 +88,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="7" 
-                      Text="Appointment type:"
+                      Text="{DynamicResource ResourceKey=AppointmentTypeLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="7" Grid.Column="1"
@@ -79,7 +96,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="8" 
-                      Text="Appointment status:"
+                      Text="{DynamicResource ResourceKey=AppointmentStatusLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="8" Grid.Column="1"
@@ -87,7 +104,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="9" 
-                      Text="Requester:"
+                      Text="{DynamicResource ResourceKey=RequesterLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="9" Grid.Column="1"
@@ -95,7 +112,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="10" 
-                      Text="Created by:"
+                      Text="{DynamicResource ResourceKey=CreatedByLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="10" Grid.Column="1"
@@ -103,7 +120,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="11" 
-                      Text="Creation time:"
+                      Text="{DynamicResource ResourceKey=CreationTimeLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="11" Grid.Column="1"
