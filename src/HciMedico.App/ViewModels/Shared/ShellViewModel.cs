@@ -9,6 +9,7 @@ using AutoMapper;
 using HciMedico.App.ViewModels.CounterWorkerRole;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
+using HciMedico.App.Services.Classes;
 
 namespace HciMedico.App.ViewModels.Shared;
 
@@ -38,6 +39,8 @@ public class ShellViewModel : Conductor<object>
     protected override Task OnActivateAsync(CancellationToken cancellationToken)
     {
         ((ShellView)GetView()).Closing += ShellView_OnClosing;
+
+        LanguageManager.SetLanguage(UserContext.CurrentUser?.UserSettings.ApplicationLanguage);
 
         switch (_page)
         {

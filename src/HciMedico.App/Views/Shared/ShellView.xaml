@@ -24,7 +24,7 @@
             </Grid.RowDefinitions>
 
             <ui:Button x:Name="NavigateToAppointments"
-                       Content="Appointments"
+                       Content="{DynamicResource ResourceKey=MenuAppointments}"
                        Icon="{ui:SymbolIcon ShiftsCheckmark20}"
                        CornerRadius="0"
                        FontSize="20"
@@ -39,7 +39,7 @@
 
             <ui:Button x:Name="NavigateToPatients"
                        Grid.Row="1"
-                       Content="Patients"
+                       Content="{DynamicResource ResourceKey=MenuPatients}"
                        Icon="{ui:SymbolIcon PeopleCommunity28}"
                        CornerRadius="0"
                        FontSize="20"
@@ -54,7 +54,7 @@
 
             <ui:Button x:Name="NavigateToHealthRecords"
                        Grid.Row="2"
-                       Content="Health Records"
+                       Content="{DynamicResource ResourceKey=MenuHealthRecords}"
                        Icon="{ui:SymbolIcon DocumentHeart20}"
                        CornerRadius="0"
                        FontSize="20"
@@ -69,7 +69,7 @@
             
             <ui:Button x:Name="NavigateToWorkSchedule"
                        Grid.Row="3"
-                       Content="Work Schedule"
+                       Content="{DynamicResource ResourceKey=MenuWorkSchedule}"
                        Icon="{ui:SymbolIcon CalendarRtl28}"
                        CornerRadius="0"
                        FontSize="20"
@@ -84,7 +84,7 @@
             
             <ui:Button x:Name="NavigateToMyAccount"
                        Grid.Row="4"
-                       Content="Account Info"
+                       Content="{DynamicResource ResourceKey=MenuAccountInfo}"
                        Icon="{ui:SymbolIcon PersonAccounts20}"
                        CornerRadius="0"
                        FontSize="20"
@@ -99,7 +99,7 @@
             
             <ui:Button x:Name="NavigateToSettings"
                        Grid.Row="5"
-                       Content="Settings"
+                       Content="{DynamicResource ResourceKey=MenuSettings}"
                        Icon="{ui:SymbolIcon Settings28}"
                        CornerRadius="0"
                        FontSize="20"
@@ -115,7 +115,7 @@
 
             <ui:Button x:Name="Logout"
                        Grid.Row="6"
-                       Content="Logout"
+                       Content="{DynamicResource ResourceKey=MenuLogout}"
                        Icon="{ui:SymbolIcon ArrowReset24}"
                        CornerRadius="0"
                        FontSize="20"
