@@ -27,7 +27,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ui:TextBlock Text="Work Schedule" Style="{StaticResource HeadingStyle}" />
+            <ui:TextBlock Text="{DynamicResource ResourceKey=WorkScheduleHeading}" Style="{StaticResource HeadingStyle}" />
 
             <Separator Grid.Row="1"
                        Style="{StaticResource SeparatorStyle}"
@@ -59,25 +59,25 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Width="120" Text="Monday" Background="#92A5FD" FontSize="15"
+            <TextBlock Grid.Column="0" Width="120" Text="{DynamicResource ResourceKey=MondalyLabel}" Background="#92A5FD" FontSize="15"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="1" Width="120" Text="Tuesday" Background="#92A5FD" FontSize="15"
+            <TextBlock Grid.Column="1" Width="120" Text="{DynamicResource ResourceKey=TuesdayLabel}" Background="#92A5FD" FontSize="15"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="2" Width="120" Text="Wednesday" Background="#92A5FD" FontSize="15"
+            <TextBlock Grid.Column="2" Width="120" Text="{DynamicResource ResourceKey=WednesdayLabel}" Background="#92A5FD" FontSize="15"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="3" Width="120" Text="Thursday" Background="#92A5FD" FontSize="15"
+            <TextBlock Grid.Column="3" Width="120" Text="{DynamicResource ResourceKey=ThursdayLabel}" Background="#92A5FD" FontSize="15"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="4" Width="120" Text="Friday" Background="#92A5FD" FontSize="15"
+            <TextBlock Grid.Column="4" Width="120" Text="{DynamicResource ResourceKey=FridayLabel}" Background="#92A5FD" FontSize="15"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="5" Width="120" Text="Saturday" Background="#92A5FD" FontSize="15"
+            <TextBlock Grid.Column="5" Width="120" Text="{DynamicResource ResourceKey=SaturdayLabel}" Background="#92A5FD" FontSize="15"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-            <TextBlock Grid.Column="6" Width="120" Text="Sunday" Background="#92A5FD" FontSize="15"
+            <TextBlock Grid.Column="6" Width="120" Text="{DynamicResource ResourceKey=SundayLabel}" Background="#92A5FD" FontSize="15"
                        TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
             <ItemsControl x:Name="ScheduleCellDisplayModels" Grid.Row="1" Grid.ColumnSpan="7">
@@ -132,10 +132,10 @@
         </Grid>
 
         <StackPanel Grid.Row="2" Margin="0,10" Orientation="Horizontal">
-            <ui:TextBlock Text="Completed shifts this month: " Style="{StaticResource LabelCalendarFooterTextBlockStyle}" />
+            <ui:TextBlock Text="{DynamicResource ResourceKey=CompletedShiftsMonthlyLabel}" Style="{StaticResource LabelCalendarFooterTextBlockStyle}" />
             <ui:TextBlock x:Name="CompletedShiftsMonth" Style="{StaticResource DataCalendarFooterTextBlockStyle}" />
 
-            <ui:TextBlock Text="Completed shifts this year: " Style="{StaticResource LabelCalendarFooterTextBlockStyle}" />
+            <ui:TextBlock Text="{DynamicResource ResourceKey=CompletedShiftsYearlyLabel}" Style="{StaticResource LabelCalendarFooterTextBlockStyle}" />
             <ui:TextBlock x:Name="CompletedShiftsYear" Style="{StaticResource DataCalendarFooterTextBlockStyle}" />
         </StackPanel>
     </Grid>

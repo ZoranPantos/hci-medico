@@ -1,4 +1,5 @@
 ﻿using HciMedico.Domain.Models.DisplayModels;
+using HciMedico.Domain.Models.Enums;
 using System.Globalization;
 using System.Windows.Data;
 
@@ -13,15 +14,15 @@ public class CalendarCellShiftLabelConverter : IValueConverter
             string parameterStringValue = parameter.ToString() ?? string.Empty;
 
             if (parameterStringValue.Equals("StartTime"))
-                return "Start time: ";
+                return UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ? "Start time: " : "Početak: ";
 
             if (parameterStringValue.Equals("EndTime"))
-                return "End time: ";
+                return UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ? "End time: " : "Kraj: ";
         }
 
         return string.Empty;
     }
-
+    
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
         throw new NotImplementedException();
 }
