@@ -2,6 +2,7 @@
 using HciMedico.App.Exceptions;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
+using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
 
 namespace HciMedico.App.ViewModels.Shared;
@@ -10,6 +11,10 @@ public class UpdatePasswordViewModel : Conductor<object>
 {
     private readonly IHashingService _hashingService;
     private readonly IToastNotificationService _toastNotificationService;
+
+    public string Note => UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+        "Password length must be at least 6 and at most 20 characters" :
+        "Dužina lozinke mora biti najmanje 6 i najviše 20 karaktera";
 
     private string _oldPassword = string.Empty;
     public string OldPassword
@@ -75,19 +80,28 @@ public class UpdatePasswordViewModel : Conductor<object>
 
             if (!oldPasswordHash.Equals(currentPasswordHash))
             {
-                ValidationMessage = "Incorrect old password";
+                ValidationMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                    "Incorrect old password" :
+                    "Neispravna stara lozinka";
+
                 return;
             }
 
             if (!confirmedNewPassword.Equals(newPassword))
             {
-                ValidationMessage = "Confirmed password does not match initial password";
+                ValidationMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                    "Confirmed password does not match initial password" :
+                    "Potvrđena lozinka ne odgovara inicijalnoj lozinci";
+
                 return;
             }
 
             if (newPassword.Length < 6 || newPassword.Length > 20)
             {
-                ValidationMessage = "New password does not respect intended length range";
+                ValidationMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                    "New password does not respect intended length range" :
+                    "Nova lozinka ne poštuje pravila za dužinu";
+
                 return;
             }
 
@@ -95,11 +109,13 @@ public class UpdatePasswordViewModel : Conductor<object>
 
             if (newPasswordHash.Equals(currentPasswordHash))
             {
-                ValidationMessage = "This password is already in use";
+                ValidationMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                    "This password is already in use" :
+                    "Lozinka je već u upotrebi";
+
                 return;
             }
 
-            //TODO: Consider moving this to constructor injection
             var userAccountRepository = IoC.Get<IRepository<UserAccount>>();
 
             var currentUserAccount = await userAccountRepository.GetByIdAsync(UserContext.CurrentUser.Id) ??
@@ -114,12 +130,23 @@ public class UpdatePasswordViewModel : Conductor<object>
 
             await TryCloseAsync();
 
-            _toastNotificationService.ShowSuccess("Password updated");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Password updated" :
+                "Lozinka ažurirana";
+
+            _toastNotificationService.ShowSuccess(toastMessage);
         }
         catch (Exception ex)
         {
-            ValidationMessage = "Failed to update password";
-            _toastNotificationService.ShowError("Update failed");
+            ValidationMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Failed to update password" :
+                "Ažuriranje lozinke neuspješno";
+
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Update failed" :
+                "Ažuriranje neuspješno";
+
+            _toastNotificationService.ShowError(toastMessage);
 
             string message = $"Exception caught and rethrown in {nameof(UpdatePasswordViewModel)}.{nameof(Save)}";
             throw new MedicoException(message, ex);
