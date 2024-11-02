@@ -132,11 +132,19 @@
         </Grid>
 
         <StackPanel Grid.Row="2" Margin="0,10" Orientation="Horizontal">
-            <ui:TextBlock Text="{DynamicResource ResourceKey=CompletedShiftsMonthlyLabel}" Style="{StaticResource LabelCalendarFooterTextBlockStyle}" />
-            <ui:TextBlock x:Name="CompletedShiftsMonth" Style="{StaticResource DataCalendarFooterTextBlockStyle}" />
+            <ui:TextBlock Text="{DynamicResource ResourceKey=CompletedShiftsMonthlyLabel}"
+                          Style="{StaticResource LabelCalendarFooterTextBlockStyle}"
+                          Margin="0,0,5,0" />
+            
+            <ui:TextBlock x:Name="CompletedShiftsMonth"
+                          Style="{StaticResource DataCalendarFooterTextBlockStyle}" />
 
-            <ui:TextBlock Text="{DynamicResource ResourceKey=CompletedShiftsYearlyLabel}" Style="{StaticResource LabelCalendarFooterTextBlockStyle}" />
-            <ui:TextBlock x:Name="CompletedShiftsYear" Style="{StaticResource DataCalendarFooterTextBlockStyle}" />
+            <ui:TextBlock Text="{DynamicResource ResourceKey=CompletedShiftsYearlyLabel}"
+                          Style="{StaticResource LabelCalendarFooterTextBlockStyle}"
+                          Margin="0,0,5,0" />
+            
+            <ui:TextBlock x:Name="CompletedShiftsYear"
+                          Style="{StaticResource DataCalendarFooterTextBlockStyle}" />
         </StackPanel>
     </Grid>
 </UserControl>
