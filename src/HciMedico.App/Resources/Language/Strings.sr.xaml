@@ -108,4 +108,30 @@
     <sys:String x:Key="RequesterLabel">Podnosilac zahtjeva:</sys:String>
     <sys:String x:Key="CreatedByLabel">Kreiran od:</sys:String>
     <sys:String x:Key="CreationTimeLabel">Vrijeme kreiranja:</sys:String>
+
+    <!-- Reschedule appointment time -->
+    <sys:String x:Key="RescheduleTimeTitle">Promijeni Vrijeme Pregleda</sys:String>
+    <sys:String x:Key="AssignedDoctorLabel">Ciljni doktor:</sys:String>
+    <sys:String x:Key="AssignedDateLabel">Zakazan za datum:</sys:String>
+    <sys:String x:Key="AssignedTimeLabel">Zakazan za vrijeme:</sys:String>
+    <sys:String x:Key="SelectNewTimeLabel">Izaberi novo vrijeme:</sys:String>
+    <sys:String x:Key="RescheduleButton">Promijeni</sys:String>
+    <sys:String x:Key="CancelButton">Otkaži</sys:String>
+
+    <!-- Switch doctor -->
+    <sys:String x:Key="SwitchDoctorTitle">Zamijeni Doktora</sys:String>
+    <sys:String x:Key="ScheduledForDateTimeLabel">Zakazan za:</sys:String>
+    <sys:String x:Key="SpecializationLabel">Specijalizacija:</sys:String>
+    <sys:String x:Key="AvailableDoctorsLabel">Dostupni doktori:</sys:String>
+    <sys:String x:Key="AssignButton">Promijeni</sys:String>
+    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
+
+    <!-- Appointment status update -->
+    <sys:String x:Key="AppointmentStatusUpdateTitle">Ažuriranje Statusa Pregleda</sys:String>
+    <sys:String x:Key="ThisAppointmentIsLabel">Ovaj pregled je:</sys:String>
+    <sys:String x:Key="ResolvedOption">Razriješen</sys:String>
+    <sys:String x:Key="CancelledOption">Otkazan</sys:String>
+    <sys:String x:Key="ScheduledOption">Zakazan</sys:String>
+    <sys:String x:Key="UpdateButton">Ažuriraj</sys:String>
+    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
 </ResourceDictionary>

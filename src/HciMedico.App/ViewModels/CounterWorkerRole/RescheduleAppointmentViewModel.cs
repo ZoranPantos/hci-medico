@@ -3,6 +3,7 @@ using HciMedico.App.Exceptions;
 using HciMedico.App.Services.Classes;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
+using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
@@ -119,11 +120,19 @@ public class RescheduleAppointmentViewModel : Conductor<object>
 
             await _parentViewModel!.RefreshViewModel();
 
-            _toastNotificationService.ShowSuccess("Appointment rescheduled");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Appointment time rescheduled" :
+                "Vrijeme pregleda promijenjeno";
+
+            _toastNotificationService.ShowSuccess(toastMessage);
         }
         catch (Exception ex)
         {
-            _toastNotificationService.ShowError("Rescheduling failed");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Rescheduling failed" :
+                "Promjena neuspješna";
+
+            _toastNotificationService.ShowError(toastMessage);
 
             string message = $"Exception caught and rethrown in {nameof(RescheduleAppointmentViewModel)}.{nameof(Reschedule)}";
             throw new MedicoException(message, ex);

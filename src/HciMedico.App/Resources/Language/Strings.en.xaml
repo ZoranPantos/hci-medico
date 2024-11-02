@@ -108,4 +108,30 @@
     <sys:String x:Key="RequesterLabel">Requester:</sys:String>
     <sys:String x:Key="CreatedByLabel">Created by:</sys:String>
     <sys:String x:Key="CreationTimeLabel">Creation time:</sys:String>
+    
+    <!-- Reschedule appointment time -->
+    <sys:String x:Key="RescheduleTimeTitle">Reschedule Appointment Time</sys:String>
+    <sys:String x:Key="AssignedDoctorLabel">Assigned doctor:</sys:String>
+    <sys:String x:Key="AssignedDateLabel">Assigned date:</sys:String>
+    <sys:String x:Key="AssignedTimeLabel">Assigned time:</sys:String>
+    <sys:String x:Key="SelectNewTimeLabel">Select new time:</sys:String>
+    <sys:String x:Key="RescheduleButton">Reschedule</sys:String>
+    <sys:String x:Key="CancelButton">Cancel</sys:String>
+    
+    <!-- Switch doctor -->
+    <sys:String x:Key="SwitchDoctorTitle">Switch Doctor</sys:String>
+    <sys:String x:Key="ScheduledForDateTimeLabel">Scheduled for:</sys:String>
+    <sys:String x:Key="SpecializationLabel">Specialization:</sys:String>
+    <sys:String x:Key="AvailableDoctorsLabel">Available doctors:</sys:String>
+    <sys:String x:Key="AssignButton">Assign</sys:String>
+    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
+    
+    <!-- Appointment status update -->
+    <sys:String x:Key="AppointmentStatusUpdateTitle">Appointment Status Update</sys:String>
+    <sys:String x:Key="ThisAppointmentIsLabel">This appointment is:</sys:String>
+    <sys:String x:Key="ResolvedOption">Resolved</sys:String>
+    <sys:String x:Key="CancelledOption">Cancelled</sys:String>
+    <sys:String x:Key="ScheduledOption">Scheduled</sys:String>
+    <sys:String x:Key="UpdateButton">Update</sys:String>
+    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
 </ResourceDictionary>
