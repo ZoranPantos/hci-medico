@@ -2,6 +2,7 @@
 using HciMedico.App.Exceptions;
 using HciMedico.App.Services.Interfaces;
 using HciMedico.Domain.Models.Entities;
+using HciMedico.Domain.Models.Enums;
 using HciMedico.Integration.Data.Repositories;
 
 namespace HciMedico.App.ViewModels.CounterWorkerRole;
@@ -129,11 +130,19 @@ public class SwitchAppointmentDoctorViewModel : Conductor<object>
 
             await _parentViewModel!.RefreshViewModel();
 
-            _toastNotificationService.ShowSuccess("Doctor assigned");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Doctor assigned" :
+                "Doktor zamijenjen";
+
+            _toastNotificationService.ShowSuccess(toastMessage);
         }
         catch (Exception ex)
         {
-            _toastNotificationService.ShowError("Assign failed");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Assign failed" :
+                "Zamjena neuspješna";
+
+            _toastNotificationService.ShowError(toastMessage);
 
             string message = $"Exception caught and rethrown in {nameof(SwitchAppointmentDoctorViewModel)}.{nameof(Save)}";
             throw new MedicoException(message, ex);

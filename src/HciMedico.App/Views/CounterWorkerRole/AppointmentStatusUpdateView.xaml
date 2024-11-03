@@ -8,7 +8,7 @@
         xmlns:counterworkerrole="clr-namespace:HciMedico.App.ViewModels.CounterWorkerRole"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Appointment Status Update"
+        Title="{DynamicResource ResourceKey=AppointmentStatusUpdateTitle}"
         Background="#D1DAED"
         Height="300" Width="350"
         ResizeMode="NoResize">
@@ -25,27 +25,32 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ui:TextBlock Text="This appointment is:"
+        <ui:TextBlock Text="{DynamicResource ResourceKey=ThisAppointmentIsLabel}"
                       Style="{StaticResource LabelTextBlockStyle}"
                       Margin="0,0,0,10" />
 
         <StackPanel Grid.Row="1">
-            <RadioButton Content="Resolved"
+            <RadioButton Content="{DynamicResource ResourceKey=ResolvedOption}"
                          IsChecked="{Binding SelectedStatus, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Resolved}"
                          IsEnabled="{Binding IsPastAppointment}" />
-            
-            <RadioButton Content="Cancelled"
+
+            <RadioButton Content="{DynamicResource ResourceKey=CancelledOption}"
                          IsChecked="{Binding SelectedStatus, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Cancelled}" />
-            
-            <RadioButton Content="Scheduled"
+
+            <RadioButton Content="{DynamicResource ResourceKey=ScheduledOption}"
                          IsChecked="{Binding SelectedStatus, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Scheduled}" />
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <ui:Button x:Name="Update" Content="Update" Appearance="Primary"
-                       Margin="0,0,10,0" Icon="{ui:SymbolIcon SaveEdit24}" />
+            <ui:Button x:Name="Update"
+                       Content="{DynamicResource ResourceKey=UpdateButton}"
+                       Appearance="Primary"
+                       Margin="0,0,10,0"
+                       Icon="{ui:SymbolIcon SaveEdit24}" />
             
-            <ui:Button x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
+            <ui:Button x:Name="Cancel"
+                       Content="{DynamicResource ResourceKey=CancelButton}"
+                       Appearance="Secondary" />
         </StackPanel>
     </Grid>
 </Window>

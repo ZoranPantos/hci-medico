@@ -61,11 +61,19 @@ public class AppointmentStatusUpdateViewModel : Conductor<object>
 
             await _parentViewModel!.RefreshViewModel();
 
-            _toastNotificationService.ShowSuccess("Status updated");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Status updated" :
+                "Status ažuriran";
+
+            _toastNotificationService.ShowSuccess(toastMessage);
         }
         catch (Exception ex)
         {
-            _toastNotificationService.ShowError("Status update failed");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Status update failed" :
+                "Ažuriranje neuspješno";
+
+            _toastNotificationService.ShowError(toastMessage);
 
             string message = $"Exception caught and rethrown in {nameof(AppointmentStatusUpdateViewModel)}.{nameof(Update)}";
             throw new MedicoException(message, ex);
