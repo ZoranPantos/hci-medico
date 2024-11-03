@@ -134,4 +134,12 @@
     <sys:String x:Key="ScheduledOption">Zakazan</sys:String>
     <sys:String x:Key="UpdateButton">Ažuriraj</sys:String>
     <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
+
+    <!-- Patients CounterWorker -->
+    <sys:String x:Key="RegisteredPatientsHeading">Registrovani Pacijenti</sys:String>
+    <sys:String x:Key="SearchByNamePlaceholder">Pretraži po imenu...</sys:String>
+    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
+    <sys:String x:Key="RegisterNewPatientButton">Registruj novog pacijenta</sys:String>
+    <sys:String x:Key="FullNameColumn">Puno ime</sys:String>
+    <sys:String x:Key="LastVisitColumn">Posljednja posjeta</sys:String>
 </ResourceDictionary>

@@ -134,4 +134,12 @@
     <sys:String x:Key="ScheduledOption">Scheduled</sys:String>
     <sys:String x:Key="UpdateButton">Update</sys:String>
     <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
+    
+    <!-- Patients CounterWorker -->
+    <sys:String x:Key="RegisteredPatientsHeading">Registered Patients</sys:String>
+    <sys:String x:Key="SearchByNamePlaceholder">Search by name...</sys:String>
+    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
+    <sys:String x:Key="RegisterNewPatientButton">Register new patient</sys:String>
+    <sys:String x:Key="FullNameColumn">Full name</sys:String>
+    <sys:String x:Key="LastVisitColumn">Last visit</sys:String>
 </ResourceDictionary>
