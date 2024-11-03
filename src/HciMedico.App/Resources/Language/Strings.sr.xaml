@@ -142,4 +142,33 @@
     <sys:String x:Key="RegisterNewPatientButton">Registruj novog pacijenta</sys:String>
     <sys:String x:Key="FullNameColumn">Puno ime</sys:String>
     <sys:String x:Key="LastVisitColumn">Posljednja posjeta</sys:String>
+
+    <!-- Register new patient -->
+    <sys:String x:Key="RegisterPatientTitle">Registracija Pacijenta</sys:String>
+    <sys:String x:Key="BasicInfoGroupHeading">Osnovne Informacije</sys:String>
+    <sys:String x:Key="FirstNameLabel1">Ime</sys:String>
+    <sys:String x:Key="LastNameLabel1">Prezime</sys:String>
+    <sys:String x:Key="UidLabel1">JMB</sys:String>
+    <sys:String x:Key="GenderLabel1">Pol</sys:String>
+    <sys:String x:Key="DateOfBirthLabel1">Datum rođenja</sys:String>
+    <sys:String x:Key="AddressGroupHeading">Adresa</sys:String>
+    <sys:String x:Key="CountryLabel1">Država</sys:String>
+    <sys:String x:Key="CityLabel2">Grad</sys:String>
+    <sys:String x:Key="StreetLabel2">Ulica</sys:String>
+    <sys:String x:Key="StreetNumberLabel1">Ulični broj</sys:String>
+    <sys:String x:Key="ContactGroupHeading">Kontakt</sys:String>
+    <sys:String x:Key="EmailLabel1">Elektronska pošta</sys:String>
+    <sys:String x:Key="TelephoneLabel1">Telefonski broj</sys:String>
+    <sys:String x:Key="MedicalInfoGroupHeading">Zdravstvene Informacije</sys:String>
+    <sys:String x:Key="BloodGroupLabel1">Krvna grupa</sys:String>
+    <sys:String x:Key="PatientsMedicalConditionsLabel1">Zdravstvena stanja pacijenta</sys:String>
+    <sys:String x:Key="MedicalConditionStatusLabel1">Status zdravstvenog stanja</sys:String>
+    <sys:String x:Key="AddedConditionsLabel1">Dodana stanja: </sys:String>
+    <sys:String x:Key="AppointmentInfoGroupHeading">Informacije o Pregledu</sys:String>
+    <sys:String x:Key="LinkedAppointmentLabel1">Povezani pregled</sys:String>
+    <sys:String x:Key="SaveButton">Sačuvaj</sys:String>
+    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
+    <sys:String x:Key="NoteLabel">Informacija: Zdravstveni karton će automatski biti otvoren za ovog pacijenta</sys:String>
+    <sys:String x:Key="AddMedicalConditionTooltip1">Dodaj izabrano stanje</sys:String>
+    <sys:String x:Key="RemoveMedicalConditionTooltip1">Ukloni izabrano ili zadnje dodano stanje</sys:String>
 </ResourceDictionary>

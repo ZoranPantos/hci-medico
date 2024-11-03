@@ -142,4 +142,33 @@
     <sys:String x:Key="RegisterNewPatientButton">Register new patient</sys:String>
     <sys:String x:Key="FullNameColumn">Full name</sys:String>
     <sys:String x:Key="LastVisitColumn">Last visit</sys:String>
+    
+    <!-- Register new patient -->
+    <sys:String x:Key="RegisterPatientTitle">Register Patient</sys:String>
+    <sys:String x:Key="BasicInfoGroupHeading">Basic Info</sys:String>
+    <sys:String x:Key="FirstNameLabel1">First name</sys:String>
+    <sys:String x:Key="LastNameLabel1">Last name</sys:String>
+    <sys:String x:Key="UidLabel1">UID</sys:String>
+    <sys:String x:Key="GenderLabel1">Gender</sys:String>
+    <sys:String x:Key="DateOfBirthLabel1">Date of birth</sys:String>
+    <sys:String x:Key="AddressGroupHeading">Address</sys:String>
+    <sys:String x:Key="CountryLabel1">Country</sys:String>
+    <sys:String x:Key="CityLabel2">City</sys:String>
+    <sys:String x:Key="StreetLabel2">Street</sys:String>
+    <sys:String x:Key="StreetNumberLabel1">Street number</sys:String>
+    <sys:String x:Key="ContactGroupHeading">Contact</sys:String>
+    <sys:String x:Key="EmailLabel1">Email</sys:String>
+    <sys:String x:Key="TelephoneLabel1">Telephone number</sys:String>
+    <sys:String x:Key="MedicalInfoGroupHeading">Medical Info</sys:String>
+    <sys:String x:Key="BloodGroupLabel1">Blood group</sys:String>
+    <sys:String x:Key="PatientsMedicalConditionsLabel1">Patient's medical conditions</sys:String>
+    <sys:String x:Key="MedicalConditionStatusLabel1">Medical condition status</sys:String>
+    <sys:String x:Key="AddedConditionsLabel1">Added conditions:</sys:String>
+    <sys:String x:Key="AppointmentInfoGroupHeading">Appointment Info</sys:String>
+    <sys:String x:Key="LinkedAppointmentLabel1">Linked appointment</sys:String>
+    <sys:String x:Key="SaveButton">Save</sys:String>
+    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
+    <sys:String x:Key="NoteLabel">Note: Health record will automatically be opened for this patient</sys:String>
+    <sys:String x:Key="AddMedicalConditionTooltip1">Add selected condition</sys:String>
+    <sys:String x:Key="RemoveMedicalConditionTooltip1">Remove selected or last added condition</sys:String>
 </ResourceDictionary>

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:HciMedico.App.Views.CounterWorkerRole"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Register Patient"
+        Title="{DynamicResource ResourceKey=RegisterPatientTitle}"
         Height="715" Width="830"
         Background="#D1DAED"
         ResizeMode="NoResize">
@@ -28,112 +28,123 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <GroupBox Header="Basic Info" BorderThickness="0.5" Margin="0,0,5,0">
+        <GroupBox Header="{DynamicResource ResourceKey=BasicInfoGroupHeading}" BorderThickness="0.5" Margin="0,0,5,0">
             <StackPanel>
-                <ui:TextBlock Text="First name"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=FirstNameLabel1}"
                               Style="{StaticResource LabelTextBlockStyle}"
                               Margin="0,5,0,0" />
                 <ui:TextBox x:Name="FirstName" Margin="0,0,0,10" MaxLength="10"
                             Background="White" />
 
-                <ui:TextBlock Text="Last name" Style="{StaticResource LabelTextBlockStyle}" />
+                <ui:TextBlock Text="{DynamicResource ResourceKey=LastNameLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="LastName" Margin="0,0,0,10" MaxLength="13"
                             Background="White" />
 
-                <ui:TextBlock Text="UID" Style="{StaticResource LabelTextBlockStyle}" />
+                <ui:TextBlock Text="{DynamicResource ResourceKey=UidLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="Uid" Margin="0,0,0,10" MaxLength="50"
                             Background="White" PlaceholderText="0000000000000" />
 
-                <ui:TextBlock Text="Gender" Style="{StaticResource LabelTextBlockStyle}" />
+                <ui:TextBlock Text="{DynamicResource ResourceKey=GenderLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
                 <ComboBox x:Name="SelectedGender" Margin="0,0,0,10" Background="White"
                           ItemsSource="{Binding GenderOptions}"
                           SelectedItem="{Binding SelectedGender}"/>
 
-                <ui:TextBlock Text="Date of birth" Style="{StaticResource LabelTextBlockStyle}" />
+                <ui:TextBlock Text="{DynamicResource ResourceKey=DateOfBirthLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
                 <DatePicker x:Name="DateOfBirth"
                             Background="White"
                             Margin="0,0,0,5" />
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Column="1" Header="Address" BorderThickness="0.5" Margin="0,0,5,0">
+        <GroupBox Grid.Column="1" Header="{DynamicResource ResourceKey=AddressGroupHeading}" BorderThickness="0.5" Margin="0,0,5,0">
             <StackPanel>
-                <ui:TextBlock Text="Country"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=CountryLabel1}"
                               Style="{StaticResource LabelTextBlockStyle}"
                               Margin="0,5,0,0" />
                 <ui:TextBox x:Name="Country" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
 
-                <ui:TextBlock Text="City" Style="{StaticResource LabelTextBlockStyle}" />
+                <ui:TextBlock Text="{DynamicResource ResourceKey=CityLabel2}" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="City" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
 
-                <ui:TextBlock Text="Street" Style="{StaticResource LabelTextBlockStyle}" />
+                <ui:TextBlock Text="{DynamicResource ResourceKey=StreetLabel2}" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="Street" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
 
-                <ui:TextBlock Text="Street number" Style="{StaticResource LabelTextBlockStyle}" />
+                <ui:TextBlock Text="{DynamicResource ResourceKey=StreetNumberLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="Number" Margin="0,0,0,10" MaxLength="50"
                             Background="White" />
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Column="2" Header="Contact" BorderThickness="0.5">
+        <GroupBox Grid.Column="2" Header="{DynamicResource ResourceKey=ContactGroupHeading}" BorderThickness="0.5">
             <StackPanel>
-                <ui:TextBlock Text="Email"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=EmailLabel1}"
                               Style="{StaticResource LabelTextBlockStyle}"
                               Margin="0,5,0,0" />
                 <ui:TextBox x:Name="Email" Margin="0,0,0,10" MaxLength="50"
                             Background="White" PlaceholderText="example@example.com" />
 
-                <ui:TextBlock Text="Telephone number" Style="{StaticResource LabelTextBlockStyle}" />
+                <ui:TextBlock Text="{DynamicResource ResourceKey=TelephoneLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
                 <ui:TextBox x:Name="TelephoneNumber" Margin="0,0,0,10" MaxLength="50"
                             Background="White" PlaceholderText="+38711223344" />
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Row="1" Grid.ColumnSpan="3" Header="Medical info"
+        <GroupBox Grid.Row="1" Grid.ColumnSpan="3" Header="{DynamicResource ResourceKey=MedicalInfoGroupHeading}"
                   BorderThickness="0.5" Margin="0,5,0,0">
 
             <StackPanel Margin="0,5,0,0">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel>
-                        <ui:TextBlock Text="Blood group" Style="{StaticResource LabelTextBlockStyle}" />
-                        <ComboBox x:Name="SelectedBloodGroup" Margin="0,0,5,10" Background="White"
+                        <ui:TextBlock Text="{DynamicResource ResourceKey=BloodGroupLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
+                        <ComboBox x:Name="SelectedBloodGroup"
+                                  Margin="0,0,5,10"
+                                  Background="White"
                                   MinWidth="135"
                                   ItemsSource="{Binding BloodGroupOptions}"
                                   SelectedItem="{Binding SelectedBloodGroup}"/>
                     </StackPanel>
 
                     <StackPanel>
-                        <ui:TextBlock Text="Patient's medical conditions" Style="{StaticResource LabelTextBlockStyle}" />
-                        <ComboBox x:Name="SelectedMedicalCondition" Margin="0,0,5,10" Background="White"
-                                  MinWidth="370" IsEditable="True"
+                        <ui:TextBlock Text="{DynamicResource ResourceKey=PatientsMedicalConditionsLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
+                        <ComboBox x:Name="SelectedMedicalCondition"
+                                  Margin="0,0,5,10"
+                                  Background="White"
+                                  MinWidth="370"
+                                  IsEditable="True"
                                   ItemsSource="{Binding MedicalConditions}"
                                   SelectedItem="{Binding SelectedMedicalCondition}"
                                   DisplayMemberPath="Name" />
                     </StackPanel>
 
                     <StackPanel>
-                        <ui:TextBlock Text="Medical condition status" Style="{StaticResource LabelTextBlockStyle}" />
-                        <ComboBox x:Name="SelectedMedicalConditionStatus" Margin="0,0,0,10" Background="White"
+                        <ui:TextBlock Text="{DynamicResource ResourceKey=MedicalConditionStatusLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
+                        <ComboBox x:Name="SelectedMedicalConditionStatus"
+                                  Margin="0,0,0,10"
+                                  Background="White"
                                   MinWidth="150"
                                   ItemsSource="{Binding MedicalConditionStatusOptions}"
                                   SelectedItem="{Binding SelectedMedicalConditionStatus}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
-                        <ui:Button x:Name="AddMedicalCondition" Icon="{ui:SymbolIcon Add32}" Margin="5,5,5,0"
-                                   ToolTip="Add selected condition" />
+                        <ui:Button x:Name="AddMedicalCondition"
+                                   Icon="{ui:SymbolIcon Add32}"
+                                   Margin="5,5,5,0"
+                                   ToolTip="{DynamicResource ResourceKey=AddMedicalConditionTooltip1}" />
                         
-                        <ui:Button x:Name="RemoveMedicalCondition" Icon="{ui:SymbolIcon Subtract28}" Margin="0,5,0,0"
-                                   ToolTip="Remove selected or last added condition" />
+                        <ui:Button x:Name="RemoveMedicalCondition"
+                                   Icon="{ui:SymbolIcon Subtract28}"
+                                   Margin="0,5,0,0"
+                                   ToolTip="{DynamicResource ResourceKey=RemoveMedicalConditionTooltip1}" />
                     </StackPanel>
                 </StackPanel>
 
                 <ScrollViewer HorizontalScrollBarVisibility="Auto">
                     <StackPanel Orientation="Horizontal">
-                        <ui:TextBlock Text="Added conditions: "
+                        <ui:TextBlock Text="{DynamicResource ResourceKey=AddedConditionsLabel1}"
                                       Style="{StaticResource LabelTextBlockStyle}" />
 
                         <ui:TextBlock x:Name="AddedMedicalConditionDisplayModelsString"
@@ -143,11 +154,11 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Row="2" Grid.ColumnSpan="3" Header="Appointment info"
+        <GroupBox Grid.Row="2" Grid.ColumnSpan="3" Header="{DynamicResource ResourceKey=AppointmentInfoGroupHeading}"
                   BorderThickness="0.5" Margin="0,5,0,0">
 
             <StackPanel Margin="0,5,0,0">
-                <ui:TextBlock Text="Linked appointment" Style="{StaticResource LabelTextBlockStyle}" />
+                <ui:TextBlock Text="{DynamicResource ResourceKey=LinkedAppointmentLabel1}" Style="{StaticResource LabelTextBlockStyle}" />
                 <ComboBox x:Name="SelectedAppointment" Margin="0,0,0,10" Background="White"
                           MinWidth="500" HorizontalAlignment="Left"
                           ItemsSource="{Binding Appointments}"
@@ -164,12 +175,12 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <ui:Button x:Name="Save" Content="Save" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon Save28}" />
-            <ui:Button Grid.Column="1" x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
+            <ui:Button x:Name="Save" Content="{DynamicResource ResourceKey=SaveButton}" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon Save28}" />
+            <ui:Button Grid.Column="1" x:Name="Cancel" Content="{DynamicResource ResourceKey=CancelButton}" Appearance="Secondary" />
             <ui:TextBlock Grid.Column="3" x:Name="ValidationMessage" Foreground="Red" Margin="0,10" HorizontalAlignment="Right" />
         </Grid>
 
         <ui:TextBlock Grid.Row="4" Grid.ColumnSpan="3"
-                      Text="Note: Health record will automatically be opened for this patient" />
+                      Text="{DynamicResource ResourceKey=NoteLabel}" />
     </Grid>
 </Window>

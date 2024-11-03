@@ -201,7 +201,9 @@ public class RegisterPatientViewModel : Conductor<object>
 
     public Queue<MedicalConditionDisplayModel> _addedMedicalConditionDisplayModels = [];
 
-    private string _addedMedicalConditionDisplayModelsString = "None";
+    private string _addedMedicalConditionDisplayModelsString =
+        UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ? "None" : "Niti jedan";
+
     public string AddedMedicalConditionDisplayModelsString
     {
         get => _addedMedicalConditionDisplayModelsString;
@@ -377,47 +379,70 @@ public class RegisterPatientViewModel : Conductor<object>
         string telephoneNumber,
         RegistrationLinkedAppointment selectedAppointment)
     {
+        var lang = UserContext.CurrentUser?.UserSettings.ApplicationLanguage;
+
         try
         {
             if (!_inputValidator.IsPersonNameValid(firstName) || !_inputValidator.IsPersonNameValid(lastName))
             {
-                ValidationMessage = "Invalid first or last name value. Please check for non-letter values and leading/trailing whitespaces";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid first or last name value. Please check for non-letter values and leading/trailing whitespaces" :
+                    "Neispravan format imena ili prezimena. Provjerite Vaš unos";
+
                 return;
             }
 
             if (!(await _inputValidator.IsUidValid(uid, new Random().Next(), editState: false)))
             {
-                ValidationMessage = "Invalid UID value. UID can only contain digits";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid UID value. UID can only contain digits" :
+                    "Neispravan JMB. JMB može sadržati samo brojeve";
+
                 return;
             }
 
             if (!_inputValidator.IsDateOfBirthValid(dateOfBirth))
             {
-                ValidationMessage = "Invalid date of birth. Selected date is either too old or is in the future";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid date of birth. Selected date is either too old or is in the future" :
+                    "Selektovani datum rođenja je ili prestar ili u budućnosti";
+
                 return;
             }
 
             if (!_inputValidator.IsRegionalNameValid(country) || !_inputValidator.IsRegionalNameValid(city) || !_inputValidator.IsRegionalNameValid(street))
             {
-                ValidationMessage = "Invalid county, city or a street name. Please check for non-letter values and leading/trailing whitespaces";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid county, city or a street name. Please check for non-letter values and leading/trailing whitespaces" :
+                    "Neispravna država, grad ili naziv ulice. Provjerite Vaš unos";
+
                 return;
             }
 
             if (!_inputValidator.IsStreetNumberValid(number))
             {
-                ValidationMessage = "Invalid street number value. Street number can be composed only of positive numbers and letters";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid street number value. Street number can be composed only of positive numbers and letters" :
+                    "Neispravna vrijednost broja ulice. Broj ulice može biti sačinjen samo od pozitivnih brojeva i slova";
+
                 return;
             }
 
             if (!_inputValidator.IsEmailValid(email))
             {
-                ValidationMessage = "Invalid email format";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid email format" :
+                    "Neispravan format elektronske pošte";
+
                 return;
             }
 
             if (!_inputValidator.IsPhoneNumberValid(telephoneNumber))
             {
-                ValidationMessage = "Invalid phone number. Try to input full number format";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid phone number. Try to input full number format" :
+                    "Neispravan telefonski broj. Pokušajte unijeti broj u punom formatu";
+
                 return;
             }
 
@@ -426,7 +451,10 @@ public class RegisterPatientViewModel : Conductor<object>
 
             if (existingPatient is not null)
             {
-                ValidationMessage = "Patient with the same UID is already registered";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Patient with the same UID is already registered" :
+                    "Pacijent sa istim JMB je već registrovan";
+
                 return;
             }
 
@@ -499,12 +527,20 @@ public class RegisterPatientViewModel : Conductor<object>
 
             await _parentViewModel!.RefreshViewModel();
 
-            _toastNotificationService.ShowSuccess("Patient registered");
+            string toastMessage = lang == ApplicationLanguage.English ?
+                "Patient registered" :
+                "Pacijent registrovan";
+
+            _toastNotificationService.ShowSuccess(toastMessage);
         }
         catch (Exception ex)
         {
+            string toastMessage = lang == ApplicationLanguage.English ?
+                "Registration failed" :
+                "Registracija neuspješna";
+
+            _toastNotificationService.ShowError(toastMessage);
             ValidationMessage = "Failed to update patient details";
-            _toastNotificationService.ShowError("Registration failed");
 
             string message = $"Exception caught and rethrown in {nameof(RegisterPatientViewModel)}.{nameof(Save)}";
             throw new MedicoException(message, ex);
