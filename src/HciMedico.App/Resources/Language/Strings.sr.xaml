@@ -123,7 +123,7 @@
     <sys:String x:Key="ScheduledForDateTimeLabel">Zakazan za:</sys:String>
     <sys:String x:Key="SpecializationLabel">Specijalizacija:</sys:String>
     <sys:String x:Key="AvailableDoctorsLabel">Dostupni doktori:</sys:String>
-    <sys:String x:Key="AssignButton">Promijeni</sys:String>
+    <sys:String x:Key="AssignButton">Zamijeni</sys:String>
     <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
 
     <!-- Appointment status update -->

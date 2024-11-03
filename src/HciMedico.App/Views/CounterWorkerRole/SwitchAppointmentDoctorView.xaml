@@ -6,7 +6,7 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Switch Doctor"
+        Title="{DynamicResource ResourceKey=SwitchDoctorTitle}"
         Height="300" Width="350"
         Background="#D1DAED"
         ResizeMode="NoResize">
@@ -27,19 +27,19 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ui:TextBlock Text="Scheduled for:" Style="{StaticResource LabelTextBlockStyle}" />
+        <ui:TextBlock Text="{DynamicResource ResourceKey=ScheduledForDateTimeLabel}" Style="{StaticResource LabelTextBlockStyle}" />
         <ui:TextBlock x:Name="ScheduledFor" Grid.Column="1"
                       Text="{Binding ScheduledFor, StringFormat={}{0:dd/MM/yyyy HH:mm}}"
                       Style="{StaticResource DataTextBlockStyle}"/>
 
-        <ui:TextBlock Grid.Row="1" Text="Specialization:" Style="{StaticResource LabelTextBlockStyle}" />
+        <ui:TextBlock Grid.Row="1" Text="{DynamicResource ResourceKey=SpecializationLabel}" Style="{StaticResource LabelTextBlockStyle}" />
         <ui:TextBlock x:Name="Specializations" TextWrapping="Wrap"
                       Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
                       Style="{StaticResource DataTextBlockStyle}"
                       Margin="0,0,0,10" />
 
         <ui:TextBlock Grid.Row="2" Grid.ColumnSpan="3"
-                      Text="Available doctors:"
+                      Text="{DynamicResource ResourceKey=AvailableDoctorsLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
         
         <ComboBox x:Name="SelectedDoctor"
@@ -52,8 +52,16 @@
 
         <StackPanel Orientation="Horizontal"
                     Grid.Row="5" Grid.ColumnSpan="3" >
-            <ui:Button x:Name="Save" Content="Assign" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon SaveEdit24}" />
-            <ui:Button x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
+            
+            <ui:Button x:Name="Save"
+                       Content="{DynamicResource ResourceKey=AssignButton}"
+                       Appearance="Primary"
+                       Margin="0,0,10,0"
+                       Icon="{ui:SymbolIcon SaveEdit24}" />
+            
+            <ui:Button x:Name="Cancel"
+                       Content="{DynamicResource ResourceKey=CancelButton}"
+                       Appearance="Secondary" />
         </StackPanel>
     </Grid>
 </Window>
