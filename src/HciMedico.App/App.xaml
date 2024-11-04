@@ -32,7 +32,8 @@
             </Style>
 
             <Style x:Key="SeparatorStyle" TargetType="Separator">
-                <Setter Property="BorderBrush" Value="#FF8692" />
+                <!--<Setter Property="BorderBrush" Value="#FF8692" />-->
+                <Setter Property="BorderBrush" Value="Gray" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="Margin" Value="0,10" />
             </Style>
