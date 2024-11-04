@@ -194,4 +194,23 @@
     <sys:String x:Key="NumberOfVisitsLabel">Broj posjeta:</sys:String>
     <sys:String x:Key="LastVisitLabel">Zadnji pregled:</sys:String>
     <sys:String x:Key="NextAppointmentLabel">Naredni pregled:</sys:String>
+
+    <!-- Edit patient details -->
+    <sys:String x:Key="EditPatientDetailsTitle">Mijenjanje Detalja Pacijenta</sys:String>
+    <!--<sys:String x:Key="BasicInfoGroupHeading">Basic Info</sys:String>
+    <sys:String x:Key="FirstNameLabel1">First name</sys:String>
+    <sys:String x:Key="LastNameLabel1">Last name</sys:String>
+    <sys:String x:Key="UidLabel1">UID</sys:String>
+    <sys:String x:Key="GenderLabel1">Gender</sys:String>
+    <sys:String x:Key="DateOfBirthLabel1">Date of birth</sys:String>
+    <sys:String x:Key="AddressGroupHeading">Address</sys:String>
+    <sys:String x:Key="CountryLabel1">Country</sys:String>
+    <sys:String x:Key="CityLabel2">City</sys:String>
+    <sys:String x:Key="StreetLabel2">Street</sys:String>
+    <sys:String x:Key="StreetNumberLabel1">Street number</sys:String>
+    <sys:String x:Key="ContactGroupHeading">Contact</sys:String>
+    <sys:String x:Key="EmailLabel1">Email</sys:String>
+    <sys:String x:Key="TelephoneLabel1">Telephone number</sys:String>
+    <sys:String x:Key="UpdateButton">Update</sys:String>
+    <sys:String x:Key="CancelButton">Cancel</sys:String>-->
 </ResourceDictionary>

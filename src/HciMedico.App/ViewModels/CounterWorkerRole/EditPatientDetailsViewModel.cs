@@ -215,47 +215,70 @@ public class EditPatientDetailsViewModel : Conductor<object>
         string email,
         string telephoneNumber)
     {
+        var lang = UserContext.CurrentUser?.UserSettings.ApplicationLanguage;
+
         try
         {
             if (!_inputValidator.IsPersonNameValid(firstName) || !_inputValidator.IsPersonNameValid(lastName))
             {
-                ValidationMessage = "Invalid first or last name value. Please check for non-letter values and leading/trailing whitespaces";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid first or last name value. Please check for non-letter values and leading/trailing whitespaces" :
+                    "Neispravan format imena ili prezimena. Provjerite Vaš unos";
+
                 return;
             }
 
-            if (!(await _inputValidator.IsUidValid(uid, _patient.Id, editState: true)))
+            if (!(await _inputValidator.IsUidValid(uid, _patient!.Id, editState: true)))
             {
-                ValidationMessage = "Invalid UID value. UID can only contain digits and must be unique";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid UID value. UID can only contain digits and must be unique" :
+                    "Neispravan JMB. JMB može sadržati samo brojeve i mora biti jedinstven";
+
                 return;
             }
 
             if (!_inputValidator.IsDateOfBirthValid(dateOfBirth))
             {
-                ValidationMessage = "Invalid date of birth. Selected date is either too old or is in the future";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid date of birth. Selected date is either too old or is in the future" :
+                    "Selektovani datum rođenja je ili prestar ili u budućnosti";
+
                 return;
             }
 
             if (!_inputValidator.IsRegionalNameValid(country) || !_inputValidator.IsRegionalNameValid(city) || !_inputValidator.IsRegionalNameValid(street))
             {
-                ValidationMessage = "Invalid county, city or a street name. Please check for non-letter values and leading/trailing whitespaces";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid county, city or a street name. Please check for non-letter values and leading/trailing whitespaces" :
+                    "Neispravna država, grad ili naziv ulice. Provjerite Vaš unos";
+
                 return;
             }
 
             if (!_inputValidator.IsStreetNumberValid(number))
             {
-                ValidationMessage = "Invalid street number value. Street number can be composed only of positive numbers and letters";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid street number value. Street number can be composed only of positive numbers and letters" :
+                    "Neispravna vrijednost broja ulice. Broj ulice može biti sačinjen samo od pozitivnih brojeva i slova";
+
                 return;
             }
 
             if (!_inputValidator.IsEmailValid(email))
             {
-                ValidationMessage = "Invalid email format";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid email format" :
+                    "Neispravan format elektronske pošte";
+
                 return;
             }
 
             if (!_inputValidator.IsPhoneNumberValid(telephoneNumber))
             {
-                ValidationMessage = "Invalid phone number. Try to input full number format";
+                ValidationMessage = lang == ApplicationLanguage.English ?
+                    "Invalid phone number. Try to input full number format" :
+                    "Neispravan telefonski broj. Pokušajte unijeti broj u punom formatu";
+
                 return;
             }
 
@@ -280,12 +303,21 @@ public class EditPatientDetailsViewModel : Conductor<object>
 
             await _parentViewModel!.RefreshViewModel();
 
-            _toastNotificationService.ShowSuccess("Patient updated");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Patient updated" :
+                "Pacijent ažuriran";
+
+            _toastNotificationService.ShowSuccess(toastMessage);
         }
         catch (Exception ex)
         {
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Update failed" :
+                "Ažuriranje neuspješno";
+
+            _toastNotificationService.ShowError(toastMessage);
+
             ValidationMessage = "Failed to update patient details";
-            _toastNotificationService.ShowError("Update failed");
 
             string message = $"Exception caught and rethrown in {nameof(EditPatientDetailsViewModel)}.{nameof(Update)}";
             throw new MedicoException(message, ex);
