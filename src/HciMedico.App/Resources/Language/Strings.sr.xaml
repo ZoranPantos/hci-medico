@@ -213,4 +213,11 @@
     <sys:String x:Key="TelephoneLabel1">Telephone number</sys:String>
     <sys:String x:Key="UpdateButton">Update</sys:String>
     <sys:String x:Key="CancelButton">Cancel</sys:String>-->
+
+    <!-- Health records CounterWorker-->
+    <sys:String x:Key="HealthRecordsHeading">Zdravstveni Kartoni</sys:String>
+    <sys:String x:Key="SearchBarPlaceholder">Pretraži po imenu ili JMB...</sys:String>
+    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
+    <sys:String x:Key="PatientName">Ime pacijenta</sys:String>
+    <sys:String x:Key="PatientUid">JMB pacijenta</sys:String>
 </ResourceDictionary>

@@ -213,4 +213,11 @@
     <sys:String x:Key="TelephoneLabel1">Telephone number</sys:String>
     <sys:String x:Key="UpdateButton">Update</sys:String>
     <sys:String x:Key="CancelButton">Cancel</sys:String>-->
+    
+    <!-- Health records CounterWorker-->
+    <sys:String x:Key="HealthRecordsHeading">Health Records</sys:String>
+    <sys:String x:Key="SearchBarPlaceholder">Search by name or UID...</sys:String>
+    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
+    <sys:String x:Key="PatientName">Patient name</sys:String>
+    <sys:String x:Key="PatientUid">Patient UID</sys:String>
 </ResourceDictionary>
