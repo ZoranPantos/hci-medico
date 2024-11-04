@@ -220,4 +220,17 @@
     <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
     <sys:String x:Key="PatientName">Ime pacijenta</sys:String>
     <sys:String x:Key="PatientUid">JMB pacijenta</sys:String>
+
+    <!-- Health record details CounterWorker-->
+    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
+    <sys:String x:Key="HealthRecordDetailsHeading">Detalji Zdravstvenog Kartona</sys:String>
+    <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>-->
+    <sys:String x:Key="PatientFullNameLabel">Puno ime pacijenta:</sys:String>
+    <sys:String x:Key="PatientUidLabel">JMB pacijenta:</sys:String>
+    <!--<sys:String x:Key="DateOfBirthLabel">Date of birth label:</sys:String>
+    <sys:String x:Key="GenderLabel">Gender:</sys:String>-->
+    <sys:String x:Key="BloodGroupLabel">Krvna grupa:</sys:String>
+    <sys:String x:Key="AttendedAppointmentsLabel">Broj pregleda:</sys:String>
+    <sys:String x:Key="LastAppointmentLabel">Zadnji pregled:</sys:String>
+    <sys:String x:Key="DiagnosisLabel">Dijagnoze:</sys:String>
 </ResourceDictionary>
