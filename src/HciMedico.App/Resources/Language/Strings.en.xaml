@@ -171,4 +171,27 @@
     <sys:String x:Key="NoteLabel">Note: Health record will automatically be opened for this patient</sys:String>
     <sys:String x:Key="AddMedicalConditionTooltip1">Add selected condition</sys:String>
     <sys:String x:Key="RemoveMedicalConditionTooltip1">Remove selected or last added condition</sys:String>
+    
+    <!-- Patient details CounterWorker -->
+    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
+    <sys:String x:Key="PatientDetailsHeading">Patient Details</sys:String>
+    <sys:String x:Key="EditButton">Edit</sys:String>
+    <sys:String x:Key="ScheduleAppointmentButton1">Schedule appointment</sys:String>
+    <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
+    <sys:String x:Key="FirstNameLabel">First name:</sys:String>
+    <sys:String x:Key="LastNameLabel">Last name:</sys:String>
+    <sys:String x:Key="UidLabel">UID:</sys:String>
+    <sys:String x:Key="GenderLabel">Gender:</sys:String>
+    <sys:String x:Key="DateOfBirthLabel">Date of birth:</sys:String>
+    <sys:String x:Key="AddressAndContactSubheading">Address and Contact</sys:String>
+    <sys:String x:Key="CountryLabel">Country:</sys:String>
+    <sys:String x:Key="CityLabel">City:</sys:String>
+    <sys:String x:Key="StreetLabel">Street:</sys:String>
+    <sys:String x:Key="NumberLabel">Number:</sys:String>
+    <sys:String x:Key="EmailLabel">Email:</sys:String>
+    <sys:String x:Key="TelephoneNumberLabel">Telephone number:</sys:String>-->
+    <sys:String x:Key="ClinicStatsSubheading">Clinic Stats</sys:String>
+    <sys:String x:Key="NumberOfVisitsLabel">Number of visits:</sys:String>
+    <sys:String x:Key="LastVisitLabel">Last visit:</sys:String>
+    <sys:String x:Key="NextAppointmentLabel">Next appointment:</sys:String>
 </ResourceDictionary>

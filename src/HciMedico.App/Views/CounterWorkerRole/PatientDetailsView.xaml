@@ -42,8 +42,8 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
-            <ui:Button x:Name="NavigateBack" Content="Back" Margin="0,0,5,0" Icon="{ui:SymbolIcon IosArrowLtr24}" />
-            <ui:TextBlock Text="Patient Details" Style="{StaticResource HeadingStyle}" />
+            <ui:Button x:Name="NavigateBack" Content="{DynamicResource ResourceKey=BackButton}" Margin="0,0,5,0" Icon="{ui:SymbolIcon IosArrowLtr24}" />
+            <ui:TextBlock Text="{DynamicResource ResourceKey=PatientDetailsHeading}" Style="{StaticResource HeadingStyle}" />
         </StackPanel>
 
         <Separator Grid.Row="1" Grid.ColumnSpan="3"
@@ -51,19 +51,19 @@
                    Margin="0,5,0,0" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,5,0,0" Grid.ColumnSpan="3">
-            <ui:Button x:Name="EditDetails" Content="Edit" Margin="0,0,5,0" Icon="{ui:SymbolIcon Edit32}" />
-            <ui:Button x:Name="ScheduleAppointment" Content="Schedule appointment" Icon="{ui:SymbolIcon ShiftsAdd24}" />
+            <ui:Button x:Name="EditDetails" Content="{DynamicResource ResourceKey=EditButton}" Margin="0,0,5,0" Icon="{ui:SymbolIcon Edit32}" />
+            <ui:Button x:Name="ScheduleAppointment" Content="{DynamicResource ResourceKey=ScheduleAppointmentButton1}" Icon="{ui:SymbolIcon ShiftsAdd24}" />
         </StackPanel>
 
         <Separator Grid.Row="3" Grid.ColumnSpan="3"
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="4" Text="General Info"
+        <ui:TextBlock Grid.Row="4" Text="{DynamicResource ResourceKey=GeneralInfoSubheading}"
                       Style="{StaticResource SubHeadingStyle}" />
 
         <ui:TextBlock Grid.Row="5" 
-                      Text="First name:"
+                      Text="{DynamicResource ResourceKey=FirstNameLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="5" Grid.Column="1"
@@ -71,7 +71,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="6"
-                      Text="Last name:"
+                      Text="{DynamicResource ResourceKey=LastNameLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="6" Grid.Column="1"
@@ -79,7 +79,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="7" 
-                      Text="UID:"
+                      Text="{DynamicResource ResourceKey=UidLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="7" Grid.Column="1"
@@ -87,7 +87,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="8"
-                      Text="Gender:"
+                      Text="{DynamicResource ResourceKey=GenderLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="8" Grid.Column="1"
@@ -95,7 +95,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="9"
-                      Text="Date of birth:"
+                      Text="{DynamicResource ResourceKey=DateOfBirthLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="9" Grid.Column="1"
@@ -107,11 +107,11 @@
                       Style="{StaticResource SeparatorStyle}"
                       Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="11" Text="Address and Contact"
+        <ui:TextBlock Grid.Row="11" Text="{DynamicResource ResourceKey=AddressAndContactSubheading}"
                       Style="{StaticResource SubHeadingStyle}" />
 
         <ui:TextBlock Grid.Row="12"
-                      Text="Country:"
+                      Text="{DynamicResource ResourceKey=CountryLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="12" Grid.Column="1"
@@ -119,7 +119,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="13"
-                      Text="City:"
+                      Text="{DynamicResource ResourceKey=CityLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="13" Grid.Column="1"
@@ -127,7 +127,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="14"
-                      Text="Street:"
+                      Text="{DynamicResource ResourceKey=StreetLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="14" Grid.Column="1"
@@ -135,7 +135,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="15"
-                      Text="Number:"
+                      Text="{DynamicResource ResourceKey=NumberLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="15" Grid.Column="1"
@@ -143,7 +143,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="16"
-                      Text="Email:"
+                      Text="{DynamicResource ResourceKey=EmailLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="16" Grid.Column="1"
@@ -151,7 +151,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="17"
-                      Text="Telephone number:"
+                      Text="{DynamicResource ResourceKey=TelephoneNumberLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="17" Grid.Column="1"
@@ -162,11 +162,11 @@
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="19" Text="Clinic Stats"
+        <ui:TextBlock Grid.Row="19" Text="{DynamicResource ResourceKey=ClinicStatsSubheading}"
                       Style="{StaticResource SubHeadingStyle}" />
 
         <ui:TextBlock Grid.Row="20"
-                      Text="Number of visits:"
+                      Text="{DynamicResource ResourceKey=NumberOfVisitsLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="20" Grid.Column="1"
@@ -175,7 +175,7 @@
 
         <!--Date + doctor's name and specialization-->
         <ui:TextBlock Grid.Row="21"
-                      Text="Last visit:"
+                      Text="{DynamicResource ResourceKey=LastVisitLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="21" Grid.Column="1"
@@ -184,7 +184,7 @@
 
         <!--Date + doctor's name and specialization-->
         <ui:TextBlock Grid.Row="22"
-                      Text="Next appointment:"
+                      Text="{DynamicResource ResourceKey=NextAppointmentLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="22" Grid.Column="1"

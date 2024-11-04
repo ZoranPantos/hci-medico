@@ -47,7 +47,7 @@
     <sys:String x:Key="EducationLabel">Edukacija:</sys:String>
     <sys:String x:Key="EmployedSinceLabel">Zaposlen od:</sys:String>
     <sys:String x:Key="CurrentSalaryLabel">Trenutna plata:</sys:String>
-    <sys:String x:Key="AddressAndContactSubheading">Adresa i kontakt</sys:String>
+    <sys:String x:Key="AddressAndContactSubheading">Adresa i Kontakt</sys:String>
     <sys:String x:Key="CountryLabel">Država:</sys:String>
     <sys:String x:Key="CityLabel">Grad:</sys:String>
     <sys:String x:Key="StreetLabel">Ulica:</sys:String>
@@ -171,4 +171,27 @@
     <sys:String x:Key="NoteLabel">Informacija: Zdravstveni karton će automatski biti otvoren za ovog pacijenta</sys:String>
     <sys:String x:Key="AddMedicalConditionTooltip1">Dodaj izabrano stanje</sys:String>
     <sys:String x:Key="RemoveMedicalConditionTooltip1">Ukloni izabrano ili zadnje dodano stanje</sys:String>
+
+    <!-- Patient details CounterWorker -->
+    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
+    <sys:String x:Key="PatientDetailsHeading">Detalji Pacijenta</sys:String>
+    <sys:String x:Key="EditButton">Promijeni</sys:String>
+    <sys:String x:Key="ScheduleAppointmentButton1">Zakaži pregled</sys:String>
+    <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
+    <sys:String x:Key="FirstNameLabel">First name:</sys:String>
+    <sys:String x:Key="LastNameLabel">Last name:</sys:String>
+    <sys:String x:Key="UidLabel">UID:</sys:String>
+    <sys:String x:Key="GenderLabel">Gender:</sys:String>
+    <sys:String x:Key="DateOfBirthLabel">Date of birth:</sys:String>
+    <sys:String x:Key="AddressAndContactSubheading">Address and Contact</sys:String>
+    <sys:String x:Key="CountryLabel">Country:</sys:String>
+    <sys:String x:Key="CityLabel">City:</sys:String>
+    <sys:String x:Key="StreetLabel">Street:</sys:String>
+    <sys:String x:Key="NumberLabel">Number:</sys:String>
+    <sys:String x:Key="EmailLabel">Email:</sys:String>
+    <sys:String x:Key="TelephoneNumberLabel">Telephone number:</sys:String>-->
+    <sys:String x:Key="ClinicStatsSubheading">Statistike Klinike</sys:String>
+    <sys:String x:Key="NumberOfVisitsLabel">Broj posjeta:</sys:String>
+    <sys:String x:Key="LastVisitLabel">Zadnji pregled:</sys:String>
+    <sys:String x:Key="NextAppointmentLabel">Naredni pregled:</sys:String>
 </ResourceDictionary>

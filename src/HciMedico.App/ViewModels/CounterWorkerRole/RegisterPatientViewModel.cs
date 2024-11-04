@@ -446,7 +446,7 @@ public class RegisterPatientViewModel : Conductor<object>
                 return;
             }
 
-            //try to find patient with the same UID in db, if one exists show validation error
+            // Try to find patient with the same UID in db, if one exists show validation error
             var existingPatient = await _patientRepository.FindAsync(patient => patient.Uid.Equals(uid), true);
 
             if (existingPatient is not null)
@@ -469,7 +469,7 @@ public class RegisterPatientViewModel : Conductor<object>
                     Country = country,
                     City = city,
                     Street = street,
-                    //TODO: Replace number int with number string
+                    // TODO: Replace number int with number string
                     Number = int.Parse(number)
                 },
                 ContactInfo = new()
@@ -478,7 +478,7 @@ public class RegisterPatientViewModel : Conductor<object>
                     TelephoneNumber = telephoneNumber
                 },
 
-                //Create semi-emtpy health record, appointment and conditions will be added after
+                // Create semi-emtpy health record, appointment and conditions will be added after
                 HealthRecord = new()
                 {
                     DateOfBirth = dateOfBirth,
@@ -496,7 +496,7 @@ public class RegisterPatientViewModel : Conductor<object>
             {
                 int conditionId = _medicalConditions.FirstOrDefault(con => con.Name.Equals(condition.Name)).Id;
 
-                //This ID will be 0 when debugging but upon saving changes, EF Core will figure out which is the next ID and save it correctly in the db
+                // This ID will be 0 when debugging but upon saving changes, EF Core will figure out which is the next ID and save it correctly in the db
                 int healthRecordId = patient.HealthRecord.Id;
 
                 patient.HealthRecord.HealthRecordMedicalConditions.Add(new HealthRecordMedicalCondition
@@ -507,9 +507,6 @@ public class RegisterPatientViewModel : Conductor<object>
                 });
             }
 
-            //TODO:
-            //When a new patient is registered in the system, he needs to be linked with his appointment
-            //If there is currently no appointment for the patient, he will still be added in the system nonetheless
             var appointment = _appointments?.FirstOrDefault(apt => apt.Id == selectedAppointment?.Id);
 
             if (appointment is not null)
