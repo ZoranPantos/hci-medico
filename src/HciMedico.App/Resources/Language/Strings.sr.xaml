@@ -233,4 +233,25 @@
     <sys:String x:Key="AttendedAppointmentsLabel">Broj pregleda:</sys:String>
     <sys:String x:Key="LastAppointmentLabel">Zadnji pregled:</sys:String>
     <sys:String x:Key="DiagnosisLabel">Dijagnoze:</sys:String>
+
+    <!-- Appointments Doctor -->
+    <!--<sys:String x:Key="AppointmentsHeading">Appointments</sys:String>
+    <sys:String x:Key="SearchByPatientPlaceholder">Search by patient...</sys:String>
+    <sys:String x:Key="SearchButton">Search</sys:String>
+    <sys:String x:Key="PatientNameIdentifierColumn">Patient name/identifier</sys:String>
+    <sys:String x:Key="DateColumn">Date</sys:String>
+    <sys:String x:Key="TimeColumn">Time</sys:String>
+    <sys:String x:Key="StatusColumn">Status</sys:String>-->
+
+    <!-- Appointment details Doctor-->
+    <!--<sys:String x:Key="BackButton">Back</sys:String>
+    <sys:String x:Key="AppointmentDetailsHeading">Appointment Details</sys:String>-->
+    <sys:String x:Key="CreateReportButton">Kreiraj izvještaj</sys:String>
+    <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
+    <sys:String x:Key="ScheduledForLabel">Scheduled for:</sys:String>-->
+    <sys:String x:Key="AppointmentTypeLabel1">Tip pregleda:</sys:String>
+    <!--<sys:String x:Key="AppointmentStatusLabel">Appointment status:</sys:String>
+    <sys:String x:Key="RequesterLabel">Requester:</sys:String>
+    <sys:String x:Key="CreatedByLabel">Created by:</sys:String>
+    <sys:String x:Key="CreationTimeLabel">Creation time:</sys:String>-->
 </ResourceDictionary>

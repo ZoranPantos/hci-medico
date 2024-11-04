@@ -25,17 +25,17 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ui:TextBlock Text="Appointments" Style="{StaticResource HeadingStyle}" />
+        <ui:TextBlock Text="{DynamicResource ResourceKey=AppointmentsHeading}" Style="{StaticResource HeadingStyle}" />
 
         <Separator Grid.Row="1" Grid.ColumnSpan="3"
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,5,0,0">
-            <ui:TextBox x:Name="SearchBar" PlaceholderText="Search by patient..."
+            <ui:TextBox x:Name="SearchBar" PlaceholderText="{DynamicResource ResourceKey=SearchByPatientPlaceholder}"
                 Background="White" Width="300" Margin="0,0,5,0" />
-            
-            <ui:Button x:Name="Search" Content="Search" Margin="0,0,5,0" Icon="{ui:SymbolIcon Search32}" />
+
+            <ui:Button x:Name="Search" Content="{DynamicResource ResourceKey=SearchButton}" Margin="0,0,5,0" Icon="{ui:SymbolIcon Search32}" />
         </StackPanel>
 
         <Separator Grid.Row="3" Grid.ColumnSpan="3"
@@ -43,28 +43,28 @@
                    Margin="0,5,0,10" />
 
         <StackPanel Grid.Row="4" Style="{StaticResource TableStackPanelHeader}">
-            <TextBlock Text="Patient name/identifier"
+            <TextBlock Text="{DynamicResource ResourceKey=PatientNameIdentifierColumn}"
                        Width="200"
                        VerticalAlignment="Center"
                        FontWeight="SemiBold"
                        FontSize="15"
                        Padding="5,0,0,0" />
-            
-            <TextBlock Text="Date"
+
+            <TextBlock Text="{DynamicResource ResourceKey=DateColumn}"
                        Width="200"
                        VerticalAlignment="Center"
                        FontWeight="SemiBold"
                        FontSize="15"
                        Padding="5,0,0,0" />
-            
-            <TextBlock Text="Time"
+
+            <TextBlock Text="{DynamicResource ResourceKey=TimeColumn}"
                        Width="200"
                        VerticalAlignment="Center"
                        FontWeight="SemiBold"
                        FontSize="15"
                        Padding="5,0,0,0" />
-            
-            <TextBlock Text="Status"
+
+            <TextBlock Text="{DynamicResource ResourceKey=StatusColumn}"
                        Width="200"
                        VerticalAlignment="Center"
                        FontWeight="SemiBold"
