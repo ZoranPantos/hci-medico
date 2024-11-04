@@ -87,7 +87,9 @@ public class CreateReportViewModel : Conductor<object>
 
     public Queue<MedicalConditionDisplayModel> _addedMedicalConditionDisplayModels = [];
 
-    private string _addedMedicalConditionDisplayModelsString = "None";
+    private string _addedMedicalConditionDisplayModelsString =
+        UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ? "None" : "Niti jedno";
+
     public string AddedMedicalConditionDisplayModelsString
     {
         get => _addedMedicalConditionDisplayModelsString;
@@ -238,12 +240,20 @@ public class CreateReportViewModel : Conductor<object>
 
             await TryCloseAsync();
 
-            _toastNotificationService.ShowSuccess("Report created");
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Report created" :
+                "Izvještaj kreiran";
+
+            _toastNotificationService.ShowSuccess(toastMessage);
         }
         catch (Exception ex)
         {
+            string toastMessage = UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ?
+                "Create failed" :
+                "Kreiranje izvještaja neuspješno";
+
+            _toastNotificationService.ShowError(toastMessage);
             ValidationMessage = "Failed to create medical report";
-            _toastNotificationService.ShowError("Create failed");
 
             string message = $"Exception caught and rethrown in {nameof(CreateReportViewModel)}.{nameof(Save)}";
             throw new MedicoException(message, ex);

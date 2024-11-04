@@ -254,4 +254,18 @@
     <sys:String x:Key="RequesterLabel">Requester:</sys:String>
     <sys:String x:Key="CreatedByLabel">Created by:</sys:String>
     <sys:String x:Key="CreationTimeLabel">Creation time:</sys:String>-->
+    
+    <!-- Create report -->
+    <sys:String x:Key="CreateReportTitle">Create Report</sys:String>
+    <sys:String x:Key="DateAndTimeLabel">Date and time:</sys:String>
+    <sys:String x:Key="AnalysisLabel">Analysis</sys:String>
+    <sys:String x:Key="PreviousFindingsLabel">Previous findings</sys:String>
+    <sys:String x:Key="DiagnosisLabel1">Diagnosis</sys:String>
+    <sys:String x:Key="AddConditionTooltip">Add selected condition</sys:String>
+    <sys:String x:Key="RemoveConditionTooltip">Remove selected or last added condition</sys:String>
+    <sys:String x:Key="AddedConditionsLabel">Added conditions:</sys:String>
+    <sys:String x:Key="TherapyLabel">Therapy</sys:String>
+    <sys:String x:Key="AdditionalNotesLabel">Additional notes</sys:String>
+    <!--<sys:String x:Key="SaveButton">Save</sys:String>
+    <sys:String x:Key="CancelButton">Cancel</sys:String>-->
 </ResourceDictionary>

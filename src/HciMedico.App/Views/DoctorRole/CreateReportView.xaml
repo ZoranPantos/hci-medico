@@ -6,7 +6,7 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Create Report"
+        Title="{DynamicResource ResourceKey=CreateReportTitle}"
         Height="688" Width="800"
         Background="#D1DAED"
         ResizeMode="NoResize">
@@ -30,7 +30,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
-            <ui:TextBlock Text="Date and time:" Style="{StaticResource LabelTextBlockStyle}" />
+            <ui:TextBlock Text="{DynamicResource ResourceKey=DateAndTimeLabel}" Style="{StaticResource LabelTextBlockStyle}" />
 
             <ui:TextBlock x:Name="CreationTime"
                           Text="{Binding CreationTime, StringFormat={}{0:dd/MM/yyyy HH:mm}}"
@@ -38,7 +38,7 @@
         </StackPanel>
 
         <ui:TextBlock Grid.Row="1"
-                      Text="Analysis"
+                      Text="{DynamicResource ResourceKey=AnalysisLabel}"
                       Style="{StaticResource LabelTextBlockStyle}"/>
         
         <ui:TextBox x:Name="Analysis"
@@ -50,7 +50,7 @@
                     TextWrapping="Wrap" />
 
         <ui:TextBlock Grid.Row="3"
-                      Text="Previous findings"
+                      Text="{DynamicResource ResourceKey=PreviousFindingsLabel}"
                       Style="{StaticResource LabelTextBlockStyle}"/>
 
         <ui:TextBox x:Name="PreviousFindings"
@@ -62,7 +62,7 @@
                     TextWrapping="Wrap" />
 
         <ui:TextBlock Grid.Row="5"
-                      Text="Diagnosis"
+                      Text="{DynamicResource ResourceKey=DiagnosisLabel1}"
                       Style="{StaticResource LabelTextBlockStyle}"/>
 
         <Grid Grid.Row="6">
@@ -72,7 +72,6 @@
             </Grid.ColumnDefinitions>
 
             <ComboBox x:Name="SelectedMedicalCondition"
-                      
                       Background="White"
                       ItemsSource="{Binding MedicalConditions}"
                       SelectedItem="{Binding SelectedMedicalCondition}"
@@ -81,9 +80,10 @@
 
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <ui:Button x:Name="AddMedicalCondition" Icon="{ui:SymbolIcon Add32}" Margin="5,0,5,0"
-                           ToolTip="Add selected condition" />
+                           ToolTip="{DynamicResource ResourceKey=AddConditionTooltip}" />
+                
                 <ui:Button x:Name="RemoveMedicalCondition" Icon="{ui:SymbolIcon Subtract28}"
-                           ToolTip="Remove selected or last added condition" />
+                           ToolTip="{DynamicResource ResourceKey=RemoveConditionTooltip}" />
             </StackPanel>
         </Grid>
 
@@ -92,7 +92,7 @@
                       Margin="0,0,0,15">
                       
             <StackPanel Orientation="Horizontal">
-                <ui:TextBlock Text="Added conditions: "
+                <ui:TextBlock Text="{DynamicResource ResourceKey=AddedConditionsLabel}"
                           Style="{StaticResource LabelTextBlockStyle}" />
 
                 <ui:TextBlock x:Name="AddedMedicalConditionDisplayModelsString"
@@ -101,7 +101,7 @@
         </ScrollViewer>
 
         <ui:TextBlock Grid.Row="8"
-                      Text="Therapy"
+                      Text="{DynamicResource ResourceKey=TherapyLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBox x:Name="Therapy"
@@ -113,7 +113,7 @@
                     TextWrapping="Wrap" />
 
         <ui:TextBlock Grid.Row="10"
-                      Text="Additional notes"
+                      Text="{DynamicResource ResourceKey=AdditionalNotesLabel}"
                       Style="{StaticResource LabelTextBlockStyle}"/>
 
         <ui:TextBox x:Name="AdditionalNotes"
@@ -132,8 +132,8 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <ui:Button x:Name="Save" Content="Save" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon Save28}" />
-            <ui:Button Grid.Column="1" x:Name="Cancel" Content="Cancel" Appearance="Secondary" />
+            <ui:Button x:Name="Save" Content="{DynamicResource ResourceKey=SaveButton}" Appearance="Primary" Margin="0,0,10,0" Icon="{ui:SymbolIcon Save28}" />
+            <ui:Button Grid.Column="1" x:Name="Cancel" Content="{DynamicResource ResourceKey=CancelButton}" Appearance="Secondary" />
             <ui:TextBlock Grid.Column="3" x:Name="ValidationMessage" Foreground="Red" Margin="0,10" HorizontalAlignment="Right" />
         </Grid>
     </Grid>

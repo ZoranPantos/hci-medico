@@ -254,4 +254,18 @@
     <sys:String x:Key="RequesterLabel">Requester:</sys:String>
     <sys:String x:Key="CreatedByLabel">Created by:</sys:String>
     <sys:String x:Key="CreationTimeLabel">Creation time:</sys:String>-->
+
+    <!-- Create report -->
+    <sys:String x:Key="CreateReportTitle">Kreiranje Izvještaja</sys:String>
+    <sys:String x:Key="DateAndTimeLabel">Datum i vrijeme:</sys:String>
+    <sys:String x:Key="AnalysisLabel">Analiza</sys:String>
+    <sys:String x:Key="PreviousFindingsLabel">Prethodna nalazišta</sys:String>
+    <sys:String x:Key="DiagnosisLabel1">Dijagnoza</sys:String>
+    <sys:String x:Key="AddConditionTooltip">Dodaj izabrano stanje</sys:String>
+    <sys:String x:Key="RemoveConditionTooltip">Ukloni izabrano ili zadnje dodano stanje</sys:String>
+    <sys:String x:Key="AddedConditionsLabel">Dodana stanja:</sys:String>
+    <sys:String x:Key="TherapyLabel">Terapija</sys:String>
+    <sys:String x:Key="AdditionalNotesLabel">Dodatne bilješke</sys:String>
+    <!--<sys:String x:Key="SaveButton">Save</sys:String>
+    <sys:String x:Key="CancelButton">Cancel</sys:String>-->
 </ResourceDictionary>

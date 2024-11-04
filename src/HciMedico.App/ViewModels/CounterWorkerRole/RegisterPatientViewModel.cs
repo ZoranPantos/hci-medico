@@ -202,7 +202,7 @@ public class RegisterPatientViewModel : Conductor<object>
     public Queue<MedicalConditionDisplayModel> _addedMedicalConditionDisplayModels = [];
 
     private string _addedMedicalConditionDisplayModelsString =
-        UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ? "None" : "Niti jedan";
+        UserContext.CurrentUser?.UserSettings.ApplicationLanguage == ApplicationLanguage.English ? "None" : "Niti jedno";
 
     public string AddedMedicalConditionDisplayModelsString
     {
