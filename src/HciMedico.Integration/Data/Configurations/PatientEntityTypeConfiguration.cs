@@ -1,7 +1,6 @@
 ﻿using HciMedico.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace HciMedico.Integration.Data.Configurations;
 
@@ -24,7 +23,17 @@ public class PatientEntityTypeConfiguration : IEntityTypeConfiguration<Patient>
                 new { PatientId = 7, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Ranka Šipke", Number = 7 },
                 new { PatientId = 8, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Karađorđeva", Number = 8 },
                 new { PatientId = 9, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Leskovačka", Number = 9 },
-                new { PatientId = 10, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Krajiška", Number = 10 }
+                new { PatientId = 10, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Kralja Aleksandra", Number = 10 },
+                new { PatientId = 11, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Vojvode Miše", Number = 11 },
+                new { PatientId = 12, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Prijedorska", Number = 12 },
+                new { PatientId = 13, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Kozaračka", Number = 13 },
+                new { PatientId = 14, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Milana Karanovića", Number = 14 },
+                new { PatientId = 15, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Mladena Borenovića", Number = 15 },
+                new { PatientId = 16, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Kraljice Marije", Number = 16 },
+                new { PatientId = 17, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Obrenovačka", Number = 17 },
+                new { PatientId = 18, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Ozrenska", Number = 18 },
+                new { PatientId = 19, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Srbijanska", Number = 19 },
+                new { PatientId = 20, Country = "Bosnia and Herzegovina", City = "Banja Luka", Street = "Duška Radetića", Number = 20 }
             );
 
         builder
@@ -39,7 +48,17 @@ public class PatientEntityTypeConfiguration : IEntityTypeConfiguration<Patient>
                 new { PatientId = 7, Email = "nikola.nikolic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
                 new { PatientId = 8, Email = "david.davidovic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
                 new { PatientId = 9, Email = "stana.stanojevic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
-                new { PatientId = 10, Email = "goran.predojevic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" }
+                new { PatientId = 10, Email = "goran.predojevic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 11, Email = "ljuboje.ljubojevic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 12, Email = "ramiza.ramizovic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 13, Email = "hrvoje.hrvojevic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 14, Email = "alma.almovic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 15, Email = "radovan.radovanovic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 16, Email = "iskra.iskric@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 17, Email = "semsa.semsic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 18, Email = "vladimir.vladimirovic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 19, Email = "mila.milojevic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" },
+                new { PatientId = 20, Email = "stojan.stojanovic@test.com", TelephoneNumber = $"+{random.NextInt64(min, max)}" }
             );
 
         builder.HasData(
@@ -112,6 +131,76 @@ public class PatientEntityTypeConfiguration : IEntityTypeConfiguration<Patient>
                 Uid = random.NextInt64(min, max).ToString(),
                 FirstName = "Goran",
                 LastName = "Predojević"
+            },
+            new Patient
+            {
+                Id = 11,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Ljuboje",
+                LastName = "Ljubojević"
+            },
+            new Patient
+            {
+                Id = 12,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Ramiza",
+                LastName = "Ramizović"
+            },
+            new Patient
+            {
+                Id = 13,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Hrvoje",
+                LastName = "Hrvojević"
+            },
+            new Patient
+            {
+                Id = 14,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Alma",
+                LastName = "Almović"
+            },
+            new Patient
+            {
+                Id = 15,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Radovan",
+                LastName = "Radovanović"
+            },
+            new Patient
+            {
+                Id = 16,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Iskra",
+                LastName = "Iskrić"
+            },
+            new Patient
+            {
+                Id = 17,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Šemsa",
+                LastName = "Šemsić"
+            },
+            new Patient
+            {
+                Id = 18,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Vladimir",
+                LastName = "Vladimirović"
+            },
+            new Patient
+            {
+                Id = 19,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Mila",
+                LastName = "Milojević"
+            },
+            new Patient
+            {
+                Id = 20,
+                Uid = random.NextInt64(min, max).ToString(),
+                FirstName = "Stojan",
+                LastName = "Stojanović"
             }
         );
     }

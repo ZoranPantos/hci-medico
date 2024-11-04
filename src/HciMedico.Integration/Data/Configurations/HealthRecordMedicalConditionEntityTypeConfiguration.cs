@@ -106,5 +106,68 @@ public class HealthRecordMedicalConditionEntityTypeConfiguration : IEntityTypeCo
                 Status = MedicalConditionStatus.Present
             }
         );
+
+        builder.HasData(
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 11,
+                MedicalConditionId = 11,
+                Status = MedicalConditionStatus.Past
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 12,
+                MedicalConditionId = 12,
+                Status = MedicalConditionStatus.Past
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 13,
+                MedicalConditionId = 13,
+                Status = MedicalConditionStatus.Past
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 14,
+                MedicalConditionId = 14,
+                Status = MedicalConditionStatus.Past
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 15,
+                MedicalConditionId = 15,
+                Status = MedicalConditionStatus.Past
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 16,
+                MedicalConditionId = 16,
+                Status = MedicalConditionStatus.Past
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 17,
+                MedicalConditionId = 17,
+                Status = MedicalConditionStatus.Past
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 18,
+                MedicalConditionId = 18,
+                Status = MedicalConditionStatus.Past
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 19,
+                MedicalConditionId = 19,
+                Status = MedicalConditionStatus.Past
+            },
+            new HealthRecordMedicalCondition
+            {
+                HealthRecordId = 20,
+                MedicalConditionId = 20,
+                Status = MedicalConditionStatus.Past
+            }
+        );
     }
 }
