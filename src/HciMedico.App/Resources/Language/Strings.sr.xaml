@@ -297,4 +297,20 @@
     <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
     <sys:String x:Key="PatientNameColumn">Ime pacijenta</sys:String>
     <sys:String x:Key="PatientUidColumn">JMB pacijenta</sys:String>
+
+    <!-- Health record details doctor -->
+    <!--<sys:String x:Key="BackButton">Back</sys:String>
+    <sys:String x:Key="HealthRecordDetailsHeading">Health Record Details</sys:String>
+    <sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
+    <sys:String x:Key="PatientFullNameLabel">Patient full name:</sys:String>
+    <sys:String x:Key="PatientUidLabel">Patient UID:</sys:String>
+    <sys:String x:Key="DateOfBirthLabel">Date of birth:</sys:String>
+    <sys:String x:Key="GenderLabel">Gender:</sys:String>
+    <sys:String x:Key="BloodGroupLabel">Blood group:</sys:String>
+    <sys:String x:Key="AttendedAppointmentsLabel">Attended appointments:</sys:String>
+    <sys:String x:Key="LastAppointmentLabel">Last appointment:</sys:String>
+    <sys:String x:Key="DiagnosisLabel">Diagnosis:</sys:String>-->
+    <sys:String x:Key="ReportsSubheading">Izvještaji</sys:String>
+    <!--<sys:String x:Key="DateAndTimeColumn">Date and time</sys:String>-->
+    <sys:String x:Key="DoctorColumn">Doktor</sys:String>
 </ResourceDictionary>
