@@ -313,4 +313,14 @@
     <sys:String x:Key="ReportsSubheading">Izvještaji</sys:String>
     <!--<sys:String x:Key="DateAndTimeColumn">Date and time</sys:String>-->
     <sys:String x:Key="DoctorColumn">Doktor</sys:String>
+
+    <!-- Report details doctor -->
+    <sys:String x:Key="ReportDetailsTitle">Detalji Izvještaja</sys:String>
+    <!--<sys:String x:Key="AnalysisLabel">Analysis</sys:String>
+    <sys:String x:Key="PreviousFindingsLabel">Previous findings</sys:String>
+    <sys:String x:Key="DiagnosisLabel">Diagnosis</sys:String>
+    <sys:String x:Key="TherapyLabel">Therapy</sys:String>
+    <sys:String x:Key="AdditionalNotesLabel">Additional notes</sys:String>-->
+    <sys:String x:Key="ExportButton">Eksportuj</sys:String>
+    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
 </ResourceDictionary>

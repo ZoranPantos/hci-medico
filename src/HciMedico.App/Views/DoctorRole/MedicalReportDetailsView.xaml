@@ -6,7 +6,7 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Report Details"
+        Title="{DynamicResource ResourceKey=ReportDetailsTitle}"
         Height="700" Width="800"
         Background="#E5EAF5"
         ResizeMode="NoResize">
@@ -19,7 +19,7 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <ui:TextBlock Text="Analysis"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=AnalysisLabel}"
                               Style="{StaticResource LabelTextBlockStyle}"/>
 
                 <ui:TextBlock x:Name="Analysis"
@@ -27,7 +27,7 @@
                               TextWrapping="Wrap"
                               Style="{StaticResource DataTextBlockStyle}" />
 
-                <ui:TextBlock Text="Previous findings"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=PreviousFindingsLabel}"
                               Style="{StaticResource LabelTextBlockStyle}" />
 
                 <ui:TextBlock x:Name="PreviousFindings"
@@ -35,7 +35,7 @@
                               TextWrapping="Wrap"
                               Style="{StaticResource DataTextBlockStyle}" />
 
-                <ui:TextBlock Text="Diagnosis"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=DiagnosisLabel1}"
                               Style="{StaticResource LabelTextBlockStyle}" />
 
                 <ui:TextBlock x:Name="Diagnosis"
@@ -43,7 +43,7 @@
                               TextWrapping="Wrap"
                               Style="{StaticResource DataTextBlockStyle}" />
 
-                <ui:TextBlock Text="Therapy"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=TherapyLabel}"
                               Style="{StaticResource LabelTextBlockStyle}" />
 
                 <ui:TextBlock x:Name="Therapy"
@@ -51,7 +51,7 @@
                               TextWrapping="Wrap"
                               Style="{StaticResource DataTextBlockStyle}" />
 
-                <ui:TextBlock Text="Additional notes"
+                <ui:TextBlock Text="{DynamicResource ResourceKey=AdditionalNotesLabel}"
                               Style="{StaticResource LabelTextBlockStyle}" />
 
                 <ui:TextBlock x:Name="AdditionalNotes"
@@ -62,10 +62,10 @@
         </ScrollViewer>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5,0,0">
-            <ui:Button x:Name="Export" Content="Export" Appearance="Primary"
+            <ui:Button x:Name="Export" Content="{DynamicResource ResourceKey=ExportButton}" Appearance="Primary"
                        Margin="0,0,10,0" Icon="{ui:SymbolIcon DocumentPdf24}" />
-            
-            <ui:Button x:Name="Close" Content="Close" Appearance="Secondary" />
+
+            <ui:Button x:Name="Close" Content="{DynamicResource ResourceKey=CancelButton}" Appearance="Secondary" />
         </StackPanel>
     </Grid>
 </Window>
