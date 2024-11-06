@@ -276,4 +276,18 @@
     <sys:String x:Key="FullNameColumn">Full name</sys:String>-->
     <sys:String x:Key="DateOfBirthColumn">Datum rođenja</sys:String>
     <sys:String x:Key="NumberOfVisitsColumn">Broj posjeta</sys:String>
+
+    <!-- Treated patient details -->
+    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
+    <sys:String x:Key="TreatedPatientDetails">Detalji Tretiranog Pacijenta</sys:String>
+    <sys:String x:Key="BasicDetailsSubheading">Osnovni Detalji</sys:String>
+    <!--<sys:String x:Key="FirstNameLabel">First name:</sys:String>
+    <sys:String x:Key="LastNameLabel">Last name:</sys:String>-->
+    <sys:String x:Key="PlaceOfResidenceLabel">Mjesto prebivališta:</sys:String>
+    <!--<sys:String x:Key="EmailLabel">Email:</sys:String>
+    <sys:String x:Key="TelephoneNumberLabel">Telephone number:</sys:String>-->
+    <sys:String x:Key="AppointmentsSubheading">Pregledi</sys:String>
+    <sys:String x:Key="DateAndTimeColumn">Datum i vrijeme</sys:String>
+    <!--<sys:String x:Key="StatusColumn">Status</sys:String>-->
+    <sys:String x:Key="TypeColumn">Tip</sys:String>
 </ResourceDictionary>

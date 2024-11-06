@@ -33,18 +33,25 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
-            <ui:Button x:Name="NavigateBack" Content="Back" Margin="0,0,5,0" Icon="{ui:SymbolIcon IosArrowLtr24}" />
-            <ui:TextBlock Text="Treated Patient Details" Style="{StaticResource HeadingStyle}" />
+            <ui:Button x:Name="NavigateBack"
+                       Content="{DynamicResource ResourceKey=BackButton}"
+                       Margin="0,0,5,0"
+                       Icon="{ui:SymbolIcon IosArrowLtr24}" />
+
+            <ui:TextBlock Text="{DynamicResource ResourceKey=TreatedPatientDetails}"
+                          Style="{StaticResource HeadingStyle}" />
         </StackPanel>
 
         <Separator Grid.Row="2" Grid.ColumnSpan="3"
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="3" Text="Basic details" Style="{StaticResource SubHeadingStyle}" />
+        <ui:TextBlock Grid.Row="3"
+                      Text="{DynamicResource ResourceKey=BasicDetailsSubheading}"
+                      Style="{StaticResource SubHeadingStyle}" />
 
         <ui:TextBlock Grid.Row="4" 
-                      Text="First name:"
+                      Text="{DynamicResource ResourceKey=FirstNameLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="4" Grid.Column="1"
@@ -52,7 +59,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="5"
-                      Text="Last name:"
+                      Text="{DynamicResource ResourceKey=LastNameLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="5" Grid.Column="1"
@@ -60,7 +67,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="6"
-                      Text="Place of residence:"
+                      Text="{DynamicResource ResourceKey=PlaceOfResidenceLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="6" Grid.Column="1"
@@ -68,7 +75,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="7"
-                      Text="Email:"
+                      Text="{DynamicResource ResourceKey=EmailLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="7" Grid.Column="1"
@@ -76,7 +83,7 @@
                       Style="{StaticResource DataTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="8"
-                      Text="Telephone number:"
+                      Text="{DynamicResource ResourceKey=TelephoneNumberLabel}"
                       Style="{StaticResource LabelTextBlockStyle}" />
 
         <ui:TextBlock Grid.Row="8" Grid.Column="1"
@@ -87,24 +94,26 @@
                    Style="{StaticResource SeparatorStyle}"
                    Margin="0,5,0,0" />
 
-        <ui:TextBlock Grid.Row="10" Text="Appointments" Style="{StaticResource SubHeadingStyle}" />
+        <ui:TextBlock Grid.Row="10"
+                      Text="{DynamicResource ResourceKey=AppointmentsSubheading}"
+                      Style="{StaticResource SubHeadingStyle}" />
 
         <StackPanel Grid.Row="11" Grid.ColumnSpan="3" Style="{StaticResource TableStackPanelHeader}">
-            <TextBlock Text="Date and Time"
+            <TextBlock Text="{DynamicResource ResourceKey=DateAndTimeColumn}"
                        Width="200"
                        VerticalAlignment="Center"
                        FontWeight="SemiBold"
                        FontSize="15"
                        Padding="5,0,0,0" />
-            
-            <TextBlock Text="Status"
+
+            <TextBlock Text="{DynamicResource ResourceKey=StatusColumn}"
                        Width="200"
                        VerticalAlignment="Center"
                        FontWeight="SemiBold"
                        FontSize="15"
                        Padding="5,0,0,0" />
-            
-            <TextBlock Text="Type"
+
+            <TextBlock Text="{DynamicResource ResourceKey=TypeColumn}"
                        Width="200"
                        VerticalAlignment="Center"
                        FontWeight="SemiBold"
