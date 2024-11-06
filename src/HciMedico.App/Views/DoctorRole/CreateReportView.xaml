@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="{DynamicResource ResourceKey=CreateReportTitle}"
-        Height="688" Width="800"
+        Height="690" Width="800"
         Background="#D1DAED"
         ResizeMode="NoResize">
 

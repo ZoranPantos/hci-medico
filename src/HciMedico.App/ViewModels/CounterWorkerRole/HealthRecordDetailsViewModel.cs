@@ -149,7 +149,11 @@ public class HealthRecordDetailsViewModel : Conductor<object>
             string diagnosis = "";
             conditions.ForEach(condition => diagnosis += $"{condition.ConditionName} ({condition.ConditionStatus}), ");
 
-            Diagnosis = diagnosis[..^2];
+            var lang = UserContext.CurrentUser?.UserSettings.ApplicationLanguage;
+
+            Diagnosis = !string.IsNullOrEmpty(diagnosis) ?
+                diagnosis[..^2] :
+                lang == ApplicationLanguage.English ? DisplayMessages.NoData : "Nema podataka";
         }
         catch (Exception ex)
         {
