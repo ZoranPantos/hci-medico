@@ -268,4 +268,12 @@
     <sys:String x:Key="AdditionalNotesLabel">Additional notes</sys:String>
     <!--<sys:String x:Key="SaveButton">Save</sys:String>
     <sys:String x:Key="CancelButton">Cancel</sys:String>-->
+    
+    <!-- Treated patients -->
+    <sys:String x:Key="TreatedPatientsHeading">Treated Patients</sys:String>
+    <!--<sys:String x:Key="SearchByNamePlaceholder">Search by name...</sys:String>
+    <sys:String x:Key="SearchButton">Search</sys:String>
+    <sys:String x:Key="FullNameColumn">Full name</sys:String>-->
+    <sys:String x:Key="DateOfBirthColumn">Date of birth</sys:String>
+    <sys:String x:Key="NumberOfVisitsColumn">Number of visits</sys:String>
 </ResourceDictionary>

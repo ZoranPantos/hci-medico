@@ -268,4 +268,12 @@
     <sys:String x:Key="AdditionalNotesLabel">Dodatne bilješke</sys:String>
     <!--<sys:String x:Key="SaveButton">Save</sys:String>
     <sys:String x:Key="CancelButton">Cancel</sys:String>-->
+
+    <!-- Treated patients -->
+    <sys:String x:Key="TreatedPatientsHeading">Tretirani Pacijenti</sys:String>
+    <!--<sys:String x:Key="SearchByNamePlaceholder">Search by name...</sys:String>
+    <sys:String x:Key="SearchButton">Search</sys:String>
+    <sys:String x:Key="FullNameColumn">Full name</sys:String>-->
+    <sys:String x:Key="DateOfBirthColumn">Datum rođenja</sys:String>
+    <sys:String x:Key="NumberOfVisitsColumn">Broj posjeta</sys:String>
 </ResourceDictionary>
