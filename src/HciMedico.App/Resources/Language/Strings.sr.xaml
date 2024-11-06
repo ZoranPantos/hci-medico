@@ -290,4 +290,11 @@
     <sys:String x:Key="DateAndTimeColumn">Datum i vrijeme</sys:String>
     <!--<sys:String x:Key="StatusColumn">Status</sys:String>-->
     <sys:String x:Key="TypeColumn">Tip</sys:String>
+
+    <!-- Health records doctor -->
+    <!--<sys:String x:Key="HealthRecordsHeading">Health Records</sys:String>-->
+    <sys:String x:Key="SearchByNameOrUidPlacehoder">Pretraži po imenu ili JMB...</sys:String>
+    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
+    <sys:String x:Key="PatientNameColumn">Ime pacijenta</sys:String>
+    <sys:String x:Key="PatientUidColumn">JMB pacijenta</sys:String>
 </ResourceDictionary>

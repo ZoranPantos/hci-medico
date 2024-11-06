@@ -290,4 +290,11 @@
     <sys:String x:Key="DateAndTimeColumn">Date and time</sys:String>
     <!--<sys:String x:Key="StatusColumn">Status</sys:String>-->
     <sys:String x:Key="TypeColumn">Type</sys:String>
+    
+    <!-- Health records doctor -->
+    <!--<sys:String x:Key="HealthRecordsHeading">Health Records</sys:String>-->
+    <sys:String x:Key="SearchByNameOrUidPlacehoder">Search by name or UID...</sys:String>
+    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
+    <sys:String x:Key="PatientNameColumn">Patient name</sys:String>
+    <sys:String x:Key="PatientUidColumn">Patient UID</sys:String>
 </ResourceDictionary>
