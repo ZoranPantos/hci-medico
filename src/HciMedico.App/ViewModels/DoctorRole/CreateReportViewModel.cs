@@ -5,6 +5,7 @@ using HciMedico.Integration.Data.Repositories;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.Domain.Models.Entities;
 using HciMedico.App.Services.Interfaces;
+using HciMedico.Domain.Models.Relationships;
 
 namespace HciMedico.App.ViewModels.DoctorRole;
 
@@ -12,6 +13,7 @@ public class CreateReportViewModel : Conductor<object>
 {
     private readonly IRepository<MedicalCondition> _medicalConditionsRepository;
     private readonly IRepository<MedicalReport> _medicalReportsRepository;
+    private readonly IRepository<HealthRecord> _healthRecordsRepository;
     private readonly IToastNotificationService _toastNotificationService;
     private List<MedicalCondition>? _medicalConditions = [];
     private int _appointmentId;
@@ -116,12 +118,14 @@ public class CreateReportViewModel : Conductor<object>
         int healthRecordId,
         IRepository<MedicalCondition> medicalConditionsRepository,
         IRepository<MedicalReport> medicalReportsRepository,
+        IRepository<HealthRecord> healthRecordsRepository,
         IToastNotificationService toastNotificationService)
     {
         _appointmentId = appointmentId;
         _healthRecordId = healthRecordId;
         _medicalConditionsRepository = medicalConditionsRepository ?? throw new ArgumentNullException(nameof(medicalConditionsRepository));
         _medicalReportsRepository = medicalReportsRepository ?? throw new ArgumentNullException(nameof(medicalReportsRepository));
+        _healthRecordsRepository = healthRecordsRepository ?? throw new ArgumentNullException(nameof(healthRecordsRepository));
         _toastNotificationService = toastNotificationService ?? throw new ArgumentNullException(nameof(toastNotificationService));
     }
 
@@ -233,10 +237,29 @@ public class CreateReportViewModel : Conductor<object>
                 HealthRecordId = _healthRecordId
             };
 
-            var conditions = _medicalConditions?.Where(condition => _addedMedicalConditionDisplayModels.Any(model => model.Name.Equals(condition.Name))).ToList();
+            var conditions = _medicalConditions?
+                .Where(condition => _addedMedicalConditionDisplayModels.Any(model => model.Name.Equals(condition.Name)))
+                .ToList();
+
             conditions?.ForEach(medicalReport.MedicalConditions.Add);
 
-            await _medicalReportsRepository.Add(medicalReport);
+            var healthRecord = await _healthRecordsRepository.FindAsync(hr => hr.Id == _healthRecordId, false, "HealthRecordMedicalConditions");
+
+            if (healthRecord is not null)
+            {
+                conditions?.ForEach(condition =>
+                {
+                    healthRecord.HealthRecordMedicalConditions.Add(new()
+                    {
+                        HealthRecordId = _healthRecordId,
+                        MedicalConditionId = condition.Id,
+                        Status = MedicalConditionStatus.Present
+                    });
+                });
+
+                await _medicalReportsRepository.Add(medicalReport);
+                await _healthRecordsRepository.Update(healthRecord);
+            }
 
             await TryCloseAsync();
 

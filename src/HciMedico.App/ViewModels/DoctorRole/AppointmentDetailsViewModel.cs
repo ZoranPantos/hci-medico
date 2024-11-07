@@ -150,5 +150,6 @@ public class AppointmentDetailsViewModel : Conductor<object>
             _appointment!.HealthRecordId ?? 0,
             IoC.Get<IRepository<MedicalCondition>>(),
             IoC.Get<IRepository<MedicalReport>>(),
+            IoC.Get<IRepository<HealthRecord>>(),
             IoC.Get<IToastNotificationService>()));
 }

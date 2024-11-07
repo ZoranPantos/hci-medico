@@ -2365,10 +2365,6 @@ namespace HciMedico.Integration.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Diagnosis")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<int>("HealthRecordId")
                         .HasColumnType("int");
 
@@ -2397,7 +2393,6 @@ namespace HciMedico.Integration.Migrations
                             Analysis = "Patient presents with heel pain, particularly upon first steps in the morning. Pain is localized to the medial aspect of the heel.",
                             AppointmentId = 1,
                             DateTime = new DateTime(2024, 1, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "",
                             HealthRecordId = 1,
                             PreviousFindings = "No significant previous findings. Patient reports occasional mild discomfort after long periods of standing.",
                             Therapy = "Recommend rest, ice application, stretching exercises, and over-the-counter NSAIDs. Consider custom orthotics if pain persists."
@@ -2673,140 +2668,140 @@ namespace HciMedico.Integration.Migrations
                             Id = 1,
                             FirstName = "Boris",
                             LastName = "Borisavljević",
-                            Uid = "20139947230"
+                            Uid = "32031285729"
                         },
                         new
                         {
                             Id = 2,
                             FirstName = "Saška",
                             LastName = "Mačetić",
-                            Uid = "69292290164"
+                            Uid = "58859505712"
                         },
                         new
                         {
                             Id = 3,
                             FirstName = "Miloš",
                             LastName = "Milosavljević",
-                            Uid = "25157468071"
+                            Uid = "98027703889"
                         },
                         new
                         {
                             Id = 4,
                             FirstName = "Ana",
                             LastName = "Stanojević",
-                            Uid = "55472541440"
+                            Uid = "30469029114"
                         },
                         new
                         {
                             Id = 5,
                             FirstName = "Darko",
                             LastName = "Darković",
-                            Uid = "58637491582"
+                            Uid = "34758027134"
                         },
                         new
                         {
                             Id = 6,
                             FirstName = "Jovana",
                             LastName = "Jovanović",
-                            Uid = "43529088923"
+                            Uid = "24149261326"
                         },
                         new
                         {
                             Id = 7,
                             FirstName = "Nikola",
                             LastName = "Nikolić",
-                            Uid = "84000340324"
+                            Uid = "22739949468"
                         },
                         new
                         {
                             Id = 8,
                             FirstName = "David",
                             LastName = "Davidović",
-                            Uid = "67048262240"
+                            Uid = "57085573075"
                         },
                         new
                         {
                             Id = 9,
                             FirstName = "Stana",
                             LastName = "Stanojević",
-                            Uid = "35158909926"
+                            Uid = "74159129987"
                         },
                         new
                         {
                             Id = 10,
                             FirstName = "Goran",
                             LastName = "Predojević",
-                            Uid = "96120119881"
+                            Uid = "29030602068"
                         },
                         new
                         {
                             Id = 11,
                             FirstName = "Ljuboje",
                             LastName = "Ljubojević",
-                            Uid = "17121022966"
+                            Uid = "51573111515"
                         },
                         new
                         {
                             Id = 12,
                             FirstName = "Ramiza",
                             LastName = "Ramizović",
-                            Uid = "45147044905"
+                            Uid = "71637077693"
                         },
                         new
                         {
                             Id = 13,
                             FirstName = "Hrvoje",
                             LastName = "Hrvojević",
-                            Uid = "89372862580"
+                            Uid = "73800587405"
                         },
                         new
                         {
                             Id = 14,
                             FirstName = "Alma",
                             LastName = "Almović",
-                            Uid = "96981741209"
+                            Uid = "73820036491"
                         },
                         new
                         {
                             Id = 15,
                             FirstName = "Radovan",
                             LastName = "Radovanović",
-                            Uid = "29300986859"
+                            Uid = "66570105776"
                         },
                         new
                         {
                             Id = 16,
                             FirstName = "Iskra",
                             LastName = "Iskrić",
-                            Uid = "56089666895"
+                            Uid = "56970041186"
                         },
                         new
                         {
                             Id = 17,
                             FirstName = "Šemsa",
                             LastName = "Šemsić",
-                            Uid = "93433567735"
+                            Uid = "74690650169"
                         },
                         new
                         {
                             Id = 18,
                             FirstName = "Vladimir",
                             LastName = "Vladimirović",
-                            Uid = "51163054828"
+                            Uid = "10390617980"
                         },
                         new
                         {
                             Id = 19,
                             FirstName = "Mila",
                             LastName = "Milojević",
-                            Uid = "88083601356"
+                            Uid = "55985864301"
                         },
                         new
                         {
                             Id = 20,
                             FirstName = "Stojan",
                             LastName = "Stojanović",
-                            Uid = "25089797476"
+                            Uid = "10372076962"
                         });
                 });
 
@@ -3479,7 +3474,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 1,
-                            DateTime = new DateTime(2024, 11, 4, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3487,7 +3482,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 2,
-                            DateTime = new DateTime(2024, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 9, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3495,7 +3490,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 3,
-                            DateTime = new DateTime(2024, 11, 8, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 11, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3503,7 +3498,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 4,
-                            DateTime = new DateTime(2024, 11, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3511,7 +3506,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 5,
-                            DateTime = new DateTime(2024, 11, 12, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 15, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3519,7 +3514,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 6,
-                            DateTime = new DateTime(2024, 11, 20, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 23, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3527,7 +3522,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 7,
-                            DateTime = new DateTime(2024, 12, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 12, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3535,7 +3530,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 8,
-                            DateTime = new DateTime(2024, 12, 12, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3543,7 +3538,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 9,
-                            DateTime = new DateTime(2024, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 12, 23, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3551,7 +3546,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 10,
-                            DateTime = new DateTime(2024, 10, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 10, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3559,7 +3554,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 11,
-                            DateTime = new DateTime(2024, 10, 12, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 10, 15, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3567,7 +3562,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 12,
-                            DateTime = new DateTime(2024, 10, 20, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 10, 23, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 1
@@ -3575,7 +3570,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 13,
-                            DateTime = new DateTime(2024, 11, 4, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3583,7 +3578,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 14,
-                            DateTime = new DateTime(2024, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 9, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3591,14 +3586,6 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 15,
-                            DateTime = new DateTime(2024, 11, 8, 0, 0, 0, 0, DateTimeKind.Local),
-                            ShiftEndTime = "16:00",
-                            ShiftStartTime = "08:00",
-                            WorkScheduleId = 2
-                        },
-                        new
-                        {
-                            Id = 16,
                             DateTime = new DateTime(2024, 11, 11, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
@@ -3606,8 +3593,16 @@ namespace HciMedico.Integration.Migrations
                         },
                         new
                         {
+                            Id = 16,
+                            DateTime = new DateTime(2024, 11, 14, 0, 0, 0, 0, DateTimeKind.Local),
+                            ShiftEndTime = "16:00",
+                            ShiftStartTime = "08:00",
+                            WorkScheduleId = 2
+                        },
+                        new
+                        {
                             Id = 17,
-                            DateTime = new DateTime(2024, 11, 12, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 15, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3615,7 +3610,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 18,
-                            DateTime = new DateTime(2024, 11, 20, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 11, 23, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3623,7 +3618,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 19,
-                            DateTime = new DateTime(2024, 12, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 12, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3631,7 +3626,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 20,
-                            DateTime = new DateTime(2024, 12, 12, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3639,7 +3634,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 21,
-                            DateTime = new DateTime(2024, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 12, 23, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3647,7 +3642,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 22,
-                            DateTime = new DateTime(2024, 10, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 10, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3655,7 +3650,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 23,
-                            DateTime = new DateTime(2024, 10, 12, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 10, 15, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3663,7 +3658,7 @@ namespace HciMedico.Integration.Migrations
                         new
                         {
                             Id = 24,
-                            DateTime = new DateTime(2024, 10, 20, 0, 0, 0, 0, DateTimeKind.Local),
+                            DateTime = new DateTime(2024, 10, 23, 0, 0, 0, 0, DateTimeKind.Local),
                             ShiftEndTime = "16:00",
                             ShiftStartTime = "08:00",
                             WorkScheduleId = 2
@@ -3867,7 +3862,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ksenija",
                             Gender = 1,
                             LastName = "Marković",
-                            Uid = "4355970578732"
+                            Uid = "3175487661427"
                         },
                         new
                         {
@@ -3879,7 +3874,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Milica",
                             Gender = 1,
                             LastName = "Simeunović",
-                            Uid = "1629423963041"
+                            Uid = "1607134342097"
                         },
                         new
                         {
@@ -3891,7 +3886,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Petar",
                             Gender = 0,
                             LastName = "Tomić",
-                            Uid = "3155381699780"
+                            Uid = "4618281771556"
                         },
                         new
                         {
@@ -3903,7 +3898,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Jovanović",
-                            Uid = "2690983540853"
+                            Uid = "5759703083602"
                         });
                 });
 
@@ -3924,7 +3919,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Marko",
                             Gender = 0,
                             LastName = "Petrović",
-                            Uid = "8310101881147"
+                            Uid = "5278241879197"
                         },
                         new
                         {
@@ -3936,7 +3931,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Jovanović",
-                            Uid = "1087240217320"
+                            Uid = "3113156597016"
                         },
                         new
                         {
@@ -3948,7 +3943,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nikola",
                             Gender = 0,
                             LastName = "Stojanović",
-                            Uid = "4031643735425"
+                            Uid = "8944930652033"
                         },
                         new
                         {
@@ -3960,7 +3955,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Milan",
                             Gender = 0,
                             LastName = "Popović",
-                            Uid = "6301074581811"
+                            Uid = "2294593482700"
                         },
                         new
                         {
@@ -3972,7 +3967,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Jovana",
                             Gender = 1,
                             LastName = "Nikolić",
-                            Uid = "2125195773244"
+                            Uid = "3612588213203"
                         },
                         new
                         {
@@ -3984,7 +3979,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Stefan",
                             Gender = 0,
                             LastName = "Ilić",
-                            Uid = "8698300920931"
+                            Uid = "1154148525500"
                         },
                         new
                         {
@@ -3996,7 +3991,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Marija",
                             Gender = 1,
                             LastName = "Pavlović",
-                            Uid = "4336369303331"
+                            Uid = "7170285455376"
                         },
                         new
                         {
@@ -4008,7 +4003,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Aleksandar",
                             Gender = 0,
                             LastName = "Đorđević",
-                            Uid = "1313229128502"
+                            Uid = "1860880125260"
                         },
                         new
                         {
@@ -4020,7 +4015,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Janković",
-                            Uid = "9938612047513"
+                            Uid = "4490174365809"
                         },
                         new
                         {
@@ -4032,7 +4027,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Petar",
                             Gender = 0,
                             LastName = "Stanković",
-                            Uid = "5574651717422"
+                            Uid = "7366554056215"
                         },
                         new
                         {
@@ -4044,7 +4039,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Jelena",
                             Gender = 1,
                             LastName = "Petrović",
-                            Uid = "3535849950272"
+                            Uid = "4234137488161"
                         },
                         new
                         {
@@ -4056,7 +4051,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Dragan",
                             Gender = 0,
                             LastName = "Kovačević",
-                            Uid = "5087130056490"
+                            Uid = "6375967917895"
                         },
                         new
                         {
@@ -4068,7 +4063,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Milica",
                             Gender = 1,
                             LastName = "Ivanović",
-                            Uid = "9513185451238"
+                            Uid = "5252999133525"
                         },
                         new
                         {
@@ -4080,7 +4075,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nemanja",
                             Gender = 0,
                             LastName = "Jović",
-                            Uid = "9234726427212"
+                            Uid = "1421583733736"
                         },
                         new
                         {
@@ -4092,7 +4087,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Mina",
                             Gender = 1,
                             LastName = "Pavlović",
-                            Uid = "2973255139613"
+                            Uid = "1413106094074"
                         },
                         new
                         {
@@ -4104,7 +4099,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Vladimir",
                             Gender = 0,
                             LastName = "Stanišić",
-                            Uid = "5132108194309"
+                            Uid = "7098825873170"
                         },
                         new
                         {
@@ -4116,7 +4111,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Jovanka",
                             Gender = 1,
                             LastName = "Đorđević",
-                            Uid = "3998287090934"
+                            Uid = "8695483057484"
                         },
                         new
                         {
@@ -4128,7 +4123,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Branimir",
                             Gender = 0,
                             LastName = "Nikolić",
-                            Uid = "8072734126732"
+                            Uid = "1158069169900"
                         },
                         new
                         {
@@ -4140,7 +4135,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ana",
                             Gender = 1,
                             LastName = "Janković",
-                            Uid = "7118441042321"
+                            Uid = "3748986327058"
                         },
                         new
                         {
@@ -4152,7 +4147,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nikola",
                             Gender = 0,
                             LastName = "Stanković",
-                            Uid = "6380970899246"
+                            Uid = "7096853002256"
                         },
                         new
                         {
@@ -4164,7 +4159,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Sanja",
                             Gender = 1,
                             LastName = "Petrović",
-                            Uid = "1196184643411"
+                            Uid = "9608195491020"
                         },
                         new
                         {
@@ -4176,7 +4171,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Miloš",
                             Gender = 0,
                             LastName = "Jovanović",
-                            Uid = "5155304032658"
+                            Uid = "1182087444176"
                         },
                         new
                         {
@@ -4188,7 +4183,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Tatjana",
                             Gender = 1,
                             LastName = "Stojanović",
-                            Uid = "9750977407777"
+                            Uid = "9548608933494"
                         },
                         new
                         {
@@ -4200,7 +4195,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Vladimir",
                             Gender = 0,
                             LastName = "Stanković",
-                            Uid = "1020309914859"
+                            Uid = "8229990960382"
                         },
                         new
                         {
@@ -4212,7 +4207,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Ivana",
                             Gender = 1,
                             LastName = "Janković",
-                            Uid = "8087573195616"
+                            Uid = "4421301767708"
                         },
                         new
                         {
@@ -4224,7 +4219,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nenad",
                             Gender = 0,
                             LastName = "Petrović",
-                            Uid = "8229681537449"
+                            Uid = "9239414705710"
                         },
                         new
                         {
@@ -4236,7 +4231,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Milica",
                             Gender = 1,
                             LastName = "Ilić",
-                            Uid = "8111098755867"
+                            Uid = "8653031883735"
                         },
                         new
                         {
@@ -4248,7 +4243,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Vladan",
                             Gender = 0,
                             LastName = "Đorđević",
-                            Uid = "9321893655001"
+                            Uid = "3118501374523"
                         },
                         new
                         {
@@ -4260,7 +4255,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Sara",
                             Gender = 1,
                             LastName = "Pavlović",
-                            Uid = "4556567091957"
+                            Uid = "1059459148045"
                         },
                         new
                         {
@@ -4272,7 +4267,7 @@ namespace HciMedico.Integration.Migrations
                             FirstName = "Nemanja",
                             Gender = 0,
                             LastName = "Stanišić",
-                            Uid = "5307789756615"
+                            Uid = "5104839129136"
                         });
                 });
 
@@ -4651,205 +4646,205 @@ namespace HciMedico.Integration.Migrations
                                 {
                                     EmployeeId = 1,
                                     Email = "marko.petrovic@test.com",
-                                    TelephoneNumber = "+18651226130"
+                                    TelephoneNumber = "+50271014710"
                                 },
                                 new
                                 {
                                     EmployeeId = 2,
                                     Email = "ana.jovanovic@test.com",
-                                    TelephoneNumber = "+64608191367"
+                                    TelephoneNumber = "+90785553185"
                                 },
                                 new
                                 {
                                     EmployeeId = 3,
                                     Email = "nikola.stojanovic@test.com",
-                                    TelephoneNumber = "+59937839812"
+                                    TelephoneNumber = "+28559315778"
                                 },
                                 new
                                 {
                                     EmployeeId = 4,
                                     Email = "milan.popovic@test.com",
-                                    TelephoneNumber = "+52655199638"
+                                    TelephoneNumber = "+79574406710"
                                 },
                                 new
                                 {
                                     EmployeeId = 5,
                                     Email = "jovana.nikolic@test.com",
-                                    TelephoneNumber = "+68635991598"
+                                    TelephoneNumber = "+41491159759"
                                 },
                                 new
                                 {
                                     EmployeeId = 6,
                                     Email = "stefan.ilic@test.com",
-                                    TelephoneNumber = "+93434421240"
+                                    TelephoneNumber = "+11549541210"
                                 },
                                 new
                                 {
                                     EmployeeId = 7,
                                     Email = "marija.pavlovic@test.com",
-                                    TelephoneNumber = "+66690501175"
+                                    TelephoneNumber = "+52765302730"
                                 },
                                 new
                                 {
                                     EmployeeId = 8,
                                     Email = "aleksandar.djordjevic@test.com",
-                                    TelephoneNumber = "+80164304359"
+                                    TelephoneNumber = "+99957900617"
                                 },
                                 new
                                 {
                                     EmployeeId = 9,
                                     Email = "ana.jankovic@test.com",
-                                    TelephoneNumber = "+42530006368"
+                                    TelephoneNumber = "+38362262739"
                                 },
                                 new
                                 {
                                     EmployeeId = 10,
                                     Email = "petar.stankovic@test.com",
-                                    TelephoneNumber = "+59464971708"
+                                    TelephoneNumber = "+97919089379"
                                 },
                                 new
                                 {
                                     EmployeeId = 11,
                                     Email = "jelena.petrovic@test.com",
-                                    TelephoneNumber = "+31860071570"
+                                    TelephoneNumber = "+38596286685"
                                 },
                                 new
                                 {
                                     EmployeeId = 12,
                                     Email = "dragan.kovacevic@test.com",
-                                    TelephoneNumber = "+66288885175"
+                                    TelephoneNumber = "+57854721765"
                                 },
                                 new
                                 {
                                     EmployeeId = 13,
                                     Email = "milica.ivanovic@test.com",
-                                    TelephoneNumber = "+65300263031"
+                                    TelephoneNumber = "+70134439137"
                                 },
                                 new
                                 {
                                     EmployeeId = 14,
                                     Email = "nemanja.jovic@test.com",
-                                    TelephoneNumber = "+55250058224"
+                                    TelephoneNumber = "+76418627577"
                                 },
                                 new
                                 {
                                     EmployeeId = 15,
                                     Email = "mina.pavlovic@test.com",
-                                    TelephoneNumber = "+49116543435"
+                                    TelephoneNumber = "+32198818944"
                                 },
                                 new
                                 {
                                     EmployeeId = 16,
                                     Email = "vladimir.stanisic@test.com",
-                                    TelephoneNumber = "+52675867160"
+                                    TelephoneNumber = "+58691123844"
                                 },
                                 new
                                 {
                                     EmployeeId = 17,
                                     Email = "jovanka.djordjevic@test.com",
-                                    TelephoneNumber = "+29506666028"
+                                    TelephoneNumber = "+67419437217"
                                 },
                                 new
                                 {
                                     EmployeeId = 18,
                                     Email = "branimir.nikolic@test.com",
-                                    TelephoneNumber = "+30652179017"
+                                    TelephoneNumber = "+88558054475"
                                 },
                                 new
                                 {
                                     EmployeeId = 19,
                                     Email = "ana.jankovic@test.com",
-                                    TelephoneNumber = "+17168507131"
+                                    TelephoneNumber = "+24348991196"
                                 },
                                 new
                                 {
                                     EmployeeId = 20,
                                     Email = "nikola.stankovic@test.com",
-                                    TelephoneNumber = "+98819198953"
+                                    TelephoneNumber = "+42465838926"
                                 },
                                 new
                                 {
                                     EmployeeId = 21,
                                     Email = "sanja.petrovic@test.com",
-                                    TelephoneNumber = "+36218576154"
+                                    TelephoneNumber = "+55794983314"
                                 },
                                 new
                                 {
                                     EmployeeId = 22,
                                     Email = "milos.jovanovic@test.com",
-                                    TelephoneNumber = "+57988017018"
+                                    TelephoneNumber = "+96038967943"
                                 },
                                 new
                                 {
                                     EmployeeId = 23,
                                     Email = "tatjana.stojanovic@test.com",
-                                    TelephoneNumber = "+45739777779"
+                                    TelephoneNumber = "+20253940979"
                                 },
                                 new
                                 {
                                     EmployeeId = 24,
                                     Email = "vladimir.stankovic@test.com",
-                                    TelephoneNumber = "+65224450080"
+                                    TelephoneNumber = "+88106360501"
                                 },
                                 new
                                 {
                                     EmployeeId = 25,
                                     Email = "ivana.jankovic@test.com",
-                                    TelephoneNumber = "+32020177175"
+                                    TelephoneNumber = "+68614922438"
                                 },
                                 new
                                 {
                                     EmployeeId = 26,
                                     Email = "nenad.petrovic@test.com",
-                                    TelephoneNumber = "+29432339547"
+                                    TelephoneNumber = "+98947060502"
                                 },
                                 new
                                 {
                                     EmployeeId = 27,
                                     Email = "milica.ilic@test.com",
-                                    TelephoneNumber = "+46629921241"
+                                    TelephoneNumber = "+34225777090"
                                 },
                                 new
                                 {
                                     EmployeeId = 28,
                                     Email = "vladan.djordjevic@test.com",
-                                    TelephoneNumber = "+16065304951"
+                                    TelephoneNumber = "+42091109439"
                                 },
                                 new
                                 {
                                     EmployeeId = 29,
                                     Email = "sara.pavlovic@test.com",
-                                    TelephoneNumber = "+46840975216"
+                                    TelephoneNumber = "+36716251671"
                                 },
                                 new
                                 {
                                     EmployeeId = 30,
                                     Email = "nemanja.stanisic@test.com",
-                                    TelephoneNumber = "+25588673081"
+                                    TelephoneNumber = "+32652805874"
                                 },
                                 new
                                 {
                                     EmployeeId = 31,
                                     Email = "ksenija.markovic@test.com",
-                                    TelephoneNumber = "+49290949970"
+                                    TelephoneNumber = "+21175524797"
                                 },
                                 new
                                 {
                                     EmployeeId = 32,
                                     Email = "milica.simeunovic@test.com",
-                                    TelephoneNumber = "+66173453498"
+                                    TelephoneNumber = "+17104934458"
                                 },
                                 new
                                 {
                                     EmployeeId = 33,
                                     Email = "petar.tomic@test.com",
-                                    TelephoneNumber = "+60703347413"
+                                    TelephoneNumber = "+85171979206"
                                 },
                                 new
                                 {
                                     EmployeeId = 34,
                                     Email = "ana.jovanovic@test.com",
-                                    TelephoneNumber = "+76795562546"
+                                    TelephoneNumber = "+44288032740"
                                 });
                         });
 
@@ -5107,121 +5102,121 @@ namespace HciMedico.Integration.Migrations
                                 {
                                     PatientId = 1,
                                     Email = "boris.borisavljevic@test.com",
-                                    TelephoneNumber = "+93960989201"
+                                    TelephoneNumber = "+24750949131"
                                 },
                                 new
                                 {
                                     PatientId = 2,
                                     Email = "saska.macetic@test.com",
-                                    TelephoneNumber = "+47105216841"
+                                    TelephoneNumber = "+65085946185"
                                 },
                                 new
                                 {
                                     PatientId = 3,
                                     Email = "milos.milosevic@test.com",
-                                    TelephoneNumber = "+94005800217"
+                                    TelephoneNumber = "+27252250291"
                                 },
                                 new
                                 {
                                     PatientId = 4,
                                     Email = "ana.stanojevic@test.com",
-                                    TelephoneNumber = "+61260330190"
+                                    TelephoneNumber = "+65093684586"
                                 },
                                 new
                                 {
                                     PatientId = 5,
                                     Email = "darko.darkovic@test.com",
-                                    TelephoneNumber = "+36469571152"
+                                    TelephoneNumber = "+93950642310"
                                 },
                                 new
                                 {
                                     PatientId = 6,
                                     Email = "jovana.jovanovic@test.com",
-                                    TelephoneNumber = "+83462332875"
+                                    TelephoneNumber = "+82406246479"
                                 },
                                 new
                                 {
                                     PatientId = 7,
                                     Email = "nikola.nikolic@test.com",
-                                    TelephoneNumber = "+74257643479"
+                                    TelephoneNumber = "+58403064672"
                                 },
                                 new
                                 {
                                     PatientId = 8,
                                     Email = "david.davidovic@test.com",
-                                    TelephoneNumber = "+43451284477"
+                                    TelephoneNumber = "+82497679030"
                                 },
                                 new
                                 {
                                     PatientId = 9,
                                     Email = "stana.stanojevic@test.com",
-                                    TelephoneNumber = "+27454445029"
+                                    TelephoneNumber = "+38912771747"
                                 },
                                 new
                                 {
                                     PatientId = 10,
                                     Email = "goran.predojevic@test.com",
-                                    TelephoneNumber = "+24433943780"
+                                    TelephoneNumber = "+29874626562"
                                 },
                                 new
                                 {
                                     PatientId = 11,
                                     Email = "ljuboje.ljubojevic@test.com",
-                                    TelephoneNumber = "+17204068269"
+                                    TelephoneNumber = "+80082517090"
                                 },
                                 new
                                 {
                                     PatientId = 12,
                                     Email = "ramiza.ramizovic@test.com",
-                                    TelephoneNumber = "+70465525635"
+                                    TelephoneNumber = "+45062166731"
                                 },
                                 new
                                 {
                                     PatientId = 13,
                                     Email = "hrvoje.hrvojevic@test.com",
-                                    TelephoneNumber = "+21796082380"
+                                    TelephoneNumber = "+62977820733"
                                 },
                                 new
                                 {
                                     PatientId = 14,
                                     Email = "alma.almovic@test.com",
-                                    TelephoneNumber = "+85980264402"
+                                    TelephoneNumber = "+99000753114"
                                 },
                                 new
                                 {
                                     PatientId = 15,
                                     Email = "radovan.radovanovic@test.com",
-                                    TelephoneNumber = "+26651345210"
+                                    TelephoneNumber = "+13971819898"
                                 },
                                 new
                                 {
                                     PatientId = 16,
                                     Email = "iskra.iskric@test.com",
-                                    TelephoneNumber = "+83463647788"
+                                    TelephoneNumber = "+53372445207"
                                 },
                                 new
                                 {
                                     PatientId = 17,
                                     Email = "semsa.semsic@test.com",
-                                    TelephoneNumber = "+21468279331"
+                                    TelephoneNumber = "+56918363175"
                                 },
                                 new
                                 {
                                     PatientId = 18,
                                     Email = "vladimir.vladimirovic@test.com",
-                                    TelephoneNumber = "+96432755759"
+                                    TelephoneNumber = "+90896792171"
                                 },
                                 new
                                 {
                                     PatientId = 19,
                                     Email = "mila.milojevic@test.com",
-                                    TelephoneNumber = "+53149986456"
+                                    TelephoneNumber = "+26453367076"
                                 },
                                 new
                                 {
                                     PatientId = 20,
                                     Email = "stojan.stojanovic@test.com",
-                                    TelephoneNumber = "+90429862648"
+                                    TelephoneNumber = "+95914242044"
                                 });
                         });
 

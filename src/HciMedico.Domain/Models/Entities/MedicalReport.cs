@@ -9,9 +9,6 @@ public class MedicalReport
     public string Analysis { get; set; } = string.Empty;
     public string PreviousFindings { get; set; } = string.Empty;
 
-    //TODO: Consider removing this and having it only in input/output models as it is empty in DB and FK towards medical condition is stored anyway
-    public string Diagnosis { get; set; } = string.Empty;
-
     public string Therapy { get; set; } = string.Empty;
     public string AdditionalNotes { get; set; } = string.Empty;
 
