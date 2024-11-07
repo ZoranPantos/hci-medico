@@ -103,7 +103,6 @@
     <sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
     <sys:String x:Key="ScheduledForLabel">Scheduled for:</sys:String>
     <sys:String x:Key="AssignedToLabel">Assigned to:</sys:String>
-    <!--<sys:String x:Key="AppointmentTypeLabel">Appointment type:</sys:String>-->
     <sys:String x:Key="AppointmentStatusLabel">Appointment status:</sys:String>
     <sys:String x:Key="RequesterLabel">Requester:</sys:String>
     <sys:String x:Key="CreatedByLabel">Created by:</sys:String>
@@ -124,7 +123,6 @@
     <sys:String x:Key="SpecializationLabel">Specialization:</sys:String>
     <sys:String x:Key="AvailableDoctorsLabel">Available doctors:</sys:String>
     <sys:String x:Key="AssignButton">Assign</sys:String>
-    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
     
     <!-- Appointment status update -->
     <sys:String x:Key="AppointmentStatusUpdateTitle">Appointment Status Update</sys:String>
@@ -133,12 +131,10 @@
     <sys:String x:Key="CancelledOption">Cancelled</sys:String>
     <sys:String x:Key="ScheduledOption">Scheduled</sys:String>
     <sys:String x:Key="UpdateButton">Update</sys:String>
-    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
     
     <!-- Patients CounterWorker -->
     <sys:String x:Key="RegisteredPatientsHeading">Registered Patients</sys:String>
     <sys:String x:Key="SearchByNamePlaceholder">Search by name...</sys:String>
-    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
     <sys:String x:Key="RegisterNewPatientButton">Register new patient</sys:String>
     <sys:String x:Key="FullNameColumn">Full name</sys:String>
     <sys:String x:Key="LastVisitColumn">Last visit</sys:String>
@@ -167,29 +163,14 @@
     <sys:String x:Key="AppointmentInfoGroupHeading">Appointment Info</sys:String>
     <sys:String x:Key="LinkedAppointmentLabel1">Linked appointment</sys:String>
     <sys:String x:Key="SaveButton">Save</sys:String>
-    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
     <sys:String x:Key="NoteLabel">Note: Health record will automatically be opened for this patient</sys:String>
     <sys:String x:Key="AddMedicalConditionTooltip1">Add selected condition</sys:String>
     <sys:String x:Key="RemoveMedicalConditionTooltip1">Remove selected or last added condition</sys:String>
     
     <!-- Patient details CounterWorker -->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
     <sys:String x:Key="PatientDetailsHeading">Patient Details</sys:String>
     <sys:String x:Key="EditButton">Edit</sys:String>
     <sys:String x:Key="ScheduleAppointmentButton1">Schedule appointment</sys:String>
-    <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
-    <sys:String x:Key="FirstNameLabel">First name:</sys:String>
-    <sys:String x:Key="LastNameLabel">Last name:</sys:String>
-    <sys:String x:Key="UidLabel">UID:</sys:String>
-    <sys:String x:Key="GenderLabel">Gender:</sys:String>
-    <sys:String x:Key="DateOfBirthLabel">Date of birth:</sys:String>
-    <sys:String x:Key="AddressAndContactSubheading">Address and Contact</sys:String>
-    <sys:String x:Key="CountryLabel">Country:</sys:String>
-    <sys:String x:Key="CityLabel">City:</sys:String>
-    <sys:String x:Key="StreetLabel">Street:</sys:String>
-    <sys:String x:Key="NumberLabel">Number:</sys:String>
-    <sys:String x:Key="EmailLabel">Email:</sys:String>
-    <sys:String x:Key="TelephoneNumberLabel">Telephone number:</sys:String>-->
     <sys:String x:Key="ClinicStatsSubheading">Clinic Stats</sys:String>
     <sys:String x:Key="NumberOfVisitsLabel">Number of visits:</sys:String>
     <sys:String x:Key="LastVisitLabel">Last visit:</sys:String>
@@ -197,63 +178,28 @@
     
     <!-- Edit patient details -->
     <sys:String x:Key="EditPatientDetailsTitle">Edit Patient Details</sys:String>
-    <!--<sys:String x:Key="BasicInfoGroupHeading">Basic Info</sys:String>
-    <sys:String x:Key="FirstNameLabel1">First name</sys:String>
-    <sys:String x:Key="LastNameLabel1">Last name</sys:String>
-    <sys:String x:Key="UidLabel1">UID</sys:String>
-    <sys:String x:Key="GenderLabel1">Gender</sys:String>
-    <sys:String x:Key="DateOfBirthLabel1">Date of birth</sys:String>
-    <sys:String x:Key="AddressGroupHeading">Address</sys:String>
-    <sys:String x:Key="CountryLabel1">Country</sys:String>
-    <sys:String x:Key="CityLabel2">City</sys:String>
-    <sys:String x:Key="StreetLabel2">Street</sys:String>
-    <sys:String x:Key="StreetNumberLabel1">Street number</sys:String>
-    <sys:String x:Key="ContactGroupHeading">Contact</sys:String>
-    <sys:String x:Key="EmailLabel1">Email</sys:String>
-    <sys:String x:Key="TelephoneLabel1">Telephone number</sys:String>
-    <sys:String x:Key="UpdateButton">Update</sys:String>
-    <sys:String x:Key="CancelButton">Cancel</sys:String>-->
     
     <!-- Health records CounterWorker-->
     <sys:String x:Key="HealthRecordsHeading">Health Records</sys:String>
     <sys:String x:Key="SearchBarPlaceholder">Search by name or UID...</sys:String>
-    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
     <sys:String x:Key="PatientName">Patient name</sys:String>
     <sys:String x:Key="PatientUid">Patient UID</sys:String>
     
     <!-- Health record details CounterWorker-->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
     <sys:String x:Key="HealthRecordDetailsHeading">Health Record Details</sys:String>
     <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>-->
     <sys:String x:Key="PatientFullNameLabel">Patient full name:</sys:String>
     <sys:String x:Key="PatientUidLabel">Patient UID:</sys:String>
-    <!--<sys:String x:Key="DateOfBirthLabel">Date of birth label:</sys:String>
-    <sys:String x:Key="GenderLabel">Gender:</sys:String>-->
     <sys:String x:Key="BloodGroupLabel">Blood group:</sys:String>
     <sys:String x:Key="AttendedAppointmentsLabel">Attended appointments:</sys:String>
     <sys:String x:Key="LastAppointmentLabel">Last appointment:</sys:String>
     <sys:String x:Key="DiagnosisLabel">Diagnosis:</sys:String>
     
-    <!-- Appointments Doctor --><!--
-    <sys:String x:Key="AppointmentsHeading">Appointments</sys:String>
-    <sys:String x:Key="SearchByPatientPlaceholder">Search by patient...</sys:String>
-    <sys:String x:Key="SearchButton">Search</sys:String>
-    <sys:String x:Key="PatientNameIdentifierColumn">Patient name/identifier</sys:String>
-    <sys:String x:Key="DateColumn">Date</sys:String>
-    <sys:String x:Key="TimeColumn">Time</sys:String>
-    <sys:String x:Key="StatusColumn">Status</sys:String>-->
+    <!-- Appointments Doctor -->
     
     <!-- Appointment details Doctor-->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>
-    <sys:String x:Key="AppointmentDetailsHeading">Appointment Details</sys:String>-->
     <sys:String x:Key="CreateReportButton">Create a report</sys:String>
-    <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
-    <sys:String x:Key="ScheduledForLabel">Scheduled for:</sys:String>-->
     <sys:String x:Key="AppointmentTypeLabel1">Appointment type:</sys:String>
-    <!--<sys:String x:Key="AppointmentStatusLabel">Appointment status:</sys:String>
-    <sys:String x:Key="RequesterLabel">Requester:</sys:String>
-    <sys:String x:Key="CreatedByLabel">Created by:</sys:String>
-    <sys:String x:Key="CreationTimeLabel">Creation time:</sys:String>-->
     
     <!-- Create report -->
     <sys:String x:Key="CreateReportTitle">Create Report</sys:String>
@@ -266,61 +212,30 @@
     <sys:String x:Key="AddedConditionsLabel">Added conditions:</sys:String>
     <sys:String x:Key="TherapyLabel">Therapy</sys:String>
     <sys:String x:Key="AdditionalNotesLabel">Additional notes</sys:String>
-    <!--<sys:String x:Key="SaveButton">Save</sys:String>
-    <sys:String x:Key="CancelButton">Cancel</sys:String>-->
     
     <!-- Treated patients -->
     <sys:String x:Key="TreatedPatientsHeading">Treated Patients</sys:String>
-    <!--<sys:String x:Key="SearchByNamePlaceholder">Search by name...</sys:String>
-    <sys:String x:Key="SearchButton">Search</sys:String>
-    <sys:String x:Key="FullNameColumn">Full name</sys:String>-->
     <sys:String x:Key="DateOfBirthColumn">Date of birth</sys:String>
     <sys:String x:Key="NumberOfVisitsColumn">Number of visits</sys:String>
     
     <!-- Treated patient details -->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
     <sys:String x:Key="TreatedPatientDetails">Treated Patient Details</sys:String>
     <sys:String x:Key="BasicDetailsSubheading">Basic details</sys:String>
-    <!--<sys:String x:Key="FirstNameLabel">First name:</sys:String>
-    <sys:String x:Key="LastNameLabel">Last name:</sys:String>-->
     <sys:String x:Key="PlaceOfResidenceLabel">Place of residence:</sys:String>
-    <!--<sys:String x:Key="EmailLabel">Email:</sys:String>
-    <sys:String x:Key="TelephoneNumberLabel">Telephone number:</sys:String>-->
     <sys:String x:Key="AppointmentsSubheading">Appointments</sys:String>
     <sys:String x:Key="DateAndTimeColumn">Date and time</sys:String>
-    <!--<sys:String x:Key="StatusColumn">Status</sys:String>-->
     <sys:String x:Key="TypeColumn">Type</sys:String>
     
     <!-- Health records doctor -->
-    <!--<sys:String x:Key="HealthRecordsHeading">Health Records</sys:String>-->
     <sys:String x:Key="SearchByNameOrUidPlacehoder">Search by name or UID...</sys:String>
-    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
     <sys:String x:Key="PatientNameColumn">Patient name</sys:String>
     <sys:String x:Key="PatientUidColumn">Patient UID</sys:String>
     
     <!-- Health record details doctor -->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>
-    <sys:String x:Key="HealthRecordDetailsHeading">Health Record Details</sys:String>
-    <sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
-    <sys:String x:Key="PatientFullNameLabel">Patient full name:</sys:String>
-    <sys:String x:Key="PatientUidLabel">Patient UID:</sys:String>
-    <sys:String x:Key="DateOfBirthLabel">Date of birth:</sys:String>
-    <sys:String x:Key="GenderLabel">Gender:</sys:String>
-    <sys:String x:Key="BloodGroupLabel">Blood group:</sys:String>
-    <sys:String x:Key="AttendedAppointmentsLabel">Attended appointments:</sys:String>
-    <sys:String x:Key="LastAppointmentLabel">Last appointment:</sys:String>
-    <sys:String x:Key="DiagnosisLabel">Diagnosis:</sys:String>-->
     <sys:String x:Key="ReportsSubheading">Reports</sys:String>
-    <!--<sys:String x:Key="DateAndTimeColumn">Date and time</sys:String>-->
     <sys:String x:Key="DoctorColumn">Doctor</sys:String>
     
     <!-- Report details doctor -->
     <sys:String x:Key="ReportDetailsTitle">Report Details</sys:String>
-    <!--<sys:String x:Key="AnalysisLabel">Analysis</sys:String>
-    <sys:String x:Key="PreviousFindingsLabel">Previous findings</sys:String>
-    <sys:String x:Key="DiagnosisLabel1">Diagnosis</sys:String>
-    <sys:String x:Key="TherapyLabel">Therapy</sys:String>
-    <sys:String x:Key="AdditionalNotesLabel">Additional notes</sys:String>-->
     <sys:String x:Key="ExportButton">Export</sys:String>
-    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
 </ResourceDictionary>

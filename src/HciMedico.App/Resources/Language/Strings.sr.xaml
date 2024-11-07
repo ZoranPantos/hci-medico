@@ -103,7 +103,6 @@
     <sys:String x:Key="GeneralInfoSubheading">Generalne Informacije</sys:String>
     <sys:String x:Key="ScheduledForLabel">Zakazan za:</sys:String>
     <sys:String x:Key="AssignedToLabel">Ciljni doktor:</sys:String>
-    <!--<sys:String x:Key="AppointmentTypeLabel">Appointment type:</sys:String>-->
     <sys:String x:Key="AppointmentStatusLabel">Status pregleda:</sys:String>
     <sys:String x:Key="RequesterLabel">Podnosilac zahtjeva:</sys:String>
     <sys:String x:Key="CreatedByLabel">Kreiran od:</sys:String>
@@ -124,7 +123,6 @@
     <sys:String x:Key="SpecializationLabel">Specijalizacija:</sys:String>
     <sys:String x:Key="AvailableDoctorsLabel">Dostupni doktori:</sys:String>
     <sys:String x:Key="AssignButton">Zamijeni</sys:String>
-    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
 
     <!-- Appointment status update -->
     <sys:String x:Key="AppointmentStatusUpdateTitle">Ažuriranje Statusa Pregleda</sys:String>
@@ -133,12 +131,10 @@
     <sys:String x:Key="CancelledOption">Otkazan</sys:String>
     <sys:String x:Key="ScheduledOption">Zakazan</sys:String>
     <sys:String x:Key="UpdateButton">Ažuriraj</sys:String>
-    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
 
     <!-- Patients CounterWorker -->
     <sys:String x:Key="RegisteredPatientsHeading">Registrovani Pacijenti</sys:String>
     <sys:String x:Key="SearchByNamePlaceholder">Pretraži po imenu...</sys:String>
-    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
     <sys:String x:Key="RegisterNewPatientButton">Registruj novog pacijenta</sys:String>
     <sys:String x:Key="FullNameColumn">Puno ime</sys:String>
     <sys:String x:Key="LastVisitColumn">Posljednja posjeta</sys:String>
@@ -167,29 +163,14 @@
     <sys:String x:Key="AppointmentInfoGroupHeading">Informacije o Pregledu</sys:String>
     <sys:String x:Key="LinkedAppointmentLabel1">Povezani pregled</sys:String>
     <sys:String x:Key="SaveButton">Sačuvaj</sys:String>
-    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
     <sys:String x:Key="NoteLabel">Informacija: Zdravstveni karton će automatski biti otvoren za ovog pacijenta</sys:String>
     <sys:String x:Key="AddMedicalConditionTooltip1">Dodaj izabrano stanje</sys:String>
     <sys:String x:Key="RemoveMedicalConditionTooltip1">Ukloni izabrano ili zadnje dodano stanje</sys:String>
 
     <!-- Patient details CounterWorker -->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
     <sys:String x:Key="PatientDetailsHeading">Detalji Pacijenta</sys:String>
     <sys:String x:Key="EditButton">Promijeni</sys:String>
     <sys:String x:Key="ScheduleAppointmentButton1">Zakaži pregled</sys:String>
-    <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
-    <sys:String x:Key="FirstNameLabel">First name:</sys:String>
-    <sys:String x:Key="LastNameLabel">Last name:</sys:String>
-    <sys:String x:Key="UidLabel">UID:</sys:String>
-    <sys:String x:Key="GenderLabel">Gender:</sys:String>
-    <sys:String x:Key="DateOfBirthLabel">Date of birth:</sys:String>
-    <sys:String x:Key="AddressAndContactSubheading">Address and Contact</sys:String>
-    <sys:String x:Key="CountryLabel">Country:</sys:String>
-    <sys:String x:Key="CityLabel">City:</sys:String>
-    <sys:String x:Key="StreetLabel">Street:</sys:String>
-    <sys:String x:Key="NumberLabel">Number:</sys:String>
-    <sys:String x:Key="EmailLabel">Email:</sys:String>
-    <sys:String x:Key="TelephoneNumberLabel">Telephone number:</sys:String>-->
     <sys:String x:Key="ClinicStatsSubheading">Statistike Klinike</sys:String>
     <sys:String x:Key="NumberOfVisitsLabel">Broj posjeta:</sys:String>
     <sys:String x:Key="LastVisitLabel">Zadnji pregled:</sys:String>
@@ -197,63 +178,27 @@
 
     <!-- Edit patient details -->
     <sys:String x:Key="EditPatientDetailsTitle">Mijenjanje Detalja Pacijenta</sys:String>
-    <!--<sys:String x:Key="BasicInfoGroupHeading">Basic Info</sys:String>
-    <sys:String x:Key="FirstNameLabel1">First name</sys:String>
-    <sys:String x:Key="LastNameLabel1">Last name</sys:String>
-    <sys:String x:Key="UidLabel1">UID</sys:String>
-    <sys:String x:Key="GenderLabel1">Gender</sys:String>
-    <sys:String x:Key="DateOfBirthLabel1">Date of birth</sys:String>
-    <sys:String x:Key="AddressGroupHeading">Address</sys:String>
-    <sys:String x:Key="CountryLabel1">Country</sys:String>
-    <sys:String x:Key="CityLabel2">City</sys:String>
-    <sys:String x:Key="StreetLabel2">Street</sys:String>
-    <sys:String x:Key="StreetNumberLabel1">Street number</sys:String>
-    <sys:String x:Key="ContactGroupHeading">Contact</sys:String>
-    <sys:String x:Key="EmailLabel1">Email</sys:String>
-    <sys:String x:Key="TelephoneLabel1">Telephone number</sys:String>
-    <sys:String x:Key="UpdateButton">Update</sys:String>
-    <sys:String x:Key="CancelButton">Cancel</sys:String>-->
 
     <!-- Health records CounterWorker-->
     <sys:String x:Key="HealthRecordsHeading">Zdravstveni Kartoni</sys:String>
     <sys:String x:Key="SearchBarPlaceholder">Pretraži po imenu ili JMB...</sys:String>
-    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
     <sys:String x:Key="PatientName">Ime pacijenta</sys:String>
     <sys:String x:Key="PatientUid">JMB pacijenta</sys:String>
 
     <!-- Health record details CounterWorker-->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
     <sys:String x:Key="HealthRecordDetailsHeading">Detalji Zdravstvenog Kartona</sys:String>
-    <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>-->
     <sys:String x:Key="PatientFullNameLabel">Puno ime pacijenta:</sys:String>
     <sys:String x:Key="PatientUidLabel">JMB pacijenta:</sys:String>
-    <!--<sys:String x:Key="DateOfBirthLabel">Date of birth label:</sys:String>
-    <sys:String x:Key="GenderLabel">Gender:</sys:String>-->
     <sys:String x:Key="BloodGroupLabel">Krvna grupa:</sys:String>
     <sys:String x:Key="AttendedAppointmentsLabel">Broj pregleda:</sys:String>
     <sys:String x:Key="LastAppointmentLabel">Zadnji pregled:</sys:String>
     <sys:String x:Key="DiagnosisLabel">Dijagnoze:</sys:String>
 
     <!-- Appointments Doctor -->
-    <!--<sys:String x:Key="AppointmentsHeading">Appointments</sys:String>
-    <sys:String x:Key="SearchByPatientPlaceholder">Search by patient...</sys:String>
-    <sys:String x:Key="SearchButton">Search</sys:String>
-    <sys:String x:Key="PatientNameIdentifierColumn">Patient name/identifier</sys:String>
-    <sys:String x:Key="DateColumn">Date</sys:String>
-    <sys:String x:Key="TimeColumn">Time</sys:String>
-    <sys:String x:Key="StatusColumn">Status</sys:String>-->
 
     <!-- Appointment details Doctor-->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>
-    <sys:String x:Key="AppointmentDetailsHeading">Appointment Details</sys:String>-->
     <sys:String x:Key="CreateReportButton">Kreiraj izvještaj</sys:String>
-    <!--<sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
-    <sys:String x:Key="ScheduledForLabel">Scheduled for:</sys:String>-->
     <sys:String x:Key="AppointmentTypeLabel1">Tip pregleda:</sys:String>
-    <!--<sys:String x:Key="AppointmentStatusLabel">Appointment status:</sys:String>
-    <sys:String x:Key="RequesterLabel">Requester:</sys:String>
-    <sys:String x:Key="CreatedByLabel">Created by:</sys:String>
-    <sys:String x:Key="CreationTimeLabel">Creation time:</sys:String>-->
 
     <!-- Create report -->
     <sys:String x:Key="CreateReportTitle">Kreiranje Izvještaja</sys:String>
@@ -266,61 +211,30 @@
     <sys:String x:Key="AddedConditionsLabel">Dodana stanja:</sys:String>
     <sys:String x:Key="TherapyLabel">Terapija</sys:String>
     <sys:String x:Key="AdditionalNotesLabel">Dodatne bilješke</sys:String>
-    <!--<sys:String x:Key="SaveButton">Save</sys:String>
-    <sys:String x:Key="CancelButton">Cancel</sys:String>-->
 
     <!-- Treated patients -->
     <sys:String x:Key="TreatedPatientsHeading">Tretirani Pacijenti</sys:String>
-    <!--<sys:String x:Key="SearchByNamePlaceholder">Search by name...</sys:String>
-    <sys:String x:Key="SearchButton">Search</sys:String>
-    <sys:String x:Key="FullNameColumn">Full name</sys:String>-->
     <sys:String x:Key="DateOfBirthColumn">Datum rođenja</sys:String>
     <sys:String x:Key="NumberOfVisitsColumn">Broj posjeta</sys:String>
 
     <!-- Treated patient details -->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>-->
     <sys:String x:Key="TreatedPatientDetails">Detalji Tretiranog Pacijenta</sys:String>
     <sys:String x:Key="BasicDetailsSubheading">Osnovni Detalji</sys:String>
-    <!--<sys:String x:Key="FirstNameLabel">First name:</sys:String>
-    <sys:String x:Key="LastNameLabel">Last name:</sys:String>-->
     <sys:String x:Key="PlaceOfResidenceLabel">Mjesto prebivališta:</sys:String>
-    <!--<sys:String x:Key="EmailLabel">Email:</sys:String>
-    <sys:String x:Key="TelephoneNumberLabel">Telephone number:</sys:String>-->
     <sys:String x:Key="AppointmentsSubheading">Pregledi</sys:String>
     <sys:String x:Key="DateAndTimeColumn">Datum i vrijeme</sys:String>
-    <!--<sys:String x:Key="StatusColumn">Status</sys:String>-->
     <sys:String x:Key="TypeColumn">Tip</sys:String>
 
     <!-- Health records doctor -->
-    <!--<sys:String x:Key="HealthRecordsHeading">Health Records</sys:String>-->
     <sys:String x:Key="SearchByNameOrUidPlacehoder">Pretraži po imenu ili JMB...</sys:String>
-    <!--<sys:String x:Key="SearchButton">Search</sys:String>-->
     <sys:String x:Key="PatientNameColumn">Ime pacijenta</sys:String>
     <sys:String x:Key="PatientUidColumn">JMB pacijenta</sys:String>
 
     <!-- Health record details doctor -->
-    <!--<sys:String x:Key="BackButton">Back</sys:String>
-    <sys:String x:Key="HealthRecordDetailsHeading">Health Record Details</sys:String>
-    <sys:String x:Key="GeneralInfoSubheading">General Info</sys:String>
-    <sys:String x:Key="PatientFullNameLabel">Patient full name:</sys:String>
-    <sys:String x:Key="PatientUidLabel">Patient UID:</sys:String>
-    <sys:String x:Key="DateOfBirthLabel">Date of birth:</sys:String>
-    <sys:String x:Key="GenderLabel">Gender:</sys:String>
-    <sys:String x:Key="BloodGroupLabel">Blood group:</sys:String>
-    <sys:String x:Key="AttendedAppointmentsLabel">Attended appointments:</sys:String>
-    <sys:String x:Key="LastAppointmentLabel">Last appointment:</sys:String>
-    <sys:String x:Key="DiagnosisLabel">Diagnosis:</sys:String>-->
     <sys:String x:Key="ReportsSubheading">Izvještaji</sys:String>
-    <!--<sys:String x:Key="DateAndTimeColumn">Date and time</sys:String>-->
     <sys:String x:Key="DoctorColumn">Doktor</sys:String>
 
     <!-- Report details doctor -->
     <sys:String x:Key="ReportDetailsTitle">Detalji Izvještaja</sys:String>
-    <!--<sys:String x:Key="AnalysisLabel">Analysis</sys:String>
-    <sys:String x:Key="PreviousFindingsLabel">Previous findings</sys:String>
-    <sys:String x:Key="DiagnosisLabel">Diagnosis</sys:String>
-    <sys:String x:Key="TherapyLabel">Therapy</sys:String>
-    <sys:String x:Key="AdditionalNotesLabel">Additional notes</sys:String>-->
     <sys:String x:Key="ExportButton">Eksportuj</sys:String>
-    <!--<sys:String x:Key="CancelButton">Cancel</sys:String>-->
 </ResourceDictionary>
