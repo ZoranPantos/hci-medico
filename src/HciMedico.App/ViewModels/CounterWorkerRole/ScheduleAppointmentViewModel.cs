@@ -299,7 +299,7 @@ public class ScheduleAppointmentViewModel : Conductor<object>
 
         if (_selectedMedicalSpecialization?.Id == 0 && _selectedMedicalSpecialization.Name.Equals("ALL"))
             AvailableDoctors.AddRange(_allDoctors);
-        else
+        else if (_selectedMedicalSpecialization is not null && _selectedMedicalSpecialization.Doctors is not null)
             AvailableDoctors.AddRange(_selectedMedicalSpecialization?.Doctors?.ToList());
     }
 
