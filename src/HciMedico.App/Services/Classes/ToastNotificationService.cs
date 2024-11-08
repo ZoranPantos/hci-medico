@@ -5,6 +5,7 @@ using ToastNotifications.Messages;
 using ToastNotifications.Core;
 using System.Windows;
 using HciMedico.App.Services.Interfaces;
+using ToastNotifications.Lifetime.Clear;
 
 namespace HciMedico.App.Services.Classes;
 
@@ -53,4 +54,8 @@ public class ToastNotificationService : IToastNotificationService
     public void ShowInformation(string message) => _notifier.ShowInformation(message, _messageOptions);
 
     public void ShowWarning(string message) => _notifier.ShowWarning(message, _messageOptions);
+
+    public void ClearAll() => _notifier.ClearMessages(new ClearAll());
+
+    public void Dispose() => _notifier.Dispose();
 }
