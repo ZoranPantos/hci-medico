@@ -101,6 +101,14 @@ public class LoginViewModel : Conductor<object>
         return base.OnActivateAsync(cancellationToken);
     }
 
+    protected override Task OnDeactivateAsync(bool close, CancellationToken cancellationToken)
+    {
+        if (GetView() is LoginView loginView)
+            loginView.Closing -= LoginView_OnClosing;
+
+        return base.OnDeactivateAsync(close, cancellationToken);
+    }
+
     private void LoginView_OnClosing(object? sender, CancelEventArgs e)
     {
         if (sender is LoginView && _loginViewQuit)

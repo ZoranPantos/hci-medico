@@ -64,6 +64,14 @@ public class ShellViewModel : Conductor<object>
         return base.OnActivateAsync(cancellationToken);
     }
 
+    protected override Task OnDeactivateAsync(bool close, CancellationToken cancellationToken)
+    {
+        if (GetView() is ShellView shellView)
+            shellView.Closing -= ShellView_OnClosing;
+
+        return base.OnDeactivateAsync(close, cancellationToken);
+    }
+
     private void ShellView_OnClosing(object? sender, CancelEventArgs e)
     {
         if (sender is ShellView && !_logoutTriggered)
