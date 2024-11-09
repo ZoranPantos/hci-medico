@@ -160,6 +160,9 @@ public class ShellViewModel : Conductor<object>
         _logoutTriggered = true;
         UserContext.Clean();
 
+        var toastService = IoC.Get<IToastNotificationService>();
+        toastService?.ReinitializeNotifier();
+
         await TryCloseAsync();
 
         var windowManager = IoC.Get<IWindowManager>();

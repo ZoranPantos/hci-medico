@@ -8,4 +8,5 @@ public interface IToastNotificationService
     void ShowWarning(string message);
     void ClearAll();
     void Dispose();
+    void ReinitializeNotifier();
 }
