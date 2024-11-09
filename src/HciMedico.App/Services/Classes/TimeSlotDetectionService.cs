@@ -2,19 +2,34 @@
 using HciMedico.Integration.Data.Repositories;
 using HciMedico.Domain.Models.Enums;
 using HciMedico.App.Exceptions;
+using System.Configuration;
 
 namespace HciMedico.App.Services.Classes;
 
 public class TimeSlotDetectionService : ITimeSlotDetectionService
 {
-    private readonly IRepository<Appointment> _appointmentRepository;
-    public TimeSpan DefaultAppointmentDuration { get; } = new(0, minutes: 15, 0);
-    public TimeSpan InBetweenAppointmentsBreak { get; } = new(0, minutes: 5, 0);
-    public TimeOnly StartShift { get; } = new(8, 0);
-    public TimeOnly EndShift { get; } = new(23, 30);
+    private readonly string _shiftStartHour = ConfigurationManager.AppSettings["ShiftStartHour"] ?? "8";
+    private readonly string _shiftEndHour = ConfigurationManager.AppSettings["ShiftEndHour"] ?? "0";
+    private readonly string _shiftStartMinutes = ConfigurationManager.AppSettings["ShiftStartMinutes"] ?? "16";
+    private readonly string _shiftEndMinutes = ConfigurationManager.AppSettings["ShiftStartMinutes"] ?? "0";
+    private readonly string _defaultAppointmentDuration = ConfigurationManager.AppSettings["DefaultAppointmentDurationInMinutes"] ?? "15";
+    private readonly string _inBetweenAppointmentsBreak = ConfigurationManager.AppSettings["InBetweenAppointmentsBreak"] ?? "5";
 
-    public TimeSlotDetectionService(IRepository<Appointment> appointmentRepository) =>
+    private readonly IRepository<Appointment> _appointmentRepository;
+    public TimeSpan DefaultAppointmentDuration { get; }
+    public TimeSpan InBetweenAppointmentsBreak { get; }
+    public TimeOnly StartShift { get; }
+    public TimeOnly EndShift { get; }
+
+    public TimeSlotDetectionService(IRepository<Appointment> appointmentRepository)
+    {
         _appointmentRepository = appointmentRepository ?? throw new ArgumentNullException(nameof(appointmentRepository));
+
+        DefaultAppointmentDuration = new(0, int.Parse(_defaultAppointmentDuration), 0);
+        InBetweenAppointmentsBreak = new(0, int.Parse(_inBetweenAppointmentsBreak), 0);
+        StartShift = new(int.Parse(_shiftStartHour), int.Parse(_shiftStartMinutes));
+        EndShift = new(int.Parse(_shiftEndHour), int.Parse(_shiftEndMinutes));
+    }
 
     public async Task<ICollection<TimeOnly>> GetTimeSlotsByDate(DateTime appointmentDateTime, Doctor? assignedTo)
     {
