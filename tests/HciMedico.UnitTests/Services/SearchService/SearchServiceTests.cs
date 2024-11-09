@@ -233,4 +233,120 @@ public class SearchServiceTests : IClassFixture<SearchServiceFixture>
 
         _output.WriteLine("-----------------------------------------");
     }
+
+    private void OutputHealthRecordTargetSet(List<HealthRecord> targetSet)
+    {
+        _output.WriteLine("Target set:");
+        targetSet.ForEach(healthRecord => _output.WriteLine($"    {healthRecord.Patient.FullName} {healthRecord.Patient.Uid}"));
+        _output.WriteLine("-----------------------------------------");
+    }
+
+    private void OutputHealthRecordSearchResults(int expectedCount, List<HealthRecord>? results)
+    {
+        _output.WriteLine($"Expected result count: {expectedCount} | Actual result count: {results?.Count}");
+        _output.WriteLine("Results:");
+
+        results?.ForEach(healthRecord => _output.WriteLine($"    {healthRecord.Patient.FullName} {healthRecord.Patient.Uid}"));
+        _output.WriteLine("-----------------------------------------");
+    }
+
+    [Theory]
+    [ClassData(typeof(HealthRecordsFirstNameWithResultsTestData))]
+    public void SearchMatchingHealthRecordByFirstNameTest(string firstName, List<HealthRecord> targetSet)
+    {
+        var resultSet = _fixture.SearchService.SearchHealthRecords(targetSet, firstName);
+
+        _output.WriteLine($"Input key: {firstName}");
+        OutputHealthRecordTargetSet(targetSet);
+        OutputHealthRecordSearchResults(1, resultSet);
+
+        Assert.Equal(1, resultSet?.Count);
+
+        foreach (var result in resultSet ?? [])
+        {
+            if (!string.IsNullOrEmpty(result?.Patient?.FirstName))
+            {
+                string patientFirstName = result.Patient.FirstName.Split(" ")[0].ToLower();
+
+                Assert.Equal(patientFirstName.ToLower(), patientFirstName);
+            }
+            else if (result?.Patient is not null)
+                Assert.Equal(firstName.ToLower(), result.Patient.FirstName.ToLower());
+        }
+    }
+
+    [Theory]
+    [ClassData(typeof(HealthRecordsLastNameWithResultsTestData))]
+    public void SearchMatchingHealthRecordByLastNameTest(string lastName, List<HealthRecord> targetSet)
+    {
+        var resultSet = _fixture.SearchService.SearchHealthRecords(targetSet, lastName);
+
+        _output.WriteLine($"Input key: {lastName}");
+        OutputHealthRecordTargetSet(targetSet);
+        OutputHealthRecordSearchResults(2, resultSet);
+
+        Assert.Equal(2, resultSet?.Count);
+
+        foreach (var result in resultSet ?? [])
+        {
+            if (!string.IsNullOrEmpty(result?.Patient?.LastName))
+            {
+                string patientLastName = result.Patient.LastName.Split(" ")[0].ToLower();
+
+                Assert.Equal(lastName.ToLower(), patientLastName);
+            }
+            else if (result?.Patient is not null)
+                Assert.Equal(lastName.ToLower(), result.Patient.LastName.ToLower());
+        }
+    }
+
+    [Theory]
+    [ClassData(typeof(HealthRecordsFullNameWithResultsTestData))]
+    public void SearchMatchingHealthRecordByFullNameTest(string fullName, List<HealthRecord> targetSet)
+    {
+        var resultSet = _fixture.SearchService.SearchHealthRecords(targetSet, fullName);
+
+        _output.WriteLine($"Input key: {fullName}");
+        OutputHealthRecordTargetSet(targetSet);
+        OutputHealthRecordSearchResults(1, resultSet);
+
+        Assert.Equal(1, resultSet?.Count);
+
+        foreach (var result in resultSet ?? [])
+        {
+            if (!string.IsNullOrEmpty(result?.Patient?.FullName))
+            {
+                string patientFullName = result.Patient.FullName.ToLower();
+
+                Assert.Equal(fullName.ToLower(), patientFullName);
+            }
+            else if (result?.Patient is not null)
+                Assert.Equal(fullName.ToLower(), result.Patient.FullName.ToLower());
+        }
+    }
+
+    [Theory]
+    [ClassData(typeof(HealthRecordsUidWithResultsTestData))]
+    public void SearchMatchingHealthRecordByUidTest(string uid, List<HealthRecord> targetSet)
+    {
+        var resultSet = _fixture.SearchService.SearchHealthRecords(targetSet, uid);
+
+        _output.WriteLine($"Input key: {uid}");
+        OutputHealthRecordTargetSet(targetSet);
+        OutputHealthRecordSearchResults(1, resultSet);
+
+        Assert.Equal(1, resultSet?.Count);
+
+        foreach (var result in resultSet ?? [])
+        {
+            if (!string.IsNullOrEmpty(result?.Patient?.FullName))
+            {
+                string patientUid = result.Patient.Uid.ToLower();
+
+                Assert.Equal(uid.ToLower(), patientUid);
+            }
+            else if (result?.Patient is not null)
+                Assert.Equal(uid.ToLower(), result.Patient.Uid.ToLower());
+        }
+    }
 }
