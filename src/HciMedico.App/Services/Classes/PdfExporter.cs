@@ -68,7 +68,7 @@ public class PdfExporter : IPdfExporter
 
     private void DrawPatientInfo(ref XGraphics gfx, ref double yPosition, XFont italicBoldFont, XFont textFont, double maxWidth, MedicalReportExportDto dto)
     {
-        gfx.DrawString("Medico", italicBoldFont, XBrushes.Black, new XRect(40, yPosition, maxWidth, 20), XStringFormats.TopLeft);
+        gfx.DrawString("HciMedico", italicBoldFont, XBrushes.Black, new XRect(40, yPosition, maxWidth, 20), XStringFormats.TopLeft);
         yPosition += 20;
 
         gfx.DrawString($"Patient name: {dto.PatientFullName}", textFont, XBrushes.Black, new XRect(40, yPosition, maxWidth, 20), XStringFormats.TopLeft);
