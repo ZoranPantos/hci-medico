@@ -9,8 +9,8 @@ namespace HciMedico.App.Services.Classes;
 public class TimeSlotDetectionService : ITimeSlotDetectionService
 {
     private readonly string _shiftStartHour = ConfigurationManager.AppSettings["ShiftStartHour"] ?? "8";
-    private readonly string _shiftEndHour = ConfigurationManager.AppSettings["ShiftEndHour"] ?? "0";
-    private readonly string _shiftStartMinutes = ConfigurationManager.AppSettings["ShiftStartMinutes"] ?? "16";
+    private readonly string _shiftEndHour = ConfigurationManager.AppSettings["ShiftEndHour"] ?? "16";
+    private readonly string _shiftStartMinutes = ConfigurationManager.AppSettings["ShiftStartMinutes"] ?? "0";
     private readonly string _shiftEndMinutes = ConfigurationManager.AppSettings["ShiftStartMinutes"] ?? "0";
     private readonly string _defaultAppointmentDuration = ConfigurationManager.AppSettings["DefaultAppointmentDurationInMinutes"] ?? "15";
     private readonly string _inBetweenAppointmentsBreak = ConfigurationManager.AppSettings["InBetweenAppointmentsBreak"] ?? "5";
