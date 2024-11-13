@@ -74,7 +74,7 @@
     <sys:String x:Key="ScheduleNewAppointmentButton">Schedule new appointment</sys:String>
     <sys:String x:Key="PatientNameIdentifierColumn">Patient name/identifier</sys:String>
     <sys:String x:Key="AppointmentDoctorColumn">Appointed doctor</sys:String>
-    <sys:String x:Key="DateColumn">Datum</sys:String>
+    <sys:String x:Key="DateColumn">Date</sys:String>
     <sys:String x:Key="TimeColumn">Time</sys:String>
     <sys:String x:Key="StatusColumn">Status</sys:String>
     
