@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77600E54-AE22-430D-9EB9-0BB4094652E5}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		create_and_seed_db.sql = create_and_seed_db.sql
 		README.md = README.md
 	EndProjectSection
 EndProject
