@@ -16,6 +16,7 @@ Set of functionalities that are supported but may be limited to only a specific 
 - creating and viewing medical reports
 - registering patients
 - viewing all and treated patients as well as their details
+- editing patient details
 - searching patients
 - viewing all and treated patient health records as well as their details
 - searching health records
